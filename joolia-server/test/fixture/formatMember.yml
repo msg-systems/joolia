@@ -1,0 +1,95 @@
+entity: FormatMember
+items:
+  formatMember1:
+    user: '@Luke'
+    format: '@FormatOne'
+    role: 'organizer'
+  formatMember2:
+    user: '@Luke'
+    format: '@FormatTwo'
+    role: 'organizer'
+  formatMember3:
+    user: '@Leia'
+    format: '@FormatTwo'
+    role: 'participant'
+  formatMember4:
+    user: '@Mickey'
+    format: '@FormatOne'
+    role: 'participant'
+  formatMember5:
+    user: '@ObiWan'
+    format: '@FormatOne'
+    role: 'participant'
+  formatMember6:
+    user: '@Luke'
+    format: '@FormatFour'
+    role: 'participant'
+  formatMember7:
+    user: '@Luke'
+    format: '@FormatFive'
+    role: 'organizer'
+  formatMember8:
+    user: '@Shaak'
+    format: '@FormatThree'
+    role: 'organizer'
+  formatMember9:
+    user: '@ObiWan'
+    format: '@FormatFour'
+    role: 'participant'
+  formatMember10:
+    user: '@ObiWan'
+    format: '@FormatSeven'
+    role: 'participant'
+  formatMember11:
+    user: '@Leia'
+    format: '@FormatSeven'
+    role: 'organizer'
+  formatMember12:
+    user: '@Luke'
+    format: '@FormatSeven'
+    role: 'participant'
+  formatMember13:
+    user: '@Leia'
+    format: '@FormatEight'
+    role: 'organizer'
+  formatMember14:
+    user: '@Luke'
+    format: '@FormatEight'
+    role: 'participant'
+  formatMember15:
+    user: '@Luke'
+    format: '@FormatSix'
+    role: 'participant'
+  formatMember16:
+    user: '@Leia'
+    format: '@FormatFour'
+    role: 'participant'
+  formatMember17:
+    user: '@Shaak'
+    format: '@FormatFour'
+    role: 'organizer'
+  formatMember18:
+    user: '@Mickey'
+    format: '@FormatFive'
+    role: 'participant'
+  formatMember19:
+    user: '@Luke'
+    format: '@FormatNine'
+    role: 'organizer'
+  formatMember20:
+    user: '@PendingUser'
+    format: '@FormatTwo'
+    role: 'participant'
+  formatMember21:
+    user: '@Shaak'
+    format: '@FormatSix'
+    role: 'organizer'
+  formatMember22:
+    user: '@Mickey'
+    format: '@FormatFour'
+    role: 'organizer'
+
+  formatMemberX{1..100}:
+    user: '@Luke'
+    format: '@FormatX($current)'
+    role: 'participant'

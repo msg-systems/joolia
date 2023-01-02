@@ -1,0 +1,36 @@
+# TODO add templates
+components:
+  schemas:
+    Library:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: 'First library ever'
+        memberCount:
+          type: integer
+          minimum: 0
+        templateCount:
+          type: integer
+          minimum: 0
+  examples:
+    Libraries:
+      type: array
+      items:
+        $ref: '#/components/schemas/Library'
+    LibraryPatched:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: 'Cool Library patched'
+        memberCount:
+          type: integer
+          minimum: 0
+        templateCount:
+          type: integer
+          minimum: 0

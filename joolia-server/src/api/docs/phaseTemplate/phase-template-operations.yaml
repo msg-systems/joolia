@@ -1,0 +1,160 @@
+/phase-template:
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Phase Template
+    description: Retrieves all the phase templates of the user libraries
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all phase templates
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/PhaseTemplates'
+              example:
+                count: 2
+                entities:
+                  - PhaseTemplate1
+                  - PhaseTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+
+/library/{libraryId}/phase-template:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Library
+    description: Retrieves all the phase templates of specific library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all phase templates of specific library
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/PhasTemplates'
+              example:
+                count: 2
+                entities:
+                  - PhaseTemplate1
+                  - PhaseTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  post:
+    tags:
+      - Library
+    description: Create a new phase template
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              phaseId:
+                type: string
+                phase: uuid
+            required:
+              - phaseId
+    responses:
+      '201':
+        description: Phase template created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhaseTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/library/{libraryId}/phase-template/{phaseTemplateId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+    - $ref: '#/components/parameters/IdParameterPhaseTemplate'
+  get:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific phase template
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: phase template retrieved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhaseTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Delete specific phase template
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Phase template deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    IdParameterPhaseTemplate:
+      in: path
+      name: phaseTempalateId
+      schema:
+        type: string
+        phase: uuid
+      required: true
+      description: The id of the phase template

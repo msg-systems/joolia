@@ -1,0 +1,33 @@
+@import 'variables';
+
+.submission-container {
+    margin: 32px 24px 0 24px;
+}
+
+.submission-details-submitter {
+    margin-top: 36px;
+    color: $joolia-grey;
+}
+
+.submission-details-name {
+    margin-top: 12px;
+}
+
+.submission-details-title {
+    margin-bottom: 0;
+}
+
+.submission-details-date {
+    margin-top: 12px;
+    color: $joolia-grey;
+}
+
+.submission-details-description {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: calc(100% - 24px);
+}
+
+.submission-details-subtitle {
+    margin-top: 24px;
+}

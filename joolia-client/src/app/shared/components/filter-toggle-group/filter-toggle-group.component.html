@@ -1,0 +1,29 @@
+<div class="filter-group" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="16px">
+    <!-- Clear- or select all filters button -->
+    <button ngClass.lt-md="small" class="filter-clear-button mat-button-toggle mat-button-toggle-appearance-standard" mat-button
+        (click)="allOrClearButtonClicked()">
+        <!-- Select All button, with checkbox filled -->
+        <span *ngIf="!areFiltersSelected(); else checkBoxOutlineBlank" class="filter-all" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>check_box</mat-icon>
+            {{ 'buttons.filterAll' | translate }}
+        </span>
+        <!-- Clear filters, with checkbox empty -->
+        <ng-template #checkBoxOutlineBlank>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>check_box_outline_blank</mat-icon>
+                {{ 'buttons.clearFilters' | translate }}
+            </div>
+        </ng-template>
+    </button>
+
+    <!-- Selectable filter criteria -->
+    <div fxLayout="row" fxLayout="start start" fxLayoutGap="16px" class="filter-container">
+        <mat-button-toggle-group *ngFor="let criteriaValues of filterCriteriaList; index as i" [multiple]="true" [value]="selectedFilter[i]"
+            (change)="onFilterChange($event, i)">
+            <mat-button-toggle *ngFor="let item of criteriaValues" [value]="item.value">
+                <mat-icon *ngIf="item.icon" class="material-icons-outlined criteria-icon">{{ item.icon }}</mat-icon>
+                {{ item.label | translate }}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>

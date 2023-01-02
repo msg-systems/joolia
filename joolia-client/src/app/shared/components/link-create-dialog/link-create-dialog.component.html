@@ -1,0 +1,23 @@
+<!-- Heading line -->
+<h1 class="link-creation-title" mat-dialog-title>{{ 'dialog.createLink.header' | translate }}</h1>
+
+<form [formGroup]="linkCreationForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+
+    <mat-dialog-content>
+
+        <!-- URL -->
+        <base-form-input [parentForm]="linkCreationForm" inputType="text" entityName="linkUrl" inputControlName="linkUrl"
+            [inputRequired]="true"></base-form-input>
+
+        <!-- Description -->
+        <base-form-text-field [parentForm]="linkCreationForm" entityName="description" inputControlName="description"
+            [inputMaxLength]="linkDescriptionMaxLength"></base-form-text-field>
+
+    </mat-dialog-content>
+
+    <!-- Submit Button -->
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.create' | translate }}</button>
+    </mat-dialog-actions>
+</form>

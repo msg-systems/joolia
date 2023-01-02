@@ -1,0 +1,65 @@
+@import 'variables';
+
+.user-card-header {
+    padding-bottom: 16px;
+    width: 100%;
+}
+
+.user-card-name-container {
+    padding-left: 16px;
+    max-width: calc(100% - 80px);
+
+    > div {
+        max-width: 100%;
+    }
+
+    .user-card-name {
+        margin: 0;
+        max-width: 100%;
+
+        &-clickable {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .mat-body-1 {
+        margin-top: 8px;
+    }
+}
+
+.user-card-content {
+    height: 100%;
+
+    .user-card-sub-content {
+        height: calc(100% - 8px);
+        padding-top: 16px;
+        display: flex;
+        flex-direction: column;
+
+        .mat-body-1 + .mat-body-1 {
+            margin-top: 8px;
+            flex: 1 0 20px;
+            overflow: hidden;
+
+            > div {
+                height: 100%;
+                width: 100%;
+
+                > div {
+                    max-height: 100%;
+                }
+            }
+        }
+
+        .user-card-skills {
+            margin-top: 8px;
+        }
+    }
+}
+
+.text-light {
+    color: $joolia-black-transparent-54;
+}

@@ -1,0 +1,100 @@
+<div class="welcome" fxLayout="column" fxLayoutAlign="start center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center">
+    <div class="welcome-content" ngClass.gt-sm="gt-sm" fxLayout="column" fxLayoutAlign="center start">
+
+        <!--Image with Welcome text -->
+        <img class="welcome-logo" [src]="jooliaLogoSrc" alt="Joolia">
+        <span class="mat-display-3 text-word-break">{{ 'home.welcome.text' | translate }}</span>
+
+        <div>
+
+            <!--Instructions-->
+            <button class="welcome-button" mat-raised-button color="primary-800" (click)="scroll(instructions)">
+                {{ 'home.welcome.buttons.instructions' | translate }}
+            </button>
+
+            <!-- Signup -->
+            <a class="welcome-button" mat-stroked-button color="primary-800" routerLink="/signup">
+                {{ 'home.welcome.buttons.signup' | translate }}
+            </a>
+
+            <!-- Signin -->
+            <button class="welcome-button" mat-stroked-button color="primary-800" routerLink="/signin">
+                {{ 'home.welcome.buttons.login' | translate }}
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Welcome Image -->
+    <div class="welcome-illustrationContainer">
+        <img class="welcome-illustration" ngClass.gt-sm="gt-sm" [src]="illustrationSrc" alt="">
+    </div>
+</div>
+
+<!-- Instruction Area -->
+<div #instructions class="instructions" fxLayout="column" fxLayoutAlign="start center">
+
+    <!-- Header -->
+    <div class="instructions-heading"><span class="mat-display-1">{{ 'home.instructions.heading' | translate }}</span></div>
+
+    <div class="instructions-steps">
+
+        <!-- Step 1 -->
+        <div class="instructions-step" fxLayout="row" fxLayoutAlign="start start">
+            <div class="instructions-step-number" fxFlex="none"><span class="instructions-step-numbertext">1</span></div>
+            <div class="instructions-step-content">
+                <p>{{ 'home.instructions.signup.text' | translate }}</p>
+                <button mat-stroked-button color="primary-800" routerLink="/signup">
+                    {{ 'home.instructions.signup.button' | translate }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="instructions-step" fxLayout="row" fxLayoutAlign="start start">
+            <div class="instructions-step-number" fxFlex="none"><span class="instructions-step-numbertext">2</span></div>
+            <div class="instructions-step-content">
+                <p>{{ 'home.instructions.report.text' | translate }}</p>
+                <button mat-stroked-button color="primary-800" (click)="contactClicked()">
+                    {{ 'home.instructions.report.button' | translate }}
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Area Thanks -->
+<div class="thanks">
+    <div><span class="mat-display-1">{{ 'home.thanks.text' | translate }}</span></div>
+    <div class="thanks-signature">Team Joolia</div>
+</div>
+
+<!--Footer-->
+<footer class="footer">
+
+    <!-- Footer Links-->
+    <div class="footer-row">
+        <ul class="footer-linklist">
+            <li class="footer-linkitem">
+                <a class="footer-link" [href]="contactLink">{{ 'home.footer.contact' | translate }}</a>
+            </li>
+            <li class="footer-linkitem">
+                <a class="footer-link" routerLink="/legal/information-and-terminology">{{ 'home.footer.terminology' | translate }}</a>
+            </li>
+            <li class="footer-linkitem">
+                <a class="footer-link" routerLink="/legal/terms-and-conditions">{{ 'home.footer.terms' | translate }}</a>
+            </li>
+            <li class="footer-linkitem">
+                <a class="footer-link" routerLink="/legal/privacy-policy">{{ 'home.footer.privacy' | translate }}</a>
+            </li>
+            <li class="footer-linkitem">
+                <a class="footer-link" routerLink="/legal/imprint">{{ 'home.footer.imprint' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer-row">{{ 'home.footer.copyright' | translate }}</div>
+
+</footer>

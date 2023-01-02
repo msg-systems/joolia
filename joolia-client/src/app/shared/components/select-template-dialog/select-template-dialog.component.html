@@ -1,0 +1,70 @@
+<div class="select-templates-dialog" infinite-scroll [scrollWindow]="false" infiniteScrollContainer=".mat-dialog-container"
+    [fromRoot]="true" [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle"
+    [infiniteScrollDisabled]="isLoading || noMoreLoadable" (scrolled)="onLoadMore()">
+
+    <!-- Filters -->
+    <div class="header-container" fxLayout.gt-md="row" fxLayout="column" fxLayoutGap="16px" fxLayoutAlign.gt-md="space-between center">
+        <div class="mat-title dialog-title">{{ data.headerKey | translate }}</div>
+        <filter-toggle-group [filterCriteriaList]="[libraryCategories]" class="category-filter"
+            (filterChanged)="onCategoryFilterChanged($event)">
+        </filter-toggle-group>
+    </div>
+
+    <loading-indicator *ngIf="!templates; else content" fxFlexFill></loading-indicator>
+
+    <ng-template #content>
+
+        <div *ngIf="templates.count > 0; else emptyState" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+            gdColumns.lt-md="repeat(auto-fill, 272px)" gdRows="508px!" gdGap="32px" gdGap.lt-md="16px">
+            <list-card-item *ngFor="let template of templates.entities" class="card" [itemId]="template.id" [keyVisual]="template.keyVisual"
+                [clickable]="true" [showKeyVisual]="true" (itemClick)="onItemClick(template.id)">
+                <div list-card-content class="card-content" fxLayout="column">
+                    <!-- Template name -->
+                    <div class="library-name text-truncate">{{ template.library.name }}</div>
+
+                    <!-- Template name -->
+                    <div clampy="3" class="mat-headline text-word-break">{{ template.name }}</div>
+
+                    <!--Duration -->
+                    <div *ngIf="template.duration || template.durationUnit" class="duration" fxLayoutAlign="start center">
+                        <span *ngIf="template.durationUnit" class="duration-unit">
+                            {{ (template.durationUnit === 'days' ? 'labels.dailyScale' : 'labels.hourlyScale') | translate }}
+                        </span>
+                        <div *ngIf="template.duration" fxLayoutAlign="start center">
+                            <mat-icon>access_time</mat-icon>
+                            <span>{{ template.duration | durationPipe }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Phase and method templates count -->
+                    <div fxLayout="row wrap" fxLayoutAlign="start center">
+                        <main-chip [icon]="getCategoryIcon(template.category)" [outline]="true"
+                            [message]="'labels.categoryValue.' + template.category | translate">
+                        </main-chip>
+                        <div *ngIf="template.phaseTemplateCount" class="chip joolia-chip-text">
+                            {{ 'labels.amountPhases' | translate: { amount: template.phaseTemplateCount } }}
+                        </div>
+                        <div *ngIf="template.activityTemplateCount" class="chip joolia-chip-text">
+                            {{ 'labels.amountMethods' | translate: { amount: template.activityTemplateCount } }}
+                        </div>
+                    </div>
+
+                    <!-- Template description -->
+                    <div class="template-description mat-body-1 white-space-pre-wrap text-word-break">
+                        <div>
+                            <div clampy [clampyContent]="template.shortDescription | addLinkTarget"></div>
+                        </div>
+                    </div>
+                </div>
+            </list-card-item>
+        </div>
+
+        <ng-template #emptyState>
+            <empty-state [altTextKey]="emptyStateData.altTextKey" [contentKey]="emptyStateData.contentKey"
+                [titleKey]="emptyStateData.titleKey" class="mat-body-1">
+            </empty-state>
+        </ng-template>
+
+    </ng-template>
+
+</div>

@@ -1,0 +1,22 @@
+{
+    "printWidth": 140,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "useTabs": false,
+    "bracketSpacing": true,
+    "overrides": [
+        {
+            "files": "*.yaml",
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": "*.yml",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+<loading-indicator *ngIf="!(phase && activityList)"></loading-indicator>
+
+<div *ngIf="phase && activityList">
+    <action-bar [showBackButton]="true" [backRouterLink]="'../overview'" backLabelKey="buttons.backToSchedule">
+    </action-bar>
+
+    <div class="phase-details" ngClass.lt-md="small" fxLayout="row" fxLayout.lt-lg="column">
+        <div class="phase-details-navigation" ngClass.lt-lg="column-layout" fxFlex="auto" fxLayout="column">
+            <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+
+            <div class="format-name-container">
+                <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+            </div>
+
+            <mat-card class="mat-elevation-z phase-agenda-card" fxLayout="column">
+                <div class="phase-details-header" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="phase-details-site-title">
+                        <inline-edit-text inputClasses="mat-display-1 text-black" [inputText]="phase.name"
+                            (inputChange)="onPhaseUpdate('name', $event)" [inputMaxLength]="phaseNameMaxLength" [editable]="isEditAllowed"
+                            [allowNewLines]="false">
+                            <span class="text-word-break mat-display-1 text-black">{{ phase.name }}</span>
+                        </inline-edit-text>
+                    </div>
+                    <mat-form-field class="phase-details-time-scale" appearance="outline">
+                        <mat-select #selectedOption="ngModel" [(ngModel)]="selectedPhaseType" [disabled]="(activityList.count > 0)"
+                            disableOptionCentering>
+                            <mat-select-trigger>
+                                <span fxLayoutAlign="start center">
+                                    <mat-icon class="selected-phase-type">{{selectedPhaseType.icon}}</mat-icon>
+                                    {{selectedPhaseType.display | translate}}
+                                    <button class="tooltip" *ngIf="(activityList.count > 0) && (format.me.userRole === 'organizer')"
+                                        mat-icon-button matTooltip="{{ 'buttons.changePhaseDurationUnit.tooltip' | translate }}"
+                                        disableRipple>
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let option of phaseTypeOptions" [value]="option" (click)="onChangePhaseType()">
+                                <span fxLayoutAlign="start center">
+                                    <mat-icon>{{option.icon}}</mat-icon>
+                                    {{option.display | translate}}
+                                </span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                    <div class="startdate-container" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>calendar_today</mat-icon>
+                        <!-- Phase start date -->
+                        <inline-datepicker class="phase-details-startdate" [inputDate]="phase.startDate" inputClasses="mat-body-1"
+                            inputPlaceholderKey="labels.noStartDate" [datetimePickerType]="phaseDatePickerType"
+                            (dateChanged)="onPhaseUpdate('startDate', $event)" [editable]="isEditAllowed">
+                            <div class="mat-body-1" *ngIf="phase.durationUnit === phaseDurationDaysType">
+                                {{ phase.startDate | moment: 'L' }}
+                            </div>
+                            <div class="mat-body-1" *ngIf="phase.durationUnit === phaseDurationMinutesType">
+                                {{ phase.startDate | moment: 'L LT' }}
+                            </div>
+                        </inline-datepicker>
+                    </div>
+                    <button class="save-template-button" *appHasPermission="isTemplateSaveAllowed" mat-stroked-button color="primary-800"
+                        (click)="onTemplateSave()">
+                        {{ 'buttons.storeAsPhaseTemplate' | translate }}
+                    </button>
+                </div>
+
+                <!-- Agenda -->
+                <app-activity-list class="activity-list" [activityList]="activityList" [startDate]="phase.startDate"
+                    [isHourSchedule]="isHourSchedule()" (activityDropped)="onActivityPositionChange($event)"
+                    (activityCreated)="onActivityCreate($event)" (activityFromTemplateClicked)="onActivityCreateFromTemplate($event)"
+                    (activityDeleted)="onActivityDelete($event)" (activityClicked)="onActivityClick($event)"
+                    [isAddAllowed]="isAddActivityAllowed" [isDeleteAllowed]="isDeleteActivityAllowed">
+                </app-activity-list>
+            </mat-card>
+        </div>
+
+        <div class="activity-details-container" [hidden]="!activityList || activityList.count === 0" fxFlex>
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- Empty State -->
+        <empty-state *ngIf="activityList?.count < 1"
+            [titleKey]="isEditAllowed ? 'emptyStates.activity.organizer.title' : 'emptyStates.activity.participant.title'"
+            [contentKey]="isEditAllowed ? 'emptyStates.activity.organizer.content' : 'emptyStates.activity.participant.content'"
+            altTextKey="emptyStates.activity.altText" fxFlex></empty-state>
+    </div>
+</div>

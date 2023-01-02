@@ -1,0 +1,90 @@
+entity: TeamSubmission
+items:
+  TeamSubmissionOne:
+    id: 1bd56311-d218-40bf-9707-3433fa410000
+    name: 'TeamSubmission Uno'
+    description: 'This is an submission normal description'
+    activity: '@ActivityOne'
+    createdBy: '@Shaak'
+    team: '@Team4'
+    ownerType: Team
+    commentCount: 0
+    averageRating: 0
+    fileCount: 1
+  TeamSubmissionTwo:
+    id: 4bd56311-d218-40bf-9707-3433fa417333
+    name: 'TeamSubmission Due'
+    description: 'This is an submission normal description'
+    activity: '@ActivitySixteen'
+    createdBy: '@Luke'
+    team: '@Team5'
+    ownerType: Team
+    commentCount: 0
+    averageRating: 0
+    fileCount: 1
+  TeamSubmissionThree:
+    id: 4bd56311-d218-40bf-9707-3433fa417010
+    name: 'TeamSubmission Tre'
+    description: 'This is an submission normal description'
+    activity: '@ActivitySeventeen'
+    createdBy: '@Leia'
+    team: '@Team6'
+    ownerType: Team
+    commentCount: 2
+    averageRating: 2.5
+    fileCount: 0
+  TeamSubmissionFour:
+    id: 4bd56311-d218-40bf-9707-3433fa419999
+    name: 'TeamSubmission quttro'
+    description: 'This is an submission normal description'
+    activity: '@ActivitySixteen'
+    createdBy: '@Leia'
+    team: '@Team6'
+    ownerType: Team
+    commentCount: 1
+    averageRating: 0.5
+    fileCount: 0
+  TeamSubmissionFive:
+    id: 4bd56311-d218-40bf-9707-3433fa418888
+    name: 'TeamSubmission cinque'
+    description: 'This is an submission normal description'
+    activity: '@ActivitySeventeen'
+    createdBy: '@Luke'
+    team: '@Team5'
+    ownerType: Team
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  TeamSubmissionSix:
+    id: 1bd56311-d218-40bf-9707-3433fa499999
+    name: 'TeamSubmission Six'
+    description: 'This is an submission normal description'
+    activity: '@ActivityOne'
+    createdBy: '@Luke'
+    team: '@Team2'
+    ownerType: Team
+    commentCount: 1
+    averageRating: 1.25
+    fileCount: 0
+  TeamSubmissionSeven:
+    id: d16153a4-49be-460d-a8a4-5f9f78521ca5
+    name: 'TeamSubmission Seven'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwentyFive'
+    createdBy: '@Mickey'
+    team: '@Team8'
+    ownerType: Team
+    commentCount: 1
+    averageRating: 3.5
+    fileCount: 0
+  TeamSubmissionEight:
+    id: 6b7f8594-a9ca-4fdf-a746-e8ff015b8162
+    name: 'TeamSubmission Eight'
+    description: 'This is an submission normal description'
+    activity: '@ActivityFive'
+    createdBy: '@Mickey'
+    team: '@Team10'
+    ownerType: Team
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0

@@ -1,0 +1,68 @@
+@import 'variables';
+
+.inline-edit-text-view {
+    padding: 4px;
+    border-radius: 4px;
+
+    &.editable:hover {
+        cursor: text;
+        background-color: $joolia-secondary-200;
+    }
+
+    .inline-edit-text-view-placeholder {
+        color: $joolia-grey;
+        font-style: italic;
+    }
+}
+
+.inline-edit-text-area-container {
+    margin-bottom: -23.5px;
+    line-height: 20px;
+
+    ::ng-deep .mat-form-field-infix {
+        border: none;
+        padding-top: 0;
+        padding-bottom: 6px;
+    }
+
+    .inline-edit-text-highlight-container {
+        padding: 4px;
+        border-radius: 4px;
+        background-color: $joolia-secondary-200;
+    }
+
+    .inline-edit-text-area {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        resize: none;
+        min-height: 0;
+    }
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.text-length-hint {
+    margin-top: 6px;
+
+    &.input-overfull {
+        color: $joolia-warn-500;
+    }
+}
+
+.inline-edit-text-area-container ::ng-deep {
+    .text-highlight-element {
+        background: transparent;
+        margin: 4px;
+        word-wrap: break-word;
+    }
+
+    .bg-red {
+        background-color: $joolia-warn-200;
+        border-radius: 4px;
+        padding: 1px 3px 0 2px;
+        margin: -1px -3px 0 -2px;
+    }
+}

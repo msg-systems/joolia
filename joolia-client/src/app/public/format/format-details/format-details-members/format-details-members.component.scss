@@ -1,0 +1,17 @@
+@import 'variables';
+
+.format-details-members {
+    padding: $joolia-main-content-gap;
+
+    .member-filter {
+        padding-bottom: 20px;
+    }
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+}

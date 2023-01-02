@@ -1,0 +1,5 @@
+<loading-indicator *ngIf="!library"></loading-indicator>
+
+<div *ngIf="library">
+    <router-outlet></router-outlet>
+</div>

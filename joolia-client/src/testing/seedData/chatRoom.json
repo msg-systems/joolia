@@ -1,0 +1,10 @@
+{
+    "chatRoom1": {
+        "room": "/chat/format/f8f73c8f-1e09-4cf6-b075-e88ad0b9c04b/team/12345678910",
+        "title": "Lucasfilm",
+        "newMessages": 1,
+        "lastRead": "2020-09-14T00:00:00.000Z",
+        "entity": "Format",
+        "id": "badcfeba-9f5e-4860-8584-e63a207bbdd"
+    }
+}

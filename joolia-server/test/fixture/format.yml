@@ -1,0 +1,88 @@
+entity: Format
+items:
+  FormatOne:
+    id: 5500f071-de3a-4f2b-befb-2e257fbf8bb8
+    name: Format 1
+    description: This is a format description
+    shortDescription: This is a short ..
+    meetingLink: '@LinkEntryTwo'
+    createdBy: '@Mickey'
+    workspace: '@Workspace2'
+    keyVisual: '@KeyVisualEntryOne'
+  FormatTwo:
+    id: 583df14a-06be-43f2-be42-2bd316cd0c22
+    name: Format 2
+    description: This is a format description
+    shortDescription: This is a short ..
+    meetingLink: '@LinkEntryThree'
+    createdBy: '@ObiWan'
+    workspace: '@Workspace3'
+  FormatThree:
+    id: ba0106cf-2707-4e3b-8fa8-d68312ba5dfd
+    name: Format 3
+    description: This is a format description
+    shortDescription: This is a short ..
+    meetingLink: '@LinkEntryFour'
+    createdBy: '@Shaak'
+    workspace: '@Workspace2'
+  FormatFour:
+    id: 21764719-5c73-408a-926b-ae190a6fd845
+    name: Format 4
+    description: This is a format description
+    shortDescription: This is a short ..
+    meetingLink: '@LinkEntryFive'
+    createdBy: '@Luke'
+    workspace: '@Workspace2'
+  FormatFive:
+    id: fbae8068-e460-42ba-83ff-1ae3ece96b20
+    name: Format 5
+    description: This is a format description
+    shortDescription: This is a short ..
+    meetingLink: '@LinkEntrySix'
+    createdBy: '@Luke'
+    keyVisual: '@KeyVisualLinkEntryOne'
+    workspace: '@Workspace2'
+  FormatSix:
+    id: 4cf1fc93-f5df-4ba4-8ce9-285e8f396734
+    name: Format 6 where Luke is not Organizer
+    description: This is a format description
+    shortDescription: This is a short ..
+    createdBy: '@Shaak'
+    workspace: '@Workspace2'
+  FormatSeven:
+    id: 20033932-389c-491c-90f4-a73b4165cf28
+    name: Format 7
+    description: This is a format description
+    shortDescription: This is a short ..
+    createdBy: '@Leia'
+    workspace: '@Workspace2'
+  FormatEight:
+    id: 4208713f-49d5-47fe-970a-76d98eb9e7c2
+    name: Format 8
+    description: This is a format description
+    shortDescription: This is a short ..
+    createdBy: '@Leia'
+    workspace: '@Workspace2'
+  FormatNine:
+    id: 380a02ae-2949-4bed-bf6c-5b4f6ba58c96
+    name: Format 9
+    description: Format with no activities associated to its phases
+    shortDescription: This is a short ..
+    createdBy: '@Luke'
+    workspace: '@Workspace1'
+  FormatDummy:
+    id: fbae8068-e460-42ba-83ff-1ae3ece96b20
+    name: Format Dummy
+    description: This is a format description
+    shortDescription: This is a short ..
+    createdBy: '@Anakin'
+    workspace: '@Workspace3'
+
+  FormatX{1..100}:
+    id: '{{random.uuid}}'
+    name: 'Format X($current)'
+    description: This is a format description
+    shortDescription: This is a short ..
+    createdBy: '@Luke'
+    workspace: '@Workspace2'
+

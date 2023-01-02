@@ -1,0 +1,52 @@
+@import 'variables';
+
+.library-details-format-templates {
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    .format-template-card-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .mat-body-1 {
+        margin: 16px 0 0 0;
+    }
+
+    .template-description {
+        display: flex;
+        flex: 1 1 auto;
+        overflow: hidden;
+
+        > div {
+            height: 100%;
+            width: 100%;
+            min-height: 24px;
+
+            > div {
+                max-height: 100%;
+            }
+        }
+    }
+
+    .mat-title {
+        max-width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .no-margin {
+        margin: 0;
+    }
+
+    .category-icon-chip::ng-deep > div > mat-icon {
+        vertical-align: text-top;
+    }
+
+    list-row-item.small::ng-deep > mat-list-item {
+        height: auto;
+    }
+}

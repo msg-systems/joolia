@@ -1,0 +1,7 @@
+components:
+  securitySchemes:
+    authentication:
+      name: authorization
+      type: apiKey
+      in: header
+      description: Authorization with a JWT token

@@ -1,0 +1,43 @@
+@import 'variables';
+.hover:hover {
+    border-color: $joolia-primary-a700;
+}
+
+.tail-button {
+    &-box {
+        height: 40px;
+        background-color: $joolia-grey-50;
+        border: 1px solid $joolia-black-transparent-12;
+        border-radius: 16px;
+        margin: 4px 0;
+        padding-left: 20px;
+        padding-right: 8px;
+        cursor: pointer;
+
+        .link-container {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .link-text {
+            min-width: 0;
+            color: $joolia-primary-800;
+            text-decoration: none;
+        }
+
+        .link-icons {
+            color: $joolia-black-transparent-50;
+        }
+    }
+
+    &-text {
+        text-transform: uppercase;
+        cursor: pointer;
+        color: $joolia-primary-800;
+    }
+
+    .disabled {
+        cursor: default;
+        color: $joolia-black-transparent-50;
+    }
+}

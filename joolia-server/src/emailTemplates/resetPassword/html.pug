@@ -1,0 +1,29 @@
+doctype html
+head
+    style
+        include ../style.css
+
+table(class='mail-wrapper')
+
+    include ../header
+
+    tr(class='mail-content')
+        td
+            p= tmf('greetings.helloUser', {name: name})
+
+            p= t('passwordReset.receivedRequest')
+
+            p= t('passwordReset.requestIgnore')
+
+            table(class='button-wrapper', align='center')
+                tr
+                    td
+                        a(class='button redirect-link', href=url) #{t('buttons.resetPasswordLink')}
+
+            p= t('passwordReset.expiration')
+
+            p= t('endings.thanks')
+
+            p(class='team-joolia')= t('endings.teamJoolia')
+
+    include ../footer

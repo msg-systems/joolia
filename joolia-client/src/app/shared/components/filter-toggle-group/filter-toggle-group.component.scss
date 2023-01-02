@@ -1,0 +1,33 @@
+@import 'variables';
+
+.filter-group {
+    padding: 8px 0;
+    grid-row-gap: 16px;
+
+    .mat-button-toggle-label-content {
+        line-height: 38px !important;
+    }
+
+    .filter-container {
+        grid-row-gap: 16px;
+    }
+}
+
+.filter-clear-button {
+    font-weight: 400;
+    height: 40px;
+    border: solid 1px $joolia-black-transparent-12;
+    padding-bottom: 8px;
+    min-width: fit-content;
+    .filter-all {
+        margin-right: 60px;
+    }
+
+    mat-icon {
+        margin-right: 4px;
+    }
+}
+
+.criteria-icon {
+    padding: 0 4px 4px 0;
+}

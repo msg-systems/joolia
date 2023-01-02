@@ -1,0 +1,14 @@
+{
+    "rating1": {
+        "id": "4abf82d4-0a17-4f7c-a358-c8dd76b77aea",
+        "rating": 0.5
+    },
+    "rating2": {
+        "id": "d420a447-73fc-4e4f-b746-05e7af929e87",
+        "rating": 3.5
+    },
+    "rating3": {
+        "id": "d537fa1c-fdfc-4d03-9797-5945b43e542d",
+        "rating": 4.0
+    }
+}

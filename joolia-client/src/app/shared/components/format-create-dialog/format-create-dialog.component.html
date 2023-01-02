@@ -1,0 +1,20 @@
+<!-- Heading line -->
+<div class="format-create-title" mat-dialog-title>{{ 'buttons.createFormat' | translate }}</div>
+
+<mat-dialog-content class="format-create-dialog" fxLayout="column" fxLayoutAlign="start stretch">
+    <!-- Card for blank format -->
+    <mat-card class="format-create-selection-card" (click)="onBlankFormatCreate()" fxLayout="column" fxLayoutAlign="center center">
+        <div class="mat-button format-create-selection-card-button" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center center">
+            <mat-icon class="add-icon">add</mat-icon>
+            <span>{{ 'dialog.createBlankFormat.header' | translate }}</span>
+        </div>
+    </mat-card>
+
+    <!-- Card for template format -->
+    <mat-card class="format-create-selection-card" (click)="onTemplateFormatCreate()" fxLayout="column" fxLayoutAlign="center center">
+        <div class="mat-button format-create-selection-card-button" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center center">
+            <mat-icon class="add-icon">add</mat-icon>
+            <span>{{ 'dialog.createFormatFromTemplate.header' | translate }}</span>
+        </div>
+    </mat-card>
+</mat-dialog-content>

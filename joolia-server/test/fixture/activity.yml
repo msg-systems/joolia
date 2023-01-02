@@ -1,0 +1,333 @@
+entity: Activity
+items:
+  ActivityOne:
+    id: 4bd56311-d218-40bf-9707-3433fa4173ba
+    duration: 90
+    position: 0
+    name: 'Activity velit'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    keyVisual: '@KeyVisualActivity'
+    configuration: '@ActivityConfigurationOne'
+    createdBy: '@Mickey'
+  ActivityTwo:
+    id: 36d7d5e7-89ec-4a2a-bbfc-4dd34b80d4f9
+    duration: 30
+    position: 0
+    name: 'Activity duis'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseTwo'
+    configuration: '@ActivityConfigurationTwo'
+    createdBy: '@Mickey'
+  ActivityThree:
+    id: 63a182bd-fb9d-4ec3-9169-257851236557
+    duration: 45
+    position: 1
+    name: 'Activity mollit'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThree'
+    createdBy: '@Mickey'
+  ActivityFour:
+    id: 92eb79a6-d445-4372-8472-ffa4a4ba35de
+    duration: 60
+    position: 1
+    name: 'Activity duis'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseTwo'
+    configuration: '@ActivityConfigurationFour'
+    createdBy: '@Mickey'
+  ActivityFive:
+    id: abababab-89ec-4a2a-bbfc-4dd34b80d445
+    duration: 2880
+    position: 0
+    name: 'Activity the fifth '
+    shortDescription: 'Thi is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseSix'
+    configuration: '@ActivityConfigurationFive'
+    createdBy: '@ObiWan'
+  ActivitySix:
+    id: aa00aa00-89ec-4a2a-bbfc-4dd34b80d4f9
+    duration: 30
+    position: 2
+    name: 'Activity cinque'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseTwo'
+    configuration: '@ActivityConfigurationSix'
+    createdBy: '@Mickey'
+  ActivitySeven:
+    id: 1b63aecf-fb3b-45b9-b90a-ce0e2854fd61
+    duration: 45
+    position: 2
+    name: 'Activity Katalan seven'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationSeven'
+    createdBy: '@Mickey'
+  ActivityEight:
+    id: 32933885-1667-4490-936d-0f8eb06a4512
+    duration: 45
+    position: 3
+    name: 'Activity Katalan eight'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationEight'
+    createdBy: '@Mickey'
+  ActivityNine:
+    id: 8c171990-68fe-472d-a363-357c0e16dfe3
+    duration: 45
+    position: 4
+    name: 'Activity Katalan nine'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationNine'
+    createdBy: '@Mickey'
+  ActivityTen:
+    id: 121212aa-68fe-472d-a363-357c0e16dfe3
+    duration: 45
+    position: 0
+    name: 'Activity Katalan ten'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseFour'
+    configuration: '@ActivityConfigurationTen'
+    createdBy: '@Luke'
+  ActivityEleven:
+    id: 131313bb-68fe-472d-a363-357c0e16dfe3
+    duration: 90
+    position: 1
+    name: 'Activity Katalan eleven'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseFour'
+    configuration: '@ActivityConfigurationEleven'
+    createdBy: '@Luke'
+  ActivityTwelve:
+    id: 141414cc-68fe-472d-a363-357c0e16dfe3
+    duration: 30
+    position: 2
+    name: 'Activity Katalan twelve'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseFour'
+    configuration: '@ActivityConfigurationTwelve'
+    createdBy: '@Luke'
+  ActivityThirteen:
+    id: aeaeae00-89ec-4a2a-bbfc-4dd34b80d445
+    duration: 20
+    position: 0
+    name: 'Activity the thirteen'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseSeven'
+    configuration: '@ActivityConfigurationThirteen'
+    createdBy: '@Mickey'
+  ActivityFourteen:
+    id: a9a9a0a0-89ec-4a2a-bbfc-4dd34b80d445
+    duration: 20
+    position: 1
+    name: 'Activity the fourteen'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseSeven'
+    configuration: '@ActivityConfigurationFourteen'
+    createdBy: '@Mickey'
+  ActivityFithteen:
+    id: b2b3b4b5-89ec-4a2a-bbfc-4dd34b80d445
+    duration: 20
+    position: 2
+    name: 'Activity 15'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseSeven'
+    configuration: '@ActivityConfigurationFifteen'
+    createdBy: '@Mickey'
+  ActivitySixteen:
+    id: afaeadac-89ec-4a2a-bbfc-4dd34b80d445
+    duration: 15
+    position: 2
+    name: 'Activity 16'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEight'
+    configuration: '@ActivityConfigurationSixteen'
+    createdBy: '@Luke'
+  ActivitySeventeen:
+    id: afaeadac-89ec-4a2a-bbfc-4dd34b80dccc
+    duration: 15
+    position: 2
+    name: 'Activity 17'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEight'
+    configuration: '@ActivityConfigurationSeventeen'
+    createdBy: '@Luke'
+  ActivityEighteen:
+    id: afaeadac-89ec-4a2a-bbfc-3dd34b89ac0c
+    duration: 15
+    position: 1
+    name: 'Activity 18'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEight'
+    configuration: '@ActivityConfigurationEighteen'
+    createdBy: '@Luke'
+  ActivityNineteen:
+    id: afaeadac-89ec-4a2a-bbfc-5aa34b89a000
+    duration: 20
+    position: 2
+    name: 'Activity 19'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseFive'
+    configuration: '@ActivityConfigurationNineteen'
+    createdBy: '@Shaak'
+  ActivityTwenty:
+    id: afaeadac-89ec-4a2a-bbfc-4ff34b890000
+    duration: 15
+    position: 2
+    name: 'Activity 20'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEight'
+    configuration: '@ActivityConfigurationTwenty'
+    createdBy: '@Luke'
+  ActivityTwentyOne:
+    id: e3aa5507-51d3-4525-acb8-183315b66fd5
+    duration: 15
+    position: 3
+    name: 'Activity 16'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEight'
+    configuration: '@ActivityConfigurationTwentyOne'
+    createdBy: '@Luke'
+  ActivityTwentyThree:
+    id: b3d226be-6252-4377-b8a6-5de4440a1aa5
+    duration: 15
+    position: 0
+    name: 'Activity 23'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseNine'
+    configuration: '@ActivityConfigurationTwentyThree'
+    createdBy: '@Leia'
+  ActivityTwentyFour:
+    id: cb15eb5a-1f0f-4c3c-b8aa-a284b88fd26e
+    duration: 15
+    position: 1
+    name: 'Activity 24'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseNine'
+    configuration: '@ActivityConfigurationTwentyFour'
+    createdBy: '@Leia'
+  ActivityTwentyFive:
+    id: 4232bc60-5899-4df9-9e77-411d1a0a2d53
+    duration: 15
+    position: 0
+    name: 'Activity 25'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseTen'
+    configuration: '@ActivityConfigurationTwentyFive'
+    createdBy: '@Leia'
+  ActivityTwentySix:
+    id: be845225-472f-4e08-9f1b-9ba2f0def406
+    duration: 15
+    position: 0
+    name: 'Activity 26'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseEleven'
+    configuration: '@ActivityConfigurationTwentySix'
+    createdBy: '@Shaak'
+  ActivityTwentySeven:
+    id: 90ab5771-777f-4c38-b278-4636ddc81288
+    duration: 15
+    position: 5
+    name: 'Activity 27'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThirtyFive'
+    createdBy: '@Luke'
+  ActivityTwentyEight:
+    id: d463c8c8-dc15-4e73-a2f3-9351b20c8526
+    duration: 15
+    position: 6
+    name: 'Activity 28'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThirtySix'
+    createdBy: '@Luke'
+  ActivityTwentyNine:
+    id: af49b62f-8124-46a5-806f-999c390af273
+    duration: 15
+    position: 7
+    name: 'Activity 29'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThirtySeven'
+    createdBy: '@Luke'
+  ActivityThirty:
+    id: 1b29803c-eb9f-4f56-9b7c-4f3fc5ceb098
+    duration: 15
+    position: 8
+    name: 'Activity 30'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThirtyEight'
+    createdBy: '@Luke'
+  ActivityThirtyOne:
+    id: dd669e65-b347-4a4d-a21b-ecd9510a2984
+    duration: 15
+    position: 9
+    name: 'Activity 31'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationThirtyNine'
+    createdBy: '@Luke'
+  ActivityThirtyTwo:
+    id: 244271c3-7804-4751-bc29-72588d75c243
+    duration: 15
+    position: 10
+    name: 'Activity 32'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationForty'
+    createdBy: '@Luke'
+  ActivityThirtyThree:
+    id: 84b80be5-6a7f-4f7e-a200-63836ffde6f5
+    duration: 15
+    position: 11
+    name: 'Activity 33'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationFortyOne'
+    createdBy: '@Luke'
+  ActivityThirtyFour:
+    id: d8609b2b-843c-407b-93c2-1e62d4aa9e52
+    duration: 15
+    position: 12
+    name: 'Activity 34'
+    shortDescription: 'This is an activity short description'
+    description: 'This is an activity normal description'
+    phase: '@PhaseThree'
+    configuration: '@ActivityConfigurationFortyTwo'
+    createdBy: '@Luke'

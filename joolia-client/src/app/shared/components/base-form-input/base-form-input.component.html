@@ -1,0 +1,21 @@
+<mat-form-field class="base-form-input" appearance="outline" [formGroup]="parentForm" fxFlex hideRequiredMarker>
+
+    <!-- Input label -->
+    <mat-label>{{ 'labels.' + entityName | translate: { plural: isLabelPlural } }}
+        <span *ngIf="!inputRequired">{{ 'labels.optional' | translate }}</span>
+    </mat-label>
+
+    <!-- Input value-->
+    <input matInput type="{{inputType}}" [formControlName]="inputControlName" [required]="inputRequired" [maxLength]="inputMaxLengthValue"
+        [min]="inputMinNumber">
+
+    <ng-content></ng-content>
+
+    <!-- Errors and Hints -->
+    <mat-error *ngIf="parentForm.controls[inputControlName].invalid">{{ getErrorTranslationKey() | translate }}</mat-error>
+    <mat-hint *ngIf="inputMaxLength" align="end"
+        [ngClass]="{'input-at-limit': (parentForm.value[inputControlName]?.length || 0) === inputMaxLength}">
+        {{parentForm.value[inputControlName]?.length || 0}}/{{inputMaxLength}}
+    </mat-hint>
+
+</mat-form-field>

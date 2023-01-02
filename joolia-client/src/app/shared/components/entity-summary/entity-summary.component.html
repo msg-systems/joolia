@@ -1,0 +1,5 @@
+<div class="format-summary" fxLayout="row wrap" fxLayoutAlign="start center">
+    <div *ngFor="let item of entitySummary" fxLayout="row" fxLayoutAlign="start center">
+        <main-chip [icon]="item.icon" [message]="getChipMessage(item)"></main-chip>
+    </div>
+</div>

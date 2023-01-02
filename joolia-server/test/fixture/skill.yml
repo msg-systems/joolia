@@ -1,0 +1,29 @@
+#
+# Note: The names of the Skills should match in client for translation purposes.
+# This is a small sample. See db/procedures/populate.sql for the complete Set.
+#
+entity: Skill
+items:
+  SkillOne:
+    id: 05ad1e5b-b50f-4981-9e8e-03093cd2d9e2
+    name: 'EDITOR'
+
+  SkillTwo:
+    id: 107ba6b6-187c-4d01-9d9b-82543d61fac3
+    name: 'LICENSING_MERGERS_AND_ACQUISITIONS'
+
+  SkillThree:
+    id: bcae5d31-c08f-47da-83fa-7a0b5eda21c1
+    name: 'ONLINE_MARKETING'
+
+  SkillFour:
+    id: 6bcddfbb-f2f2-45f8-bd1a-932c660c3458
+    name: 'LOGO_DEVELOPMENT'
+
+  SkillFive:
+    id: '{{random.uuid}}'
+    name: 'SALES_MANAGEMENT'
+
+  SkillSix:
+    id: '{{random.uuid}}'
+    name: 'PROJECT_MANAGEMENT'

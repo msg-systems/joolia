@@ -1,0 +1,56 @@
+components:
+  schemas:
+    Phase:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: 'Get together'
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        formatId:
+          type: string
+          format: uuid
+        duration:
+          type: number
+        durationUnit:
+          type: string
+          enum: ['minutes', 'days']
+        activityCount:
+          type: number
+        status:
+          type: string
+          enum: ['planned', 'unplanned', 'active', 'past']
+      example:
+        id: 'c077b8fb-3301-4b10-80d1-67e4418d60e2'
+        name: 'Get together'
+        startDate: '2013-02-04T18:35:24+00:00'
+        endDate: '2013-02-04T20:35:24+00:00'
+        formatId: '3301-4b10-80d1-67e4418d60e2-c077b8fb'
+        duration: 15
+        durationUnit: 'minutes'
+        activityCount: 1
+        status: 'past'
+  examples:
+    Phases:
+      type: array
+      items:
+        $ref: '#/components/schemas/Phase'
+    PhasePostBody:
+      properties:
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date
+        durationUnit:
+          type: string
+          enum: ['minutes', 'days']
+      required:
+        - durationUnit

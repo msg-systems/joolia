@@ -1,0 +1,50 @@
+entity: PhaseTemplate
+items:
+  phaseTemplate1:
+    id: e91f56de-6ceb-48a5-b7a3-5cbb0074e923
+    name: 'Phase template 1'
+    library: '@library1'
+    createdBy: '@Luke'
+    formatTemplate: '@FormatTemplate2'
+  phaseTemplate2:
+    id: dc635d9f-b568-4e17-9b3e-e1307cf66083
+    name: 'Phase template 2'
+    library: '@library1'
+    createdBy: '@Luke'
+    formatTemplate: '@FormatTemplate3'
+  phaseTemplate3:
+    id: 6c7e2cfe-25e6-4b86-813c-d4b43bfa84f4
+    name: 'Phase template 3'
+    library: '@library1'
+    createdBy: '@Luke'
+    formatTemplate: '@FormatTemplate1'
+  phaseTemplate4:
+    id: abac1122-6ceb-48a5-b7a3-5cbb0074e923
+    name: 'Phase template 4'
+    library: '@library1'
+    createdBy: '@Luke'
+    formatTemplate: '@FormatTemplate1'
+
+  # Phase Templates without format template
+
+  phaseTemplate5:
+    id: abac1122-6ceb-48a5-b7a3-5cbb00741111
+    name: 'Phase template 5'
+    library: '@library2'
+    createdBy: '@Luke'
+    durationUnit: 'minutes'
+    category: 'test'
+  phaseTemplate6:
+    id: abac1122-6ceb-48a5-b7a3-5cbb00752222
+    name: 'Phase template 6'
+    library: '@library3'
+    createdBy: '@Leia'
+    durationUnit: 'minutes'
+    category: 'ideate'
+  phaseTemplate8:
+    id: 48dc7e00-4832-4039-b4a0-17efff04ab32
+    name: 'Phase template 8'
+    library: '@library2'
+    createdBy: '@Luke'
+    durationUnit: 'minutes'
+    category: 'test'

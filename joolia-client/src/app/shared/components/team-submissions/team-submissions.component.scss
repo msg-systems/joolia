@@ -1,0 +1,13 @@
+@import 'variables';
+
+.submission-table {
+    min-width: 400px;
+
+    .submission-row {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $joolia-grey-100;
+        }
+    }
+}

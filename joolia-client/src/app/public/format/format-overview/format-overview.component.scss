@@ -1,0 +1,72 @@
+@import 'variables';
+
+.format-overview {
+    &-sort-clicked {
+        font-weight: bold;
+        color: $joolia-black;
+    }
+
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    .format-header {
+        margin-right: 40px;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    .order-menu-button {
+        position: absolute;
+        padding-left: 8px;
+    }
+
+    .site-title > span {
+        margin-bottom: 0;
+    }
+
+    .format-overview-card-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        > *:not(:last-child) {
+            margin: 0 0 16px 0;
+        }
+
+        .format-overview-card-workspace {
+            color: $joolia-secondary-900;
+            min-height: 20px;
+        }
+
+        .format-overview-card-time {
+            color: $joolia-grey;
+
+            .calendar-icon {
+                margin-right: 8px;
+            }
+        }
+
+        .format-overview-card-description {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            > div {
+                height: 100%;
+                width: 100%;
+                min-height: 24px;
+
+                > div {
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}

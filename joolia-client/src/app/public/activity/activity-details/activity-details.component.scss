@@ -1,0 +1,37 @@
+@import 'variables';
+
+.activity-details-card {
+    min-width: 0;
+    border: 1px solid $joolia-black-transparent-12;
+    padding: 32px;
+
+    &.small {
+        padding: 16px;
+    }
+
+    .card-content {
+        max-width: 720px;
+        margin: auto;
+
+        > *:nth-child(n + 2):not(router-outlet) {
+            margin-top: 24px;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        .duration {
+            max-height: 24px;
+            margin: 8px 8px 8px 0;
+
+            .mat-icon {
+                margin-right: 8px;
+            }
+        }
+
+        .save-template-button {
+            margin-left: auto;
+        }
+    }
+}

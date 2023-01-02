@@ -1,0 +1,16 @@
+<mat-form-field class="base-form-select" appearance="outline" [formGroup]="parentForm" fxFlex hideRequiredMarker>
+
+    <!-- Input label -->
+    <mat-label>{{ 'labels.' + entityName | translate: { plural: 0 } }} <!-- Always displays the single label of the entity name -->
+        <span *ngIf="!selectRequired">{{ 'labels.optional' | translate }}</span>
+    </mat-label>
+
+    <!-- Select -->
+    <mat-select [formControlName]="selectControlName" [required]="selectRequired">
+        <mat-option *ngFor="let option of selectionOptions" [value]="option.value">{{ option.display }}</mat-option>
+    </mat-select>
+
+    <!-- Errors and Hints -->
+    <mat-error *ngIf="parentForm.controls[selectControlName].invalid">{{ getErrorTranslationKey() | translate }}</mat-error>
+
+</mat-form-field>

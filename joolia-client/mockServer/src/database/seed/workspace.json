@@ -1,0 +1,57 @@
+{
+  "workspace1": {
+    "id": "7e02816e-3f3d-11e9-b210-d663bd873d93",
+    "name": "Workspace exercitation",
+    "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+    "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+    "updatedBy": "@Leia",
+    "licensesCount": 50,
+    "members": [
+      "@Luke",
+      "@Leia"
+    ]
+  },
+  "workspace2": {
+    "name": "Workspace ullamco",
+    "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+    "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+    "updatedBy": "@Luke",
+    "licensesCount": 50,
+    "members": [
+      "@Obi-Wan",
+      "@George",
+      "@Luke"
+    ]
+  },
+  "workspace3": {
+    "name": "Workspace nulammco",
+    "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+    "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+    "updatedBy": "@Anakin",
+    "licensesCount": 50,
+    "members": [
+      "@Shaak",
+      "@Anakin"
+    ]
+  },
+  "workspace4": {
+    "name": "twinworkspace",
+    "description": "twin description",
+    "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+    "licensesCount": 15,
+    "members": [
+      "@Shaak",
+      "@Anakin"
+    ]
+  },
+  "workspace5": {
+    "name": "Other workspace",
+    "description": "twin description",
+    "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+    "licensesCount": 15,
+    "members": [
+      "@Shaak",
+      "@Anakin"
+    ]
+  }
+}

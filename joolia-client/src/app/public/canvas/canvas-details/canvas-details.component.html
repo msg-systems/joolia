@@ -1,0 +1,85 @@
+<div *ngIf="canvas else Loading" class="canvas-details-page mat-body-1" fxFlexFill>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div>
+            <!-- Back Button -->
+            <action-bar [showBackButton]="true" [backRouterLink]="['/', 'format', format.id, 'phase', phaseId, 'activity', activity.id]"
+                backLabelKey="buttons.backToActivity"></action-bar>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <userrole-chip *ngIf="format?.me" [userRole]="format.me.userRole"></userrole-chip>
+                <app-beta-tag></app-beta-tag>
+            </div>
+        </div>
+        <!-- Team / Member dropdown -->
+        <div class="canvas-submitter-input-container">
+            <base-form-select *ngIf="submitterSelectOptions && submitterSelectOptions.length > 0; else noTeams" [parentForm]="submitterForm"
+                entityName="submitter" selectControlName="submitter" [selectionOptions]="submitterSelectOptions" [selectRequired]="true">
+            </base-form-select>
+            <ng-template #noTeams>
+                {{ 'emptyStates.team.content' | translate }}
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="canvas-container">
+        <div [ngSwitch]="this.canvas.canvasType">
+
+            <div *ngSwitchCase="'questionnaire'">
+                <ng-container *ngTemplateOutlet="questionnaireCanvas"></ng-container>
+            </div>
+
+            <div *ngSwitchCase="'process'">
+                <ng-container *ngTemplateOutlet="customerJourneyCanvas"></ng-container>
+            </div>
+
+            <div *ngSwitchCase="'business_canvas'">
+                <ng-container *ngTemplateOutlet="businessModelCanvas"></ng-container>
+            </div>
+
+            <div *ngSwitchCase="'custom_canvas'">
+                <ng-container *ngTemplateOutlet="customCanvas"></ng-container>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Canvas Templates -->
+<ng-template #businessModelCanvas>
+    <business-canvas (addedSubmission)="addCanvasSubmission($event)" (deletedSubmission)="deleteCanvasSubmission($event)"
+        (editedCanvas)="editCanvas($event)" (editedSlot)="editCanvasSlot($event)"
+        (editedSubmissionColor)="editCanvasSubmissionColor($event)" (editedSubmissionContent)="editCanvasSubmissionContent($event)"
+        (toggleLike)="onVoteSubmissionClicked($event)" [canvasInput]="canvasInput" [canvas]="canvas" [submissions]="submissions">
+    </business-canvas>
+</ng-template>
+
+<ng-template #customerJourneyCanvas>
+    <customer-journey-canvas (addedSubmission)="addCanvasSubmission($event)" (deletedSubmission)="deleteCanvasSubmission($event)"
+        (editedCanvas)="editCanvas($event)" (editedSlot)="editCanvasSlot($event)"
+        (editedSubmissionColor)="editCanvasSubmissionColor($event)" (editedSubmissionContent)="editCanvasSubmissionContent($event)"
+        (toggleLike)="onVoteSubmissionClicked($event)" [canvasInput]="canvasInput" [canvas]="canvas" [submissions]="submissions">
+    </customer-journey-canvas>
+</ng-template>
+
+<ng-template #questionnaireCanvas>
+    <questionnaire-canvas (addedSubmission)="addCanvasSubmission($event)" (deletedSubmission)="deleteCanvasSubmission($event)"
+        (editedCanvas)="editCanvas($event)" (editedSlot)="editCanvasSlot($event)"
+        (editedSubmissionColor)="editCanvasSubmissionColor($event)" (editedSubmissionContent)="editCanvasSubmissionContent($event)"
+        (toggleLike)="onVoteSubmissionClicked($event)" [canvasInput]="canvasInput" [canvas]="canvas" [submissions]="submissions">
+
+    </questionnaire-canvas>
+</ng-template>
+
+<ng-template #customCanvas>
+    <custom-canvas (addedSlot)="addCanvasSlot($event)" (addedSubmission)="addCanvasSubmission($event)"
+        (deletedSlot)="deleteCanvasSlot($event)" (deletedSubmission)="deleteCanvasSubmission($event)" (editedCanvas)="editCanvas($event)"
+        (editedSlot)="editCanvasSlot($event)" (editedSubmissionColor)="editCanvasSubmissionColor($event)"
+        (editedSubmissionContent)="editCanvasSubmissionContent($event)" (toggleLike)="onVoteSubmissionClicked($event)"
+        [canvasInput]="canvasInput" [canvas]="canvas" [submissions]="submissions">
+    </custom-canvas>
+</ng-template>
+
+<ng-template #Loading>
+    <loading-indicator></loading-indicator>
+</ng-template>

@@ -1,0 +1,62 @@
+entity: ActivityCanvas
+items:
+  CanvasOne:
+    id: 40c4e61a-83c7-443a-a8dc-51a52ee795aa
+    name: 'Excellent canvas'
+    activity: '@ActivityTwo' # Configuration by view member modifying user
+    canvasType: 'business_canvas'
+    ownerType: ActivityCanvas
+    columns: 5
+    rows: 3
+    status: published
+    createdBy: '@Mickey'
+  CanvasTwo:
+    id: 025d9b54-517b-4743-9bd1-f3d37f989d67
+    name: 'Canvas2'
+    activity: '@ActivitySix' #Configuration by view submitter modifying user
+    canvasType: 'business_canvas'
+    ownerType: ActivityCanvas
+    columns: 5
+    rows: 3
+    status: published
+    createdBy: '@Mickey'
+  CanvasThree:
+    id: c04dd9a9-7c9a-418b-bd5f-2cfa3cee2f90
+    name: 'Canvas3'
+    activity: '@ActivitySeven' #Configuration by view submitter modifying team
+    canvasType: 'business_canvas'
+    ownerType: ActivityCanvas
+    columns: 5
+    rows: 3
+    status: published
+    createdBy: '@Mickey'
+  CanvasFour:
+    id: bfb596f9-07bd-4cd4-a9b6-275b62a98ccb
+    name: 'Canvas4'
+    activity: '@ActivityThirteen' #Configuration by view submitter modifying submitter
+    canvasType: 'business_canvas'
+    ownerType: ActivityCanvas
+    columns: 1
+    rows: 2
+    status: published
+    createdBy: '@Mickey'
+  CanvasFive:
+    id: 76015b41-47dd-468a-8655-7d506c764c80
+    name: 'Canvas5'
+    activity: '@ActivityThirteen' #Configuration by view submitter modifying submitter
+    canvasType: 'questionnaire'
+    ownerType: ActivityCanvas
+    columns: 1
+    rows: 10
+    status: published
+    createdBy: '@Mickey'
+  CanvasSix:
+    id: 0a6936a4-d555-4a24-b2ee-c9b58060a5c2
+    name: 'Canvas6'
+    activity: '@ActivityThirteen' #Configuration by view submitter modifying submitter
+    canvasType: 'process'
+    ownerType: ActivityCanvas
+    columns: 1
+    rows: 3
+    status: published
+    createdBy: '@Mickey'

@@ -1,0 +1,305 @@
+/format/{formatId}/phase/{phaseId}/activity:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+  post:
+    tags:
+      - Activity
+    description: Create a new activity
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostActivityBody'
+          required:
+            - position
+            - duration
+            - name
+    responses:
+      '201':
+        description: Activity created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Activity
+    description: Retrieves all activities of a specific phase
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Activities retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                entities:
+                  $ref: '#/components/examples/Activities'
+              example: "{\n  count: 2,\n  entities: [Activity1, Activity2]\n}"
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/_template:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+  post:
+    tags:
+      - Activity
+    description: create activity from Activity Template
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              activityTemplateId:
+                type: string
+                format: 'uuid'
+              position:
+                type: number
+            required:
+              - activityTemplateId
+              - position
+    responses:
+      '201':
+        description: Activity created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/{activityId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+  get:
+    tags:
+      - Activity
+    description: Get specific activity
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Activity retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Activity
+    description: Update specific fields of an activity
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              duration:
+                type: number
+              name:
+                type: string
+              shortDescription:
+                type: string
+              description:
+                type: string
+    responses:
+      '200':
+        description: Activity updated. Returning only the updated fields of the activity.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - Activity
+    description: Delete specific activity
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Activity deleted
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/_position:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+  patch:
+    tags:
+      - Activity
+    description: Update position of a specific activity
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              position:
+                type: number
+                minimum: '0'
+            required:
+              - position
+    responses:
+      '200':
+        content:
+          application-json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                position:
+                  type: number
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/keyvisual:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+  put:
+    tags:
+      - Activity
+    description: Creates metadata and reserves a new entry for storing the key visual or saves the link of the video.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/Link'
+              - $ref: '#/components/responses/FileMetadata'
+            example:
+              FileMetadata:
+                name: cool.jpg
+                size: 200
+              Link:
+                linkUrl: www.youtube.com
+            discriminator:
+              propertyName: linkUrl
+    responses:
+      '201':
+        description: File entry reserved correctly or link saved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyVisualEntry'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Activity
+    description: Get the key visual signed URL.
+
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Url retrieved
+        content:
+          application/json:
+            schema:
+              properties:
+                fileUrl:
+                  type: string
+                  example: 'https://example.com/secure/abc0fe'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    IdParameterActivity:
+      in: Path
+      name: activityId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the activity

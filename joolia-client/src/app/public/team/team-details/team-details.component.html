@@ -1,0 +1,66 @@
+<div *ngIf="team" class="mat-body-1">
+    <action-bar [showBackButton]="true" [backRouterLink]="'../overview'" backLabelKey="buttons.backToTeams" [actions]="actionBarActions">
+    </action-bar>
+
+    <!-- Details View -->
+    <div class="team-details" ngClass.lt-md="small">
+
+        <!-- Header Info -->
+        <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+        <div>
+            <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+        </div>
+        <div class="site-title">
+            <inline-edit-text inputClasses="text-word-break mat-display-1 text-black" [inputText]="team.name"
+                inputPlaceholderKey="labels.clickToAddName" (inputChange)="onTeamUpdate($event)" [inputMaxLength]="teamNameMaxLength"
+                [editable]="editable" [allowNewLines]="false">
+                <span class="text-word-break mat-display-1 text-black">{{ team.name }}</span>
+            </inline-edit-text>
+        </div>
+
+        <div class="team-details-content" ngClass.gt-md="big" ngClass.md="medium" ngClass.lt-md="small" fxLayout="row"
+            fxLayout.lt-lg="column">
+
+            <app-media fxHide fxShow.lt-lg class="team-avatar" fxFlex="auto" [menuActions]="avatarMenuActions" [keyVisual]="team.avatar"
+                [smallerBorderRadius]="true" emptyStateKey="emptyStates.teamavatar.content">
+            </app-media>
+
+            <div fxFlexOrder.lt-lg="1" fxFlex="30" fxFlex.lt-lg="auto" fxLayout="column" fxLayoutAlign="start">
+
+                <!-- Team Avatar -->
+                <app-media fxShow fxHide.lt-lg class="team-avatar" [menuActions]="avatarMenuActions" [keyVisual]="team.avatar"
+                    [smallerBorderRadius]="true" emptyStateKey="emptyStates.teamavatar.content">
+                </app-media>
+
+                <div fxLayout="column" fxLayout.md="row wrap" fxLayoutAlign="start" fxLayoutAlign.md="space-between stretch">
+                    <!-- Team Members -->
+                    <team-member-card *ngFor="let member of team.members" class="team-member-card" [user]="member"
+                        [userMenuActions]="userMenuActions">
+                    </team-member-card>
+                </div>
+            </div>
+
+            <!-- Submissions -->
+            <div class="submissions-container" fxFlex="70" fxFlex.lt-lg="auto" fxLayout="column" fxLayoutAlign="start">
+                <mat-card class="mat-elevation-z maincard" fxFlex="auto" fxLayout="column">
+
+                    <!-- Team files -->
+                    <h2>{{ 'labels.files' | translate }}</h2>
+                    <file-list *ngIf="team.files?.length > 0 || editable; else emptyStateFiles" [files]="team.files"
+                        (fileDeleteClicked)="onFileDelete($event)" (fileEditClicked)="onFileUpdate($event)" [editable]="editable"
+                        (fileUploadOutput)="onUploadOutput($event)" (fileDownloadClicked)="onFileDownloadClicked($event)">
+                    </file-list>
+
+                    <ng-template #emptyStateFiles>
+                        <span class="text-word-break white-space-pre-wrap text-grey">
+                            {{ 'emptyStates.teamFiles.content' | translate }}
+                        </span>
+                    </ng-template>
+
+                    <h2 class="margin-top">{{ 'labels.submissions' | translate }}</h2>
+                    <team-submissions [team]="team" [format]="format"></team-submissions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

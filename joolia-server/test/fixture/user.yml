@@ -1,0 +1,72 @@
+entity: User
+processor: ../processor/UserProcessor
+items:
+  Luke:
+    name: Luke
+    company: '{{company.companyName}}'
+    email: luke@alliance.com
+    password: '12345678'
+    id: 0004a350-29f8-11e9-b210-d663bd873d93
+    avatar: '@LukeAvatar'
+  Anakin:
+    name: Anakin
+    company: '{{company.companyName}}'
+    email: vader@sith-lords.com
+    password: '12345678'
+    id: 0871efb6-29f8-11e9-b210-d663bd873d93
+  Leia:
+    name: Leia
+    company: '{{company.companyName}}'
+    email: princess@alliance.com
+    password: '12345678'
+    id: 166178c6-29f8-11e9-b210-d663bd873d93
+    admin: true
+  Mickey:
+    name: Mickey
+    company: 'MSG'
+    email: mickey@disney.com
+    password: '12345678'
+    id: 202d5a50-29f8-11e9-b210-d663bd873d93
+  ObiWan:
+    name: Obi-Wan
+    company: '{{company.companyName}}'
+    email: obi.wan@jedi-order.com
+    password: '12345678'
+    id: 2910391c-29f8-11e9-b210-d663bd873d93
+  George:
+    name: George
+    company: '{{company.companyName}}'
+    email: thebossman@lucasfilm.com
+    password: '12345678'
+    id: 329e405a-29f8-11e9-b210-d663bd873d93
+  Shaak:
+    name: Shaak
+    company: '{{company.companyName}}'
+    email: shaak.ti@jedi-order.com
+    password: '12345678'
+    id: 389c3a26-1e39-4834-b3ca-83e635e9c5b3
+  Unprivileged:
+    name: Unprivileged
+    company: '{{company.companyName}}'
+    email: unprivileged@example.com
+    password: '1345678'
+    id: a40f67cd-ad1e-41b7-9503-c883e08cf722
+  PendingUser:
+    name: PendingUser
+    company: '{{company.companyName}}'
+    email: pendinguser@example.com
+    password: '1345678'
+    pending: true
+    id: 899c2f1f-8be7-402c-a293-28971add6214
+  NameNull:
+    email: pendingusernoname@example.com
+    password: '1345678'
+    pending: true
+    id: e954e4ce-dde2-11ea-9fe6-0242ac110002
+
+  UserX{1..50}:
+    id: '{{random.uuid}}'
+    name: '{{name.firstName}}'
+    company: '{{company.companyName}}'
+    email: '{{internet.email}}'
+    password: '{{internet.password}}'

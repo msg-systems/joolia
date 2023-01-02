@@ -1,0 +1,58 @@
+<!-- Dialog title -->
+<h1 class="mat-title" mat-dialog-title>{{ data.headerKey | translate }}</h1>
+
+<form [formGroup]="invitationForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-dialog-content class="invitation-dialog">
+
+        <!-- Dialog content -->
+        <div class="mat-body-1">{{ data.contentKey | translate }}</div>
+
+        <!-- Invitation text -->
+        <base-form-text-field [parentForm]="invitationForm" entityName="invitationText" inputControlName="invitationText"
+            [inputMaxLength]="maxInvitationTextLength"></base-form-text-field>
+        <!-- Invited e-mail addresses -->
+        <mat-form-field fxLayout="column" appearance="outline">
+            <mat-chip-list #chipList formArrayName="emails" [multiple]="true" [selectable]="true">
+                <mat-chip *ngFor="let email of emailControl.controls; let i=index;" [removable]="true"
+                    [ngClass]="{'chip-error': email.errors && email.errors.pattern }" (removed)="onRemoveChip(i)">{{ email.value }}
+                    <mat-icon matChipRemove [ngClass]="{'chip-remove-error': email.errors && email.errors.pattern }">
+                        cancel
+                    </mat-icon>
+                </mat-chip>
+
+            </mat-chip-list>
+
+            <!-- Input -->
+            <mat-label>{{ 'labels.email'| translate: { plural: 1 } }}</mat-label>
+            <input fxFill matInput [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="onAddChip($event)">
+
+            <!-- Clear button -->
+            <button *ngIf="emailControl.controls.length > 0" type="button" mat-button matSuffix mat-icon-button aria-label="Clear"
+                (click)="onClearEmailInput()">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <!-- Errors -->
+            <mat-error *ngIf=" invitationForm.get('emails').hasError('pattern')">{{ 'errors.email.invalidChips' | translate }}</mat-error>
+            <mat-error *ngIf=" invitationForm.get('emails').hasError('count')">
+                {{ 'errors.email.maxExceeded' | translate: { maxAmount: maxEmailAddresses } }}
+            </mat-error>
+            <mat-error *ngIf=" invitationForm.get('emails').hasError('required')">{{'errors.email.required' | translate }}</mat-error>
+
+            <!-- Hints -->
+            <mat-hint>{{ 'hints.emails' | translate }} </mat-hint>
+            <mat-hint [ngClass]="{'warn-maxEmailAddresses': emailControl.controls.length > maxEmailAddresses}" align="end">
+                {{emailControl.controls.length}}/{{maxEmailAddresses}}
+            </mat-hint>
+
+        </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.send' | translate }}</button>
+    </mat-dialog-actions>
+
+</form>

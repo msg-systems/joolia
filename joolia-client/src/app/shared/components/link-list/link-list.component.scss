@@ -1,0 +1,33 @@
+@import 'variables';
+
+.links-container {
+    .link-box {
+        height: 40px;
+        background-color: $joolia-grey-50;
+        border: 1px solid $joolia-black-transparent-12;
+        border-radius: 16px;
+        margin: 4px 0;
+        padding-left: 20px;
+        padding-right: 8px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $joolia-primary-a700;
+        }
+
+        .link-container {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .link-text {
+            min-width: 0;
+            color: $joolia-primary-800;
+            text-decoration: none;
+        }
+
+        .link-icons {
+            color: $joolia-black-transparent-50;
+        }
+    }
+}

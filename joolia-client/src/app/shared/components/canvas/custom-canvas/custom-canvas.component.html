@@ -1,0 +1,163 @@
+<div *ngIf="canvas else Loading" class="mat-body-1 custom-canvas" fxFlexFill>
+
+    <div *ngIf="customCanvasAvailable() else NotSupportedDevice">
+
+        <!--  Title  -->
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutGap="12px">
+            <div class="canvas-title" fxFlex>
+                <inline-edit-text [inputText]="canvas.name" [inputMaxLength]="canvasNameMaxLengthValue"
+                    inputClasses="mat-display-1 text-black" [editable]="canvasInput.isCanvasEditable"
+                    (inputChange)="onEditCanvasName($event)">
+                    <span class="text-word-break">{{ canvas.name }}</span>
+                </inline-edit-text>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="12px">
+
+                <!-- Add Slot -->
+                <button *ngIf="gridsterEditable && canvasInput.isOrganizer" class="add-button" mat-stroked-button color="primary-800"
+                    (click)="addItem()" [disabled]="!addItemEnabled">
+                    {{ 'buttons.addCanvasSlot' | translate }}
+                </button>
+
+                <!-- Button Change Canvas Status  -->
+                <button *ngIf="canvasInput.isOrganizer" id="changeCustomCanvasStatusButton" (click)="changeCanvasStatus()" mat-raised-button
+                    color="primary-800">
+                    {{ canvasStatusButtonText | translate }}
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Grid -->
+        <gridster [options]="options">
+            <gridster-item [item]="item" *ngFor="let item of this.dashboard">
+
+                <div class="canvas-cell canvas-cell-square" fxFlexFill>
+
+                    <!--  Slot Title  -->
+                    <div *ngIf="item.hasSlotTitle" class="canvas-cell-title gridster-item-content" fxLayout="row"
+                        fxLayoutAlign="space-between center">
+                        <inline-edit-text [inputText]="item.slot.title" inputClasses="mat-body-1 text-medium"
+                            [editable]="canvasInput.isCanvasEditable && gridsterEditable" [inputMaxLength]="slotTitleMaxLengthValue"
+                            (inputChange)="onEditSlotTitle(item.slot, $event)" fxFlex="90%">
+                            <span class="text-word-break">{{ item.slot.title }}</span>
+                        </inline-edit-text>
+                        <button *ngIf="!(canvasInput.isCanvasEditable && gridsterEditable)" [mat-menu-trigger-for]="menu" mat-icon-button
+                            disableRipple fxLayout="row" fxLayoutAlign="center end">
+                            <mat-icon>sort</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="onOrderSlotSubmissions(item.slot, 'time')"
+                                [ngClass]="(item.slot.submissionsOrderBy.queryParam === 'time' || item.slot.submissionsOrderBy.queryParam === '-time')?'custom-canvas-sort-clicked' : ''"
+                                mat-menu-item>
+                                <mat-icon
+                                    [ngClass]="(item.slot.submissionsOrderBy.queryParam === 'time' || item.slot.submissionsOrderBy.queryParam === '-time')?'custom-canvas-sort-clicked' : ''">
+                                    {{item.slot.submissionsOrderOptions[0].icon}}
+                                </mat-icon>
+                                <span>{{ 'buttons.sortCanvasSubmissions.byCreationTime' | translate }}</span>
+                            </button>
+                            <button (click)="onOrderSlotSubmissions(item.slot, 'votes')"
+                                [ngClass]="(item.slot.submissionsOrderBy.queryParam === 'votes' || item.slot.submissionsOrderBy.queryParam === '-votes')?'custom-canvas-sort-clicked' : ''"
+                                mat-menu-item>
+                                <mat-icon
+                                    [ngClass]="(item.slot.submissionsOrderBy.queryParam === 'votes' || item.slot.submissionsOrderBy.queryParam === '-votes')?'custom-canvas-sort-clicked' : ''">
+                                    {{item.slot.submissionsOrderOptions[1].icon}}
+                                </mat-icon>
+                                <span>{{ 'buttons.sortCanvasSubmissions.byNumberOfVotes' | translate }}</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+
+                    <!--  Submissions  -->
+                    <div [ngClass]="item.submissionStyle" fxFlex="auto">
+                        <div *ngIf="item.slot.submissions && item.hasSubmissions">
+                            <!--  Submission List  -->
+                            <div *ngFor="let submission of getSubmissionsForSlot(item.slot)" class="canvas-cell-content-item">
+                                <div class="canvas-submission" [ngStyle]="{'border-color': submission.color}">
+                                    <inline-edit-text [inputText]="submission.content" [inputMaxLength]="submissionMaxLengthValue"
+                                        [editable]="canvasInput.isSubmissionEditable"
+                                        (inputChange)="onEditSubmissionContent(submission, $event)">
+                                        <span class="text-word-break">{{ submission.content }}</span>
+                                        <span *ngIf="canvasInput.displaySubmitterName"
+                                            class="submission-creator">{{ getSubmitter(submission) }}</span>
+                                    </inline-edit-text>
+                                    <!--  Submission Toolbar  -->
+                                    <app-canvas-submission-toolbar [editAllowed]="canvasInput.isSubmissionEditable"
+                                        [voteCount]="submission.voteCount" [isVotedByMe]="submission.me ? submission.me.isVotedByMe : false"
+                                        (deleted)="onDeleteSubmission(item.slot.id, submission.id)"
+                                        (colorPicked)="onEditSubmissionColor(submission, $event)"
+                                        (toggleVote)="onVoteSubmissionClicked(submission)">
+                                    </app-canvas-submission-toolbar>
+                                </div>
+                            </div>
+
+                            <!--  New Submission  -->
+                            <div *ngIf="showNewSubmission[item.slot.id] && item.hasSubmissions" class="canvas-cell-content-item">
+                                <inline-edit-text class="canvas-cell-content-item-text" [inputText]="newSubmissionText[item.slot.id]"
+                                    [inputMaxLength]="submissionMaxLengthValue" [inputPlaceholderKey]="'labels.clickToAddSubmission'"
+                                    [editable]="true" (inputChange)="onAddSubmission(item.slot, $event)">
+                                    <span class="text-word-break">{{ newSubmissionText[item.slot.id] }}</span>
+                                </inline-edit-text>
+                            </div>
+
+                        </div>
+
+                        <!--  Gridster Edit buttons  -->
+                        <div *ngIf="gridsterEditable" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+
+                            <div class="canvas-cell-content-item" fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="center center"
+                                fxFlexFill>
+
+                                <button class="canvas-cell-button" mat-mini-fab>
+                                    <mat-icon>open_with</mat-icon>
+                                </button>
+
+                                <button class="canvas-cell-button" mat-mini-fab [matMenuTriggerFor]="menu">
+                                    <mat-icon>settings</mat-icon>
+                                </button>
+
+                                <button class="canvas-cell-button" mat-mini-fab (click)="removeItem(item)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="changeSlotType(item, slotType.TITLE_ONLY)">
+                                        {{ 'buttons.canvasTypes.titleOnly' | translate }}
+                                    </button>
+                                    <button mat-menu-item (click)="changeSlotType(item, slotType.TITLE_AND_SUBMISSIONS)">
+                                        {{ 'buttons.canvasTypes.titleAndSubmissions' | translate }}
+                                    </button>
+                                    <button mat-menu-item (click)="changeSlotType(item, slotType.SUBMISSIONS_ONLY)">
+                                        {{ 'buttons.canvasTypes.submissionsOnly' | translate }}
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  Add Submission Fab  -->
+                    <div *ngIf="!gridsterEditable && item.hasSubmissions" class="canvas-cell-buttons">
+                        <button class="canvas-cell-button" mat-mini-fab (click)="onClickAddSubmission(item.slot)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+
+            </gridster-item>
+        </gridster>
+    </div>
+
+</div>
+
+<ng-template #Loading>
+    <loading-indicator fxFlex></loading-indicator>
+</ng-template>
+
+<ng-template #NotSupportedDevice>
+    <empty-state titleKey="errors.device.tooSmallResolution.title"
+        contentKey="errors.device.tooSmallResolution.description.createCustomCanvas">
+    </empty-state>
+</ng-template>

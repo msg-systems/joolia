@@ -1,0 +1,92 @@
+components:
+  schemas:
+    Activity:
+      properties:
+        id:
+          type: string
+          format: uuid
+        position:
+          type: number
+          minimum: 0
+        duration:
+          type: number
+          minimum: 1
+        name:
+          type: string
+        shortDescription:
+          type: string
+        description:
+          type: string
+        stepCount:
+          type: number
+        submissionCount:
+          type: number
+        configuration:
+          $ref: '#/components/examples/Configuration'
+        keyVisual:
+          oneOf:
+            - $ref: '#/components/responses/FileMetadata'
+            - $ref: '#/components/schemas/Link'
+      example:
+        position: 1
+        duration: 24
+        name: 'Name of an activity'
+        shortDescription: 'Short description of an activity'
+        keyVisual:
+          FileMetadata:
+            name: cool.jpg
+            size: 200
+          Link:
+            linkUrl: www.youtube.com
+        description: 'Description of an activity'
+        configuration:
+          submissionModifySetting: member
+          submissionViewSetting: submitter
+          blocked: false
+
+  examples:
+    Activities:
+      type: array
+      items:
+        $ref: '#/components/schemas/Activity'
+      example:
+        position: '9001'
+        duration: '24'
+        name: 'Important Activity'
+        shortDescription: 'Very important!'
+        description: 'It is really very important...'
+    PostActivityBody:
+      properties:
+        position:
+          type: number
+        duration:
+          type: number
+        name:
+          type: string
+      required:
+        - position
+        - duration
+        - name
+      example:
+        position: '5'
+        duration: '24'
+        name: 'Important Activity'
+        shortDescription: 'Very important!'
+        description: 'It is really very important...'
+
+    Configuration:
+      properties:
+        submissionModifySetting:
+          type: string
+          default: member
+          enum:
+            - member
+            - team
+        submissionViewSetting:
+          type: string
+          default: submitter
+          enum:
+            - submitter
+            - member
+        blocked:
+          type: boolean

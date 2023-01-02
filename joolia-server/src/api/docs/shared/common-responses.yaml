@@ -1,0 +1,50 @@
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    NotFoundError:
+      description: The resource was not found
+    BadRequestError:
+      description: The query was malformed
+    ConflictError:
+      description: The request could not be completed due to a conflict with the current state of the resource
+    PreconditionFailedError:
+      description: Access to the target resource has been denied
+    ValidationError:
+      description: The entity can not be updated
+    Created:
+      description: The entity was created correctly
+    OK:
+      description: Request accepted
+    NoContent:
+      description: Entity was deleted
+    PatchResponse:
+      description: Object correctly patched
+      content:
+        application/json:
+          schema:
+            properties:
+              generatedMaps:
+                type: array
+                items:
+                  type: integer
+              raw:
+                type: object
+                properties:
+                  fieldCount:
+                    type: integer
+                  affectedRows:
+                    type: integer
+                  insertId:
+                    type: integer
+                  serverStatus:
+                    type: integer
+                  warningCounts:
+                    type: integer
+                  message:
+                    type: string
+                  protocol41:
+                    type: boolean
+                  chngedRows:
+                    type: integer
+          examples: {}

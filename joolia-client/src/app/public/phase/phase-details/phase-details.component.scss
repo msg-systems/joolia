@@ -1,0 +1,69 @@
+@import 'variables';
+
+.phase-details {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+
+        .phase-details-navigation {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.phase-details-navigation {
+    max-width: 404px;
+    margin-right: 24px;
+
+    &.column-layout {
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+}
+
+.phase-details-header {
+    position: relative;
+}
+
+.activity-details-container {
+    min-width: 0;
+}
+
+.format-name-container {
+    margin-bottom: 12px;
+}
+
+.phase-details-format {
+    padding-bottom: 8px;
+}
+
+.phase-agenda-card {
+    border: 1px solid $joolia-black-transparent-12;
+}
+
+.startdate-container {
+    margin: 8px 8px 8px 0;
+}
+
+.phase-details-startdate {
+    margin: 0 8px;
+}
+
+.save-template-button {
+    margin-left: auto;
+}
+
+.activity-list {
+    margin-top: 24px;
+}
+
+.selected-phase-type {
+    margin-right: 8px;
+}
+
+.tooltip {
+    position: absolute;
+    right: -10px;
+    z-index: 1;
+}

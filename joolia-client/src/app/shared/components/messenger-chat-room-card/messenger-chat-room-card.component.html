@@ -1,0 +1,44 @@
+<mat-card class="chat-room-card" (click)="navigateToChatRoom(chatRoom.room)" [class.chat-room-card-format]="isFormatCard()">
+    <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="start center">
+
+            <div fxFill fxLayout="row" fxLayoutAlign="space-between center">
+
+                <div class="chat-room-avatar">
+                    <!-- Format Avatar -->
+                    <ng-template [ngIf]="isFormatCard()" [ngIfElse]="TeamCard">
+                        <user-avatar [format]="format" [sizeInPx]="20" [transparent]="true" class="format-avatar"></user-avatar>
+                    </ng-template>
+
+                    <!-- Team Avatar -->
+                    <ng-template #TeamCard>
+                        <user-avatar [team]="team" [sizeInPx]="20" [transparent]="true" class="team-avatar"></user-avatar>
+                    </ng-template>
+                </div>
+
+                <!-- start meeting button -->
+                <app-meeting-start (startMeetingClicked)="startMeeting(chatRoom)"></app-meeting-start>
+
+            </div>
+
+            <div fxFill fxLayout="row" fxLayoutAlign="start center">
+                <div fxlayout="column">
+
+                    <!-- title -->
+                    <div class="chat-room-title">
+                        <p>{{ chatRoom.title }}</p>
+                    </div>
+
+                    <!-- new messages -->
+                    <div class="chat-room-message text-light text-word-break white-space-pre-wrap">
+                        <p>{{ 'messenger.messages.new' | translate: { amount: chatRoom.newMessages } }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-divider></mat-divider>

@@ -1,0 +1,75 @@
+@import 'variables';
+
+.select-templates-dialog {
+    padding-bottom: 24px; // parent already has padding 24px, however due to scrolling it doesn't take effect
+    min-height: 476px;
+
+    .header-container {
+        margin: 0 0 16px 0;
+
+        .dialog-title {
+            text-align: center;
+            margin: 0;
+        }
+    }
+
+    .card {
+        position: relative;
+
+        .card-content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            > div {
+                margin: 0 0 16px 0;
+            }
+
+            .library-name {
+                color: $joolia-primary-800;
+                min-height: 20px;
+            }
+
+            .duration {
+                font-weight: 500;
+
+                .duration-unit {
+                    margin-right: 16px;
+                }
+
+                .mat-icon {
+                    margin-right: 8px;
+                }
+            }
+
+            main-chip::ng-deep > div {
+                display: flex;
+            }
+
+            .chip {
+                background-color: $joolia-primary-200;
+                border-radius: 16px;
+                margin: 4px;
+                padding: 4px 12px;
+            }
+
+            .template-description {
+                display: flex;
+                flex: 1 1 auto;
+                overflow: hidden;
+
+                > div {
+                    height: 100%;
+                    width: 100%;
+                    min-height: 24px;
+
+                    > div {
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

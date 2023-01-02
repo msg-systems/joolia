@@ -1,0 +1,5 @@
+<loading-indicator *ngIf="!library" fxFlex></loading-indicator>
+
+<app-sidenav *ngIf="library" [headerTitle]="library.name" [navigationOptions]="sidenavItems">
+    <router-outlet></router-outlet>
+</app-sidenav>

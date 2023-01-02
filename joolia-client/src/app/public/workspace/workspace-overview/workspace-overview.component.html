@@ -1,0 +1,55 @@
+<app-sidenav>
+
+    <div *ngIf="workspaceList else loading">
+
+        <!-- Action Bar-->
+        <action-bar [actions]="actionBarActions"></action-bar>
+
+        <div class="workspace-overview" ngClass.lt-md="small">
+
+            <!-- Title-->
+            <div class="site-title">
+                <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.workspace.header' | translate }}</span>
+            </div>
+
+            <div infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle"
+                (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable" gdColumns="repeat(auto-fill, 344px)"
+                gdColumns.lt-lg="repeat(auto-fill, 304px)" gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="448px!" gdGap="32px"
+                gdGap.lt-md="16px">
+
+                <list-card-item *ngFor="let workspace of workspaceList.entities; trackBy: trackingFunction" [clickable]="true"
+                    [itemId]="workspace.id" [keyVisual]="workspace.logo" [showKeyVisual]="true" (itemClick)="onWorkspaceClick(workspace.id)"
+                    [menuActions]="workspaceMenuActions">
+
+                    <div list-card-content>
+                        <!-- Name -->
+                        <inline-edit-text inputClasses="mat-title" class="workspace-overview-card-title-container"
+                            [inputText]="workspace.name" (inputChange)="onWorkspaceUpdate(workspace.id, $event)"
+                            [inputMaxLength]="workspaceNameMaxLength" [allowNewLines]="false" [editable]="false">
+                            <div class="workspace-overview-card-title text-word-break">{{ workspace.name }}</div>
+                        </inline-edit-text>
+
+                        <!-- Additional information about workspace -->
+                        <div fxLayout="row" fxLayoutAlign="start center" class="chip-container">
+                            <div class="workspace-overview-chip joolia-chip-text">
+                                {{ 'labels.amountFormats' | translate: { amount: workspace.formatCount } }}
+                            </div>
+                            <div class="workspace-overview-chip joolia-chip-text">
+                                {{ 'labels.amountMembers' | translate: { amount: workspace.memberCount } }}
+                            </div>
+                        </div>
+                    </div>
+
+                </list-card-item>
+
+            </div>
+
+            <loading-indicator *ngIf="isLoading"></loading-indicator>
+        </div>
+    </div>
+</app-sidenav>
+
+
+<ng-template #loading>
+    <loading-indicator *ngIf="!workspaceList"></loading-indicator>
+</ng-template>

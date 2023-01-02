@@ -1,0 +1,80 @@
+@import 'variables';
+
+.format-current-state-container {
+    .section-title {
+        margin-bottom: 12px;
+        margin-left: 4px;
+    }
+
+    .phase-card {
+        height: 276px;
+
+        &-content {
+            > *:not(:last-child) {
+                margin-bottom: 16px;
+            }
+
+            & .phase-card {
+                &-title {
+                    max-height: 128px;
+                    overflow: hidden;
+                }
+
+                &-duration-icon {
+                    margin-right: 8px;
+                }
+            }
+
+            .date-picker {
+                padding: 2px 0;
+            }
+        }
+    }
+
+    .card {
+        &-with-border {
+            border: 1px solid $joolia-black-transparent-12;
+        }
+
+        &-with-content {
+            height: 325px;
+        }
+
+        &-without-content {
+            height: 64px;
+        }
+
+        &-with-border-full-height {
+            border: 1px solid $joolia-black-transparent-12;
+            height: 100%;
+        }
+    }
+
+    ::ng-deep .card-subtext {
+        padding: 24px 0 0 4px;
+    }
+
+    .team-card + .team-card {
+        margin-top: 16px;
+    }
+
+    .team-card {
+        height: 96px;
+
+        &-content {
+            height: 64px;
+
+            .team-card {
+                &-text {
+                    padding-left: 12px;
+                    max-height: 100%;
+                }
+
+                &-title {
+                    overflow: hidden;
+                    line-height: 26px;
+                }
+            }
+        }
+    }
+}

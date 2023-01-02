@@ -1,0 +1,74 @@
+entity: WorkspaceMember
+items:
+  workspaceMember1:
+    user: '@Leia'
+    workspace: '@Workspace1'
+    admin: true
+  workspaceMember2:
+    user: '@Luke'
+    workspace: '@Workspace1'
+    admin: true
+  workspaceMember3:
+    user: '@PendingUser'
+    workspace: '@Workspace1'
+    admin: true
+  workspaceMember4:
+    user: '@ObiWan'
+    workspace: '@Workspace2'
+    admin: false
+  workspaceMember5:
+    user: '@George'
+    workspace: '@Workspace2'
+    admin: false
+  workspaceMember6:
+    user: '@Luke'
+    workspace: '@Workspace2'
+    admin: true
+  workspaceMember7:
+    user: '@Shaak'
+    workspace: '@Workspace3'
+    admin: true
+  workspaceMember8:
+    user: '@Anakin'
+    workspace: '@Workspace3'
+    admin: true
+  workspaceMember9:
+    user: '@Luke'
+    workspace: '@Workspace3'
+    admin: false
+  workspaceMember10:
+    user: '@Shaak'
+    workspace: '@Workspace4'
+    admin: true
+  workspaceMember11:
+    user: '@Anakin'
+    workspace: '@Workspace4'
+    admin: true
+  workspaceMember12:
+    user: '@Shaak'
+    workspace: '@Workspace5'
+    admin: true
+  workspaceMember13:
+    user: '@Anakin'
+    workspace: '@Workspace5'
+    admin: true
+  workspaceMember14:
+    user: '@George'
+    workspace: '@Workspace6'
+    admin: true
+  workspaceMember15:
+    user: '@Shaak'
+    workspace: '@Workspace6'
+    admin: false
+  workspaceMember16:
+    user: '@NameNull'
+    workspace: '@Workspace6'
+    admin: false
+  workspaceMember17:
+    user: '@Anakin'
+    workspace: '@Workspace2'
+    admin: true
+  workspaceMember18:
+    user: '@Mickey'
+    workspace: '@Workspace7'
+    admin: true

@@ -1,0 +1,36 @@
+<div fxLayout="column" class="canvas-list">
+
+    <mat-accordion *ngIf="canvases">
+        <mat-expansion-panel class="mat-elevation-z0" *ngFor="let canvas of canvases; index as i">
+
+            <mat-expansion-panel-header>
+                <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="panel-title">
+                    <!--  Title  -->
+                    <span class="text-truncate">{{ canvas.name }}</span>
+
+                    <!--  Actions  -->
+                    <div *ngIf="displayActions" fxLayout="row" fxLayoutAlign="right center" class="action-container">
+                        <button mat-icon-button (click)="$event.stopPropagation();navigateToCanvas(canvas)">
+                            <mat-icon>launch</mat-icon>
+                        </button>
+                        <button *ngIf="editable" mat-icon-button (click)="$event.stopPropagation();deleteCanvas(canvas)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+            </mat-expansion-panel-header>
+
+            <!--  Thumbnail  -->
+            <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+                <img *ngIf="getImage(canvas); let src" [src]="src" width="100%" />
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div *appHasPermission="editable">
+        <tail-button label="buttons.addCanvas" (clicked)="onAddCanvas()"></tail-button>
+    </div>
+
+</div>

@@ -1,0 +1,80 @@
+<div class="action-bar" ngClass.lt-md="small" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div fxFlex.xs="80" fxFlex="auto">
+        <back-button *ngIf="showBackButton" class="action-bar-back-button" [routerLinkArg]="backRouterLink" [labelKey]="backLabelKey"
+            [labelParams]="backLabelParams">
+        </back-button>
+    </div>
+
+    <div>
+        <!-- big menu -->
+        <div fxShow fxHide.lt-md class="action-bar-buttons-container" fxLayout="row wrap" fxLayoutAlign="end">
+            <div *ngFor="let action of actions">
+
+                <!-- with sub actions-->
+                <div *ngIf="action.subActions; else noSubAction">
+
+                    <button [matMenuTriggerFor]="subMenu" class="action-bar-button" mat-raised-button>
+                        {{ action.actionKey | translate }}
+                        <app-beta-tag *ngIf="action.beta"></app-beta-tag>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+
+                    <mat-menu #subMenu="matMenu">
+                        <button *ngFor="let subAction of action.subActions" mat-menu-item (click)="this.executeActionFunction(subAction)">
+                            {{ subAction.actionKey | translate }}
+                            <app-beta-tag *ngIf="subAction.beta"></app-beta-tag>
+                        </button>
+                    </mat-menu>
+
+                </div>
+
+                <!-- without sub actions-->
+                <ng-template #noSubAction>
+                    <button class="action-bar-button" mat-raised-button (click)="this.executeActionFunction(action)"
+                        [disabled]="action.disabled">
+                        {{ action.actionKey | translate }}
+                        <app-beta-tag *ngIf="action.beta"></app-beta-tag>
+                    </button>
+                </ng-template>
+
+            </div>
+        </div>
+
+        <!-- buttons for small menu-->
+        <button *ngIf="actions.length > 0" fxHide fxShow.lt-md mat-icon-button [matMenuTriggerFor]="menu" class="action-bar-menu-button">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <!-- smal menu -->
+        <mat-menu #menu="matMenu" fxHide>
+            <div *ngFor="let action of actions">
+
+                <!-- with sub actions-->
+                <div *ngIf="action.subActions; else noSubAction">
+
+                    <button mat-menu-item [matMenuTriggerFor]="subMenu">
+                        {{ action.actionKey | translate }}
+                        <app-beta-tag *ngIf="action.beta"></app-beta-tag>
+                    </button>
+
+                    <mat-menu #subMenu="matMenu">
+                        <button *ngFor="let subAction of action.subActions" mat-menu-item (click)="this.executeActionFunction(subAction)">
+                            {{ subAction.actionKey | translate }}
+                            <app-beta-tag *ngIf="subAction.beta"></app-beta-tag>
+                        </button>
+                    </mat-menu>
+
+                </div>
+
+                <!-- without sub actions-->
+                <ng-template #noSubAction>
+                    <button mat-menu-item (click)="this.executeActionFunction(action)" [disabled]="action.disabled">
+                        {{ action.actionKey | translate }}
+                        <app-beta-tag *ngIf="action.beta"></app-beta-tag>
+                    </button>
+                </ng-template>
+
+            </div>
+        </mat-menu>
+    </div>
+</div>

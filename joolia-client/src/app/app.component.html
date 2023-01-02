@@ -1,0 +1,8 @@
+<div *ngIf="ready else Loading">
+    <app-toolbar></app-toolbar>
+    <router-outlet></router-outlet>
+</div>
+
+<ng-template #Loading>
+    <loading-indicator></loading-indicator>
+</ng-template>

@@ -1,0 +1,14 @@
+{
+    "skill1": {
+        "id": "33ac4d2d-f4b9-4cc9-9895-1df2b87902ce",
+        "name": "EMPLOYEE_COMMUNICATION"
+    },
+    "skill2": {
+        "id": "da976755-51bf-4a3b-9ce7-ba56411efe39",
+        "name": "HARDWARE_MANAGEMENT"
+    },
+    "skill3": {
+        "id": "63483901-b0cf-40a6-968b-178e8ced6ae2",
+        "name": "PRESS_RELEASE"
+    }
+}

@@ -1,0 +1,838 @@
+#!groovy
+
+import groovy.transform.Field
+
+def executeTests, dockerToNexus, deployProd, clientFeatureID, serverConnection
+
+@Field
+def officeWebhookUrl = "https://outlook.office.com/webhook/f643c4dc-64b0-48af-aaf6-7d4cb3b5682d@763b2760-45c5-46d3-883e-29705bba49b7/JenkinsCI/b1d84647067f488fa194a45eff818973/2ec8787c-c397-4e73-8182-5c2db20691ff"
+
+@Field
+def pipelineImageJoolia = 'nexus.msg-gbp-ci:8083/joolia-client-builder:1.5'
+
+pipeline {
+
+    agent none
+
+    environment {
+        dockerImage = ""
+        dockerRegistry = "http://nexus.msg-gbp-ci:8083"
+        dockerRegistryCredentials = "NEXUS"
+    }
+
+    options {
+        newContainerPerStage()  // Docker container(s) should not be reused!
+        skipDefaultCheckout() // Skip default checkout
+
+        // send to Joolia Teams DevOps Channel
+        office365ConnectorWebhooks([[
+             name: "JooliaClient",
+             url: "${officeWebhookUrl}",
+             startNotification: false,
+             notifySuccess: true,
+             notifyAborted: false,
+             notifyNotBuilt: false,
+             notifyUnstable: true,
+             notifyFailure: true,
+             notifyBackToNormal: true
+             ]])
+    }
+
+    stages {
+
+        /** Select Stages**********************************************************************************************/
+
+        stage("Preconditions") {
+
+            parallel {
+                stage("Test stack configuration") {
+                    agent {
+                        docker {
+                            image pipelineImageJoolia
+                            registryUrl 'http://nexus.msg-gbp-ci:8083'
+                            registryCredentialsId 'NEXUS'
+                        }
+                    }
+                    steps {
+                        script {
+
+                            stagingS3BucketName = 'joolia-staging'
+
+                            dockerToNexus = false
+                            deployProd = false
+                            userOption = [buildTestStack: false, destroyTestStack: false, deployTestStack: false]
+                            s3BucketExist = '0'
+
+                            echo "Branch Name: ${env.BRANCH_NAME}"
+
+                            if ( env.BRANCH_NAME == 'master' ) {
+
+                                executeTests = true
+                                deployProd = requestUserDeployProd()
+
+                                if(deployProd) {
+                                    configAWSCli('AWS_PROD')
+                                }
+
+                            } else if (env.BRANCH_NAME.contains('dockerpush')) {
+
+                                executeTests = false
+                                dockerToNexus = true
+
+                            } else if (env.BRANCH_NAME ==~ /feature\/.+/ ||
+                                       env.BRANCH_NAME ==~ /hotfix\/.+/ ||
+                                       env.BRANCH_NAME ==~ /bugfix\/.+/ ||
+                                       env.BRANCH_NAME ==~ /task\/.+/
+                            ) {
+
+                                configAWSCli('AWS_TEST')
+
+                                clientFeatureID = getClientFeatureID()
+
+                                echo "Feature ID: ${clientFeatureID}"
+
+                                s3BucketExist = checkAWSS3FolderExist(clientFeatureID)
+
+                                executeTests = true
+
+                                if (s3BucketExist == '1') {
+
+                                    s3BucketFolderName = getAWSS3FolderID(clientFeatureID)
+                                    serverConnection = getServerConnectionID(s3BucketFolderName)
+                                    echo "Server GUID: ${serverConnectionID}"
+                                    userOption = requestUserRedeployTest()
+                                    clientDeploymentURI = "${serverConnectionID}-${clientFeatureID}"
+
+                                } else {
+
+                                    userOption["deployTestStack"] = requestUserDeployTest()
+
+                                    if (userOption["deployTestStack"]) {
+                                        serverConnection = requestUserDeployTestServerConnection()
+                                        clientDeploymentURI = "${serverConnectionID}-${clientFeatureID}"
+                                    }
+                                }
+
+                            } else if (env.BRANCH_NAME == 'develop') {
+
+                                configAWSCli('AWS_TEST')
+
+                                s3BucketExist = checkAWSS3NextFolderExist()
+
+                                executeTests = true
+
+                                s3BucketFolderName = "next"
+                                serverConnectionID = "next"
+                                clientDeploymentURI = "next"
+
+                                userOption["deployTestStack"] = true
+
+                            } else {
+
+                                executeTests = true
+
+                            }
+
+                            echo "Docker to Nexus: ${dockerToNexus}"
+                            echo "Execute tests: ${executeTests}"
+
+                        }
+                    }
+                }
+
+                stage("Current Test stacks") {
+                    agent {
+                        docker {
+                                 image pipelineImageJoolia
+                                 registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                 registryCredentialsId 'NEXUS'
+                        }
+                    }
+                    steps {
+                        script {
+
+                            configAWSCli('AWS_TEST')
+
+                            testStacks = getAWSTestStacks()
+                            echo "Current test stacks:\n${testStacks}"
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+        stage('Entry Points') {
+            parallel {
+                /** pushdocker ************************************************************************************************/
+                stage('Push Docker') {
+                    when {
+                        equals expected: true, actual: dockerToNexus
+                    }
+                    agent any
+                    steps {
+
+                        checkout scm
+
+                        script {
+
+                              buildDockerImage()
+                              pushDockerImage()
+                              cleanUpDockerImage()
+
+                         }
+                    }
+
+                }
+
+                /** Build ************************************************************************************************/
+
+                stage('Build Client') {
+                    when {
+                            equals expected: false, actual: dockerToNexus
+                            equals expected: false, actual: userOption["destroyTestStack"]
+                    }
+                    agent {
+                        docker {
+                                 image pipelineImageJoolia
+                                 registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                 registryCredentialsId 'NEXUS'
+                        }
+                    }
+                    steps {
+
+                        checkout scm
+
+                        sh 'npm -v'
+                        sh 'npm cache clean --force'
+                        script {
+                          if (env.BRANCH_NAME == 'master' ||
+                              env.BRANCH_NAME ==~ /feature\/.+/ ||
+                              env.BRANCH_NAME ==~ /hotfix\/.+/ ||
+                              env.BRANCH_NAME ==~ /bugfix\/.+/ ||
+                              env.BRANCH_NAME == 'develop'
+                          ) {
+                            if (userOption["deployTestStack"] == true) {
+                                configTestEnv()
+                                buildInTestMode()
+                            } else {
+                                buildInProdMode()
+                            }
+
+
+                          } else {
+
+                            buildInDevMode()
+
+                          }
+                          sh 'ls -l .'
+                          stash name: "stashed-build"
+                        }
+
+
+                    }
+
+                }
+
+            }
+        }
+
+        /** Checks ************************************************************************************************/
+
+        stage('Run Checks') {
+            when {
+                equals expected: "develop", actual: env.BRANCH_NAME
+                equals expected: false, actual: userOption["destroyTestStack"]
+                equals expected: false, actual: dockerToNexus
+            }
+
+            parallel {
+                /** NPM Audit ************************************************************************************************/
+                // stage('NPM Audit') {
+                //     agent {
+                //         docker {
+                //                   image pipelineImageJoolia
+                //                   registryUrl 'http://nexus.msg-gbp-ci:8083'
+                //                   registryCredentialsId 'NEXUS'
+                //                }
+                //     }
+                //     steps {
+                //         script {
+                //             sh 'ls -l .'
+                //             sh 'rm -rf ./*'
+                //             unstash "stashed-build"
+                //             sh 'npm audit --registry="https://registry.npmjs.org/"'
+
+                //         }
+                //     }
+
+                // }
+
+                /** Build ************************************************************************************************/
+
+                stage('NPM Outdated') {
+                    agent {
+                        docker {
+                                  image pipelineImageJoolia
+                                  registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                  registryCredentialsId 'NEXUS'
+                               }
+                    }
+                    steps {
+                        script {
+
+                            sh 'ls -l .'
+                            sh 'rm -rf ./*'
+                            unstash "stashed-build"
+                            sh 'npm outdated || (exit 0)'
+
+                        }
+                    }
+
+                }
+
+            }
+
+         }
+
+        /** Test ************************************************************************************************/
+
+        stage('Run Test') {
+            when {
+                equals expected: true, actual: executeTests
+                equals expected: false, actual: userOption["destroyTestStack"]
+                equals expected: false, actual: dockerToNexus
+            }
+
+            agent {
+                docker {
+                          image pipelineImageJoolia
+                          registryUrl 'http://nexus.msg-gbp-ci:8083'
+                          registryCredentialsId 'NEXUS'
+                       }
+            }
+            steps {
+                echo "performing test"
+
+                script {
+                    sh 'ls -l .'
+                    sh 'rm -rf ./*'
+                    unstash "stashed-build"
+                    sh 'npm run test'
+
+                 }
+
+            }
+            post {
+                always {
+                    sh 'tar -czf test-coverage.tar.gz coverage/'
+                    archiveArtifacts artifacts: 'test-coverage.tar.gz', fingerprint: true
+                }
+            }
+
+         }
+
+         /** Destroy Test Stack ************************************************************************************************/
+
+        stage('Destroy') {
+            parallel {
+                 /** Destroy Test ************************************************************************************************/
+                 stage('Destroy Test') {
+                    when {
+                        equals expected: true, actual: userOption["destroyTestStack"]
+                    }
+
+                    agent {
+                        docker {
+                                 image pipelineImageJoolia
+                                 registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                 registryCredentialsId 'NEXUS'
+                        }
+                    }
+                    steps {
+                        script {
+
+                             runDestroyTestStack()
+                             sendNotificationToTeams("Teststack destroyed!")
+
+                             //END PIPELINE IN CASE OF DESTROY TEST
+                             currentBuild.result = 'SUCCESS'
+                             return
+
+                         }
+                    }
+
+                 }
+                /** Destroy Test for Redeployment ************************************************************************************************/
+                stage('Destroy Test for Redeployment') {
+                    when {
+                        equals expected: '1', actual: s3BucketExist
+                        equals expected: true, actual: userOption["deployTestStack"]
+                    }
+
+                    agent {
+                        docker {
+                                 image pipelineImageJoolia
+                                 registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                 registryCredentialsId 'NEXUS'
+                        }
+                    }
+                    steps {
+                        script {
+
+                             runDestroyTestStack()
+
+                         }
+                    }
+
+                 }
+            }
+
+         }
+
+        /** Deploy ************************************************************************************************/
+        stage('Deployment') {
+            parallel {
+                   stage('Deploy to Test') {
+                        when {
+                            allOf {
+                                expression{
+                                return env.BRANCH_NAME ==~ /feature\/.+/ ||
+                                       env.BRANCH_NAME ==~ /hotfix\/.+/ ||
+                                       env.BRANCH_NAME ==~ /bugfix\/.+/ ||
+                                       env.BRANCH_NAME ==~ /task\/.+/ ||
+                                       env.BRANCH_NAME == 'develop'
+                                }
+                                expression{
+                                return userOption["deployTestStack"] == true
+                                }
+                            }
+                        }
+
+                        agent {
+                            docker {
+                                      image pipelineImageJoolia
+                                      registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                      registryCredentialsId 'NEXUS'
+                                   }
+                        }
+                        steps {
+
+                            echo "Deploy to Test Environment"
+
+                            script {
+                                deployToTest()
+                            }
+
+                        }
+
+                    }
+
+                   stage('Deploy to Production') {
+                       when {
+                            allOf {
+                                expression{ return env.BRANCH_NAME == 'master' }
+                                equals expected: true, actual: deployProd
+                            }
+                       }
+
+                        agent {
+                            docker {
+                                      image pipelineImageJoolia
+                                      registryUrl 'http://nexus.msg-gbp-ci:8083'
+                                      registryCredentialsId 'NEXUS'
+                                   }
+                        }
+                        steps {
+
+                            echo "Deploy to Production"
+
+                            script {
+                                deployToProduction()
+                            }
+
+                        }
+
+                   }
+            }
+        }
+
+    }
+}
+
+/*************************************************************************************************************************
+ * Docker Push Functions
+ *************************************************************************************************************************/
+void buildDockerImage() {
+
+   dockerImageName = 'nexus.msg-gbp-ci:8083/joolia-client-builder:1.5'
+
+   //build image
+   dockerImage = docker.build("${dockerImageName}", "--no-cache ./runtime/build-docker/")
+
+}
+
+void pushDockerImage() {
+
+   docker.withRegistry(dockerRegistry, dockerRegistryCredentials) {
+       dockerImage.push()
+   }
+
+}
+
+void cleanUpDockerImage() {
+
+   echo "Cleaning up..."
+   sh "docker rmi ${dockerImageName}"
+
+}
+
+/*************************************************************************************************************************
+ * Build Functions
+ *************************************************************************************************************************/
+void buildInProdMode() {
+
+   echo "Build in Production Mode..."
+   sh 'npm i'
+   sh 'npm run build-prod'
+
+}
+
+void buildInTestMode() {
+
+   echo "Build in Test Mode..."
+   sh 'npm ci'
+   sh "npm run pre-build ${env.BRANCH_NAME}"
+   sh "npm run build-test -- --base-href /${clientDeploymentURI}/ --deploy-url /${clientDeploymentURI}/"
+
+}
+
+void buildInDevMode() {
+
+   echo "Build in Development Mode..."
+   sh 'npm ci'
+   sh 'npm run build'
+
+}
+
+/*************************************************************************************************************************
+ * Deploy Functions
+ *************************************************************************************************************************/
+void configAWSCli(user) {
+
+    withCredentials([usernamePassword(credentialsId: user, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        sh 'aws configure set aws_access_key_id $USERNAME'
+        sh 'aws configure set aws_secret_access_key $PASSWORD'
+        sh 'aws configure set region eu-central-1'
+    }
+
+}
+
+def checkAWSS3FolderExist(featureID) {
+
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        return sh (
+            script: "aws s3 ls --recursive s3://$stagingS3BucketName | grep [.]$featureID | wc -l",
+            returnStdout: true
+        ).trim()
+
+    }
+
+}
+
+def checkAWSS3NextFolderExist() {
+
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        return sh (
+            script: "aws s3 ls s3://$stagingS3BucketName/next | wc -l",
+            returnStdout: true
+        ).trim()
+
+    }
+
+}
+
+def getAWSS3FolderID(featureID) {
+
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        resultFolder = sh (
+            script: "aws s3 ls --recursive s3://$stagingS3BucketName | grep [.]$featureID | cut -d' ' -f13- | cut -d'/' -f1",
+            returnStdout: true
+        ).trim()
+        return resultFolder
+    }
+
+}
+
+def getServerConnectionID(s3BucketFolderName) {
+
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        result = sh (
+            script: "aws s3 cp s3://${stagingS3BucketName}/${s3BucketFolderName}/.guid -",
+            returnStdout: true
+        ).trim()
+        serverConnectionID = result
+        return result
+    }
+
+}
+
+def getAWSTestStacks() {
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        testStacks = sh (
+            script: "aws s3 ls --recursive s3://joolia-staging | grep -e [.]JOOLIA- || :",
+            returnStdout: true
+        ).trim()
+        return testStacks
+    }
+}
+
+void deleteAWSS3Folder() {
+
+    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+        if ( s3BucketFolderName ) {
+         sh "aws s3 rm --recursive s3://${stagingS3BucketName}/${s3BucketFolderName}"
+        } else {
+         currentBuild.result = 'ABORTED'
+         error('Stopping due to missing S3 Folder ID')
+        }
+    }
+
+}
+
+void sendNotificationToTeams(message) {
+    // send to Joolia Teams DevOps Channel
+    office365ConnectorSend webhookUrl: "${officeWebhookUrl}", message: "${message}"
+}
+
+def prepareAWSS3Folder() {
+
+    sh "touch .${clientFeatureID}"
+    sh "aws s3 cp ./.${clientFeatureID} s3://${stagingS3BucketName}/${clientDeploymentURI}/"
+    sh "echo ${serverConnectionID} > .guid"
+    sh "aws s3 cp ./.guid s3://${stagingS3BucketName}/${clientDeploymentURI}/"
+}
+
+void configTestEnv() {
+   serverConnection = "https://api-${serverConnectionID}.joolia.ninja"
+   sh "node ./runtime/jenkins/test-env-config-builder.js ${serverConnection} ${clientDeploymentURI}"
+}
+
+void pushToProduction() {
+
+    sh 'aws s3 rm --recursive s3://joolia-production/6FEB3BD5-566E-4931-ACE2-5AEA4399B110/ '
+    sh 'aws s3 cp ./dist/joolia-client s3://joolia-production/6FEB3BD5-566E-4931-ACE2-5AEA4399B110/ --recursive'
+
+    sendNotificationToTeams("Deployed new Client Version")
+
+}
+
+void pushToTest() {
+
+    sh "aws s3 cp ./dist/joolia-client s3://${stagingS3BucketName}/${clientDeploymentURI} --recursive"
+    sh "echo ===TEST STACK URL=== http://app.joolia.ninja/${clientDeploymentURI}"
+    sh "echo ===TEST STACK API URL===  ${serverConnection}"
+
+    sendNotificationToTeams("Teststack available  Branch: ${env.BRANCH_NAME}  URL: http://app.joolia.ninja/${clientDeploymentURI}")
+
+}
+
+
+void deployToProduction() {
+
+    configAWSCli('AWS_PROD')
+
+    checkout scm
+
+    buildInProdMode()
+
+    pushToProduction()
+
+}
+
+void deployToTest() {
+
+    configAWSCli('AWS_TEST')
+
+    // already built in Jenkins BUILD step
+    sh 'ls -l .'
+    sh 'rm -rf ./*'
+    unstash "stashed-build"
+
+    if (env.BRANCH_NAME != 'develop') {
+        prepareAWSS3Folder()
+    }
+
+    pushToTest()
+
+}
+
+void runDestroyTestStack() {
+
+    configAWSCli('AWS_TEST')
+
+    deleteAWSS3Folder()
+
+}
+
+/*************************************************************************************************************************
+ * Pipeline User input Functions
+ *************************************************************************************************************************/
+void requestUserDeployProd() {
+
+    try {
+        // After a timeout of 3 minutes, branch will not be deployed to Production.
+        timeout(time: 30, unit: 'SECONDS') {
+            def userInputDeployProd = input(
+                id: 'executeStages', message: "Deploy to PROD ?",
+                parameters: [
+                    booleanParam(defaultValue: false, description: 'Deploy to Prod?', name: 'deployToProd'),
+                ]
+            )
+
+            echo "User input is: ${userInputDeployProd}"
+            resultDeployProd = userInputDeployProd
+        }
+    } catch(err) {
+        resultDeployProd = false
+    }
+
+    return resultDeployProd
+
+}
+
+void requestUserRedeployTest() {
+      echo "Redeploy Test"
+      try {
+          // After a timeout of 3 minutes, stack will not be destroyed
+          timeout(time: 30, unit: 'SECONDS') {
+              def userInputRedeployTest = input(
+                  id: 'executeStages', message: "Choose 1 option",
+                  parameters: [
+                      booleanParam(defaultValue: false, description: 'Destroy?', name: 'destroyTestStack'),
+                      booleanParam(defaultValue: false, description: 'Destroy and Redeploy?', name: 'deployTestStack'),
+                      booleanParam(defaultValue: true, description: 'Build and Run Tests?', name: 'buildTestStack')
+                  ]
+              )
+
+              resultRedeployTest = userInputRedeployTest
+          }
+      } catch(err) {
+          resultRedeployTest = [buildTestStack: true, destroyTestStack: false, deployTestStack: false]
+      }
+
+      if (resultRedeployTest["deployTestStack"]) {
+
+          resultRedeployTest = [buildTestStack: false, destroyTestStack: false, deployTestStack: true]
+          echo "Redeploy to Test will be performed"
+
+      } else if (resultRedeployTest["destroyTestStack"]) {
+
+          resultRedeployTest = [buildTestStack: false, destroyTestStack: true, deployTestStack: false]
+          echo "Destroy Test will be performed"
+
+      } else {
+
+          resultRedeployTest = [buildTestStack: true, destroyTestStack: false, deployTestStack: false]
+          echo "Only Build Teststack and Run Tests will be performed"
+      }
+
+
+      return resultRedeployTest
+
+}
+
+
+void requestUserDeployTest() {
+
+    try {
+        // After a timeout of 3 minutes, branch will not be deployed to test.
+        timeout(time: 30, unit: 'SECONDS') {
+            def userInputDeployTest = input(
+                id: 'executeStages', message: "Deploy to TEST (!) ?",
+                parameters: [
+                    booleanParam(defaultValue: false, description: 'Deploy to Test?', name: 'deployToTest'),
+                ]
+            )
+
+            echo "Deploy Test - User input is: ${userInputDeployTest}"
+            resultDeployTest = userInputDeployTest
+        }
+    } catch(err) {
+        resultDeployTest = false
+    }
+
+    return resultDeployTest
+
+}
+
+void requestUserDeployTestServerConnection() {
+
+    try {
+        // After a timeout of 10 minutes, pipeline stops with error.
+        timeout(time: 3, unit: 'MINUTES') {
+            def userInputDeployTestServerCon = input(
+                id: 'executeStages', message: "Deploy to TEST  ?",
+                parameters: [
+                    string(defaultValue: '', description: 'UUID from server Deployment', name: 'serverConnectionID'),
+                ]
+            )
+
+            if (!userInputDeployTestServerCon?.trim()) {
+                currentBuild.result = 'ABORTED'
+                error('Stopping due to missing server Deployment ID')
+            }
+            echo "Server connection for Deploy Test - User input is: ${userInputDeployTestServerCon}"
+            serverConnectionID = userInputDeployTestServerCon
+        }
+    } catch(err) {
+         currentBuild.result = 'ABORTED'
+         error('Stopping due to missing server Deployment ID')
+    }
+
+    return serverConnectionID
+
+}
+
+void requestUserRunTest() {
+
+    try {
+        // After a timeout of 5 minutes, simply do not execute tests.
+        timeout(time: 30, unit: 'SECONDS') {
+            def userInputRunTest = input(
+                id: 'executeStages', message: "Which stages should be executed?",
+                parameters: [
+                    booleanParam(defaultValue: false, description: 'Run tests?', name: 'runTests'),
+                ]
+            )
+
+            echo "Run Test - User input is: ${userInputRunTest}"
+            resultExecuteTests = userInputRunTest
+        }
+    } catch(err) {
+        resultExecuteTests = false
+    }
+
+    return resultExecuteTests
+
+}
+
+/************************************************************************************************************************
+ * Jenkins Helper Functions
+ *************************************************************************************************************************/
+@NonCPS
+def getClientFeatureID() {
+    if ( env.BRANCH_NAME == 'develop' ) {
+        featureID = 'develop'
+    } else {
+        featureID = (env.BRANCH_NAME =~ /JOOLIA-\d{2,}/)[0]
+    }
+    return featureID
+}

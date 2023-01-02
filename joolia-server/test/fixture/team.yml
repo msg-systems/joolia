@@ -1,0 +1,77 @@
+entity: Team
+items:
+  Team1:
+    id: 5500f071-de3a-4f2b-befb-2e257fbf8000
+    name: 'Team1'
+    createdBy: '@Luke'
+    format: '@FormatOne'
+    members:
+      - '@formatMember1' # Luke
+      - '@formatMember5' # ObiWan
+  Team2:
+    id: 65b1d7f3-4a48-418c-88e5-adfeec019122
+    name: 'Team2'
+    createdBy: '@Luke'
+    format: '@FormatOne'
+    members:
+      - '@formatMember1' # Luke
+      - '@formatMember4' # Mickey
+    avatar: '@Team2Avatar'
+  Team3:
+    id: 65b1d7f3-4a48-418c-88e5-adfeec0143aa
+    name: 'Team3'
+    createdBy: '@Luke'
+    format: '@FormatThree'
+    members:
+      - '@formatMember8' # Shaak
+  Team4:
+    id: 65b1d7f3-4a48-418c-88e5-adfeec019102
+    name: 'Team4'
+    createdBy: '@Shaak'
+    format: '@FormatThree'
+    members:
+      - '@formatMember8' # Shaak
+  Team5:
+    id: acb1d7f3-4a48-418c-88e5-adfeec018000
+    name: 'Team5'
+    createdBy: '@Luke'
+    format: '@FormatFour'
+    members:
+      - '@formatMember6' # Luke
+      - '@formatMember9' # ObiWan
+  Team6:
+    id: d3e85a3c-3326-4bd5-bd7b-7f52c2ff5011
+    name: 'Team6'
+    createdBy: '@Leia'
+    format: '@FormatFour' #Empty Team
+  Team7:
+    id: 2121cb74-91ab-11e9-bc42-526af7764f64
+    name: 'Team7'
+    createdBy: '@Mickey'
+    format: '@FormatFour'
+    members:
+      - '@formatMember4' # Mickey
+  Team8:
+    id: da06d1a1-6b4a-43f7-9abf-cc893d01f06a
+    name: 'Team8'
+    createdBy: '@Mickey'
+    format: '@FormatEight'
+    members:
+      - '@formatMember13' # Leia
+      - '@formatMember14' # Luke(participant)
+  Team9:
+    name: 'Team9'
+    createdBy: '@Mickey'
+    format: '@FormatOne'
+    members:
+      - '@formatMember4' # Mickey
+  Team10:
+    id: 0ea1153b-bfdd-4bab-8427-61efa3825394
+    name: 'Team10'
+    createdBy: '@Mickey'
+    format: '@FormatTwo'
+  Team11:
+    id: 5c65f9ef-d3bf-44b0-8d01-187f18d9b479
+    name: 'Team11'
+    createdBy: '@Luke'
+    format: '@FormatNine'

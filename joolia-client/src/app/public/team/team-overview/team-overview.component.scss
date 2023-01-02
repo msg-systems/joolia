@@ -1,0 +1,37 @@
+@import 'variables';
+
+.team-overview-content {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+}
+
+.team-content {
+    height: 120px;
+}
+
+.team-title {
+    padding: 16px;
+    max-height: 100%;
+
+    .team-name {
+        overflow: hidden;
+        line-height: 26px;
+    }
+
+    &.small {
+        padding: 12px;
+    }
+}
+
+.team-site-subtitle {
+    margin-top: -15px;
+    margin-bottom: 20px;
+    margin-left: 4px;
+}

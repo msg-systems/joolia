@@ -1,0 +1,58 @@
+<loading-indicator *ngIf="!(format && teamList)"></loading-indicator>
+
+<div *ngIf="format && teamList" class="mat-body-1">
+
+    <action-bar [showBackButton]="true" [actions]="actionBarActions"></action-bar>
+
+    <div class="team-overview-content" ngClass.lt-md="small">
+
+        <!-- Header Info -->
+        <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+        <div>
+            <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+        </div>
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.format.teams' | translate }}</span>
+        </div>
+        <div class="mat-body-3 team-site-subtitle">
+            <span>{{ (isOrganizer ? 'labels.teamInfoOrganizer' : 'labels.teamInfoParticipant') | translate }}</span>
+        </div>
+
+        <!-- Team Cards -->
+        <div class="team-grid-list-overview" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+            [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()"
+            [infiniteScrollDisabled]="isLoading || noMoreLoadable" gdColumns="repeat(auto-fill, 384px)"
+            gdColumns.lt-lg="repeat(auto-fill, 304px)" gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="154px!" gdGap="32px"
+            gdGap.lt-md="16px">
+            <list-card-item *ngFor="let team of teamList.entities" [itemId]="team.id" [clickable]="true" (itemClick)="onTeamClick(team.id)"
+                [menuActions]="getTeamMenuActions(team)">
+                <div list-card-content class="team-content" ngClass.lt-lg="small" fxLayout="row" fxLayoutAlign="start center">
+                    <!-- Team Avatar-->
+                    <div fxLayout="column" fxFlex="none">
+                        <user-avatar [team]="team" [sizeInPx]="120" [transparent]="true" class="team-avatar">
+                        </user-avatar>
+                    </div>
+
+                    <!-- Team Infos-->
+                    <div class="team-title" ngClass.lt-lg="small" fxLayout="column" fxFlex="auto">
+                        <h2 class="team-name text-word-break" clampy>{{ team.name }}</h2>
+
+                        <div class="mat-body-3">
+                            {{ 'labels.amountMembers' | translate: { amount: team.members.length } }}
+                        </div>
+                    </div>
+                </div>
+            </list-card-item>
+        </div>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+
+        <!-- Empty State -->
+        <div *ngIf="teamList.count < 1">
+            <empty-state [titleKey]="isEditAllowed ? 'emptyStates.teams.organizer.title' : 'emptyStates.teams.participant.title'"
+                [contentKey]="isEditAllowed ? 'emptyStates.teams.organizer.content' : 'emptyStates.teams.participant.content'"
+                altText="emptyStates.teams.organizer.altText">
+            </empty-state>
+        </div>
+    </div>
+</div>

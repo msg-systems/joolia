@@ -1,0 +1,19 @@
+<!-- Heading line -->
+<h1 mat-dialog-title>{{ 'dialog.createTeam.header' | translate }}</h1>
+
+<!-- TODO: Export the defined maxLengths of the fields into the shared config when it's there -->
+<form [formGroup]="teamCreationForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+
+    <mat-dialog-content>
+
+        <!-- Name -->
+        <base-form-input [parentForm]="teamCreationForm" inputType="text" entityName="name" inputControlName="name" [inputRequired]="true"
+            [inputMaxLength]="teamNameMaxLength"></base-form-input>
+    </mat-dialog-content>
+
+    <!-- Submit Button -->
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.create' | translate }}</button>
+    </mat-dialog-actions>
+</form>

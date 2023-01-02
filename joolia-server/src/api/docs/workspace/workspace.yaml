@@ -1,0 +1,49 @@
+components:
+  schemas:
+    Workspace:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: 'First workspace ever'
+        description:
+          type: string
+          example: 'This workspace is to be described'
+        logo:
+          type: string
+          example: 'www.coologo.com'
+        updatedBy:
+          $ref: '#/components/examples/UserCreatedBy'
+        updatedAt:
+          type: string
+          format: date
+        memberCount:
+          type: number
+          minimum: 0
+        formatCount:
+          type: number
+          minimum: 0
+
+  examples:
+    Workspaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/Workspace'
+      example: [Workspace1, Workspace2]
+    PostWorkspaceBody:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        licensesCount:
+          type: number
+      required:
+        - licensesCount
+
+      example:
+        name: Test-Workspace
+        description: this is a workspace description
+        licensesCount: 50

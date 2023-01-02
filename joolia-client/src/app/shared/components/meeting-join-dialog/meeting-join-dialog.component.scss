@@ -1,0 +1,44 @@
+@import 'variables';
+
+.meeting-join-dialog-container {
+    padding-bottom: 10px;
+
+    & .video-call-icon {
+        transform: scale(2);
+        color: $joolia-white;
+
+        &-background {
+            background: $joolia-primary-800;
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+        }
+    }
+
+    & .copy-button {
+        color: $joolia-grey-500;
+        font-size: 12px;
+
+        &:hover {
+            text-decoration: underline;
+            color: $joolia-black;
+        }
+
+        &-clicked {
+            color: $joolia-primary-500;
+            font-size: 12px;
+        }
+    }
+
+    & .dialog-header {
+        text-align: center;
+        margin: auto 30px 0;
+        padding: 0 25px 5px;
+    }
+
+    & .type-and-expiration {
+        color: $joolia-grey-500;
+        font-size: 14px;
+        padding:0 0 5px;
+    }
+}

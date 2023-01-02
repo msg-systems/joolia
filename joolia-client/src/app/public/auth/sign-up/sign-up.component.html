@@ -1,0 +1,58 @@
+<div class="sign-up" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex [gdColumns.gt-sm]="'1fr minmax(auto, 408px) 0.5fr'" [gdColumns]="'1fr minmax(auto, 408px) 1fr'" gdRows="1fr auto 1fr">
+        <div class="sign-up-form" [gdColumn]="2" [gdRow]="2" fxLayout="column">
+
+            <!-- Heading line -->
+            <h1 class="sign-up-title mat-display-1" fxFlexAlign="start">{{ 'signUp.header' | translate }}</h1>
+
+            <!-- TODO: Export the defined maxLengths of the fields into the shared config when it's there -->
+            <form [formGroup]="signUpForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+
+                <!-- Name -->
+                <base-form-input [parentForm]="signUpForm" inputType="text" entityName="completeName" inputControlName="name"
+                    [inputMaxLength]="userNameMaxLength" [inputRequired]="true">
+                </base-form-input>
+
+                <!-- Email -->
+                <base-form-input [parentForm]="signUpForm" inputType="email" entityName="email" inputControlName="email"
+                    [inputRequired]="true">
+                </base-form-input>
+
+                <!-- Company -->
+                <base-form-input [parentForm]="signUpForm" inputType="text" entityName="company" inputControlName="company"
+                    [inputMaxLength]="companyNameMaxLength">
+                </base-form-input>
+
+                <!-- Password -->
+                <base-password-input [parentForm]="signUpForm" passwordControlName="password" [passwordRequired]="true" [showHint]="true">
+                </base-password-input>
+
+                <!-- Contact -->
+                <div class="sign-up-contact mat-body-1">
+                    <mat-checkbox formControlName="contact" required>{{ 'signUp.contact' | translate }}</mat-checkbox>
+                    <mat-error *ngIf="form.submitted && signUpForm.controls['contact'].hasError('required')"
+                        class="sign-up-contact-error mat-caption">
+                        {{ 'errors.contact.required' | translate }}
+                    </mat-error>
+                </div>
+
+                <!-- Submit Button -->
+
+                <button class="sign-up-button" mat-raised-button color="primary-800" type="submit">
+                    {{ 'signUp.signUpButton' | translate }}
+                </button>
+
+            </form>
+
+            <!-- TODO: Adjust redirection to actual page -->
+            <span class="mat-caption" [innerHTML]="'signUp.termsAndConditions' | translate"></span>
+            <span class="sign-in-link mat-caption">
+                {{'signUp.jumpToSignIn' | translate}}
+                <a routerLink="/signin">{{'signIn.loginButton' | translate}}</a>
+            </span>
+        </div>
+    </div>
+    <div [fxHide]="true" [fxHide.gt-sm]="false" fxFlex="50%">
+        <img class="sign-up-picture" [src]="pictureSrc" [alt]="'signUp.altText' | translate">
+    </div>
+</div>

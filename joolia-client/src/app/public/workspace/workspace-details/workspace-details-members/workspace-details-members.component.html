@@ -1,0 +1,37 @@
+<loading-indicator *ngIf="!(workspace && workspace.members)"></loading-indicator>
+
+<div *ngIf="workspace && workspace.members" fxLayout="column">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'workspace', 'overview']" backLabelKey="buttons.backToWorkspaces"
+        [actions]="actionBarActions">
+    </action-bar>
+    <div class="workspace-details-members" ngClass.lt-md="small" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ workspace.name }}</span>
+        </div>
+
+        <div class="member-filter" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center end"
+            fxLayoutAlign.gt-sm="space-between center" fxLayoutAlign.lt-md="space-between start" fxLayoutGap="16px">
+            <filter-toggle-group (filterChanged)="onFilterChange($event)" [initialFilters]="initialFilters"
+                [filterCriteriaList]="[userStatusFilter, userRoleFilter]">
+            </filter-toggle-group>
+
+            <view-toggle [viewType]="memberViewType" (viewChanged)="onViewTypeChanged($event)"></view-toggle>
+        </div>
+
+        <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+            gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="308px!" gdGap="32px" gdGap.lt-md="16px">
+            <user-card *ngFor="let member of workspace.members.entities; trackBy: trackingFunction" [user]="member"
+                [userMenuActions]="memberMenuActions">
+            </user-card>
+        </div>
+
+        <mat-nav-list *ngIf="isListViewType()" disableRipple>
+            <user-list-item *ngFor="let member of workspace.members.entities; trackBy: trackingFunction" [user]="member"
+                [userMenuActions]="memberMenuActions">
+            </user-list-item>
+        </mat-nav-list>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+    </div>
+</div>

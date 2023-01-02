@@ -1,0 +1,5 @@
+<div class="chat-overview">
+    <app-messenger-chat-room-card *ngFor="let chatRoom of chatRooms" [chatRoom]="chatRoom" [messageBoxes]="messageBoxes"
+        (openChatRoom)="onOpenChatRoom($event)" (startMeetingClicked)="onStartMeeting($event)">
+    </app-messenger-chat-room-card>
+</div>

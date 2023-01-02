@@ -1,0 +1,33 @@
+@import 'variables';
+
+.workspace-overview {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+}
+
+.workspace-overview-card-title {
+    max-height: 128px;
+    overflow: hidden;
+}
+
+.chip-container {
+    margin-top: 16px;
+
+    .workspace-overview-chip {
+        background-color: $joolia-primary-200;
+        border-radius: 16px;
+        margin: 0 4px;
+        padding: 4px 12px;
+    }
+}
+
+.workspace-overview-card-title-container {
+    margin-bottom: 8px;
+}

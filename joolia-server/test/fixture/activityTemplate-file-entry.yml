@@ -1,0 +1,27 @@
+entity: ActivityTemplateFileEntry
+items:
+  ActivityTemplateFileOne:
+    ownerType: ActivityTemplateEntry
+    id: d81bdbc0-f298-423b-906f-655cd5d4a83b # Does not match any loaded file
+    versionId: 0b803d65-9adc-45d7-9d12-3898e49b9b96
+    name: activity.template.jpg
+    contentType: 'image/jpeg'
+    size: 64551
+    createdBy: '@Leia'
+    createdAt: '2019-05-09 10:44:32'
+    activityTemplate: '@ActivityTemplate1'
+  ActivityTemplateFileWithoutData:
+    ownerType: ActivityTemplateEntry
+    id: e559aa64-fdcd-446d-a4ac-6b6ba80e4645 # Should NOT match any loaded file in s3 for development
+    versionId: ded751c7-e4be-4e77-ab9a-84b04d6736b3
+    name: oca.jpg
+    createdBy: '@Mickey'
+    activityTemplate: '@ActivityTemplate1'
+
+  ActivityTemplateFourFileWithoutData:
+    ownerType: ActivityTemplateEntry
+    id: 717aa337-bf28-4af7-aa8d-0397b9cc6319 # Should NOT match any loaded file in s3 for development
+    versionId: 127d8e8c-b2f6-4ab6-bf1b-4fea5ffa2277
+    name: fileforfour.jpg
+    createdBy: '@Leia'
+    activityTemplate: '@ActivityTemplate4'

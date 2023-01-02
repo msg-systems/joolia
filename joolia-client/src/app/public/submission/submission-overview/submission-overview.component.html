@@ -1,0 +1,100 @@
+<div class="infotexts" fxLayout="column">
+    <div *appHasPermission="viewOthers" fxLayout="row" fxLayoutAlign="left center">
+        <mat-icon class="material-icons-outlined">visibility</mat-icon>
+        {{ (teamSubmissions ? 'labels.activitySubmissionVisibilityTeams' : 'labels.activitySubmissionVisibilityParticipants') | translate }}
+    </div>
+
+    <div *appHasPermission="!viewOthers" fxLayout="row" fxLayoutAlign="left center">
+        <mat-icon class="material-icons-outlined">visibility_off</mat-icon>
+        {{ 'labels.activitySubmissionVisibilityOrganizers' | translate }}
+    </div>
+</div>
+
+<div class="submission-overview" fxLayout="column" fxLayoutAlign="center end" fxFlexFill>
+    <!-- Create Subm. Button -->
+    <button *ngIf="currentFormat.me.userRole !== 'technical'" class="submission-creation-button" mat-raised-button color="primary-800"
+        (click)="onSubmissionCreate()">
+        {{ 'buttons.submit' | translate }}
+    </button>
+
+    <loading-indicator *ngIf="!submissionList" fxFlexFill></loading-indicator>
+
+    <pagination-container *ngIf="submissionList" fxFlexFill [paginatorSizeOptions]="paginatorSizeOptions"
+        [initialPaginatorSize]="initialPaginatorSize" [paginationLength]="submissionList.count"
+        (paginationChange)="onPaginationChange($event)" [showLoadingSpinner]="isLoadingContent">
+        <!-- Table -->
+        <mat-table *ngIf="submissionList" class="submission-table" [dataSource]="submissionList.entities">
+            <!-- Avatar -->
+            <ng-container matColumnDef="avatar">
+                <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                <mat-cell *matCellDef="let submission" fxFlex="64px">
+                    <user-avatar [sizeInPx]="24" [user]="submission.submittedBy.user" [team]="submission.submittedBy.team"></user-avatar>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Submitter -->
+            <ng-container matColumnDef="submitter">
+                <mat-header-cell *matHeaderCellDef fxFlex="40">{{ 'labels.submitter' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let submission" fxFlex="40">
+                    <span class="text-truncate">{{ submission.submittedBy.team?.name || submission.submittedBy.user?.name }}</span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Name -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef fxFlex="60">{{ 'labels.title' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let submission" fxFlex="60">
+                    <span class="text-truncate">{{ submission.name }}</span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- AverageRating -->
+            <ng-container matColumnDef="averageRating">
+                <mat-header-cell *matHeaderCellDef fxFlex="20">{{ 'labels.rating' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let submission" fxFlex="20">
+                    <mat-icon>star</mat-icon>
+                    <span class="text-truncate">
+                        {{ submission.averageRating ? (submission.averageRating | decimal:'1.1-1') : 0 }}
+                    </span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- CommentCount -->
+            <ng-container matColumnDef="commentCount">
+                <mat-header-cell *matHeaderCellDef fxFlex="20">{{ 'labels.comments' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let submission" fxFlex="20">
+                    <mat-icon>chat</mat-icon>
+                    <span class="text-truncate">{{ submission.commentCount }}</span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Actions -->
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                <mat-cell class="submissions-table-column-action" *matCellDef="let submission" fxFlex="64px"
+                    (click)="$event.stopPropagation()">
+                    <button
+                        *ngIf="isOrganizer || mySubmitterIds.includes(submission.submittedBy.user?.id || submission.submittedBy.team.id)"
+                        mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="onSubmissionDelete(submission.id)">
+                            {{ 'buttons.delete' | translate }}
+                        </button>
+                    </mat-menu>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header -->
+            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+            <mat-row class="submission-row" *matRowDef="let submission; columns: columnsToDisplay"
+                (click)="navigateToSubmission(submission.id)">
+            </mat-row>
+        </mat-table>
+
+        <div *ngIf="submissionList.count === 0" class="submission-emptystate">
+            <span class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activitySubmission.content' | translate }}</span>
+        </div>
+    </pagination-container>
+</div>

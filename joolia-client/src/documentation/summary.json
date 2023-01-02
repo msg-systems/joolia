@@ -1,0 +1,98 @@
+[
+    {
+        "title": "Overview",
+        "file": "overview.md"
+    },
+    {
+        "title": "Client Architecture",
+        "file": "architecture.md"
+    },
+    {
+        "title": "Developer Guideline",
+        "file": "devguide.md",
+        "children": [
+            {
+                "title": "Overall",
+                "file": "devguide/overall.md"
+            },
+            {
+                "title": "Generators",
+                "file": "devguide/generators.md"
+            },
+            {
+                "title": "Code",
+                "file": "devguide/code.md",
+                "children": [
+                    {
+                        "title": "Configuration",
+                        "file": "devguide/code/configuration.md"
+                    },
+                    {
+                        "title": "Token",
+                        "file": "devguide/code/token.md"
+                    },
+                    {
+                        "title": "Websocket",
+                        "file": "devguide/code/websocket.md"
+                    },
+                    {
+                        "title": "Translation",
+                        "file": "devguide/code/translation.md"
+                    },
+                    {
+                        "title": "Logging",
+                        "file": "devguide/code/logging.md"
+                    },
+                    {
+                        "title": "Handling Files",
+                        "file": "devguide/code/fileservice.md"
+                    },
+                    {
+                        "title": "Unit Test",
+                        "file": "devguide/code/unitTests.md"
+                    },
+                    {
+                        "title": "Canvas",
+                        "file": "devguide/code/canvas.md"
+                    }
+
+                ]
+            },
+
+            {
+                "title": "Debugging",
+                "file": "devguide/debugging.md"
+            },
+            {
+                "title": "Testing",
+                "file": "devguide/test.md"
+            },
+            {
+                "title": "Troubleshooting",
+                "file": "devguide/troubleshooting.md"
+            }
+        ]
+    },
+    {
+        "title": "Deployment",
+        "file": "deployment.md"
+    },
+    {
+        "title": "CI CD",
+        "file": "../../runtime/Readme.md",
+        "children": [
+            {
+                "title": "Build",
+                "file": "../../runtime/build-docker/Readme.md"
+            }
+        ]
+    },
+    {
+        "title": "Tools",
+        "file": "tools.md"
+    },
+    {
+        "title": "Validation",
+        "file": "validation.md"
+    }
+]

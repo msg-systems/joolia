@@ -1,0 +1,187 @@
+<div class="format-current-state-container" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start" fxLayoutGap="48px">
+
+    <!-- Current phase -->
+    <div fxFlex.gt-md="33" fxLayout="column">
+
+        <!-- Title -->
+        <ng-container [ngTemplateOutlet]="SectionTitle" [ngTemplateOutletContext]="{translationKey:'labels.currentPhase'}"></ng-container>
+
+        <ng-container *ngTemplateOutlet="PhaseSection"></ng-container>
+
+        <mat-card *ngIf="!phases || phases.length === 0" class="mat-elevation-z card-with-border mat-body-1" fxFlex="auto">
+            {{ 'labels.currentPhaseContent' | translate: { plural: 0 } }}
+        </mat-card>
+
+    </div>
+
+    <!-- Current Activity -->
+    <div fxFlex.gt-md="33" fxLayout="column">
+
+        <ng-container [ngTemplateOutlet]="SectionTitle" [ngTemplateOutletContext]="{translationKey:'labels.currentActivity'}">
+        </ng-container>
+
+        <ng-container *ngTemplateOutlet="ActivitySection"></ng-container>
+
+        <!-- Activity Empty State-->
+        <mat-card *ngIf="!activities || activities.length === 0" class="mat-elevation-z card-with-border mat-body-1" fxFlex="auto">
+            {{ 'labels.currentActivityContent' | translate: { plural: 0 } }}
+        </mat-card>
+
+    </div>
+
+    <!-- Teams / Progress -->
+    <div fxFlex.gt-md="33" fxLayout="column">
+
+        <!-- Participant: Teams -->
+        <div *ngIf="!organizerView" fxLayout="column">
+
+            <ng-container [ngTemplateOutlet]="SectionTitle" [ngTemplateOutletContext]="{translationKey:'labels.yourTeams'}"></ng-container>
+
+            <ng-container *ngTemplateOutlet="TeamsSection"></ng-container>
+
+            <!-- Teams Empty State -->
+            <mat-card *ngIf="!teams || teams.length === 0" class="mat-elevation-z card-with-border mat-body-1" fxFlex="auto">
+                {{ 'labels.noTeams' | translate }}
+            </mat-card>
+
+        </div>
+
+        <!-- Organizer: Progress-->
+        <div *ngIf="organizerView" fxLayout="column">
+
+            <ng-container [ngTemplateOutlet]="SectionTitle" [ngTemplateOutletContext]="{translationKey:'labels.progress'}"></ng-container>
+
+            <ng-container *ngTemplateOutlet="ProgressSection"></ng-container>
+
+            <!-- Progress Empty State -->
+            <mat-card *ngIf="!activities || activities.length === 0" class="mat-elevation-z card-with-border mat-body-1" fxFlex="auto">
+                {{ 'labels.moreProgress' | translate: { plural: 0 } }}
+            </mat-card>
+
+        </div>
+
+    </div>
+</div>
+
+
+<ng-template #SectionTitle let-translationKey="translationKey">
+    <div class="section-title">
+        <span class="text-word-break mat-subheading-1 text-medium">{{ translationKey | translate }}</span>
+    </div>
+</ng-template>
+
+<ng-template #ProgressSection>
+    <div *ngIf="hasProgress()" [ngClass]="hasProgress() ? 'card-with-content' : 'card-without-content'">
+        <list-card-item (itemClick)="onProgressClick()" [clickable]="true" [showFooter]="true">
+            <div list-card-content>
+
+                <progress-table [teamsOrMembers]="teamsOrMembers?.slice(0, 4)" [steps]="activities[0].steps?.entities" [checkable]="false"
+                    [noTeamsOrMembersLabel]="'emptyStates.activityProgressTeam.organizer'" [notExpandable]="true">
+                </progress-table>
+
+            </div>
+
+            <div *ngIf="teamsOrMembers?.length > 4" list-card-footer>
+                {{ 'labels.moreProgress' | translate: { plural: teamsOrMembers?.length } }}
+            </div>
+
+        </list-card-item>
+    </div>
+</ng-template>
+
+<ng-template #TeamsSection>
+    <div *ngIf="hasTeams()" [ngClass]="hasTeams() ? 'card-with-content' : 'card-without-content'">
+        <div *ngFor="let team of teams | slice:0:3" class="team-card">
+            <list-card-item [itemId]="team.id" [clickable]="true" (itemClick)="onTeamClick(team.id)">
+                <div list-card-content class="team-card-content" fxLayout="row" fxLayoutAlign="start center">
+                    <!-- Team Avatar-->
+                    <div fxFlex="none">
+                        <user-avatar [team]="team" [sizeInPx]="64" [transparent]="true">
+                        </user-avatar>
+                    </div>
+
+                    <!-- Team Infos-->
+                    <div fxLayout="column" fxFlex="auto" class="team-card-text">
+                        <h2 class="team-card-title text-word-break" clampy>{{ team.name }}</h2>
+
+                        <div class="mat-body-3">
+                            {{ 'labels.amountMembers' | translate: { amount: team.members.length } }}
+                        </div>
+                    </div>
+
+                </div>
+            </list-card-item>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #ActivitySection>
+    <div *ngIf="hasCurrentActivity()" [ngClass]="hasCurrentActivity() ? 'card-with-content' : 'card-without-content'"
+        class="mat-elevation-z" fxFlex="auto">
+        <mat-card class="mat-elevation-z card-with-border-full-height" fxLayout="column">
+            <app-activity-list [activityList]="{ entities: [activities[0]], count: 1 }" [startDate]="phases[0].startDate"
+                [isHourSchedule]="phases[0].durationUnit === phaseDurationMinutesType" (activityClicked)="onActivityClick($event)"
+                [isAddAllowed]="false" [isDeleteAllowed]="false">
+            </app-activity-list>
+        </mat-card>
+
+    </div>
+</ng-template>
+
+
+<ng-template #PhaseSection>
+    <div *ngIf="hasCurrentPhase()" class="phase-card" [ngClass]="hasCurrentPhase() ? 'card-with-content' : 'card-without-content'">
+        <list-card-item [itemId]="phases[0].id" [clickable]="true" (itemClick)="onPhaseClick(phases[0].id)" [showFooter]="true">
+
+            <div list-card-content class="phase-card-content" [ngSwitch]="phases[0].durationUnit">
+
+                <!-- Phase name -->
+                <inline-edit-text inputClasses="mat-headline" [inputText]="phases[0].name" [editable]="false">
+                    <div clampy="3" class="phase-card-title text-word-break">{{ phases[0].name }}</div>
+                </inline-edit-text>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- Phase start date -->
+                    <inline-datepicker inputClasses="mat-body-1" [inputDate]="phases[0].startDate" inputPlaceholderKey="labels.noStartDate"
+                        [editable]="false">
+
+                        <div *ngSwitchCase="phaseDurationDaysType">
+                            {{ 'labels.startsDate' | translate: { date: phases[0].startDate | moment: 'L' } }}
+                        </div>
+
+                        <div *ngSwitchCase="phaseDurationMinutesType">
+                            {{
+                            'labels.startsDateTime'
+                                    | translate
+                                    : {
+                                        date: phases[0].startDate | moment: 'L',
+                                        time: phases[0].startDate | moment: 'LT'
+                                    }
+                            }}
+                        </div>
+
+                    </inline-datepicker>
+                </div>
+
+                <!-- Phase duration -->
+                <div class="mat-body-2" fxLayoutAlign="start center">
+                    <mat-icon class="phase-card-duration-icon">access_time</mat-icon>
+                    <span>{{ phases[0].duration | durationPipe: phases[0].durationUnit }}</span>
+                </div>
+
+                <!-- Amount of Methods -->
+                <main-chip [message]="'labels.amountMethods' | translate: { amount: phases[0].activityCount }"
+                    [noContent]="phases[0].activityCount === 0">
+                </main-chip>
+
+            </div>
+
+            <div *ngIf="phases?.length > 1" list-card-footer>
+                {{ 'labels.currentPhaseContent' | translate: { plural: phases?.length } }}
+            </div>
+
+
+        </list-card-item>
+
+    </div>
+</ng-template>

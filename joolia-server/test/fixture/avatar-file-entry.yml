@@ -1,0 +1,9 @@
+entity: AvatarFileEntry
+items:
+  LukeAvatar:
+    ownerType: AvatarEntry
+    fileId: 817c3745-2a15-4dbd-a34b-ac0dfc3a0001 # Matches loaded file in s3 for development
+    versionId: aMZWpUyK.QF7.gPsojEBQ6ngxnBJ8aBq
+    name: vader.jpg
+    contentType: 'image/jpeg'
+    size: 2111240

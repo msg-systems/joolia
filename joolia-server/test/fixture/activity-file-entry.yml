@@ -1,0 +1,26 @@
+entity: ActivityFileEntry
+items:
+  ActivityFileOne:
+    ownerType: ActivityEntry
+    id: 09245a20-0373-4ed9-979b-9fb36482a8ad # Matches loaded file in s3 for development
+    versionId: c0cf62d3-2ea4-48cb-8594-2b5b0b73c162 # Provide to file requirement in DB
+    name: lea.jpg
+    contentType: 'image/jpeg'
+    createdBy: '@Luke'
+    createdAt: '2019-05-23 00:00:00'
+    activity: '@ActivityTwo'
+  ActivityFileWithoutData:
+    ownerType: ActivityEntry
+    id: 35e65db2-c087-4043-9021-8ab7bcb539b2 # Should NOT match any loaded file in s3 for development
+    versionId: b1bebc88-09e1-466e-95bd-0062e39a751b
+    name: bob.jpg
+    createdBy: '@Luke'
+    activity: '@ActivityTwo'
+
+  ActivityOneFileWithoutData:
+    ownerType: ActivityEntry
+    id: 27e35c50-695f-4721-87c2-fbae1d0164b1 # Should NOT match any loaded file in s3 for development
+    versionId: 5f5dc6a2-9ff9-4162-bfff-c54ce2822a3a
+    name: patrick.jpg
+    createdBy: '@Mickey'
+    activity: '@ActivityOne'

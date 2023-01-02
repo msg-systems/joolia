@@ -1,0 +1,31 @@
+@import 'variables';
+
+.chat-room-card {
+    border: none;
+    box-shadow: none;
+    width: inherit;
+    cursor: pointer;
+    padding: 12px;
+
+    &:hover {
+        background-color: $joolia-grey-300;
+    }
+
+    .chat-room-title {
+        padding: 5px 0 0 0;
+        font-weight: 500;
+        font-size: 15px;
+
+        p {
+            margin: 3px 0;
+        }
+    }
+
+    .chat-room-avatar {
+        color: $joolia-grey-500;
+    }
+
+    .text-light {
+        color: $joolia-black-transparent-54;
+    }
+}

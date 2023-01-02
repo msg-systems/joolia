@@ -1,0 +1,9 @@
+{
+    "phaseTemplate1": {
+        "id": "4a53989c-6d22-409e-ast7-5bd1b20db8d2",
+        "name": "Phase Template 1",
+        "category": "prototype",
+        "activityTemplateCount": 25,
+        "activityTemplates": []
+    }
+}

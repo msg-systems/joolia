@@ -1,0 +1,46 @@
+@import 'variables';
+
+.phase-title {
+    margin: 0;
+}
+
+.phase-title-divider {
+    border-bottom: 1px solid $joolia-black-transparent-20;
+}
+
+.phase-grid-list-overview {
+    padding: 16px 16px 32px 16px;
+
+    &.small {
+        padding: 12px 0 24px 0;
+    }
+
+    .phase-content {
+        > *:not(:last-child) {
+            margin-bottom: 16px;
+        }
+
+        .phase-card-title {
+            max-height: 128px;
+            overflow: hidden;
+        }
+
+        .date-picker:hover {
+            cursor: text;
+            border-radius: 4px;
+            background-color: $joolia-secondary-100;
+        }
+
+        .date-picker {
+            padding: 2px 0;
+        }
+
+        .phase-card-duration-icon {
+            margin-right: 8px;
+        }
+
+        .phase-card-visibility-icon {
+            padding: 5px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<div class="page-footer-container" fxLayout="column">
+    <div class="page-content" fxFlex="noshrink" fxLayout="column">
+        <router-outlet></router-outlet>
+    </div>
+
+    <footer>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="version-container" fxLayout="row wrap" fxLayoutAlign="start center">
+                <span class="mat-body-1" fxFlex="none">{{ version }}</span>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="end center">
+                <span class="mat-body-1" fxFlex="none" routerLink="/legal/information-and-terminology">
+                    {{ 'home.footer.terminology' | translate }}
+                </span>
+                <span class="mat-body-1" fxFlex="none" routerLink="/legal/privacy-policy">{{ 'home.footer.privacy' | translate }}</span>
+                <span class="mat-body-1" fxFlex="none" routerLink="/legal/terms-and-conditions">{{ 'home.footer.terms' | translate }}</span>
+                <span class="mat-body-1" fxFlex="none" routerLink="/legal/imprint">{{ 'home.footer.imprint' | translate }}</span>
+                <span class="mat-body-1" fxFlex="none">{{ 'home.footer.copyrightShort' | translate }}</span>
+            </div>
+        </div>
+    </footer>
+</div>

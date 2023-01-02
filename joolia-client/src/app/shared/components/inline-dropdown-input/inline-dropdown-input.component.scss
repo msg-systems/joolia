@@ -1,0 +1,22 @@
+@import 'variables';
+
+.inline-edit-dropdown-value-view {
+    padding: 0 4px;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: $joolia-secondary-200;
+    }
+}
+
+.inline-edit-dropdown-edit-container {
+    ::ng-deep .mat-form-field-infix {
+        padding: 0;
+        background-color: $joolia-secondary-200;
+
+        &:focus {
+            padding: 0;
+            background-color: $joolia-secondary-200;
+        }
+    }
+}

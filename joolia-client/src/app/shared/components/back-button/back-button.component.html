@@ -1,0 +1,4 @@
+<button class="back-button" mat-button color="primary" [routerLink]="routerLinkArg" (click)="onNavigateBack()">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    {{ label || 'buttons.back' | translate }}
+</button>

@@ -1,0 +1,42 @@
+@import 'variables';
+
+.format-template-details-container {
+    min-width: 240px;
+
+    .maincard-container {
+        padding: $joolia-main-content-gap;
+
+        &.small {
+            padding: $joolia-main-content-gap-small;
+        }
+
+        .format-template-details-card {
+            min-width: 0;
+            padding: 32px;
+            border: 1px solid $joolia-black-transparent-12;
+
+            .format-template-details-card-content > *:nth-child(n + 2) {
+                margin-top: 24px;
+            }
+
+            .format-template-details-card-content > *:nth-child(n) {
+                margin-bottom: 0;
+            }
+
+            .format-template-details-card-content {
+                max-width: 720px;
+                margin: auto;
+
+                .keyvisual {
+                    width: 100%;
+                    display: block;
+                    position: relative;
+                }
+
+                .template-creator {
+                    color: $joolia-secondary-900;
+                }
+            }
+        }
+    }
+}

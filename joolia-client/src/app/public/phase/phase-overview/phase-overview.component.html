@@ -1,0 +1,75 @@
+<loading-indicator *ngIf="!phaseListSorting"></loading-indicator>
+
+<div *ngIf="phaseListSorting" fxLayout="column">
+    <action-bar [showBackButton]="true" [actions]="actionBarActions"></action-bar>
+
+    <div class="format-details-schedule-overview" ngClass.lt-md="small" infinite-scroll (scrolled)="onLoadMore()"
+        [infiniteScrollDisabled]="isLoading || noMoreLoadable" [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle">
+        <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+
+        <div>
+            <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+        </div>
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.format.schedule' | translate }}</span>
+            <button [mat-menu-trigger-for]="menu" class="order-menu-button" mat-icon-button>
+                <mat-icon>sort</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button (click)="onOrderPhases('name')"
+                    [ngClass]="(orderBy.queryParam === 'name' || orderBy.queryParam === '-name')?'format-details-schedule-overview-sort-clicked' : ''"
+                    mat-menu-item>
+                    <mat-icon
+                        [ngClass]="(orderBy.queryParam === 'name' || orderBy.queryParam === '-name')?'format-details-schedule-overview-sort-clicked' : ''">
+                        {{orderObjects[0].icon}}
+                    </mat-icon>
+                    <span>{{ 'buttons.sortFormatOrPhase.byName' | translate }}</span>
+                </button>
+                <button (click)="onOrderPhases('startDate')"
+                    [ngClass]="(orderBy.queryParam === 'startDate' || orderBy.queryParam === '-startDate')?'format-details-schedule-overview-sort-clicked' : ''"
+                    mat-menu-item>
+                    <mat-icon
+                        [ngClass]="(orderBy.queryParam === 'startDate' || orderBy.queryParam === '-startDate')?'format-details-schedule-overview-sort-clicked' : ''">
+                        {{orderObjects[1].icon}}
+                    </mat-icon>
+                    <span>{{ 'buttons.sortFormatOrPhase.byDate' | translate }}</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <!-- Active phases -->
+        <phase-grid-list *ngIf="phaseListSorting.activePhases.length > 0" [headerText]="'labels.activePhases' | translate"
+            [phases]="phaseListSorting.activePhases" (itemClick)="onPhaseClick($event)" (itemUpdate)="onPhaseUpdate($event)"
+            [editable]="isEditAllowed">
+        </phase-grid-list>
+
+        <!-- Planned phases -->
+        <phase-grid-list *ngIf="phaseListSorting.plannedPhases.length > 0" [headerText]="'labels.plannedPhases' | translate"
+            [phases]="phaseListSorting.plannedPhases" (itemClick)="onPhaseClick($event)" (itemUpdate)="onPhaseUpdate($event)"
+            [editable]="isEditAllowed">
+        </phase-grid-list>
+
+        <!-- Unplanned phases -->
+        <phase-grid-list *ngIf="phaseListSorting.unplannedPhases.length > 0" [headerText]="'labels.unplannedPhases' | translate"
+            [phases]="phaseListSorting.unplannedPhases" (itemClick)="onPhaseClick($event)" (itemUpdate)="onPhaseUpdate($event)"
+            [editable]="isEditAllowed">
+        </phase-grid-list>
+
+        <!-- Past phases -->
+        <phase-grid-list *ngIf="phaseListSorting.pastPhases.length > 0" [headerText]="'labels.pastPhases' | translate"
+            [phases]="phaseListSorting.pastPhases" (itemClick)="onPhaseClick($event)" (itemUpdate)="onPhaseUpdate($event)"
+            [editable]="isEditAllowed">
+        </phase-grid-list>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+
+        <!-- Empty State -->
+        <div *ngIf="phaseList?.count < 1">
+            <empty-state [titleKey]="isEditAllowed ? 'emptyStates.phase.organizer.title' : 'emptyStates.phase.participant.title'"
+                [contentKey]="isEditAllowed ? 'emptyStates.phase.organizer.content' : 'emptyStates.phase.participant.content'"
+                altTextKey="emptyStates.phase.altText">
+            </empty-state>
+        </div>
+    </div>
+</div>

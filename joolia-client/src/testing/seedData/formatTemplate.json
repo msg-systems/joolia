@@ -1,0 +1,10 @@
+{
+    "formatTemplate1": {
+        "id": "4a53989c-6d22-409e-acb7-5bd1b20db8d2",
+        "name": "Activity Template 1",
+        "shortDescription": "This is a short description about the activity template 1.",
+        "description": "This description describes in fully details what this activity template is all about.",
+        "duration": 210,
+        "category": "implement"
+    }
+}

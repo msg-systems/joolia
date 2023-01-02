@@ -1,0 +1,16 @@
+components:
+  schemas:
+    Team:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        members:
+          $ref: '#/components/examples/UsersRole'
+  examples:
+    Teams:
+      type: array
+      items:
+        $ref: '#/components/schemas/Team'

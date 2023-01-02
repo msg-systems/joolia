@@ -1,0 +1,20 @@
+<div class="edit-link-dialog">
+    <div mat-dialog-title>
+        <div>{{ data.header | translate }}</div>
+        <div class="mat-body-1 subtitle text-word-break">{{ data.description | translate }}</div>
+    </div>
+
+    <mat-dialog-content class="mat-body-1">
+        <base-form-input [parentForm]="editLinkDialogForm" inputType="text" entityName="link" inputControlName="linkUrl"
+            [inputRequired]="true"></base-form-input>
+
+        <info-box *ngIf="invalidLinkError" boxDisplay="error" infoKey="errors.submit.invalidLink"></info-box>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ data.cancelKey | translate | uppercase }}</button>
+        <button mat-button color="warn" (click)="onDelete()"
+            [disabled]="deleteDisabled">{{ data.deleteKey | translate | uppercase }}</button>
+        <button mat-raised-button color="primary-800" (click)="onSubmit()">{{ data.confirmKey | translate | uppercase }}</button>
+    </mat-dialog-actions>
+</div>

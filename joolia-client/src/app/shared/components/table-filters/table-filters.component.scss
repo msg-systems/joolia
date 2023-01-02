@@ -1,0 +1,30 @@
+@import 'variables';
+
+.table-filters-container {
+    width: 100%;
+    min-width: 288px; // 320px (minimal screen width) - 2*16px (page-gap)
+
+    .table-filters {
+        background-color: $joolia-white;
+        padding: 8px 16px;
+
+        .mat-form-field {
+            margin-left: 16px;
+            margin-bottom: -1.34375em;
+
+            .mat-icon:not(.enabled) {
+                visibility: hidden;
+            }
+
+            .mat-icon.enabled {
+                cursor: pointer;
+                color: $joolia-black-transparent-60;
+            }
+        }
+    }
+
+    button.small {
+        line-height: 24px;
+        margin: 6px 0;
+    }
+}

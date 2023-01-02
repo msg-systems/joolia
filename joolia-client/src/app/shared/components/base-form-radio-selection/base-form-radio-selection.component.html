@@ -1,0 +1,10 @@
+<div *ngIf="optionDescriptionKey" class="mat-body-1 option-description">{{ optionDescriptionKey | translate }}</div>
+<mat-radio-group class="option-buttons" [value]="initialValue" (change)="onValueChange($event.value)" fxLayout="column">
+
+    <div *ngFor="let option of optionValues" class="option-line" fxLayout="row">
+        <mat-icon class="option-icon material-icons-outlined">{{option.icon}}</mat-icon>
+        <mat-radio-button [value]="option.value" [disabled]="!editable">
+            <span>{{ option.display | translate}}</span>
+        </mat-radio-button>
+    </div>
+</mat-radio-group>

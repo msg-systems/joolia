@@ -1,0 +1,33 @@
+<list-row-item ngClass.lt-md="small" [itemId]="user.id" (menuOpenClick)="onMenuOpenClick($event)" [menuActions]="userMenuActions"
+    [showAvatar]="true" [user]="user" [addCheckbox]="addCheckbox" [showCheckbox]="showCheckbox" (checkboxClick)="onCheckboxClick($event)">
+    <div list-row-header fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+        <!-- User name -->
+        <div *ngIf="!user.pending" class="mat-title text-truncate" [ngClass]="{'user-card-title-clickable': clickable}"
+            (click)="onItemClick($event)">{{ user.name }}</div>
+        <!-- User role and team count-->
+        <div *ngIf="!user.pending" fxLayout="row" fxLayoutAlign="end center">
+            <userrole-chip *ngIf="user.role" [userRole]="user.role"></userrole-chip>
+            <main-chip *ngIf="isFormatMember" [message]="'labels.amountTeams' | translate: { amount: user.teamCount }"></main-chip>
+        </div>
+        <div *ngIf="user.pending" class="mat-body-1 text-truncate">{{ 'labels.invitationPending' | translate }}</div>
+    </div>
+    <div list-row-header fxHide fxShow.lt-md fxLayout="row" fxLayoutAlign="space-between start">
+        <!-- User name -->
+        <div *ngIf="!user.pending" class="mat-title text-truncate" [ngClass]="{'user-card-title-clickable': clickable}"
+            (click)="onItemClick($event)">{{ user.name }}</div>
+        <div *ngIf="user.pending" class="mat-body-1 text-truncate">{{ 'labels.invitationPending' | translate }}</div>
+    </div>
+
+    <!-- email, company and skills-->
+    <div class="user-card-subcontent" fxHide.lt-md fxLayout="column" fxLayoutAlign="center start" fxShow list-row-content>
+        <span class="text-truncate">{{ user.email }}
+            <span *ngIf="!user.pending">&nbsp;{{ user.company ? '| ' + user.company : '' }}
+            </span>
+        </span>
+        <span class="user-card-skills" *ngIf="user.skills?.length > 0">{{getSkills()}}</span>
+    </div>
+    <div list-row-content fxHide fxShow.lt-md class="user-card-subcontent" fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="text-truncate">{{ user.email }}</span>
+    </div>
+
+</list-row-item>

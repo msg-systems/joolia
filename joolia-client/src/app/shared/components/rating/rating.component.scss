@@ -1,0 +1,30 @@
+@import 'variables';
+
+.icon-container {
+    position: relative;
+
+    .mat-icon {
+        color: $joolia-secondary-500;
+    }
+
+    .first-half,
+    .second-half {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+    }
+
+    .first-half {
+        left: 0;
+    }
+
+    .second-half {
+        right: 0;
+    }
+
+    .average-rating {
+        margin-left: 16px;
+    }
+}

@@ -1,0 +1,31 @@
+@import 'variables';
+
+.canvas-list {
+    mat-accordion {
+        margin-bottom: 1rem;
+    }
+
+    .panel-title {
+        max-width: 100%;
+    }
+
+    .mat-expansion {
+        &-panel {
+            border: 1px solid $joolia-grey-300;
+
+            margin: 1rem 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .action-container {
+        margin: 0 1rem;
+    }
+}

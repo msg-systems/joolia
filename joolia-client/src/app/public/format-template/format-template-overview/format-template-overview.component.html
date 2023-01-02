@@ -1,0 +1,87 @@
+<loading-indicator *ngIf="!formatTemplates"></loading-indicator>
+
+<div *ngIf="formatTemplates?.count > 0" class="library-details-format-templates" infinite-scroll
+    [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()"
+    [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+    <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+        gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="508px!" gdGap="32px" gdGap.lt-md="16px">
+        <list-card-item *ngFor="let formatTemplate of formatTemplates.entities" [itemId]="formatTemplate.id" [clickable]="true"
+            (itemClick)="onFormatTemplateClick(formatTemplate.id)" [menuActions]="formatTemplateMenuActions"
+            [keyVisual]="formatTemplate.keyVisual" showKeyVisual="true">
+            <div list-card-content class="format-template-card-content" fxLayout="column">
+                <!-- Format template name -->
+                <div clampy="3" class="mat-title text-word-break">{{ formatTemplate.name }}</div>
+
+                <div fxLayout="column" fxLayoutAlign="center start">
+
+                    <!-- Template Category -->
+                    <main-chip class="category-icon-chip" [icon]="getCategoryIcon(formatTemplate.category)" [outline]="true"
+                        [message]="'labels.categoryValue.' + formatTemplate.category | translate">
+                    </main-chip>
+
+                    <!-- Format template phase and method count -->
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <main-chip [message]="'labels.amountPhases' | translate: { amount: formatTemplate.phaseTemplateCount || 0 }">
+                        </main-chip>
+                        <main-chip [message]="'labels.amountMethods' | translate: { amount: formatTemplate.activityTemplateCount || 0 }">
+                        </main-chip>
+                    </div>
+                </div>
+
+                <!-- Format template description -->
+                <div class="template-description mat-body-1 white-space-pre-wrap text-word-break">
+                    <!-- clampy needs all these divs -->
+                    <div>
+                        <div clampy [clampyContent]="formatTemplate.shortDescription | addLinkTarget"></div>
+                    </div>
+                </div>
+            </div>
+        </list-card-item>
+    </div>
+
+    <div *ngIf="isListViewType()">
+        <mat-nav-list disableRipple>
+            <list-row-item *ngFor="let formatTemplate of formatTemplates.entities" ngClass.lt-md="small" [itemId]="formatTemplate.id"
+                [clickable]="true" (itemClick)="onFormatTemplateClick(formatTemplate.id)" [menuActions]="formatTemplateMenuActions"
+                [keyVisual]="formatTemplate.keyVisual" showKeyVisual="true">
+                <div list-row-header fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- Format template name -->
+                    <div class="mat-title text-truncate">{{ formatTemplate.name }}</div>
+                    <!-- Format template phase and method count -->
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                        <!-- Template Category -->
+                        <main-chip class="category-icon-chip" [icon]="getCategoryIcon(formatTemplate.category)" [outline]="true"
+                            [message]="'labels.categoryValue.' + formatTemplate.category | translate">
+                        </main-chip>
+                        <main-chip [message]="'labels.amountPhases' | translate: { amount: formatTemplate.phaseTemplateCount || 0 }">
+                        </main-chip>
+                        <main-chip [message]="'labels.amountMethods' | translate: { amount: formatTemplate.activityTemplateCount || 0 }">
+                        </main-chip>
+                    </div>
+                </div>
+                <div list-row-header fxHide fxShow.lt-md fxLayout="column" fxLayoutAlign="space-between start">
+                    <!-- Format template name -->
+                    <div class="mat-title text-truncate no-margin">{{ formatTemplate.name }}</div>
+                    <!-- Format template phase and method count -->
+                    <div class="chip joolia-chip-text">
+                        {{ 'labels.amountMethods' | translate: {amount: formatTemplate.activityTemplateCount || 0} }}
+                    </div>
+                    <div class="chip joolia-chip-text">
+                        {{ 'labels.amountPhases' | translate: {amount: formatTemplate.phaseTemplateCount || 0} }}
+                    </div>
+                </div>
+
+                <!-- Format template description -->
+                <span list-row-content class="text-truncate">
+                    {{ formatTemplate.shortDescription }}
+                </span>
+            </list-row-item>
+        </mat-nav-list>
+    </div>
+
+    <loading-indicator *ngIf="isLoading"></loading-indicator>
+</div>
+
+<!-- Empty State -->
+<empty-state *ngIf="formatTemplates && formatTemplates.count < 1" titleKey="emptyStates.formatTemplate.title"
+    contentKey="emptyStates.formatTemplate.content" altTextKey="emptyStates.formatTemplate.altText"></empty-state>

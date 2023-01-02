@@ -1,0 +1,104 @@
+entity: ActivityTemplate
+items:
+  ActivityTemplate1:
+    id: 759ae743-9f5e-4860-8584-e63a207b9cf6
+    name: 'Activity template labore'
+    duration: 3
+    shortDescription: ' duis labore sit labore'
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    library: '@library1'
+    createdBy: '@Luke'
+    keyVisual: '@KeyVisualActivityTemplateOne'
+    position: 0
+    phaseTemplate: '@phaseTemplate1'
+    category: 'explore'
+    configuration: '@ActivityConfigurationTwentySeven'
+
+  ActivityTemplate2:
+    id: ad70d080-ab7b-4a8a-bb45-37878054cb4e
+    name: 'Activity template non'
+    duration: 3
+    library: '@library1'
+    shortDescription: ' elit labore nisi ipsum'
+    description: ' Excepteur ullamco nisi nisi nulla cupidatat deserunt dolor dolore aute magna elit do exercitation.'
+    createdBy: '@Luke'
+    position: 0
+    phaseTemplate: '@phaseTemplate2'
+    category: 'explore'
+    configuration: '@ActivityConfigurationTwentyEight'
+
+  ActivityTemplate3:
+    id: 617ca630-315a-47a5-8a30-615629c405b7
+    name: 'Activity template veniam'
+    duration: 7
+    library: '@library2'
+    shortDescription: ' proident veniam nostrud officia'
+    description: ' Excepteur laborum aliquip labore aute reprehenderit.'
+    createdBy: '@Anakin'
+    phaseTemplate: '@phaseTemplate3'
+    position: 0
+    category: 'explore'
+    configuration: '@ActivityConfigurationTwentyNine'
+
+  ActivityTemplate4:
+    id: 434343ab-315a-47a5-8a30-615629c405b7
+    name: 'Activity template four'
+    duration: 70
+    library: '@library3'
+    shortDescription: ' proident veniam nostrud officia'
+    description: ' Excepteur laborum aliquip labore aute reprehenderit.'
+    createdBy: '@Anakin'
+    phaseTemplate: '@phaseTemplate3'
+    keyVisual: '@KeyVisualActivityTemplateFour'
+    position: 1
+    category: 'explore'
+    configuration: '@ActivityConfigurationThirty'
+
+  ActivityTemplate5:
+    id: 7fb214d2-8b05-4d61-99c1-baefe73ca309
+    name: 'Activity template cinque'
+    duration: 30
+    shortDescription: ' duis labore sit labore'
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    library: '@library1'
+    createdBy: '@Luke'
+    category: 'test'
+    configuration: '@ActivityConfigurationThirtyOne'
+
+  ActivityTemplate6:
+    id: 09c79a81-9f6a-4a8d-9f32-1002da151f23
+    name: 'Activity template six'
+    duration: 1440
+    shortDescription: ' duis labore sit labore'
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    library: '@library3'
+    createdBy: '@Luke'
+    category: 'ideate'
+    configuration: '@ActivityConfigurationThirtyTwo'
+
+  # Activities of PhaseTemplate5
+  ActivityTemplate7:
+    id: 6bfae780-b9d3-4d74-9828-792ab68f7304
+    name: 'Activity template seven'
+    duration: 1440
+    shortDescription: ' duis labore sit labore'
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    library: '@library2'
+    phaseTemplate: '@phaseTemplate5'
+    position: 0
+    createdBy: '@Luke'
+    category: 'explore'
+    configuration: '@ActivityConfigurationThirtyThree'
+
+  ActivityTemplate8:
+    id: 93448af8-69e8-4e4b-b2b5-413d941a2e7e
+    name: 'Activity template eight'
+    duration: 90
+    shortDescription: ' duis labore sit labore'
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    library: '@library2'
+    phaseTemplate: '@phaseTemplate5'
+    position: 1
+    createdBy: '@Luke'
+    category: 'explore'
+    configuration: '@ActivityConfigurationThirtyFour'

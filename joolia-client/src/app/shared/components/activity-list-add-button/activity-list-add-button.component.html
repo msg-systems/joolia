@@ -1,0 +1,9 @@
+<button mat-button disableRipple class="add-button" [ngClass]="{'add-button-end': isEndAddButton}" [matMenuTriggerFor]="addMenu">
+    <div class="add-button-bar">
+    </div>
+    <mat-icon class="add-button-icon">add</mat-icon>
+</button>
+<mat-menu #addMenu="matMenu">
+    <button mat-menu-item (click)="addActivity()">{{ 'buttons.addBlankMethod' | translate}}</button>
+    <button mat-menu-item (click)="addActivityFromTemplate()">{{ 'buttons.addMethodFromLibrary' | translate}}</button>
+</mat-menu>

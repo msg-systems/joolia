@@ -1,0 +1,120 @@
+@import 'variables';
+
+customer-journey-canvas .customer-journey-canvas .canvas {
+    &-grid {
+        &-big {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            grid-template-rows: 80px repeat(7, 150px);
+        }
+    }
+
+    &-cell {
+        background-color: $joolia-white;
+        border-radius: 0.5rem;
+        border: 1px solid $joolia-grey-300;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        margin-bottom: 1rem;
+        min-height: 100px;
+
+        &-no-content {
+            background-color: $joolia-primary-50;
+            border: none;
+        }
+
+        &-arrow {
+            width: calc(100% - 48px);
+            padding-left: 24px;
+            margin-right: 24px;
+            border: none;
+            border-radius: 0;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 0;
+                height: 0;
+                margin-right: -24px;
+                border-top: 40px solid transparent;
+                border-bottom: 40px solid transparent;
+                border-left: 24px solid $joolia-primary-50;
+            }
+
+            &:not(.first-arrow)::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                border-top: 40px solid transparent;
+                border-bottom: 40px solid transparent;
+                border-left: 24px solid $joolia-white;
+            }
+
+            .canvas-cell-title {
+                height: 80px;
+                overflow: hidden;
+            }
+
+            .inline-edit-text-container,
+            .inline-edit-text-view {
+                max-height: 64px;
+                overflow-y: auto;
+            }
+        }
+        &-height {
+            &-arrow {
+                height: 80px;
+                min-height: 80px;
+            }
+        }
+    }
+}
+
+customer-journey-canvas .canvas-small {
+    .mat-expansion {
+        &-panel {
+            margin: 1rem 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &-header {
+                min-height: 48px;
+                height: auto !important;
+                padding: 4px 24px;
+                border: 1px solid $joolia-grey-300;
+
+                inline-edit-text {
+                    width: calc(100% - 16px);
+                }
+            }
+
+            &-body {
+                padding: 0.5rem 24px 0 24px;
+            }
+
+            .row-container {
+                width: 100%;
+            }
+        }
+    }
+
+    .canvas-cell {
+        margin-top: 1rem;
+        height: 150px !important;
+        overflow-y: auto !important;
+    }
+}

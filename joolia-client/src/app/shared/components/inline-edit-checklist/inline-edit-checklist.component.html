@@ -1,0 +1,42 @@
+<!-- Display of all specified checklist items -->
+<div fxLayout="column" *ngFor="let item of items">
+    <div class="checklist-item" fxLayout="row" fxLayoutAlign="start center">
+
+        <mat-checkbox class="inline-checkbox" [checked]="item.checked" [disabled]="!checkable" (change)="onCheckEntry(item.itemId)">
+        </mat-checkbox>
+
+        <div [ngClass]="{'checklist-add-entry-input': editable}" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <inline-edit-text *appHasPermission="editable" [inputText]="item.content" inputClasses="mat-body-1" [editable]="editable"
+                (inputChange)="onEditEntry(item.itemId, $event)" [inputMaxLength]="itemMaxLengthValue" [allowNewLines]="false"
+                fxFlex="auto">
+                <div class="checklist-item-content mat-body-1 text-word-break">{{ item.content }}</div>
+            </inline-edit-text>
+
+            <div *appHasPermission="!editable" class="checklist-item-content mat-body-1 text-word-break">{{ item.content }}</div>
+            <mat-icon *appHasPermission="editable" class="checklist-item-delete" (click)="onDeleteEntry(item.itemId)">clear</mat-icon>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Add new checklist item -->
+<div *appHasPermission="editable" fxLayout="row" fxLayoutAlign="start center">
+
+    <mat-checkbox class="inline-checkbox" [disabled]="true"></mat-checkbox>
+
+    <input class="checklist-add-entry-input mat-body-1" id="addEntryInput" type="text" [placeholder]="'labels.clickToAddStep' | translate"
+        [(ngModel)]="newEntryText" (keyup.enter)="onAddEntry(newEntryText); focusInput();" (blur)="onAddEntry(newEntryText)"
+        [maxLength]="itemMaxLengthValue" fxFlex>
+
+</div>
+
+<div *ngIf="newEntryText.length > 0" fxLayout="row" fxLayoutAlign="start center">
+
+    <mat-checkbox class="inline-checkbox" [disabled]="true"></mat-checkbox>
+
+    <input class="checklist-add-entry-input mat-body-1" id="addEntryInput2" type="text" [placeholder]="'labels.clickToAddStep' | translate"
+        [maxLength]="itemMaxLengthValue" fxFlex>
+
+</div>

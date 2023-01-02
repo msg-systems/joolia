@@ -1,0 +1,20 @@
+@import 'variables';
+
+.error-container {
+    min-height: 100%;
+    padding: $joolia-content-gap;
+
+    &.small {
+        padding: $joolia-content-gap-small;
+    }
+
+    .error-card {
+        max-width: 100%;
+        padding: 24px;
+
+        .error-state-img {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+}

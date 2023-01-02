@@ -1,0 +1,50 @@
+<div class="meeting-join-dialog-container">
+
+    <div fxLayout="column" fxLayoutGap="60px">
+        <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="30px">
+            <!-- Camera icon -->
+            <div class="dialog-header">
+                <div class="video-call-icon-background" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                    <mat-icon class="video-call-icon">videocam</mat-icon>
+                </div>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="5px">
+                <!-- Dialog title -->
+                <h1 class="dialog-header" mat-dialog-title>{{title}}</h1>
+
+                <!-- Subtitle containing meeting room type and expiration time-->
+                <div class="mat-body-1 type-and-expiration" fxLayout.lt-md="column" fxLayoutAlign="center center">
+                    <span>{{ meetingTypeForTranslation | translate }}</span>
+                    <span *ngIf="hasExpiration">&nbsp;- {{ 'dialog.joinMeeting.expirationDate' | translate }}:
+                        {{ expirationTime | moment: 'L' }}</span>
+                </div>
+
+                <!-- Delete meeting room button -->
+                <button (click)='onDeleteMeeting()' *ngIf="canDeleteMeeting" color="primary-800"
+                    mat-raised-button>{{ 'buttons.deleteMeeting' | translate }}
+                </button>
+            </div>
+
+        </div>
+
+
+        <div fxLayoutAlign="start">
+            <button (blur)="onCopyLinkBlur()" (click)="onCopyLinkClick()" *ngIf="hasExpiration" [cdkCopyToClipboard]="meetingUrl"
+                [class]="copyLinkButton.styling" [disableRipple]="true" mat-flat-button>
+                <mat-icon>{{copyLinkButton.icon}}</mat-icon>
+                <span>
+                    {{copyLinkButton.text | translate}}
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Join meeting room button -->
+    <mat-dialog-actions>
+        <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+            <button color="primary-800" mat-button mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+            <button (click)='onJoinMeeting()' color="primary-800" mat-raised-button>{{ 'buttons.join' | translate }}</button>
+        </div>
+    </mat-dialog-actions>
+</div>

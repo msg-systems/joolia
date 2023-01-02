@@ -1,0 +1,63 @@
+@import 'variables';
+
+.library-details-activity-templates {
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    .activity-template-card-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        > *:not(:last-child) {
+            margin: 0 0 16px 0;
+        }
+
+        .duration-icon {
+            margin-right: 8px;
+        }
+
+        .template-description {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            > div {
+                height: 100%;
+                width: 100%;
+                min-height: 24px;
+
+                > div {
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+
+    .duration-icon {
+        margin-right: 8px;
+    }
+
+    .mat-title {
+        margin-bottom: 12px;
+    }
+
+    .no-margin {
+        margin: 0;
+    }
+
+    .category-icon-chip::ng-deep > div > mat-icon {
+        vertical-align: text-top;
+    }
+
+    .limit-width {
+        max-width: 100%;
+    }
+
+    list-row-item.small::ng-deep > mat-list-item {
+        height: auto;
+    }
+}

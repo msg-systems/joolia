@@ -1,0 +1,49 @@
+@import 'variables';
+
+.format-overview {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    > .site-title .wrap-text {
+        max-width: 100%;
+    }
+
+    .format-overview-card-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        > *:not(:last-child) {
+            margin: 0 0 16px 0;
+        }
+
+        .format-overview-card-time {
+            color: $joolia-grey;
+        }
+
+        .format-overview-card-description {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            > div {
+                height: 100%;
+                width: 100%;
+                min-height: 24px;
+
+                > div {
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}

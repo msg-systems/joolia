@@ -1,0 +1,40 @@
+<!-- Heading line -->
+<h1 mat-dialog-title>{{ 'dialog.addTeamMembers.header' | translate }}</h1>
+
+<form [formGroup]="teamAddMembersForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-dialog-content class="dialog-container" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle" [infiniteScrollDisabled]="isLoading || noMoreLoadable" [scrollWindow]="false"
+        (scrolled)="onLoadMore()">
+        <mat-selection-list formControlName="users">
+            <mat-divider></mat-divider>
+            <mat-list-option *ngFor="let user of availableUsers.entities" [value]="user" checkboxPosition="before">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="user-information text-truncate" fxLayout="column">
+                        <span class="text-truncate" [ngClass]="{ 'user-sub-information': user.pending }">{{
+                            user.pending ? ('labels.invitationPending' | translate) : user.name
+                        }}</span>
+                        <span class="mat-body-1 text-truncate user-sub-information"> {{ user.email }} </span>
+                    </div>
+                    <span class="mat-body-1" [ngClass]="isOrganizer(user.role) ? 'user-role-organizer' : 'user-role-participant'">
+                        {{ getRoleLabel(user.role) | translate }}
+                    </span>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-list-option>
+            <div *ngIf="isLoading" class="loading-indicator-container">
+                <loading-indicator></loading-indicator>
+            </div>
+            <p *ngIf="!isLoading && availableUsers.count === 0" class="text-grey mat-body">
+                {{ 'emptyStates.teamMember.addDialog' | translate }}
+            </p>
+        </mat-selection-list>
+    </mat-dialog-content>
+
+    <!-- Submit Button -->
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button *ngIf="availableUsers.count > 0" mat-raised-button color="primary-800" type="submit">
+            {{ 'dialog.addTeamMembers.confirm' | translate }}
+        </button>
+    </mat-dialog-actions>
+</form>

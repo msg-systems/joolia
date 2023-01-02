@@ -1,0 +1,303 @@
+entity: CanvasSlot
+items:
+  # CanvasOne
+
+  Slot1:
+    id: d3e38dd6-0a16-453e-9c08-0860f1cc33e6
+    title: 'Slot 1'
+    canvas: '@CanvasOne'
+    row: 1
+    column: 1
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 1
+  Slot2:
+    id: 244f56a1-3d34-487c-ba82-8ca2c6c6a03d
+    title: 'Slot 2'
+    canvas: '@CanvasOne'
+    row: 1
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 2
+  Slot3:
+    id: dc16a87c-ac38-4b72-8e9b-2650a2f3b832
+    title: 'Slot 3'
+    canvas: '@CanvasOne'
+    row: 1
+    column: 5
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 3
+  Slot4:
+    id: 4a783e82-22e0-41ff-aca3-0d4948ec44ba
+    title: 'Slot 4'
+    canvas: '@CanvasOne'
+    row: 1
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 4
+  Slot5:
+    id: afe7f88e-fa6c-41e3-8d31-33c0743d102d
+    title: 'Slot 5'
+    canvas: '@CanvasOne'
+    row: 1
+    column: 9
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 5
+  Slot6:
+    id: 9d723f74-95a7-4fb3-b86a-a065a87fea59
+    title: 'Slot 6'
+    canvas: '@CanvasOne'
+    row: 2
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 6
+  Slot7:
+    id: d81d1357-ad06-42d9-8383-34e63fac2110
+    title: 'Slot 7'
+    canvas: '@CanvasOne'
+    row: 2
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 7
+  Slot8:
+    id: 3c5497bd-37cf-4b81-8891-37b8877da462
+    title: 'Slot 8'
+    canvas: '@CanvasOne'
+    row: 3
+    column: 1
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 8
+  Slot9:
+    id: cae242e3-4ff2-4dc7-9bc1-f8d402e4f16f
+    title: 'Slot 9'
+    canvas: '@CanvasOne'
+    row: 3
+    column: 6
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 9
+
+  # CanvasTwo
+
+  Slot10:
+    id: '{{random.uuid}}'
+    title: 'Slot 1'
+    canvas: '@CanvasTwo'
+    row: 1
+    column: 1
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 1
+  Slot11:
+    id: '{{random.uuid}}'
+    title: 'Slot 2'
+    canvas: '@CanvasTwo'
+    row: 1
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 2
+  Slot12:
+    id: '{{random.uuid}}'
+    title: 'Slot 3'
+    canvas: '@CanvasTwo'
+    row: 1
+    column: 5
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 3
+  Slot13:
+    id: 36ccb72d-fe4f-4b42-8442-65c349c47ec5
+    title: 'Slot 4'
+    canvas: '@CanvasTwo'
+    row: 1
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 4
+  Slot14:
+    id: '{{random.uuid}}'
+    title: 'Slot 5'
+    canvas: '@CanvasTwo'
+    row: 1
+    column: 9
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 5
+  Slot15:
+    id: '{{random.uuid}}'
+    title: 'Slot 6'
+    canvas: '@CanvasTwo'
+    row: 2
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 6
+  Slot16:
+    id: '{{random.uuid}}'
+    title: 'Slot 7'
+    canvas: '@CanvasTwo'
+    row: 2
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 7
+  Slot17:
+    id: '{{random.uuid}}'
+    title: 'Slot 8'
+    canvas: '@CanvasTwo'
+    row: 3
+    column: 1
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 8
+  Slot18:
+    id: '{{random.uuid}}'
+    title: 'Slot 9'
+    canvas: '@CanvasTwo'
+    row: 3
+    column: 6
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 9
+
+  # CanvasThree
+
+  Slot19:
+    id: '{{random.uuid}}'
+    title: 'Slot 1'
+    canvas: '@CanvasThree'
+    row: 1
+    column: 1
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 1
+  Slot20:
+    id: 7940c5f0-2033-4a51-b590-6512da19b61c
+    title: 'Slot 2'
+    canvas: '@CanvasThree'
+    row: 1
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 2
+  Slot21:
+    id: 8bfaddbf-03d2-4fc7-88ac-7d265367a1cb
+    title: 'Slot 3'
+    canvas: '@CanvasThree'
+    row: 1
+    column: 5
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 3
+  Slot22:
+    id: '{{random.uuid}}'
+    title: 'Slot 4'
+    canvas: '@CanvasThree'
+    row: 1
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 4
+  Slot23:
+    id: '{{random.uuid}}'
+    title: 'Slot 5'
+    canvas: '@CanvasThree'
+    row: 1
+    column: 9
+    columnSpan: 2
+    rowSpan: 2
+    slotType: 'title_and_submissions'
+    sortOrder: 5
+  Slot24:
+    id: '{{random.uuid}}'
+    title: 'Slot 6'
+    canvas: '@CanvasThree'
+    row: 2
+    column: 3
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 6
+  Slot25:
+    id: '{{random.uuid}}'
+    title: 'Slot 7'
+    canvas: '@CanvasThree'
+    row: 2
+    column: 7
+    columnSpan: 2
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 7
+  Slot26:
+    id: '{{random.uuid}}'
+    title: 'Slot 8'
+    canvas: '@CanvasThree'
+    row: 3
+    column: 1
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 8
+  Slot27:
+    id: '{{random.uuid}}'
+    title: 'Slot 9'
+    canvas: '@CanvasThree'
+    row: 3
+    column: 6
+    columnSpan: 5
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 9
+
+  # CanvasFour
+
+  Slot28:
+    id: '{{random.uuid}}'
+    title: 'Slot 1'
+    canvas: '@CanvasFour'
+    row: 1
+    column: 1
+    columnSpan: 1
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 1
+  Slot29:
+    id: '{{random.uuid}}'
+    title: 'Slot 2'
+    canvas: '@CanvasFour'
+    row: 2
+    column: 1
+    columnSpan: 1
+    rowSpan: 1
+    slotType: 'title_and_submissions'
+    sortOrder: 2

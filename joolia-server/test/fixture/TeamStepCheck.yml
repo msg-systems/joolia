@@ -1,0 +1,11 @@
+entity: TeamStepCheck
+items:
+  StepCheckOne:
+    id: 6d708a7d-fb98-4059-a2ea-d2627edae755
+    step: '@StepTwo'
+    team: '@Team2'
+
+  StepCheckTwo:
+    id: 092262e6-a11f-48b8-8fd1-5f0a7c329d87
+    step: '@StepTwo'
+    team: '@Team1'

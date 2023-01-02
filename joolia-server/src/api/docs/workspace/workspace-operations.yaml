@@ -1,0 +1,289 @@
+/workspace:
+  post:
+    tags:
+      - Admin
+    description: Create a new workspace
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostWorkspaceBody'
+    responses:
+      '201':
+        description: Workspace created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workspace'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: 'The user must be admin'
+  get:
+    tags:
+      - Workspace
+    description: Retrieves all the workspaces the user is member of
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved many workspaces
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Workspaces'
+                  example:
+                    count: 2
+                    entities: [Workspace1, workspace2]
+
+      '400':
+        description: Selected field does not exist
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+/workspace/{workspaceId}:
+  get:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+      - $ref: '#/components/parameters/Selector'
+    description: Get a specific Workspace
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Workspace found and sent
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workspace'
+      '400':
+        description: Selected field does not exist
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+    description: Update specific fields from Workspace.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+            example:
+              description: 'This is a longer patched description for the Workspace'
+              name: 'Workspace patched'
+    responses:
+      '200':
+        description: Workspace updated successfully. Returns only the updated fields of the workspace.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Workspace'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Admin
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+    description: Delete specific workspace
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Workspace deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: 'The user must be admin'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/workspace/{workspaceId}/member:
+  get:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    description: Get members of specific workspace
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Workspace members retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: number
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Users'
+            examples:
+              count: 2
+              entities: [User1, User2]
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+    description: Add members to the workspace
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              invitationText:
+                type: string
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+            example:
+              invitationText: Hey there, let us innovate!
+              emails: ['tes123349810@example.com']
+
+    responses:
+      '200':
+        description: Members Added correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/UsersMembers'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/workspace/{workspaceId}/member/_delete:
+  post:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+    description: Delete members from workspace
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+            example:
+              emails: ['tes123349810@example.com']
+    responses:
+      '204':
+        description: Members deleted successfuly
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/workspace/{workspaceId}/format:
+  get:
+    tags:
+      - Workspace
+    parameters:
+      - $ref: '#/components/parameters/IdParameterWorkspace'
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    description: Get formats of specific workspace
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Workspace formats retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: number
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Formats'
+              example: "{count: 2, \n entities: [Format1, Format 2]}"
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of workspace
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterWorkspace:
+      in: path
+      name: workspaceId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the workspace
+    IdParameterMember:
+      in: path
+      name: memberId
+      schema:
+        type: string
+      required: true
+      description: The id of the user

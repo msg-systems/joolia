@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    font-family: Roboto, sans-serif;
+}
+
+.mail-wrapper {
+    width: 375px;
+    max-width: 375px;
+}
+
+.joolia-header {
+    height: 32px;
+    background-color: #1F223F;
+    text-align: center;
+}
+
+.mail-content > td {
+    vertical-align: top;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.header-image {
+    height: 24px;
+}
+
+.button-wrapper {
+    margin: 20px auto;
+}
+
+.button {
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+}
+
+.redirect-link {
+    text-decoration: none;
+    color: #6BA3FF;
+}
+
+.team-joolia {
+    font-size: 20px;
+    color: #FFA000;
+}
+
+.joolia-footer {
+    width: 100%;
+    height: 117px;
+    background-color: #FAFAFA;
+    text-align: center;
+    font-size: 10px;
+}
+
+.joolia-imprint {
+    font-size: 12px;
+    text-decoration: none;
+    color: #000000;
+}

@@ -1,0 +1,23 @@
+@import 'variables';
+
+.activity-details-steps-header {
+    margin-top: 32px;
+}
+
+.activity-details-steps-description {
+    margin-bottom: 8px;
+}
+
+.infotexts {
+    margin-top: 32px;
+    color: $joolia-grey;
+
+    > div:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .mat-icon {
+        margin-right: 8px;
+        color: $joolia-primary-a700;
+    }
+}

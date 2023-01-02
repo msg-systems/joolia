@@ -1,0 +1,61 @@
+components:
+  schemas:
+    Feedback:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 5
+          multipleOf: 0.5
+        comment:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+      example:
+        id: '114a350-29f8-11e9-b210-d663bd873d94'
+        rating: 2.5
+        comment: 'This submission really changed my mind. Well done.'
+        createdBy:
+          id: '114a350-29f8-11e9-b210-d663bd873a04'
+          name: 'Mei Näim'
+          email: 'me@msg.de'
+          company: 'msg'
+        createdAt: 2019-07-21T17:32:28Z
+        updatedAt: 2019-07-21T19:32:28Z
+  examples:
+    Feedbacks:
+      type: array
+      items:
+        $ref: '#/components/schemas/Feedback'
+      example:
+        id: '114a350-29f8-11e9-b210-d663bd873d93'
+        rating: 5
+        comment: 'I love what you`ve done here.'
+    PostSubmissionBody:
+      properties:
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 5
+          multipleOf: 0.5
+        comment:
+          type: string
+      required:
+        - rating
+      example:
+        rating: 3.5
+        comment: 'All in all a well done pdf.'

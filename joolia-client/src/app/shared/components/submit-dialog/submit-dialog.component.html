@@ -1,0 +1,51 @@
+<div class="submit-dialog">
+    <div mat-dialog-title>
+        <div>{{ data.headerKey | translate }}</div>
+        <div class="mat-body-1 subtitle text-word-break">{{ currentActivity.name }}</div>
+    </div>
+
+    <mat-dialog-content class="mat-body-1">
+        <div *ngIf="noTeamsError; else submitForm">{{ 'dialog.submit.errors.noTeams' | translate }}</div>
+
+        <ng-template #submitForm>
+            <div *ngIf="data.members.length === 1; else selectMember" class="text-word-break"
+                [innerHTML]="data.contentKey | translate: {userName: data.members[0].value.name}"></div>
+
+            <ng-template #selectMember>
+                <div>{{ data.contentKey | translate }}</div>
+
+                <base-form-select [parentForm]="submitDialogForm" entityName="participant" selectControlName="member"
+                    [selectionOptions]="data.members" [selectRequired]="true"></base-form-select>
+            </ng-template>
+
+            <base-form-select *ngIf="teams" [parentForm]="submitDialogForm" entityName="team" selectControlName="team"
+                [selectionOptions]="teams" [selectRequired]="true"></base-form-select>
+
+            <base-form-input [parentForm]="submitDialogForm" inputType="text" entityName="title" inputControlName="name"
+                [inputRequired]="true" [inputMaxLength]="characterLimits.name"></base-form-input>
+
+
+            <base-form-text-field [parentForm]="submitDialogForm" inputType="text" entityName="description" inputControlName="description"
+                [inputRequired]="false" [inputMaxLength]="characterLimits.description"></base-form-text-field>
+
+
+            <file-list [files]="files" [editable]="true" (fileDeleteClicked)="onFileDelete($event)"
+                (fileUploadOutput)="onUploadOutput($event)">
+            </file-list>
+        </ng-template>
+
+        <info-box *ngIf="outdatedActivityError" boxDisplay="error" infoKey="errors.submit.outdatedActivity"></info-box>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button *ngIf="noTeamsError; else submitBtns" mat-raised-button color="primary-800" mat-dialog-close>
+            {{ 'dialog.errors.confirm' | translate | uppercase }}
+        </button>
+        <ng-template #submitBtns>
+            <button [disabled]="isSubmitting" mat-button color="primary-800"
+                mat-dialog-close>{{ data.cancelKey | translate | uppercase }}</button>
+            <button [disabled]="isSubmitting" mat-raised-button color="primary-800"
+                (click)="onSubmit()">{{ data.submitKey | translate | uppercase }}</button>
+        </ng-template>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,27 @@
+<div class="table-filters-container">
+    <div class="table-filters" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon>filter_list</mat-icon>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <div *ngFor="let filter of filters" fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field [formGroup]="filtersForm" appearance="outline">
+                    <mat-label>{{ 'labels.' + filter.label | translate: { plural: 0 } }}</mat-label>
+                    <input #inputElement matInput [formControlName]="filter.key" [matAutocomplete]="auto"
+                        [matAutocompleteDisabled]="!filteredLists[filter.key]" (keyup.enter)="inputElement.blur()">
+
+                    <mat-icon [ngClass]="{ enabled: !!filtersForm.value[filter.key] }" matSuffix (click)="clearFilter(filter.key)">
+                        clear
+                    </mat-icon>
+                    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+                        <mat-option *ngFor="let element of filteredLists[filter.key] | async" [value]="element">
+                            <span>{{ element }}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center end">
+        <button mat-button color="primary" class="small" (click)="clearFilters()">{{ 'buttons.clearFilters' | translate }}</button>
+    </div>
+</div>

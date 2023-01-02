@@ -1,0 +1,264 @@
+/format/{formatId}/team:
+  get:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Get all teams of a specific format
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Format teams retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Teams'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  post:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Add team to specific format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+            required:
+              - name
+            example: "{\n\t\"name\": \"Team A\",\n}"
+    security:
+      - authentication: []
+    responses:
+      '201':
+        description: Team added correctly
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                format:
+                  type: string
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/team/{teamId}:
+  delete:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Delete sepecific team
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Team deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Add members to a specified team in a specified  format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Members added to the team
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/UsersRole'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  put:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Update a specified team's name in a specified format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+            required:
+              - name
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Team successfully updated. Returns only the updated fields of the team.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/Teams'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/team/{teamId}/availableNewMembers:
+  get:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Get a list of possible new members for a specific team
+    security:
+      - authentication: []
+    responses:
+      '201':
+        description: Format teams retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/UsersRole'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/team/{teamId}/_delete:
+  post:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Delete members from a team
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Members deleted from the team
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/format/{formatId}/team/{teamId}/submission:
+  get:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterTeam'
+    description: Get submissions of team
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: List of TeamSubmissions
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Submissions'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterTeam:
+      in: path
+      name: teamId
+      schema:
+        type: string
+        minimum: 1
+      required: true
+      description: The id of the team

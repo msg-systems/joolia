@@ -1,0 +1,17 @@
+{
+    "activityConfig1": {
+        "submissionModifySetting": "team",
+        "submissionViewSetting": "submitter",
+        "blocked": false
+    },
+    "activityConfig2": {
+        "submissionModifySetting": "team",
+        "submissionViewSetting": "submitter",
+        "blocked": true
+    },
+    "activityConfig3": {
+        "submissionModifySetting": "member",
+        "submissionViewSetting": "submitter",
+        "blocked": false
+    }
+}

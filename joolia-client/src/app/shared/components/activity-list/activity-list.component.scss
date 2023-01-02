@@ -1,0 +1,59 @@
+@import 'variables';
+
+.activity-item {
+    min-height: 32px;
+    width: 100%;
+}
+
+.cdk-drag-preview .activity-item {
+    transform: translateX(32px);
+    opacity: 0.8;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.list.cdk-drop-list-dragging .drag-element:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.add-button {
+    display: block;
+    width: 100%;
+    line-height: 0;
+
+    &:not(.end-add-button) {
+        height: 8px;
+    }
+
+    &.end-add-button {
+        margin-top: 4px;
+        margin-bottom: -6px;
+    }
+}
+
+.drag-element {
+    display: flex;
+}
+
+.spacing-bottom {
+    margin-bottom: 30px;
+
+    .drag-element,
+    .activity-item {
+        margin-bottom: 8px;
+    }
+}
+
+.blue-line {
+    width: 100%;
+    height: 2px;
+    background: $joolia-primary-a700;
+    margin-bottom: 12px;
+}
+
+.empty-agenda {
+    display: block;
+    text-align: center;
+}

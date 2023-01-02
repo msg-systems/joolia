@@ -1,0 +1,25 @@
+<div cdkDropList class="list" [ngClass]="{ 'spacing-bottom': !showButtons || !isAddAllowed }" [cdkDropListDisabled]="!isAddAllowed"
+    (cdkDropListDropped)="drop($event)">
+    <ng-container *ngFor="let activity of activityList.entities; index as i">
+        <div cdkDrag cdkDragLockAxis="y" class="drag-element" [ngStyle]="{'height': getHeight(activity),'max-height': getHeight(activity)}"
+            (cdkDragStarted)="dragStarted()" (cdkDragEnded)="dragEnded()">
+            <app-activity-item class="activity-item mat-typography"
+                [ngStyle]="{ 'height': getHeight(activity), 'max-height': getHeight(activity)}" [activity]="activity"
+                [timeslot]="getTimeslot(i)" [showButtons]="showButtons" [deleteAllowed]="isDeleteAllowed" [addAllowed]="isAddAllowed"
+                [dragged]="dragging" [isHourSchedule]="isHourSchedule" [focused]="focusedActivityId === activity.id"
+                (deleted)="deleteActivity($event)" (click)="onActivityClick(activity.id)">
+            </app-activity-item>
+        </div>
+        <activity-list-add-button *ngIf="showButtons && isAddAllowed && (i+1 < activityList.count)" class="add-button"
+            (add)="addActivity(i, false)" (addFromTemplate)="addActivity(i, true)" [isEndAddButton]="false">
+        </activity-list-add-button>
+    </ng-container>
+</div>
+
+<div *ngIf="activityList.count === 0" class="blue-line"></div>
+<span *ngIf="activityList.count === 0" class="empty-agenda">{{ (isAddAllowed ? 'labels.addFirstMethod' : 'labels.emptyAgenda') | translate}}
+</span>
+
+<activity-list-add-button *ngIf="showButtons && isAddAllowed" class="add-button end-add-button" [isEndAddButton]="true"
+    (add)="addActivity(activityList.count + 1, false)" (addFromTemplate)="addActivity(activityList.count + 1, true)">
+</activity-list-add-button>

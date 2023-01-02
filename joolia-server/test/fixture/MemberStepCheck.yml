@@ -1,0 +1,10 @@
+entity: MemberStepCheck
+items:
+  StepCheck1:
+    id: b64845de-5590-48f4-b75a-3c41e955ef37
+    step: '@StepSeven'
+    member: '@formatMember6'
+  StepCheck2:
+    id: 8fc7fa85-60f3-4aa0-8e6c-2d5be90fbea4
+    step: '@StepSeven'
+    member: '@formatMember4' # Mickey

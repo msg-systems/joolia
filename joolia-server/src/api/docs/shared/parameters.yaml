@@ -1,0 +1,54 @@
+components:
+  parameters:
+    Selector:
+      name: select
+      in: query
+      description: Selects specific field of the avaliable fields of the model
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ['id']
+      explode: false
+    Order:
+      name: order
+      in: query
+      description: Specifices the order of the receiving the objects by the avaliable fields of model
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          default: ascendent
+        example: ['-id']
+    Skip:
+      name: skip
+      in: query
+      description: Specifies the offset of the index query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      example: 0
+    Take:
+      name: take
+      in: query
+      description: Specifies the limit of the index query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: all
+      example: 5
+    Filter:
+      name: filter
+      in: query
+      description: Filters for attributes in query response
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ['like.activity = new method']

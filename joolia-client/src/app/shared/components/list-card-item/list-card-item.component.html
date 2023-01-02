@@ -1,0 +1,39 @@
+<mat-card class="mat-elevation-z0 list-card" [ngClass]="{'hover-highlight': clickable, 'no-hover': !clickable}" (click)="onItemClick()"
+    fxLayout="column" fxLayoutAlign="space-between stretch">
+
+
+    <div *ngIf="showKeyVisual" mat-card-image class="list-card-img-container">
+        <key-visual [keyVisual]="keyVisual" [zoom]="true" [showVideoThumbnail]="true" [smallerBorderRadius]="true"></key-visual>
+    </div>
+
+    <mat-card-header class="list-card-header">
+        <ng-content select="[list-card-header]"></ng-content>
+    </mat-card-header>
+
+    <mat-card-content class="list-card-content" fxFlex="auto">
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <ng-content select="[list-card-content]"></ng-content>
+            <mat-icon *ngIf="locked" class="list-card-lock-icon" aria-hidden="false" aria-label="lock-icon">lock</mat-icon>
+        </div>
+    </mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="space-between end">
+        <span class="mat-body-1 list-card-subcontent">{{ subContent }}</span>
+        <mat-card-actions *ngIf="menuActions?.length > 0" class="list-card-actions">
+            <button mat-icon-button [matMenuTriggerFor]="menu" (onMenuOpen)="onMenuOpenClick()" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" [class]="!menuActions[0].actionKey ? 'opacity-0' : ''">
+                <button (click)="action.actionFunction(itemId)" [ngStyle]="action.emptyAction ? { 'pointer-events': 'none' } : {}"
+                    *ngFor="let action of menuActions" mat-menu-item [disabled]="action.disabled">
+                    <span>{{ action.actionKey | translate }}</span>
+                </button>
+            </mat-menu>
+        </mat-card-actions>
+    </div>
+
+    <mat-card-footer *ngIf="showFooter" class="list-card-footer mat-body-1">
+        <ng-content select="[list-card-footer]"></ng-content>
+    </mat-card-footer>
+
+</mat-card>

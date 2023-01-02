@@ -1,0 +1,67 @@
+@import 'variables';
+
+.static-page {
+    padding: $joolia-content-gap;
+
+    mat-card {
+        padding: 32px 40px;
+        max-width: 1280px;
+
+        .site-title {
+            margin: 32px 0 20px 0;
+        }
+
+        ol {
+            counter-reset: item;
+            margin: 16px 0 16px;
+        }
+
+        ol li {
+            display: block;
+            position: relative;
+            font-weight: bold;
+        }
+
+        ol li ol li {
+            font-weight: normal;
+        }
+
+        ol li:before {
+            content: counters(item, '.') '.';
+            counter-increment: item;
+            position: absolute;
+            margin-right: 100%;
+            right: 10px; /* space between number and text */
+        }
+
+        ol ol ol {
+            counter-reset: alpha;
+            list-style-type: lower-alpha;
+        }
+
+        ol ol ol li:before {
+            counter-increment: alpha;
+            content: '(' counter(alpha, lower-alpha) ')';
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .chapter {
+            font-weight: normal;
+        }
+
+        .sub-list-item {
+            margin-left: 32px;
+        }
+    }
+
+    &.small {
+        padding: $joolia-content-gap-small;
+
+        mat-card {
+            padding: 16px 20px;
+        }
+    }
+}

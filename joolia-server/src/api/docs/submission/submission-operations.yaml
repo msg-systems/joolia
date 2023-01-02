@@ -1,0 +1,186 @@
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/submission:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+  post:
+    tags:
+      - Submission
+    description: Create a new submission of an activity
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostSubmissionBody'
+    responses:
+      '201':
+        description: Submission created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Submission'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of team
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Submission
+    description: Returns all submission of an activity which the user has access to
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all submissions of activity which the user has access to
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Submissions'
+              example:
+                count: 2
+                entities: [Submission1, Submission2]
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/submission/{submissionId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+    - $ref: '#/components/parameters/IdParameterSubmission'
+  get:
+    tags:
+      - Submission
+    description: Get specific submission of an activity
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: submissiom retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Submission'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of submitting team
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Submission
+    description: Update specific fields of a submission.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 55
+              description:
+                type: string
+    responses:
+      '200':
+        description: Submission updated successfully. Returns only the updated fields of the submission.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Submission'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the submitting team
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Submission
+    description: Delete specific submission
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Submission deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of submitting team, submitter or organizer
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/submission:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+
+  get:
+    tags:
+      - Submission
+    description: Returns all submission of a format
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+      - $ref: '#/components/parameters/Filter'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all submissions of one format
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Submissions'
+              example:
+                count: 2
+                entities: [Submission1, Submission2]
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterSubmission:
+      in: path
+      name: submissionId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the submission

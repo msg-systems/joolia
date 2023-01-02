@@ -1,0 +1,13 @@
+.git
+.vscode
+.idea
+*.md
+
+dev
+dist
+node_modules
+test
+out
+Jenkinsfile
+Dockerfile
+.env

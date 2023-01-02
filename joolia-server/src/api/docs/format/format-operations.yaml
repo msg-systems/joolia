@@ -1,0 +1,497 @@
+/format:
+  post:
+    tags:
+      - Format
+    description: Create a new format
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostFormatBody'
+    responses:
+      '201':
+        $ref: '#/components/responses/Created'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        description: The workspace in request body was not found
+  get:
+    tags:
+      - Format
+    description: Retrieves all the formats the user is member of
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all formats
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Formats'
+              example:
+                count: 0
+                entities: [Format1, Format2]
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+/format/{formatId}:
+  get:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific format
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Format retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Format'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Update specific fields of a format.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 55
+              description:
+                type: string
+              shortDescription:
+                type: string
+                maxLength: 150
+              imageUrl:
+                type: string
+              videoUrl:
+                type: string
+            example: "{\n\t\"name\": \"Testformat patched\",\n\t\"description\": \"Description for format patched\"\n\t\n}"
+    responses:
+      '200':
+        description: Format updated successfully. Returns only the updated fields of the format.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Format'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Delete sepecific format
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Format deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+format/{formatId}/member:
+  get:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    description: Get all members of a specific format
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Format members retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/UsersRole'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Add members to the format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+              role:
+                type: string
+                enum: [participant, organizer]
+                description: Defines the role the users will be added as
+              invitationText:
+                type: string
+            example:
+              role: participant
+              emails:
+                - john@wayne.de
+                - christian@bale.com
+              invitationText: 'join the army'
+            required:
+              - emails
+              - role
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Members Added correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/UsersRole'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+format/{formatId}/keyvisual:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+  put:
+    tags:
+      - Format
+    description: Creates metadata and reserves a new entry for storing the key visual or saves the link of the video.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/Link'
+              - $ref: '#/components/responses/FileMetadata'
+            example:
+              FileMetadata:
+                name: cool.jpg
+                size: 200
+              Link:
+                linkUrl: www.youtube.com
+            discriminator:
+              propertyName: linkUrl
+    responses:
+      '201':
+        description: File entry reserved correctly or link saved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyVisualEntry'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Format
+    description: Get the key visual signed URL.
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Url retrieved
+        content:
+          application/json:
+            schema:
+              properties:
+                fileUrl:
+                  type: string
+                  example: 'https://example.com/secure/abc0fe'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/member/{memberId}:
+  patch:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterMember'
+    description: Updates the role of a user in the format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              role:
+                type: string
+                enum: [participant, organizer]
+                description: Defines the role the users will be added as
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Member updated successfully
+        content:
+          application-json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                role:
+                  type: string
+                  enum: [participant, organizer]
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/member/_delete:
+  post:
+    tags:
+      - Format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    description: Delete members from format
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Members deleted successfully
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/file:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+
+  get:
+    tags:
+      - Format
+    description: Retrieves metadata for all stored files.
+    security:
+      - authentication: []
+
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/responseBodies/FileResponse'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  post:
+    tags:
+      - Format
+    description: Creates metadata and reserves a new entry for storing a file.
+    security:
+      - authentication: []
+
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostFileBody'
+
+    responses:
+      '201':
+        description: File metadata created and storage link reserved for uploading.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/file/{fileId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/FileIdParam'
+
+  post:
+    tags:
+      - Format
+    description: Flags a file as available to be retrieved.
+    security:
+      - authentication: []
+
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/responseBodies/FileResponse'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - Format
+    description: Removes the file.
+    security:
+      - authentication: []
+
+    responses:
+      '204':
+        description: 'File deleted.'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+format/_template:
+  post:
+    tags:
+      - Format
+    description: Create a format from a format template
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              workspaceId:
+                type: string
+                format: 'uuid'
+              formatTemplateId:
+                type: string
+                format: 'uuid'
+            required:
+              - workspaceId
+              - formatTemplateId
+    responses:
+      '201':
+        description: Format created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Format'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    FileIdParam:
+      in: path
+      name: fileId
+      schema:
+        type: string
+      required: true
+      description: The unique identifier of a file.
+    IdParameterFormat:
+      in: path
+      name: formatId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the format
+    IdParameterMember:
+      in: path
+      name: memberId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the user
+    examples:
+      FormatResponse:

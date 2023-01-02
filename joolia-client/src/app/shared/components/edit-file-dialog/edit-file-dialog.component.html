@@ -1,0 +1,19 @@
+<div class="edit-link-dialog">
+    <div mat-dialog-title>
+        <div>{{ data.headerKey | translate }}</div>
+        <div class="mat-body-1 subtitle text-word-break">{{ data.contentKey | translate: data.contentParams }}</div>
+    </div>
+
+    <mat-dialog-content class="mat-body-1">
+        <base-form-input [parentForm]="editFileDialogForm" inputType="text" entityName="fileName" inputControlName="fileName"
+            [inputRequired]="true"></base-form-input>
+
+        <base-form-input [parentForm]="editFileDialogForm" inputType="text" entityName="fileExtension" inputControlName="extension"
+            [inputRequired]="false"></base-form-input>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ data.cancelKey | translate | uppercase }}</button>
+        <button mat-raised-button color="primary-800" (click)="onSubmit()">{{ data.confirmKey | translate | uppercase }}</button>
+    </mat-dialog-actions>
+</div>

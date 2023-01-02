@@ -1,0 +1,37 @@
+@import 'variables';
+
+.library-overview {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+}
+
+.library-overview-card-item {
+    cursor: pointer;
+}
+
+.library-overview-card-title {
+    max-height: 128px;
+    overflow: hidden;
+}
+
+.chip-container {
+    margin-top: 16px;
+
+    .library-overview-chip {
+        background-color: $joolia-primary-50;
+        border-radius: 16px;
+        margin: 0 4px;
+        padding: 4px 12px;
+    }
+}
+
+.library-overview-card-title-container {
+    margin-bottom: 8px;
+}

@@ -1,0 +1,39 @@
+@import 'variables';
+
+.sign-up {
+    background-color: $joolia-white;
+
+    .sign-up-form {
+        max-width: 528px;
+        padding: 24px 40px;
+    }
+
+    .sign-up-title {
+        margin: 0;
+        padding-bottom: 24px;
+        color: $joolia-primary-500;
+    }
+
+    .sign-up-contact {
+        min-height: 64px;
+        padding-bottom: 16px;
+        padding-top: 16px;
+
+        ::ng-deep .mat-checkbox-layout {
+            white-space: normal !important;
+        }
+    }
+
+    .sign-up-contact-error {
+        padding-left: 24px;
+    }
+
+    .sign-up-button {
+        text-transform: uppercase;
+        margin: auto auto 24px 0;
+    }
+}
+
+.sign-up-picture {
+    max-width: 544px;
+}

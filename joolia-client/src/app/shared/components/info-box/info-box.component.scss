@@ -1,0 +1,12 @@
+@import 'variables';
+
+.info-box {
+    border: solid 1px;
+    border-radius: 4px;
+    padding: 16px 8px 8px 16px;
+}
+
+.success-box {
+    color: $joolia-success;
+    border-color: $joolia-success;
+}

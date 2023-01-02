@@ -1,0 +1,26 @@
+@import 'variables';
+
+.static-page {
+    padding: $joolia-content-gap;
+
+    mat-card {
+        padding: 32px 40px;
+        max-width: 1280px;
+
+        .site-title {
+            margin: 32px 0 20px 0;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+    }
+
+    &.small {
+        padding: $joolia-content-gap-small;
+
+        mat-card {
+            padding: 16px 20px;
+        }
+    }
+}

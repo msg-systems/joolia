@@ -1,0 +1,23 @@
+.option-description {
+    margin: 16px 0;
+}
+
+.option-buttons > mat-radio-button {
+    padding-left: 16px;
+
+    ::ng-deep .mat-radio-label {
+        white-space: normal;
+    }
+}
+
+.option-line {
+    margin-bottom: 16px;
+
+    > mat-radio-button span {
+        white-space: pre-line;
+    }
+}
+
+.option-icon {
+    margin-right: 8px;
+}

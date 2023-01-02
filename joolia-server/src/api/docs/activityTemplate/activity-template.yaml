@@ -1,0 +1,87 @@
+components:
+  schemas:
+    ActivityTemplate:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        shortDescription:
+          type: string
+        description:
+          type: string
+        createdBy:
+          $ref: '#/components/examples/UserCreatedBy'
+        duration:
+          type: integer
+        library:
+          $ref: '#/components/examples/ActivityLibrary'
+        configuration:
+          $ref: '#/components/examples/Configuration'
+        keyVisual:
+          $ref: '#/components/responses/FileMetadata'
+        stepTemplates:
+          description: stepTemplates of the original activity ordered by position
+          type: array
+          items:
+            $ref: '#/components/examples/StepTemplate'
+      example:
+        name: 'Name of an activity'
+        shortDescription: 'Short description of an activity'
+        description: 'Description of an activity'
+        duration: 30
+        createdBy:
+          id: '0004a350-29f8-11e9-b210-d663bd873d93'
+          name: 'Anakin'
+          company: 'Skywalker'
+          email: 'vader@sith-lords.com'
+        stepTemplates: [StepTempalte1, StepTemplate2]
+        configuration:
+          submissionModifySetting: member
+          submissionViewSetting: submitter
+
+  examples:
+    ActivityTemplates:
+      type: array
+      items:
+        $ref: '#/components/schemas/ActivityTemplate'
+      example:
+        id: 1
+        name: 'Name of an activity template'
+        shortDescription: 'Short description of an activity template'
+        description: 'Description of an activity template'
+        duration: 30
+        durationUnit: 'minutes'
+        createdBy:
+          id: '0004a350-29f8-11e9-b210-d663bd873d93'
+          name: 'Anakin'
+          company: 'Skywalker'
+          email: 'vader@sith-lords.com'
+        library:
+          id: 'aaa4a350-29f8-11e9-b210-d663bd873d93'
+          name: 'My Library'
+    StepTemplate:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        position:
+          type: integer
+          readOnly: true
+    ActivityLibrary:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: '0004a350-29f8-11e9-b210-d663bd873d93'
+        name:
+          type: string
+          readOnly: true
+          example: 'Library Name One'

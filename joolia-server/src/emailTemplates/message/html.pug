@@ -1,0 +1,24 @@
+doctype html
+head
+    style
+        include ../style.css
+
+table(class='mail-wrapper')
+
+    include ../header
+
+    tr(class='mail-content')
+        td
+            p #{message}
+
+            table(class='button-wrapper', align='center')
+                tr
+                    td
+                        a(class='button redirect-link', href=url) #{t('buttons.messageLink')}
+
+
+            p
+
+            p(class='team-joolia')= t('endings.teamJoolia')
+
+    include ../footer

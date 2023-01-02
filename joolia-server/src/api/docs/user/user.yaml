@@ -1,0 +1,80 @@
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+          writeOnly: true
+        company:
+          type: string
+        failedLoginAttempts:
+          type: number
+          minimum: 0
+        failedLoginTimeOut:
+          type: string
+          format: date
+        admin:
+          type: boolean
+        created_formats:
+          $ref: '#/components/examples/Formats'
+        assigned_workspaces:
+          $ref: '#/components/examples/Workspaces'
+        avatar:
+          $ref: '#/components/responses/FileMetadata'
+
+  examples:
+    UserRole:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+          enum: [participant, organizer]
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    UsersRole:
+      type: array
+      items:
+        $ref: '#/components/examples/UserRole'
+    UserCreatedBy:
+      description: Information of the user that created the format
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+        company:
+          type: string
+    UserMember:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+        company:
+          type: string
+    UsersMembers:
+      type: array
+      items:
+        $ref: '#/components/examples/UserMember'

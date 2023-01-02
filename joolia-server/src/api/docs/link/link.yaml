@@ -1,0 +1,37 @@
+components:
+  schemas:
+    Link:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        linkUrl:
+          type: string
+          example: 'https://youtube.com/abc0fe'
+        createdBy:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/examples/UserCreatedBy'
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2019-07-21T17:32:28Z
+          readOnly: true
+
+  parameters:
+    LinkIdParam:
+      in: path
+      name: linkId
+      schema:
+        type: string
+      required: true
+      description: The unique identifier of a Link.
+    EntityIdParam:
+      in: path
+      name: entityId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the related Entity (Format, Activity ..)

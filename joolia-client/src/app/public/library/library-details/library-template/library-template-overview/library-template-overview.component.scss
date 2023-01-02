@@ -1,0 +1,38 @@
+@import 'variables';
+
+.library-details-templates-container {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+
+        .library-view-toggle-group {
+            margin-top: 8px;
+        }
+    }
+}
+
+.library-details-templates {
+    margin-top: 32px;
+}
+
+.library-details-name-container {
+    margin-bottom: 12px;
+}
+
+.library-category-filter {
+    padding: $joolia-content-gap;
+
+    &.small {
+        padding: $joolia-content-gap-small;
+    }
+}
+
+.library-toggle {
+    padding: 0 0 8px 0;
+}
+
+.library-toggle-type,
+.library-toggle-view {
+    margin: 8px 0;
+}

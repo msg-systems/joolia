@@ -1,0 +1,91 @@
+<div *ngIf="canvas else Loading" class="mat-body-1 customer-journey-canvas">
+
+    <base-canvas-template [parent]="self" [displaySorting]="false" fxHide fxShow.gt-md>
+    </base-canvas-template>
+
+    <div fxShow fxHide.gt-md class="canvas-small">
+
+        <!--  Title  -->
+        <div class="canvas-title">
+            <inline-edit-text [inputText]="canvas.name" [inputMaxLength]="canvasNameMaxLengthValue" inputClasses="mat-display-1 text-black"
+                [editable]="canvasInput.isCanvasEditable" (inputChange)="onEditCanvasName($event)">
+                <span class="text-word-break">{{ canvas.name }}</span>
+            </inline-edit-text>
+        </div>
+
+        <mat-accordion *ngIf="canvas.slots">
+            <mat-expansion-panel class="mat-elevation-z0" *ngFor="let arrow of getArrowSlots(); index as i">
+
+                <mat-expansion-panel-header (keydown)="$event.preventDefault();">
+                    <!--  Arrow Title  -->
+                    <inline-edit-text [inputText]="arrow.title" [inputMaxLength]="slotTitleMaxLengthValue" inputClasses="mat-title"
+                        [editable]="canvasInput.isCanvasEditable" (inputChange)="onEditSlotTitle(arrow, $event)"
+                        (keydown)="$event.stopPropagation();">
+                        <span class="text-word-break mat-title">{{ arrow.title }}</span>
+                    </inline-edit-text>
+                </mat-expansion-panel-header>
+
+                <div fxFlex fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="1rem">
+                    <div *ngFor="let titleSlot of getRowTitleSlots()" class="row-container">
+
+                        <!-- Row Title  -->
+                        <inline-edit-text [inputText]="titleSlot.title" [inputMaxLength]="slotTitleMaxLengthValue"
+                            inputClasses="mat-subheading-2 text-medium" [editable]="canvasInput.isCanvasEditable"
+                            (inputChange)="onEditSlotTitle(titleSlot, $event)">
+                            <span class="mat-subheading-2 text-medium text-word-break">{{ titleSlot.title }}</span>
+                        </inline-edit-text>
+
+                        <div *ngIf="getContentSlot(arrow.column, titleSlot.row); let contentSlot" class="canvas-cell canvas-cell-height-1">
+
+                            <!--  Submissions  -->
+                            <div *ngIf="contentSlot.submissions" class="canvas-cell-content">
+
+                                <!--  Submission List  -->
+                                <div *ngFor="let submission of contentSlot.submissions" class="canvas-cell-content-item">
+                                    <div class="canvas-submission" [ngStyle]="{'border-color': submission.color}">
+                                        <inline-edit-text [inputText]="submission.content" [inputMaxLength]="submissionMaxLengthValue"
+                                            [editable]="canvasInput.isSubmissionEditable"
+                                            (inputChange)="onEditSubmissionContent(submission, $event)">
+                                            <span class="text-word-break">{{ submission.content }}</span>
+                                            <span *ngIf="canvasInput.displaySubmitterName"
+                                                class="submission-creator">{{ getSubmitter(submission) }}</span>
+                                        </inline-edit-text>
+                                        <!--  Submission Toolbar  -->
+                                        <app-canvas-submission-toolbar [editAllowed]="canvasInput.isSubmissionEditable"
+                                            [voteCount]="submission.voteCount" [isVotedByMe]="submission.me.isVotedByMe"
+                                            (deleted)="onDeleteSubmission(contentSlot.id, submission.id)"
+                                            (colorPicked)="onEditSubmissionColor(submission, $event)"
+                                            (toggleVote)="onVoteSubmissionClicked(submission)">
+                                        </app-canvas-submission-toolbar>
+                                    </div>
+                                </div>
+
+                                <!--  New Submission  -->
+                                <div *ngIf="showNewSubmission[contentSlot.id]" class="canvas-cell-content-item">
+                                    <inline-edit-text class="canvas-cell-content-item-text" [inputText]="newSubmissionText[contentSlot.id]"
+                                        [inputMaxLength]="submissionMaxLengthValue" [inputPlaceholderKey]="'labels.clickToAddSubmission'"
+                                        [editable]="true" (inputChange)="onAddSubmission(contentSlot, $event)">
+                                        <span class="text-word-break">{{ newSubmissionText[contentSlot.id] }}</span>
+                                    </inline-edit-text>
+                                </div>
+                            </div>
+
+                            <!--  Add Submission Fab  -->
+                            <div *ngIf="canvasInput.isSubmissionEditable" class="canvas-cell-buttons">
+                                <button class="canvas-cell-button" mat-mini-fab (click)="onClickAddSubmission(contentSlot)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+</div>
+
+<ng-template #Loading>
+    <loading-indicator fxFlex></loading-indicator>
+</ng-template>

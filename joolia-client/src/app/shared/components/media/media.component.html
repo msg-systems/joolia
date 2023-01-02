@@ -1,0 +1,15 @@
+<div class="keyvisual">
+    <key-visual [keyVisual]="keyVisual" [smallerBorderRadius]="smallerBorderRadius" [emptyStateKey]="emptyStateKey"></key-visual>
+</div>
+
+<div *ngIf="menuActions.length > 0" fxLayoutAlign="end center">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+    </button>
+</div>
+
+<mat-menu #menu="matMenu">
+    <button *ngFor="let action of menuActions" (click)="action.actionFunction()" mat-menu-item>
+        <span>{{ action.actionKey | translate }}</span>
+    </button>
+</mat-menu>

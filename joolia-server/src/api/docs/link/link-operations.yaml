@@ -1,0 +1,28 @@
+/checklink:
+  get:
+    tags:
+      - Link
+    description: Check if specific link is valid
+    security:
+      - authentication: []
+    parameters:
+      - name: link
+        in: query
+        schema:
+          type: string
+          pattern: /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/
+        description: The link to check
+        required: true
+    responses:
+      '200':
+        description: The link is valid return embeded link.
+        content:
+          application/json; charset=utf-8:
+            schema:
+              properties:
+                link:
+                  type: string
+      '400':
+        description: This video is not a valide you tube video
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'

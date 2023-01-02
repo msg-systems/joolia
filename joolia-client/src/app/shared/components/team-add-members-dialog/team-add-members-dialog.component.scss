@@ -1,0 +1,31 @@
+@import 'variables';
+
+.dialog-container {
+    min-height: 120px;
+}
+
+mat-list-option {
+    height: 64px !important; // The height needs to be adjusted but the original value is set by Angular Material, thus enforcing with !important.
+}
+
+.user-information {
+    & > span {
+        padding: 4px 0;
+    }
+
+    .user-sub-information {
+        color: $joolia-grey;
+    }
+}
+
+.user-role-organizer {
+    color: $joolia-secondary-500;
+}
+
+.user-role-participant {
+    color: $joolia-primary-a700;
+}
+
+.loading-indicator-container {
+    margin-top: 8px;
+}

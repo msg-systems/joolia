@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "rootDir": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "typeRoots": ["./src/typings", "./node_modules/@types"]
+    },
+    "include": ["src/**/*.ts", "test/**/*.ts", "db/**/*.ts"],
+    "exclude": ["node_modules"]
+}

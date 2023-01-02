@@ -1,0 +1,6 @@
+<loading-indicator *ngIf="!format"></loading-indicator>
+<app-sidenav *ngIf="format" [navigationOptions]="currentSidenavItems" [headerTitle]="format.name">
+    <router-outlet></router-outlet>
+    <app-messenger [context]="messengerContext"></app-messenger>
+    <div class="fake-google-recaptcha" *ngIf="fakeGoogleRecaptcha">fake reCAPTCHA</div>
+</app-sidenav>

@@ -1,0 +1,236 @@
+/library/{libraryId}/activity-template:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Library
+    description: Retrieves all the activity templates
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all activity templates
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/ActivityTemplates'
+              example:
+                count: 2
+                entities:
+                  - ActivityTemplate1
+                  - ActivityTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  post:
+    tags:
+      - Library
+    description: Create a new activity template
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              activityId:
+                type: string
+                format: uuid
+            required:
+              - activityId
+    responses:
+      '201':
+        description: Activity template created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/library/{libraryId}/activity-template/{activityTemplateId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterActivityTemplate'
+  get:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific Activity template
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Activity template retrieved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Library
+    description: Update specific fields of an activity template
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              duration:
+                type: integer
+              name:
+                type: string
+              shortDescription:
+                type: string
+              description:
+                type: string
+              createdBy:
+                $ref: '#/components/examples/UserCreatedBy'
+    responses:
+      '200':
+        description: Activity Template updated. Returning only the updated fields of the activity template.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/ActivityTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Library
+    description: Delete specific activity template
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Activity Template deleted
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/activity-template:
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Activity-Template
+    description: Retrieves all the activity templates of user's libraries
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all activity templates of user's libraries
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/ActivityTemplates'
+              example:
+                count: 2
+                entities:
+                  - ActivityTemplate1
+                  - ActivityTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/activity-template/{activityTemplateId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterActivityTemplate'
+  get:
+    tags:
+      - Activity-Template
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific Activity template
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Activity template retrieved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/library/{libraryId}/activity-template/{activityTemplateId}/keyvisual:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+    - $ref: '#/components/parameters/IdParameterActivityTemplate'
+  get:
+    tags:
+      - Library
+    description: Get the key visual signed URL.
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Url retrieved
+        content:
+          application/json:
+            schema:
+              properties:
+                fileUrl:
+                  type: string
+                  example: 'https://example.com/secure/abc0fe'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterActivityTemplate:
+      in: path
+      name: activityTempalateId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the activity template

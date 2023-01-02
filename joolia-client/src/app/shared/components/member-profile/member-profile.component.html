@@ -1,0 +1,22 @@
+<div class='member-profile' ngClass.lt-md="small" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap='32px'>
+    <!-- User avatar -->
+    <div matListAvatar class="member-profile-avatar">
+        <user-avatar [user]="member" [sizeInPx]="65"></user-avatar>
+    </div>
+
+    <!-- User name, email, company and skills-->
+    <div fxLayout="column" fxLayoutGap='8px'>
+        <h2 class="member-profile-name">{{member.name}}</h2>
+        <div class="member-profile-subcontent">{{member.email}}</div>
+        <div class="member-profile-subcontent" fxHide.lt-md fxLayout="column" fxLayoutAlign="center start" fxShow>
+            <span>{{ member.company }}
+                <span>&nbsp;{{ member.skills.length !== 0 ? '| ' + getSkills() : '' }}
+                </span>
+            </span>
+        </div>
+        <div fxHide fxShow.lt-md class="member-profile-subcontent" fxLayout="column" fxLayoutAlign="space-around start">
+            <span>{{ member.company }}</span>
+            <span *ngIf="member.skills?.length > 0">{{getSkills()}}</span>
+        </div>
+    </div>
+</div>

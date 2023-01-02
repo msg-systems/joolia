@@ -1,0 +1,59 @@
+<div *ngIf="workspace; else Loading" class="mat-body-1">
+    <action-bar [actions]="[]" [backRouterLink]="['/', 'workspace', 'overview']" [showBackButton]="true"
+        backLabelKey="buttons.backToWorkspaces">
+    </action-bar>
+
+    <div class="workspace-details-container" ngClass.lt-md="small">
+        <!-- Workspace Name -->
+        <div class="site-title" fxLayout="row" fxLayoutAlign="space-between center">
+            <inline-edit-text (inputChange)="onWorkspaceUpdate('name', $event)" [allowNewLines]="false" [editable]="isEditAllowed"
+                [inputMaxLength]="workspaceNameMaxLength" [inputText]="workspace?.name" inputClasses="mat-display-1 text-black">
+                <span class="text-word-break mat-display-1 text-black">{{ workspace.name }}</span>
+            </inline-edit-text>
+        </div>
+
+        <!-- Statistics -->
+        <entity-summary [entitySummary]="workspaceSummary"></entity-summary>
+
+        <div class="content-container" fxLayout="column">
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start" fxLayoutGap="32px">
+                <div class="workspace-logo-container" ngClass.gt-md="big">
+                    <!-- Logo -->
+                    <app-media [keyVisual]="workspace.logo" [menuActions]="logoMenuActions"
+                        [emptyStateKey]="isEditAllowed ? 'emptyStates.logo.content' : ''">
+                    </app-media>
+                </div>
+                <!-- Administrator list-->
+                <div class="admin-list" fxLayout="column" fxFlex>
+                    <div class="mat-subheading-1 text-medium text-word-break">{{ 'labels.administrator' | translate: { plural: 1 } }}</div>
+                    <mat-nav-list disableRipple>
+                        <user-list-item *ngFor="let admin of adminList?.entities" [user]="admin">
+                        </user-list-item>
+                    </mat-nav-list>
+                    <navigation-button [forwardIcon]="true" [labelKey]="'buttons.navigateToAdmins'"
+                        [routerLinkArg]="['workspace', workspace.id, 'members']" [queryParams]="{ admin: true }" fxLayoutAlign="end end">
+                    </navigation-button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="formatList" fxLayout="column" class="format-list">
+            <div class="mat-subheading-1 text-medium text-word-break">{{ 'labels.format' | translate: { plural: 1 } }}</div>
+            <format-list (formatClicked)="onFormatClick($event)" [formatList]="formatList" [formatMenuActions]="formatMenuActions">
+            </format-list>
+            <navigation-button [forwardIcon]="true" [labelKey]="'buttons.navigateToFormats'"
+                [routerLinkArg]="['workspace', workspace.id, 'formats']" class="format-navigation-button" fxLayoutAlign="end end">
+            </navigation-button>
+
+
+            <!-- Empty State -->
+            <empty-state *ngIf="formatList.count === 0" altTextKey="emptyStates.format.altText"
+                contentKey="emptyStates.format.contentWorkspaceOverview" titleKey="emptyStates.format.title">
+            </empty-state>
+        </div>
+    </div>
+</div>
+
+<ng-template #Loading>
+    <loading-indicator></loading-indicator>
+</ng-template>

@@ -1,0 +1,86 @@
+entity: Phase
+items:
+  PhaseOne:
+    id: 822db6a8-e884-49a3-8b91-2306630a366f
+    startDate: '2019-03-13T00:00:00Z'
+    durationUnit: days
+    name: 'Phase a'
+    format: '@FormatOne'
+    createdBy: '@Luke'
+  PhaseTwo:
+    id: 707e1c58-f962-4cb6-a3b0-c4b6c9a9df6c
+    startDate: '2019-03-13T16:45:00Z'
+    durationUnit: minutes
+    name: 'Phase b'
+    format: '@FormatOne'
+    createdBy: '@Luke'
+  PhaseThree:
+    id: 2a7a792a-e86b-4a4f-b10e-3badcc315e7a
+    startDate: '1973-10-31T05:00:00Z'
+    durationUnit: minutes
+    name: 'Phase c'
+    format: '@FormatOne'
+    createdBy: '@Luke'
+  PhaseFour:
+    id: 7db9e9f4-b86c-48a9-8e87-f020dd546994
+    startDate: '1973-10-31T05:00:00Z'
+    name: 'Phase d'
+    durationUnit: minutes
+    format: '@FormatFive'
+    createdBy: '@Luke'
+  PhaseFive:
+    id: d39f0d4c-b9ef-4ee7-9e7a-74fc569d209b
+    startDate: '1990-11-17T00:00:00Z'
+    durationUnit: days
+    name: 'Phase e'
+    format: '@FormatThree'
+    createdBy: '@Shaak'
+  PhaseSix:
+    id: 27f61117-37c1-4092-ae93-afcb5d96113b
+    startDate: '2024-11-13T00:00:00Z'
+    durationUnit: days
+    name: 'Phase f'
+    format: '@FormatTwo'
+    createdBy: '@Luke'
+  PhaseSeven:
+    id: 7f25d715-875b-4704-8b99-c80b9c73ace1
+    startDate: '2024-11-13T17:15:00Z'
+    durationUnit: minutes
+    name: 'Phase f'
+    format: '@FormatOne'
+    createdBy: '@Luke'
+  PhaseEight:
+    id: dfdfdfdf-b9ef-4ee7-9e7a-74fc569d209b
+    startDate: '2024-11-13T17:15:00Z'
+    durationUnit: minutes
+    name: 'Phase 8'
+    format: '@FormatFour'
+    createdBy: '@Shaak'
+  PhaseNine:
+    id: 930a99da-daa4-45cc-b94e-ca0c247da8c9
+    startDate: '2024-11-13T17:15:00Z'
+    durationUnit: minutes
+    name: 'Phase 9'
+    format: '@FormatSeven'
+    createdBy: '@Leia'
+  PhaseTen:
+    id: 78088f4d-4834-49cb-93bd-7dfcfd00067f
+    startDate: '2014-11-13T17:15:00Z'
+    durationUnit: minutes
+    name: 'Phase 10'
+    format: '@FormatEight'
+    createdBy: '@Leia'
+  PhaseEleven:
+    id: 52da38d9-9774-4818-b2bc-34eb578ec554
+    startDate: '2019-12-18T17:15:00Z'
+    durationUnit: minutes
+    name: 'Phase 11'
+    format: '@FormatSix'
+    createdBy: '@Shaak'
+  PhaseTwelve:
+    id: 36510d4b-987c-43c0-b4b4-ecde33ab2320
+    startDate: '2019-12-18T18:15:00Z'
+    durationUnit: minutes
+    name: 'Phase 12'
+    format: '@FormatNine'
+    createdBy: '@Luke'

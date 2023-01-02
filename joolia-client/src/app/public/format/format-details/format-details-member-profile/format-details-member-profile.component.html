@@ -1,0 +1,40 @@
+<loading-indicator *ngIf="!member"></loading-indicator>
+
+<div *ngIf="member" fxLayout="column" class="mat-body-1">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'format', currentFormat.id, 'members']"
+                backLabelKey="buttons.backToMembers"></action-bar>
+    <div class="format-details-member-profile" ngClass.lt-md="small">
+        <member-profile [member]='member'></member-profile>
+        <mat-tab-group>
+            <mat-tab label="{{ ('labels.team' | translate: { plural: 1 }) +' ('+ member.teamCount + ')' }}">
+                <!-- Team Cards -->
+                <div class="format-details-member-profile-team-overview-content" ngClass.lt-md="small" gdColumns="repeat(auto-fill, 22%)"
+                    gdColumns.lt-lg="repeat(auto-fill, 49%)" gdColumns.lt-md="repeat(auto-fill, 100%)" gdRows="154px!" gdGap="4%"
+                    gdGap.lt-lg="2%" fxFlex>
+                    <list-card-item *ngFor="let team of member.teams" [itemId]="team.id" [clickable]="team.me.isTeamMember"
+                        [locked]="!team.me.isTeamMember" (itemClick)="onTeamClick(team.id)">
+                        <div list-card-content class="format-details-member-profile-team-content" ngClass.lt-lg="small" fxLayout="row"
+                            fxLayoutAlign="start center">
+                            <!-- Team Avatar-->
+                            <div fxLayout="column" fxFlex="none">
+                                <user-avatar [team]="team" [sizeInPx]="77" [transparent]="true"
+                                    class="format-details-member-profile-team-avatar">
+                                </user-avatar>
+                            </div>
+
+                            <!-- Team Infos-->
+                            <div class="format-details-member-profile-team-title" ngClass.lt-lg="small" fxLayout="column"
+                                fxLayoutAlign="space-around start" fxFlex="auto" fxLayoutGap="16px">
+                                <h3 class="format-details-member-profile-team-name text-word-break" clampy>{{ team.name }}</h3>
+
+                                <div class="mat-body-3">
+                                    {{ 'labels.amountMembers' | translate: { amount: team.memberCount } }}
+                                </div>
+                            </div>
+                        </div>
+                    </list-card-item>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

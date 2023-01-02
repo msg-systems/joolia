@@ -1,0 +1,12 @@
+<div class="content-container" gdRows="repeat(auto-fill, auto-fill)">
+
+    <loading-indicator *ngIf="showLoadingSpinner" class="loading-shade" gdColumn="1 / 1" gdRow=" 1 / 1"></loading-indicator>
+
+    <ng-content gdColumn="1 / 1" gdRow=" 1 / 1"></ng-content>
+
+</div>
+
+<!-- Paginator -->
+<mat-paginator class="paginator" ngClass.lt-md="small" showFirstLastButtons (page)="onPaginationChange($event)"
+    [pageSizeOptions]="paginatorSizeOptions" [pageSize]="initialPaginatorSize" [length]="paginationLength">
+</mat-paginator>

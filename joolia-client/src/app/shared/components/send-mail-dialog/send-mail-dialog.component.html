@@ -1,0 +1,22 @@
+<!-- Dialog title -->
+<h1 class="mat-title" mat-dialog-title>{{ data.headerKey | translate }}</h1>
+
+<form [formGroup]="sendMailForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-dialog-content class="send-mail-dialog">
+
+        <!-- Dialog content -->
+        <div class="mat-body-1">{{ data.contentKey | translate }}</div>
+
+        <!-- Mail message text -->
+        <base-form-text-field [parentForm]="sendMailForm" entityName="mailMessage" inputControlName="mailMessage"
+            [inputMaxLength]="maxMailMessageLength"></base-form-text-field>
+        <p class="mat-body-1">{{data.contentParams.contentKey | translate: { receiver: data.contentParams.mailReceiver} }}</p>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.send' | translate }}</button>
+    </mat-dialog-actions>
+
+</form>

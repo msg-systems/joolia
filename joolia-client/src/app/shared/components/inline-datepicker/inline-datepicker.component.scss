@@ -1,0 +1,45 @@
+@import 'variables';
+
+.inline-date-show-input:hover {
+    cursor: text;
+    border-radius: 4px;
+    background-color: $joolia-secondary-200;
+}
+
+.inline-date-placeholder {
+    color: $joolia-grey;
+}
+
+.inline-date-input {
+    border: none;
+}
+
+.inline-date-input {
+    cursor: text;
+    padding: 0;
+    border-radius: 4px;
+    background-color: $joolia-secondary-200;
+
+    &:focus {
+        outline: 0;
+        border-radius: 4px;
+        background-color: $joolia-secondary-200;
+    }
+}
+
+.date-picker {
+    padding: 2px 0;
+}
+
+.inline-date-delete {
+    height: 20px;
+    width: 20px;
+    line-height: 0;
+}
+
+.inline-date-delete-icon, inline-date-delete-icon mat-icon {
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+}

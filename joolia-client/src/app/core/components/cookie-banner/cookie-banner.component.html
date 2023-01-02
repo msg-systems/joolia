@@ -1,0 +1,15 @@
+<div fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap.gt-sm="64px" fxLayoutGap="16px" fxLayoutAlign="center" class="cookie-banner">
+    <div fxLayout="column">
+        <div class="mat-title">{{ 'cookieBanner.header' | translate }}</div>
+        <div class="mat-body-1">{{ 'cookieBanner.section1' | translate }}</div>
+        <div class="mat-body-1">{{ 'cookieBanner.section2' | translate }}</div>
+    </div>
+    <div fxFlexAlign="end" fxLayoutGap="16px" class="buttons-container">
+        <button routerLink="/legal/information-and-terminology" mat-stroked-button color="primary-800" (click)="dismiss(false)">
+            {{ 'cookieBanner.moreButton' | translate | uppercase }}
+        </button>
+        <button mat-raised-button color="primary-800" (click)="dismiss(true)">
+            {{ 'cookieBanner.acceptButton' | translate | uppercase }}
+        </button>
+    </div>
+</div>

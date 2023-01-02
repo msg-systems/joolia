@@ -1,0 +1,67 @@
+@import 'variables';
+
+.team-details {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    .team-details-content {
+        .maincard {
+            border: 1px solid $joolia-black-transparent-12;
+        }
+
+        .submissions-container .margin-top {
+            margin-top: 24px;
+        }
+
+        &.big {
+            // two columns
+
+            .team-avatar {
+                margin-bottom: 16px;
+            }
+
+            .team-member-card {
+                margin-top: 16px;
+            }
+
+            .submissions-container {
+                margin-left: 32px;
+            }
+        }
+
+        &.medium {
+            // one column, but team-avatar not full size and members two columns
+
+            .team-avatar {
+                max-width: 65%;
+                align-self: center;
+            }
+
+            .submissions-container {
+                margin-top: 32px;
+                margin-bottom: 16px;
+            }
+
+            .team-member-card {
+                margin-top: 16px;
+                width: calc(50% - 8px);
+            }
+        }
+
+        &.small {
+            // one column
+
+            .submissions-container {
+                margin-top: 16px;
+                margin-bottom: 8px;
+            }
+
+            .team-member-card {
+                margin-top: 8px;
+            }
+        }
+    }
+}

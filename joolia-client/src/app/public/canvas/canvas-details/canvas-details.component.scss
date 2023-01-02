@@ -1,0 +1,21 @@
+@import 'variables';
+
+app-canvas-details .canvas-details-page {
+    .canvas-container {
+        padding: 0 32px 128px 32px;
+    }
+
+    userrole-chip {
+        margin-left: 32px;
+    }
+
+    .canvas-submitter-input-container {
+        background-color: $joolia-white;
+        max-width: 288px;
+        padding: 32px;
+
+        .mat-form-field-wrapper {
+            padding-bottom: 0 !important;
+        }
+    }
+}

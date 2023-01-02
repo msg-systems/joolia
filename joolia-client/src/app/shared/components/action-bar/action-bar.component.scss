@@ -1,0 +1,40 @@
+@import 'variables';
+:host {
+    display: block; // not that important, but improves consistency inside the DOM
+}
+
+.action-bar {
+    min-height: 16px; // main content has reduced gap on top when action-bar is present; this fixes the gap
+
+    .action-bar-back-button {
+        margin: 20px 20px 10px 32px;
+    }
+
+    &.small {
+        min-height: 8px;
+
+        .action-bar-back-button {
+            margin: 12px 12px 6px 16px;
+        }
+    }
+}
+
+.action-bar-buttons-container {
+    padding: 10px 22px 0 10px;
+
+    .action-bar-button {
+        text-transform: uppercase;
+        margin: 10px;
+        background-color: $joolia-primary-800;
+        color: $joolia-white;
+
+        &:disabled {
+            background-color: $joolia-grey-300;
+            color: $joolia-grey-500;
+        }
+    }
+}
+
+.action-bar-menu-button {
+    margin: 8px 12px 6px 8px;
+}

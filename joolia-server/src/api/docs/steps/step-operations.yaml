@@ -1,0 +1,165 @@
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/step:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+  get:
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+    tags:
+      - Activity
+    description: Get all steps of a specific activity
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Steps of activity retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Steps'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  post:
+    tags:
+      - Activity
+    description: Add step to specific activity
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/StepPostBody'
+    security:
+      - authentication: []
+    responses:
+      '201':
+        description: Step added correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Step'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/step/{stepId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+    - $ref: '#/components/parameters/IdParameterStep'
+  delete:
+    tags:
+      - Activity
+    description: Delete specific step
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Step deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Activity
+    description: Update specified step in a specified activity
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              description:
+                type: string
+            required:
+              - description
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: successfully updated step of activity returns updated fields
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                description:
+                  type: string
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/step/{stepId}/_check:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+    - $ref: '#/components/parameters/IdParameterStep'
+  post:
+    tags:
+      - Activity
+    description: Update done status of specific step
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              done:
+                type: boolean
+              checkedById:
+                description: id of the team or user who checks the step
+                type: string
+                format: uuid
+            required:
+              - checkedBy
+              - done
+    security:
+      - authentication: []
+    responses:
+      '201':
+        description: Step added correctly
+        content:
+          application/json:
+            schema:
+              properties:
+                done:
+                  type: boolean
+                checkedBy:
+                  description: id of the team or user who checks the step
+                  type: string
+                  format: uuid
+
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterStep:
+      in: path
+      name: stepId
+      schema:
+        type: string
+        format: uuid
+        minimum: 1
+      required: true
+      description: The id of the step

@@ -1,0 +1,17 @@
+<h1 class="mat-title" mat-dialog-title>{{ data.headerKey | translate }}</h1>
+
+<form [formGroup]="selectionDialogForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-dialog-content class="mat-body-1">
+        {{ data.contentKey | translate }}
+
+        <base-form-select *ngFor="let selectionDetail of data.selectionDetails" [parentForm]="selectionDialogForm"
+            [entityName]="selectionDetail.entityName" [selectControlName]="selectionDetail.entityName"
+            [selectionOptions]="selectionDetail.selectOptions" [selectRequired]="selectionDetail.required"></base-form-select>
+        <ng-content select="[dialog-extension]"></ng-content>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ data.cancelKey | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ data.confirmKey | translate }}</button>
+    </mat-dialog-actions>
+</form>

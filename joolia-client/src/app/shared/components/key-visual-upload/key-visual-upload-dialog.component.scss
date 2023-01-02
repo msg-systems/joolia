@@ -1,0 +1,86 @@
+@import 'variables';
+
+.mat-dialog-title {
+    text-align: center;
+}
+
+.mat-dialog-content {
+    padding: 0;
+    height: 50vh;
+    overflow: hidden;
+
+    .body-container {
+        // height of tab-header is 49px
+        height: calc(50vh - 49px);
+        padding: 5px;
+
+        > div.dotted-border {
+            border: 5px $joolia-black-transparent-12 dashed;
+            position: relative;
+        }
+
+        > div.dotted-border.is-drop-over {
+            background-color: $joolia-primary-50;
+        }
+
+        > div:not(.dotted-border) {
+            margin: 5px;
+        }
+
+        > div {
+            padding: 20px;
+            width: calc(100% - 20px);
+            max-height: 100%;
+            display: flex;
+            flex-grow: 1;
+
+            p {
+                color: $joolia-grey;
+            }
+
+            .progress-bar-container {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                right: 20px;
+
+                mat-progress-bar {
+                    margin-top: 8px;
+                }
+            }
+
+            image-cropper {
+                margin-top: 16px;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            base-form-input {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .video-container {
+                margin: auto;
+
+                iframe {
+                    border: none;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.mat-dialog-actions {
+    border-top: 1px solid $joolia-black-transparent-12;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 24px;
+}
+
+.transparent {
+    visibility: hidden;
+}

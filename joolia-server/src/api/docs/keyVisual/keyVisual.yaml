@@ -1,0 +1,16 @@
+components:
+  schemas:
+    KeyVisual:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/File'
+        - $ref: '#/components/schemas/Link'
+      discriminator:
+        propertyName: linkUrl
+      example:
+        File:
+          name: cool.jpg
+          size: 200
+          fileUrl: www.coolefile.com
+        Link:
+          linkUrl: www.youtube.com

@@ -1,0 +1,46 @@
+entity: KeyVisualFileEntry
+items:
+  ActivityKeyVisualOne:
+    ownerType: KeyVisual
+    id: ffc45c3d-6659-4aa6-94b6-567aa0490c61
+    versionId: 0085f193-5088-440d-94c4-4c68ea552a93
+    fileId: 09245a20-0373-4ed9-979b-9fb36482a845 # Matches existing file in Storage
+    contentType: 'image/jpeg'
+    size: 131800
+    createdBy: '@Luke'
+    createdAt: '2019-05-23 00:00:00'
+
+  ActivityTemplateKeyVisualOne:
+    ownerType: KeyVisual
+    id: 09245a20-0373-4ed9-979b-9fb36482b354
+    versionId: 0085f193-5088-440d-94c4-4c68ea552a93
+    fileId: 09245a20-0373-4ed9-979b-9fb36482a845 # Matches existing file in Storage
+    contentType: 'image/jpeg'
+    size: 131800
+    createdBy: '@Luke'
+    createdAt: '2019-05-23 00:00:00'
+
+  ActivityTemplateKeyVisualFour:
+    ownerType: KeyVisual
+    id: 09245a20-0373-4ed9-979b-9fb3648k5463
+    versionId: 418f8938-88c7-4f2d-83a5-77f9e9bf4058
+    contentType: 'image/jpeg'
+    size: 15
+    createdBy: '@Leia'
+    createdAt: '2010-05-23 00:00:00'
+
+  FormatKeyVisual:
+    ownerType: KeyVisual
+    id: 817c3745-2a15-4dbd-a34b-ac0dfc3a4314
+    fileId: 817c3745-2a15-4dbd-a34b-ac0dfc3a4314 # Matches existing file in Storage
+    versionId: 0KrEC8P0bKgDe6p6NnNqiCki69fVIs79 # Provide to file requirement in DB
+    contentType: 'image/png'
+    createdBy: '@Luke'
+    createdAt: '2019-05-09 10:44:32'
+
+  FormatTemplateKeyVisual:
+    ownerType: KeyVisual
+    versionId: ed7dc615-3e3a-4919-be45-9d42e832e6bd
+    id: 817c3745-2a15-4dbd-a34b-ac0dfc3a7894
+    createdBy: '@Luke'
+    createdAt: '2019-05-09 10:44:32'

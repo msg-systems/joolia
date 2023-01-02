@@ -1,0 +1,17 @@
+# Relations between key visual files and entities (format, activity, activityTemplate, formatTemplate)
+entity: KeyVisualFile
+items:
+  KeyVisualEntryOne:
+    keyVisualFile: '@FormatKeyVisual'
+
+  KeyVisualEntryTemplateOne:
+    keyVisualFile: '@FormatTemplateKeyVisual'
+
+  KeyVisualActivity:
+    keyVisualFile: '@ActivityKeyVisualOne'
+
+  KeyVisualActivityTemplateOne:
+    keyVisualFile: '@ActivityTemplateKeyVisualOne'
+
+  KeyVisualActivityTemplateFour:
+    keyVisualFile: '@ActivityTemplateKeyVisualFour'

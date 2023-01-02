@@ -1,0 +1,184 @@
+/format-template:
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Format Template
+    description: Retrieves all the format templates of the user libraries
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all format templates
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/FormatTemplates'
+              example:
+                count: 2
+                entities:
+                  - FormatTemplate1
+                  - FormatTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+
+/library/{libraryId}/format-template:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+  security:
+    - authentication: []
+  get:
+    tags:
+      - Library
+    description: Retrieves all the format templates of specific library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all format templates of specific library
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/FormatTemplates'
+              example:
+                count: 2
+                entities:
+                  - FormatTemplate1
+                  - FormatTemplate2
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  post:
+    tags:
+      - Library
+    description: Create a new format template
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              formatId:
+                type: string
+                format: uuid
+            required:
+              - formatId
+    responses:
+      '201':
+        description: Format template created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/library/{libraryId}/format-template/{formatTemplateId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterLibrary'
+    - $ref: '#/components/parameters/IdParameterFormatTemplate'
+  get:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific format template
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Format template retrieved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormatTemplate'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+    description: Delete specific format template
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Format template deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/library/{libraryId}/format-template/{formatTemplateId}/keyvisual:
+  get:
+    tags:
+      - Library
+    description: Get the key visual signed URL.
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Url retrieved
+        content:
+          application/json:
+            schema:
+              properties:
+                fileUrl:
+                  type: string
+                  example: 'https://example.com/secure/abc0fe'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    IdParameterFormatTemplate:
+      in: path
+      name: formatTempalateId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the format template

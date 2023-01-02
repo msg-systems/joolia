@@ -1,0 +1,42 @@
+<mat-list-item class="mat-elevation-z0 list-row" [ngClass]="{'hover-highlight': clickable, 'no-hover': !clickable}" (click)="onItemClick()">
+
+    <div *ngIf="addCheckbox" matListIcon class="list-row-item-checkbox-container">
+        <mat-checkbox *ngIf="showCheckbox" [(ngModel)]="user.selected" (change)="onCheckboxChanged($event)"></mat-checkbox>
+    </div>
+
+    <!--Icon-->
+    <div *ngIf="showKeyVisual" matListAvatar class="list-row-item-avatar-container mat-list-avatar">
+        <key-visual [keyVisual]="keyVisual" [zoom]="true" [showVideoThumbnail]="true"></key-visual>
+    </div>
+
+    <!-- User avatar -->
+    <div *ngIf="showAvatar" matListAvatar class="list-row-item-avatar-container mat-list-avatar">
+        <user-avatar [user]="user" [sizeInPx]="65"></user-avatar>
+    </div>
+
+    <!--Headerline-->
+    <div matLine>
+        <ng-content select="[list-row-header]"></ng-content>
+    </div>
+
+    <!-- Description -->
+    <div matLine class="list-row-content">
+        <ng-content select="[list-row-content]" fxLayoutAlign="start center"></ng-content>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="list-row-actions-container" fxLayout="row" fxLayoutAlign="end center">
+        <span class="mat-body-1 list-row-subcontent">{{ subContent }}</span>
+        <mat-card-actions *ngIf="menuActions?.length > 0" class="list-row-actions">
+            <button mat-icon-button [matMenuTriggerFor]="menu" (onMenuOpen)="onMenuOpenClick()" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" [class]="!menuActions[0].actionKey ? 'opacity-0' : ''">
+                <button *ngFor="let action of menuActions" (click)="action.actionFunction(itemId)"
+                    [ngStyle]="action.emptyAction ? { 'pointer-events': 'none' } : {}" mat-menu-item [disabled]="action.disabled">
+                    <span>{{ action.actionKey | translate }}</span>
+                </button>
+            </mat-menu>
+        </mat-card-actions>
+    </div>
+</mat-list-item>

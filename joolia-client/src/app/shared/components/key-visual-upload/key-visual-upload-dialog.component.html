@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>{{ 'dialog.uploadKeyVisual.header' | translate }}</h1>
+
+<mat-dialog-content>
+    <mat-tab-group animationDuration="0ms" disableRipple class="custom-tab-header" (selectedTabChange)="onTabChange($event)">
+        <mat-tab>
+            <ng-template mat-tab-label>{{ 'dialog.uploadKeyVisual.image.tab' | translate}}</ng-template>
+
+            <div class="body-container" ngFileDrop [options]="uploadOptions" (uploadOutput)="onUploadOutput($event)"
+                [uploadInput]="uploadInput" fxLayout="column" fxLayoutAlign="center center">
+
+                <div fxLayout="column" fxLayoutAlign="center center" class="dotted-border" [ngClass]="{ 'is-drop-over': dragOver }">
+                    <p *ngIf="!file" class="mat-body-1">{{ 'dialog.uploadKeyVisual.image.content' | translate }}</p>
+                    <input class="hide" type="file" ngFileSelect [options]="uploadOptions" (uploadOutput)="onUploadOutput($event)"
+                        [uploadInput]="uploadInput" #fileInput>
+                    <button [ngClass]="{'transparent': isUploading}" mat-stroked-button color="primary" (click)="fileInput.click()">
+                        {{ 'dialog.uploadKeyVisual.image.select' | translate | uppercase }}
+                    </button>
+
+                    <div [ngClass]="{'transparent': !isUploading}" class="progress-bar-container">
+                        <div class="mat-body-1">{{ 'dialog.uploadKeyVisual.image.uploading' | translate }}</div>
+                        <mat-progress-bar mode="determinate" [value]="file?.progress.data.percentage || 0"></mat-progress-bar>
+                    </div>
+
+                    <image-cropper [imageFileChanged]="imageFileChanged" [maintainAspectRatio]=false (imageCropped)="imageCropped($event)">
+                    </image-cropper>
+                </div>
+
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>{{ 'dialog.uploadKeyVisual.link.tab' | translate}}</ng-template>
+
+            <div class="body-container" fxLayout="column" fxLayoutAlign="center center">
+
+                <div fxLayout="column" fxLayoutAlign="start start">
+                    <div class="mat-body-1">{{ 'dialog.uploadKeyVisual.link.content' | translate }}</div>
+                    <base-form-input [parentForm]="videoForm" entityName="video" inputControlName="video" [inputRequired]="true">
+                    </base-form-input>
+                    <div *ngIf="videoForm.touched && videoForm.valid" class="video-container" fxFlex fxLayout="column"
+                        fxLayoutAlign="center center">
+                        <iframe *ngIf="embeddedVideoUrl" [src]="embeddedVideoUrl | safeUrl "></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="column" fxLayoutGap="16px">
+    <div class="copyright-notice">{{ 'copyrightNotice' | translate }}</div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlexFill>
+        <button [disabled]="isUploading" mat-button color="primary-800"
+            (click)="onCancel()">{{ 'buttons.cancel' | translate | uppercase }}</button>
+        <button [disabled]="isUploading" mat-raised-button color="primary-800" cdkFocusInitial (click)="onUploadKeyVisual()">
+            {{ 'dialog.uploadKeyVisual.confirm' | translate | uppercase }}
+        </button>
+    </div>
+</mat-dialog-actions>

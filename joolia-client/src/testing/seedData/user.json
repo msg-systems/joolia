@@ -1,0 +1,58 @@
+{
+    "luke": {
+        "name": "Luke",
+        "company": "",
+        "email": "luke@alliance.com",
+        "password": "12345678",
+        "id": "0004a350-29f8-11e9-b210-d663bd873d93"
+    },
+    "anakin": {
+        "name": "Anakin",
+        "company": "{{company.companyName}}",
+        "email": "vader@sith-lords.com",
+        "password": "12345678",
+        "id": "0871efb6-29f8-11e9-b210-d663bd873d93"
+    },
+    "leia": {
+        "name": "Leia",
+        "company": "minnosphere GmbH",
+        "email": "princess@alliance.com",
+        "password": "12345678",
+        "id": "166178c6-29f8-11e9-b210-d663bd873d93"
+    },
+    "mickey": {
+        "name": "Mickey",
+        "company": "minnosphere GmbH",
+        "email": "mickey@disney.com",
+        "password": "12345678",
+        "id": "202d5a50-29f8-11e9-b210-d663bd873d93"
+    },
+    "obiwan": {
+        "name": "Obi-Wan",
+        "company": "minnosphere GmbH",
+        "email": "obi.wan@jedi-order.com",
+        "password": "12345678",
+        "id": "2910391c-29f8-11e9-b210-d663bd873d93"
+    },
+    "george": {
+        "name": "George",
+        "company": "minnosphere GmbH",
+        "email": "thebossman@lucasfilm.com",
+        "password": "12345678",
+        "id": "329e405a-29f8-11e9-b210-d663bd873d93"
+    },
+    "shaak": {
+        "name": "Shaak",
+        "company": "minnosphere GmbH",
+        "email": "shaak.ti@jedi-order.com",
+        "password": "12345678",
+        "id": "474e7546-d545-40cd-8545-2c824c9979fa"
+    },
+    "dummy": {
+        "name": "Dummy",
+        "company": "minnosphere GmbH",
+        "email": "dummy@email.com",
+        "password": "12345678",
+        "id": "98f4396d-7168-4070-951b-f29d75d12291"
+    }
+}

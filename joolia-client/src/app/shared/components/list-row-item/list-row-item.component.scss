@@ -1,0 +1,55 @@
+@import 'variables';
+
+.list-row-item-checkbox-container {
+    margin-right: 12px;
+}
+
+.list-row-item-avatar-container {
+    position: relative;
+}
+
+.list-row-content {
+    margin-top: 16px !important;
+    min-height: 28px;
+    position: relative;
+}
+
+.mat-list-avatar {
+    width: 65px !important;
+    height: 65px !important;
+}
+
+.list-row {
+    padding: 8px 0px;
+    background-color: $joolia-white;
+    border: 1px solid $joolia-black-transparent-12;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    // needed because of magic number in nav-base-item (72px)
+    height: 92px !important;
+
+    &:hover {
+        background-color: $joolia-white;
+    }
+}
+
+.list-row-actions-container {
+    margin-top: 40px;
+}
+
+.list-row-actions {
+    margin-left: 4px;
+    margin-right: -14px;
+    padding: 0;
+
+    .mat-icon {
+        &:hover {
+            background-color: $joolia-black-transparent-12;
+            border-radius: 50%;
+        }
+    }
+}
+
+::ng-deep .mat-title {
+    margin-bottom: 0 !important;
+}

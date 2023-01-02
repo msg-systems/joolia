@@ -1,0 +1,35 @@
+<div class="comment-container">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <h2>{{ 'labels.comments' | translate }} ({{ comments.count ? comments.count : 0 }})</h2>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" class="comment-input" *ngIf="displayCommentInput">
+        <user-avatar [sizeInPx]="50" [user]="currentUser" fxFlex="66px"></user-avatar>
+        <div fxLayout="column" fxFlex="auto">
+            <div fxLayout.xs="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+                <mat-form-field color="primary" appearance="legacy" fxFlex="80" fxFlex.sm="70">
+                    <textarea #comment matInput [maxLength]="characterLimits.comment"
+                        placeholder="{{ 'labels.addComment' | translate }}"></textarea>
+                </mat-form-field>
+                <button class="sendButton" mat-button color="primary" (click)="onSend(comment)">
+                    {{ 'buttons.sendComment' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="comment" *ngFor="let comment of comments.entities">
+        <div *ngIf="checkPermission(comment)" class="comment-delete" (click)="onDelete(comment)">
+            <mat-icon class="material-icons-outlined">delete</mat-icon>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="comment-header">
+            <user-avatar [sizeInPx]="50" [user]="comment.createdBy" fxFlex="66px"></user-avatar>
+            <div fxFlex="90" fxFlex.sm="80">
+                <div class="username">{{ comment.createdBy.name }}</div>
+                <div class="comment-date">{{ comment.updatedAt | moment: 'LT' }}</div>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="comment-body">
+            <div fxFlex="10" fxFlex.sm="20" class="spacing"></div>
+            <div class="comment-comment white-space-pre-wrap" fxFlex="90" fxFlex.sm="80" [innerHTML]="comment.comment"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1230 @@
+{
+    "activity": {
+        "submissionModifySetting": {
+            "member": "Teilnehmer individuell",
+            "team": "Teams gemeinsam",
+            "text": "Wer soll an dieser Methode arbeiten?"
+        },
+        "submissionViewSetting": {
+            "member": "Für alle Teilnehmer",
+            "submitter": "Nur für die jeweiligen Einreicher und Organisatoren",
+            "text": "Für wen sind Einreichungen und Fortschritt sichtbar?"
+        }
+    },
+    "redirect": {
+        "waitingMessage": "Weiterleitung zum Online-Meeting..."
+    },
+    "buttons": {
+        "addBlankMethod": "Leere Methode hinzufügen",
+        "addFile": "Datei hinzufügen",
+        "addLink": "Link hinzufügen",
+        "addLogo": "Logo hinzufügen",
+        "addMember": "Mitglied hinzufügen",
+        "addMembers": "Mitglieder hinzufügen",
+        "addFormatMemberToTeam": "Zu Team hinzufügen",
+        "addMethodFromLibrary": "Methode aus Bibliothek hinzufügen",
+        "addPhase": "Phase hinzufügen",
+        "addSkill": "Skill hinzufügen",
+        "addTeam": "Team hinzufügen",
+        "addTeamAvatar": "Teambild hinzufügen",
+        "addTeamMembers": "Teammitglieder hinzufügen",
+        "addTeamMember": "Teammitglied hinzufügen",
+        "addVisual": "Key-Visual hinzufügen",
+        "back": "Zurück",
+        "backToActivity": "Zurück zur Methode",
+        "backToFormats": "Zurück zu Formaten",
+        "backToLibraries": "Zurück zu Bibliotheken",
+        "backToMembers": "Zurück zu Mitglieder",
+        "backToName": "Zurück zu {name}",
+        "backToOverview": "Zurück zur Übersicht",
+        "backToSchedule": "Zurück zum Ablauf",
+        "backToTeams": "Zurück zu Teams",
+        "backToWorkspaces": "Zurück zu Workspaces",
+        "blankFormat": "Leeres Format",
+        "cancel": "Abbrechen",
+        "changeRoleToAdministrator": "Zum Administrator machen",
+        "changeRoleToOrganizer": "Zum Organisator machen",
+        "changeRoleToParticipant": "Zum Teilnehmer machen",
+        "clearFilters": "Filter löschen",
+        "confirm": "Bestätigen",
+        "connectToTeams": "Mit Teams verbinden",
+        "create": "Erstellen",
+        "createDailyPhase": "Füge Phase mit täglicher Skala hinzu",
+        "createFormat": "Format erstellen",
+        "createHourlyPhase": "Füge Phase mit stündlicher Skala hinzu",
+        "createLibrary": "Bibliothek erstellen",
+        "createWorkspace": "Workspace erstellen",
+        "createTemplatePhase": "Füge Phase aus Bibliothek hinzu",
+        "delete": "Löschen",
+        "deleteMember": "Mitglied löschen",
+        "deleteTeam": "Team löschen",
+        "deleteMeeting": "Meetingraum absagen",
+        "disconnectTeams": "Teams trennen",
+        "edit": "Bearbeiten",
+        "filter": "Filter",
+        "filterAll": "Alle",
+        "filterOrganizers": "Organizer",
+        "filterParticipants": "Teilnehmer",
+        "hidePhase": "Phase verbergen",
+        "join": "Teilnehmen",
+        "joinMeeting": "Meeting beitreten",
+        "meeting": "Meeting",
+        "navigateToFormats": "Alle Formate",
+        "navigateToAdmins": "Alle Administratoren",
+        "noActions": "Keine Aktionen möglich",
+        "remove": "Entfernen",
+        "removeFormatMember": "Aus Format entfernen",
+        "removeLibraryMember": "Aus Bibliothek entfernen",
+        "removeTeamMember": "Aus Team entfernen",
+        "removeWorkspaceMember": "Aus Workspace entfernen",
+        "requestConsent": "Genehmigung anfordern",
+        "save": "Speichern",
+        "send": "Senden",
+        "sendComment": "Kommentieren",
+        "sendMail": "E-Mail senden",
+        "sendMailToAll": "Alle kontaktieren",
+        "sendMailToSelected": "Ausgewählt kontaktieren",
+        "show": "Anzeigen",
+        "showPhase": "Phase veröffentlichen",
+        "storeAsFormatTemplate": "Format als Vorlage ablegen",
+        "storeAsMethodTemplate": "Methode als Vorlage ablegen",
+        "storeAsPhaseTemplate": "Phase als Vorlage ablegen",
+        "submit": "Einreichen",
+        "useTemplate": "Vorlage verwenden",
+        "viewCard": "Kartenansicht",
+        "viewList": "Listenansicht",
+        "addCanvas": "Leinwand hinzufügen",
+        "addCanvasSlot": "Slot hinzufügen",
+        "canvasStatus": {
+            "publish": "Veröffentlichen",
+            "draft": "Bearbeiten"
+        },
+        "canvasTypes": {
+            "titleOnly": "Nur Titel",
+            "titleAndSubmissions": "Titel und Einreichungen",
+            "submissionsOnly": "Nur Einreichungen",
+            "custom": "Individuelles Canvas"
+        },
+        "sortCanvasSubmissions": {
+            "byCreationTime": "Zeit",
+            "byNumberOfVotes": "Likes"
+        },
+        "sortFormatOrPhase": {
+            "byDate": "Datum",
+            "byName": "Name"
+        },
+        "changePhaseDurationUnit": {
+            "minutes": "Stündliche Skala",
+            "days": "Tägliche Skala",
+            "tooltip": "Um die Zeitskala zu ändern, müssen Sie alle Methoden löschen"
+        }
+    },
+    "dialog": {
+        "startMeeting": {
+            "meetingRoom": "Meetingraum",
+            "MSTeams": "Microsoft Teams",
+            "BBB": "Big Blue Button",
+            "noProviderError": "Bitte wählen Sie einen Meetingraum!"
+        },
+        "joinMeeting": {
+            "copyLink": "Link kopieren",
+            "linkCopied": "Link kopiert",
+            "expirationDate": "Ablaufdatum"
+        },
+        "adminConsent": {
+            "header": "Administrator-Genehmigung",
+            "content": ""
+        },
+        "addCanvas": {
+            "slotNameMandatory": "Bitte geben Sie einen Feldnamen an"
+        },
+        "addTeamMembers": {
+            "confirm": "Hinzufügen",
+            "header": "Teammitglieder hinzufügen"
+        },
+        "addMethodFromTemplate": {
+            "confirm": "Zur Agenda hinzufügen",
+            "header": "Methodenvorlage zur Agenda hinzufügen"
+        },
+        "addMemberToTeam": {
+            "content": "Wähle ein Team aus, dem der Teilnehmer zugewiesen werden soll",
+            "header": "Teilnehmer einem Team zuweisen"
+        },
+        "changeMeetingLink": {
+            "header": "Link zum Meeting",
+            "description": "Microsoft Teams, Skype oder Zoom"
+        },
+        "changeRole": {
+            "content": "Wenn du dich selbst zum Teilnehmer machst, kannst du das Format danach nicht mehr verwalten",
+            "header": "Warnung"
+        },
+        "createBlankFormat": {
+            "content": "Wähle einen Workspace aus, in dem das Format erstellt werden soll",
+            "header": "Leeres Format erstellen"
+        },
+        "createCanvas": {
+            "header": "Leinwand hinzufügen"
+        },
+        "createFormatFromTemplate": {
+            "confirm": "Format aus dieser Vorlage erstellen",
+            "content": "Wähle einen Workspace aus, in dem das Format erstellt werden soll",
+            "header": "Format aus einer Vorlage erstellen"
+        },
+        "createLink": {
+            "header": "Link hinzufügen"
+        },
+        "createPhaseFromTemplate": {
+            "confirm": "Phase aus dieser Vorlage erstellen",
+            "header": "Phase aus einer Vorlage erstellen"
+        },
+        "createLibrary": {
+            "header": "Bibliothek erstellen"
+        },
+        "createPhase": {
+            "dailyDescription": "Füge eine Phase mit Tagen für die langfristige Planung hinzu",
+            "header": "Wähle eine Zeitskala für diese Phase",
+            "headerTemplate": "Wähle eine Phase aus deiner Bibliothek",
+            "hourlyDescription": "Füge eine Phase mit Stunden für die detaillierte Planung hinzu",
+            "templateDescription": "Füge eine Phase aus einer deiner Bibliotheken hinzu",
+            "dividerText": "oder"
+        },
+        "createTeam": {
+            "header": "Team erstellen"
+        },
+        "createWorkspace": {
+            "header": "Workspace erstellen"
+        },
+        "delete": {
+            "activityDeletion": "Willst du die Methode \"{objectName}\" wirklich löschen?",
+            "activityTemplateDeletion": "Willst du die Methodevorlage \"{objectName}\" wirklich löschen?",
+            "canvasDeletion": "Willst du die Leinwand \"{objectName}\" wirklich löschen?",
+            "fileDeletion": "Willst du die Datei \"{objectName}\" wirklich löschen?",
+            "commentDeletion": "Willst du den Kommentar wirklich löschen?",
+            "formatDeletion": "Willst du das Format \"{objectName}\" wirklich löschen?",
+            "formatMemberDeletion": "Willst du den Benutzer \"{objectName}\" aus dem Format wirklich entfernen?",
+            "formatTemplateDeletion": "Willst du die Formatvorlage \"{objectName}\" wirklich löschen?",
+            "header": "Löschen bestätigen",
+            "libraryDeletion": "Willst du die Bibliothek \"{objectName}\" wirklich löschen?",
+            "libraryMemberDeletion": "Willst du den Benutzer \"{objectName}\" aus der Bibliothek wirklich entfernen?",
+            "linkDeletion": "Willst du den Link wirklich löschen?",
+            "phaseDeletion": "Willst du die Phase \"{objectName}\" wirklich löschen?",
+            "phaseTemplateDeletion": "Willst du die Phasenvorlage \"{objectName}\" wirklich löschen?",
+            "skill": "Willst du den Skill \"{objectName}\" wirklich löschen?",
+            "submissionDeletion": "Willst du die Einreichung \"{objectName}\" wirklich löschen?",
+            "teamDeletion": "Willst du das Team \"{objectName}\" wirklich löschen?",
+            "workspaceDeletion": "Willst du den Workspace \"{objectName}\" wirklich löschen?",
+            "workspaceMemberDeletion": "Willst du den Benutzer \"{objectName}\" aus dem Workspace wirklich entfernen?",
+            "meetingDeletion": "Willst du den Meetingraum \"{objectName}\" wirklich absagen?",
+            "cancellationHeader": "Absagen bestätigen"
+        },
+        "description": {
+            "header": "Der Beschreibungstext kann über HTML Tags formatiert werden.",
+            "snackbarHint": "Code wurde in die Zwischenablage kopiert",
+            "bold": {
+                "leftSide": "<b> Fetter Text </b>",
+                "rightSide": "<b> Fetter Text </b>"
+            },
+            "italics": {
+                "leftSide": "<i> Kursiver Text </i>",
+                "rightSide": "<i> Kursiver Text </i>"
+            },
+            "ul": {
+                "leftSide": "<ul> \n    <li> Erster Punkt </li>\n    <li> Zweiter Punkt </li>\n    <li> Dritter Punkt </li>\n</ul>",
+                "rightSide": "<ul class='padding-left-16'> <li> Erster Punkt </li><li> Zweiter Punkt </li><li> Dritter Punkt </li></ul>"
+            },
+            "ol": {
+                "leftSide": "<ol> \n    <li> Erster Punkt </li>\n    <li> Zweiter Punkt </li>\n    <li> Dritter Punkt </li>\n</ol>",
+                "rightSide": "<ol class='padding-left-16'> <li> Erster Punkt </li><li> Zweiter Punkt </li><li> Dritter Punkt </li></ol>"
+            },
+            "emphasis": {
+                "leftSide": "<em> Hervorhebung </em>",
+                "rightSide": "<em> Hervorhebung </em>"
+            },
+            "strong_emphasis": {
+                "leftSide": "<strong> Betonung </strong>",
+                "rightSide": "<strong> Betonung </strong>"
+            },
+            "link": {
+                "leftSide": "<a href= \"https://www.joolia.net/\">\n Link (http(s) notwendig)\n</a>",
+                "rightSide": "<a> Link </a>"
+            }
+        },
+        "addSkill": {
+            "header": "Füge einen Skill hinzu",
+            "content": "Wähle einen Skill aus"
+        },
+        "editFile": {
+            "header": "Bearbeiten"
+        },
+        "errors": {
+            "browserSupportTitle": "Nicht unterstützter Browser",
+            "confirm": "OK",
+            "content": {
+                "connectionError": "Es ist ein Verbindungsfehler aufgetreten",
+                "libraryCreationError": "Das Anlegen einer Bibliothek ist momentan ausschließlich durch Joolia-Administratoren möglich. Bitte kontaktieren Sie uns bei Bedarf hierfür unter info@joolia.cloud",
+                "libraryDeletionError": "Das Löschen einer Bibliothek ist momentan ausschließlich durch Joolia-Administratoren möglich. Bitte kontaktieren Sie uns bei Bedarf hierfür unter info@joolia.cloud",
+                "libraryNotFound": "Bibliothek nicht gefunden",
+                "phaseNotFound": "Phase nicht gefunden",
+                "unsupportedBrowser": "Dein aktuell verwendeter Browser wird leider nicht unterstützt. Um die Plattform vollumfänglich nutzen zu können, verwende bitte Google Chrome, Mozilla Firefox oder Apple Safari.",
+                "workspaceCreationError": "Das Anlegen eines Workspaces ist momentan ausschließlich durch Joolia-Administratoren möglich. Bitte kontaktieren Sie uns bei Bedarf hierfür unter info@joolia.cloud",
+                "workspaceDeletionError": "Das Löschen eines Workspaces ist momentan ausschließlich durch Joolia-Administratoren möglich. Bitte kontaktieren Sie uns bei Bedarf hierfür unter info@joolia.cloud",
+                "workspaceNotFound": "Workspace nicht gefunden"
+            },
+            "title": "Fehler"
+        },
+        "invitation": {
+            "content": "Hier kannst du neue oder bereits registrierte Benutzer einladen",
+            "header": "Mitglieder hinzufügen"
+        },
+        "removeTeamMember": {
+            "content": "Bist du dir sicher, dieses Mitglied aus dem Team zu entfernen?",
+            "header": "Entfernen Bestätigung"
+        },
+        "sendMailTo": {
+            "content": "Hier kannst du eine E-Mail an registrierte Teilnehmer des Formats schicken",
+            "header": "E-Mail versenden",
+            "sendToAll": "Sende diese E-Mail an alle Format-Mitglieder.",
+            "sendTo": "Sende diese E-Mail an {receiver}.",
+            "others": "und {number} andere",
+            "conjunction": "und",
+            "technical": "Der technische Benutzer hat Zugriff auf das Format mit der ID {id}"
+        },
+        "storeAsFormatTemplate": {
+            "content": "Wähle eine Bibliothek, in der die Vorlage abgelegt wird",
+            "header": "Vorlage aus Format erstellen"
+        },
+        "storeAsMethodTemplate": {
+            "content": "Wähle eine Bibliothek, in der die Vorlage abgelegt wird",
+            "header": "Vorlage aus Methode erstellen"
+        },
+        "storeAsPhaseTemplate": {
+            "content": "Wähle eine Bibliothek, in der die Vorlage abgelegt wird",
+            "header": "Vorlage aus Phase erstellen"
+        },
+        "uploadAvatar": {
+            "confirm": "Okay",
+            "header": "Bild hochladen",
+            "content": "Bild per Drag & Drop einfügen oder",
+            "select": "Bild zum Hochladen auswählen",
+            "uploading": "Bild wird hochgeladen..."
+        },
+        "uploadKeyVisual": {
+            "confirm": "Okay",
+            "header": "Key-Visual hinzufügen",
+            "image": {
+                "content": "Bild per Drag & Drop einfügen oder",
+                "select": "Bild zum Hochladen auswählen",
+                "tab": "Hochladen",
+                "uploading": "Bild wird hochgeladen..."
+            },
+            "link": {
+                "content": "Bitte gib eine YouTube-Video-URL ein",
+                "tab": "URL (Video)"
+            }
+        },
+        "submit": {
+            "content": {
+                "member": "Du reichst ein als <span class=\"text-secondary\">{userName}</span>",
+                "organizer": "Du reichst ein als:",
+                "team": "Du reichst ein als <span class=\"text-secondary\">{userName}</span> für Team:"
+            },
+            "errors": {
+                "noTeams": "Es wurden noch keine Teams hinzugefügt"
+            },
+            "header": "Einreichen"
+        }
+    },
+    "emptyStates": {
+        "activity": {
+            "altText": "Leere Agenda Bild",
+            "organizer": {
+                "content": "Klicke links auf das +, um die erste Methode in dieser Phase zu planen",
+                "title": "Füge die erste Methode hinzu"
+            },
+            "participant": {
+                "content": "Diese Phase besitzt noch keine Methoden",
+                "title": "Schau später nochmal rein!"
+            }
+        },
+        "activityDescription": {
+            "content": "Keine Beschreibung hinzugefügt"
+        },
+        "activityFiles": {
+            "content": "Keine Dateien angehängt"
+        },
+        "activityCanvases": {
+            "content": "Keine Leinwände hinzugefügt"
+        },
+        "activityLinks": {
+            "content": "Keine Links hinzugefügt"
+        },
+        "activityProgress": {
+            "content": "In dieser Methode sind keine Schritte hinterlegt"
+        },
+        "activityProgressTeam": {
+            "participant": "Du bist in keinem Team",
+            "organizer": "Es wurden noch keine Schritte hinzugefügt"
+        },
+        "activitySubmission": {
+            "content": "Noch keine Einreichungen"
+        },
+        "activitySubmissionDescription": {
+            "content": "Keine Beschreibung"
+        },
+        "activitySubmissionFiles": {
+            "content": "Dieser Einreichung wurden keine Dateien angehängt"
+        },
+        "activityTemplate": {
+            "altText": "Leere Bibliothek Bild",
+            "content": "Wähle in einer Methode die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen. Vorlagen können dir helfen, Formate schneller zu planen",
+            "title": "Noch keine Vorlagen",
+            "shortContent": "Wähle in einer Methode die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen.",
+            "shortDescription": "Ohne Subtitel"
+        },
+        "format": {
+            "altText": "Leeres Format Bild",
+            "content": "Klicke oben auf FORMAT ERSTELLEN, um dein erstes Format zu planen",
+            "contentWorkspaceOverview": "Klicke auf ALLE FORMATE, um dein erstes Format zu planen",
+            "title": "Erstelle dein erstes Format"
+        },
+        "formatDescription": {
+            "content": "Keine Beschreibung hinzugefügt"
+        },
+        "formatFiles": {
+            "content": "Keine Dateien angehängt"
+        },
+        "formatTagline": {
+            "content": "Keine Tagline hinzugefügt"
+        },
+        "formatTemplate": {
+            "altText": "Leere Bibliothek Bild",
+            "content": "Wähle in einem Format die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen. Vorlagen können dir helfen, Formate schneller zu planen",
+            "title": "Noch keine Vorlagen",
+            "shortContent": "Wähle in einem Format die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen."
+        },
+        "keyvisual": {
+            "altText": "Kein Keyvisual verfügbar",
+            "content": "Füge über das  <i class=\"material-icons icon-inner-text\">more_horiz</i>  Menü rechts unten ein bezeichnendes Bild oder Video hinzu",
+            "title": ""
+        },
+        "library": {
+            "activityTemplate": {
+                "canvases": "In dieser Methodenvorlage wurden keine Leinwände hinterlegt.",
+                "description": "Diese Methodenvorlage hat keine Beschreibung.",
+                "files": "In dieser Methodenvorlage wurden keine Dateien hinterlegt.",
+                "keyvisual": "In dieser Methodenvorlage wurde kein Key Visual hinzugefügt.",
+                "tagline": "Diese Methodenvorlage hat keine Tagline."
+            },
+            "formatTemplate": {
+                "description": "Diese Formatvorlage hat keine Beschreibung.",
+                "files": "In dieser Formatvorlage wurden keine Dateien hinterlegt.",
+                "keyvisual": "In dieser Formatvorlage wurde kein Key Visual hinzugefügt.",
+                "tagline": "Diese Formatvorlage hat keine Tagline."
+            },
+            "phaseTemplate": {
+                "description": "Diese Phasenvorlage hat keine Beschreibung.",
+                "files": "In dieser Phasenvorlage wurden keine Dateien hinterlegt.",
+                "keyvisual": "In dieser Phasenvorlage wurde kein Key Visual hinzugefügt.",
+                "tagline": "Diese Phasenvorlage hat keine Tagline.",
+                "methodTemplates": "In dieser Phasenvorlage wurden keine Methoden hinterlegt."
+            }
+        },
+        "logo": {
+            "altText": "Kein Logo verfügbar",
+            "content": "Füge über das  <i class=\"material-icons icon-inner-text\">more_horiz</i>  Menü rechts ein Logo hinzu",
+            "title": ""
+        },
+        "member": {
+            "content": "Es wurden noch keine Teilnehmer hinzugefügt"
+        },
+        "phase": {
+            "organizer": {
+                "altText": "Leere Phase Bild",
+                "content": "Klicke oben auf PHASE HINZUFÜGEN, um die erste Phase des Formates und Methoden darin zu planen.",
+                "title": "Lege die erste Phase in diesem Format an"
+            },
+            "participant": {
+                "altText": "Empty phase image",
+                "content": "Schau später nochmal rein!",
+                "title": "In diesem Format gibt es noch keine Phasen"
+            }
+        },
+        "phaseTemplate": {
+            "altText": "Leere Bibliothek Bild",
+            "content": "Wähle in einer Phase die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen. Vorlagen können dir helfen, Formate schneller zu planen",
+            "title": "Noch keine Vorlagen",
+            "shortContent": "Wähle in einer Phase die Option als Vorlage ablegen, um die Vorlage hier anzuzeigen."
+        },
+        "team": {
+            "content": "Es wurden noch keine Teams hinzugefügt"
+        },
+        "teamMember": {
+            "addDialog": "Diesem Team können keine Mitglieder mehr hinzugefügt werden. Alle Formatmitglieder sind bereits in diesem Team.",
+            "content": "Dieses Team hat noch keine Mitglieder"
+        },
+        "teams": {
+            "organizer": {
+                "altText": "Leeres Team Bild",
+                "content": "Klicke oben auf TEAM HINZUFÜGEN, um Teilnehmer des Formates in Teams zu organisieren.",
+                "title": "Lege das erste Team an"
+            },
+            "participant": {
+                "altText": "Leeres Team Bild",
+                "content": "Schau später nochmal rein!",
+                "title": "In diesem Format gibt es noch keine Teams"
+            }
+        },
+        "teamavatar": {
+            "altText": "Kein Teambild verfügbar",
+            "content": "Füge über das  <i class=\"material-icons icon-inner-text\">more_horiz</i>  Menü rechts unten ein bezeichnendes Bild hinzu"
+        },
+        "teamFiles": {
+            "content": "Keine Dateien angehängt"
+        }
+    },
+    "errors": {
+        "canvasSelect": {
+            "required": "Bitte wähle ein Canvas aus"
+        },
+        "contact": {
+            "required": "Bitte bestätige diese Box, damit dir Joolia eine Bestätigungsmail senden kann"
+        },
+        "default": {
+            "defaultErrorPage": "Entschuldigung, es scheint ein Problem mit dieser Seite zu geben.",
+            "title": "Unerwarteter Fehler"
+        },
+        "domain": {
+            "required": "Domain ist erforderlich"
+        },
+        "email": {
+            "invalidChips": "Die markierten E-Mail-Adressen sind ungültig",
+            "pattern": "Die E-Mail-Adresse ist ungültig",
+            "required": "E-Mail ist erforderlich",
+            "taken": "Die E-Mail-Adresse ist bereits vergeben",
+            "maxExceeded": "Es können nur bis zu max. {maxAmount} E-Mail Adressen gleichzeitig versendet werden."
+        },
+        "extension": {
+            "length": "Kombination aus Dateiname und -endung zu lang"
+        },
+        "fileName": {
+            "length": "Kombination aus Dateiname und -endung zu lang",
+            "required": "Dateiname ist erforderlich"
+        },
+        "licensesCount": {
+            "required": "Anzahl der Lizenzen ist erforderlich"
+        },
+        "linkUrl": {
+            "required": "URL ist erforderlich",
+            "pattern": "URL ist ungültig"
+        },
+        "mailMessage": {
+            "required": "Der Nachrichtentext darf nicht leer sein",
+            "minlength": "Der Nachrichtentext ist zu kurz",
+            "maxlength": "Der Nachrichtentext ist zu lang"
+        },
+        "name": {
+            "required": "Name ist erforderlich",
+            "unique": "Name ist schon vergeben"
+        },
+        "password": {
+            "pattern": "Das Passwort ist ungültig. 8 Zeichen oder mehr. Mindestens eine Zahl oder ein Sonderzeichen",
+            "required": "Passwort ist erforderlich"
+        },
+        "selection": {
+            "required": "Auswahl ist notwendig"
+        },
+        "signIn": {
+            "401": "Deine E-Mail und dein Passwort sind inkorrekt - Bitte versuche es nochmal",
+            "412": "Zu viele Fehlschläge beim Einloggen - Bitte warte 5 Minuten und versuche es nochmal"
+        },
+        "submit": {
+            "outdatedActivity": "Der Organisator hat die Methode aktualisiert. Bitte lade die Seite neu",
+            "invalidLink": "Der Link ist kein valider Link zu Microsoft Teams, Skype oder Zoom"
+        },
+        "video": {
+            "pattern": "Die URL ist keine gültige YouTube-URL",
+            "required": "URL ist erforderlich"
+        },
+        "meeting": {
+            "unableToStart": "Meeting konnte nicht gestartet werden",
+            "unableToDelete": "Meeting konnte nicht gelöscht werden"
+        },
+        "device": {
+            "tooSmallResolution": {
+                "title": "Displayauflösung nicht unterstützt",
+                "description": {
+                    "createCustomCanvas": "Die Auflösung des Displays wird für das Erstellen von individuellen Canvas nicht unterstütz. Bitte verwende eine höhere Displayauflösung."
+                }
+            }
+        }
+    },
+    "forgotPassword": {
+        "header": "Passwort vergessen",
+        "content": "Du hast dein Passwort vergessen? Kein Problem. Gib deine registrierte E-Mail-Adresse ein und wir senden dir eine Nachricht, über welche du dein Passwort ändern kannst"
+    },
+    "forgotPasswordConfirmation": {
+        "header": "Anfrage versendet",
+        "content": "Wir haben dir an {email} einen Link geschickt, mit dem du dein Passwort zurücksetzen kannst"
+    },
+    "global": {
+        "missingLogin": "Bitte Einloggen!"
+    },
+    "hints": {
+        "emails": "Eine oder mehrere E-Mail-Adressen eingeben",
+        "password": "8 Zeichen oder mehr. Mindestens eine Zahl oder ein Sonderzeichen",
+        "submissionSearch": "Suche nach Einreicher, einer Methode, einem Titel...",
+        "meeting": {
+            "notStarted": "Meeting wurde noch nicht gestartet. Bitte versuche es in ein paar Minuten nochmal"
+        },
+        "canvas": {
+            "teamNotSelected": "Zum Erstellen einer Einreichung wähle bitte ein Team als Einreicher aus"
+        }
+    },
+    "home": {
+        "footer": {
+            "contact": "Kontakt",
+            "copyright": "Copyright © 2020 by Joolia GmbH",
+            "copyrightShort": "© 2020 by Joolia GmbH",
+            "imprint": "Impressum",
+            "privacy": "Datenschutzerklärung",
+            "terminology": "Datenerhebung und Terminologie",
+            "terms": "AGB"
+        },
+        "instructions": {
+            "heading": "Anleitung",
+            "report": {
+                "button": "Kontaktiere uns",
+                "text": "Melde uns Bugs oder Featurewünsche per E-Mail. Wir freuen uns auf deine Nachricht!"
+            },
+            "signup": {
+                "button": "Bei Joolia registrieren",
+                "text": "Melde dich zur Joolia an und nutze sie."
+            }
+        },
+        "pageTitle": "Joolia | Innovation Software für Innovation Labs und Design Thinking",
+        "thanks": {
+            "text": "Vielen Dank, dass du dabei bist!"
+        },
+        "welcome": {
+            "buttons": {
+                "instructions": "Anleitung",
+                "login": "Login",
+                "signup": "Registrieren"
+            },
+            "text": "Willkommen bei Joolia"
+        },
+        "newVersionUpdate": "Neue Version von Joolia verfügbar - Seite neu laden?"
+    },
+    "labels": {
+        "action": "Aktion",
+        "activity": "Methode",
+        "activePhases": "Jetzt aktiv",
+        "activityForParticipants": "Diese Methode richtet sich an individuelle Teilnehmer. Jeder kann Punkte auf der To-Do-Liste abhaken.",
+        "activityForTeams": "Diese Methode wird im Team bearbeitet. Alle Teammitglieder können Punkte auf der To-Do-Liste abhaken.",
+        "activityProgressVisibilityOrganizers": "Nur Organisatoren können den Fortschritt bei dieser Methode einsehen.",
+        "activityProgressVisibilityParticipants": "Der Fortschritt bei dieser Methode ist für alle Teilnehmer sichtbar.",
+        "activityProgressVisibilityTeams": "Der Fortschritt bei dieser Methode ist für alle Teams sichtbar.",
+        "activitySubmissionVisibilityOrganizers": "Nur Organisatoren können Einreichungen bei dieser Methode sehen.",
+        "activitySubmissionVisibilityParticipants": "Die Einreichungen bei dieser Methode sind für alle Teilnehmer sichtbar.",
+        "activitySubmissionVisibilityTeams": "Die Einreichungen bei dieser Methode sind für alle Teams sichtbar.",
+        "activityTemplate": "{plural, plural, =1{Methodenvorlagen} other{Methodenvorlage}}",
+        "activityTemplateList": "Methodenvorlagen",
+        "addComment": "Schreibe einen Kommentar ...",
+        "addFirstMethod": "Klicke auf das PLUS um eine erste Methode zu deiner Agenda hinzuzufügen!",
+        "admin": "Administrator",
+        "administrator": "{plural, plural, =1{Administratoren} other{Administrator}}",
+        "amountActivities": "{amount, plural, =0{Keine Methode} one{1 Methode} other{# Methoden}}",
+        "amountComments": "{amount, plural, =0{Keine Kommentare} =1{# Kommentar} other {# Kommentare}}",
+        "amountDays": "{amount, plural, =1{1 Tag} other{# Tage}}",
+        "amountFiles": "{amount, plural, =0{Keine Dateien} =1{1 Datei} other{# Dateien}}",
+        "amountFormats": "{amount, plural, =0{Keine Formate} =1{1 Format} other{# Formate}}",
+        "amountHours": "{amount, plural, =1{1 Stunde} other{# Stunden}}",
+        "amountHoursAndMinutesLong": "{amountHours, plural, =0{{amountMinutes, plural, =0{0 Stunden} =1{1 Minute} other{# Minuten}}} =1{1 Stunde{amountMinutes, plural, =0{} =1{ 1 Minute} other{ # Minuten}}} other{{amountHours} Stunden{amountMinutes, plural, =0{} =1{ 1 Minute}other{ # Minuten}}}}",
+        "amountHoursAndMinutesShort": "{amountHours, plural, =0{{amountMinutes, plural, =0{0 h} other{# min}}} other{{amountHours} h{amountMinutes, plural, =0{} other{ # min}}}}",
+        "amountLicenses": "Anzahl der Lizenzen",
+        "amountMembers": "{amount, plural, =0{Keine Mitglieder} =1{1 Mitglied} other{# Mitglieder}}",
+        "amountMethods": "{amount, plural, =0{Keine Methoden} =1{1 Methode} other{# Methoden}}",
+        "amountPhases": "{amount, plural, =0{Keine Phasen} =1{1 Phase} other{# Phasen}}",
+        "amountSubmissions": "{amount, plural, =0{Keine Einreichungen} =1{1 Einreichung} other{# Einreichungen}}",
+        "amountTeams": "{amount, plural, =0{Keine Teams} one{1 Team} other{# Teams}}",
+        "amountTemplates": "{amount, plural, =0{Keine Vorlagen} =1{1 Vorlage} other{# Vorlagen}}",
+        "averageRating": "Bewertung ( Ø {average} )",
+        "averageRatingDescription": "Bewertung (Ø)",
+        "blankMethod": "Leere Methode",
+        "canvasSelect": "Canvas",
+        "beta": "beta",
+        "category": "{plural, plural, =1{Kategorien} other{Kategorie}}",
+        "categoryValue": {
+            "explore": "Explore",
+            "ideate": "Ideate",
+            "test": "Test",
+            "prototype": "Prototype",
+            "implement": "Implement"
+        },
+        "chatHeaderTitle": "Chat in",
+        "clickHere": "Hier klicken",
+        "clickToAddDescription": "Hier Beschreibung hinzufügen...",
+        "clickToAddName": "Hier Name hinzufügen...",
+        "clickToAddStep": "Hier Schritt hinzufügen...",
+        "clickToAddSubmission": "Hier Einreichung einfügen...",
+        "clickToAddSubtitle": "Hier Subtitel einfügen...",
+        "clickToAddTagline": "Hier Tagline hinzufügen...",
+        "commentCount": "Kommentare ({count})",
+        "collaboration": "Zusammenarbeit",
+        "comments": "Kommentare",
+        "company": "Firma",
+        "completeName": "Vollständiger Name",
+        "currentActivity": "Aktuelle Methode",
+        "currentActivityContent": "{plural, plural, =0 {Aktuell laufen keine Methoden} other {Aktuell laufen mehrere Methoden}}",
+        "currentPhase": "Aktuelle Phase",
+        "currentPhaseContent": "{plural, plural, =0 {Aktuell laufen keine Phasen} other {Aktuell laufen mehrere Phasen}}",
+        "dailyScale": "Tägliche Skala",
+        "date": "Datum",
+        "description": "Beschreibung",
+        "details": "Details",
+        "email": "{plural, plural, =1{E-Mail-Adressen} other{E-Mail}}",
+        "emptyAgenda": "Diese Agenda ist noch leer",
+        "ends": "Endet { date }",
+        "fileExtension": "Dateiendung",
+        "fileName": "Dateiname",
+        "files": "Dateien",
+        "filter": {
+            "pending": "Ausstehend",
+            "registered": "Registriert",
+            "admin": "Administrator",
+            "organizer": "Organisator",
+            "participant": "Teilnehmer"
+        },
+        "filterGroup": "Filter",
+        "format": "{plural, plural, =1{Formate} other{Format}}",
+        "formatCount": "Formate ({count})",
+        "formatTemplate": "{plural, plural, =1{Formatvorlagen} other{Formatvorlage}}",
+        "hourlyScale": "Stündliche Skala",
+        "invitationPending": "Einladung ausstehend",
+        "invitationText": "Einladungstext",
+        "joolia": "Joolia",
+        "keyVisual": "Key Visual",
+        "lastLogin": "Letzter Login",
+        "library": "{plural, plural, =1{Bibliotheken} other{Bibliothek}}",
+        "licenses": "Lizenzen",
+        "licensesCount": "Anzahl der Lizenzen",
+        "vote": "{plural, plural, =1{{ voteCount } like} other{{ voteCount } likes}}",
+        "link": "Link",
+        "linkUrl": "Link URL",
+        "links": "Links",
+        "canvas": "Leinwand",
+        "canvases": "Leinwände",
+        "canvasType": {
+            "canvas": "Canvas",
+            "questionnaire": "Fragebogen",
+            "journey": "Journey",
+            "custom": "Individuelles Canvas"
+        },
+        "domain": "Domain",
+        "logout": "Abmelden",
+        "mailMessage": "Gib hier deine Nachricht ein",
+        "memberProgress": "Teilnehmer",
+        "method": "{plural, plural, =1{Methoden} other{Methode}}",
+        "methodTemplate": "Methodenvorlage",
+        "microsoft365": {
+            "title": "Microsoft 365",
+            "msTeamsIntegration": "MS Teams Integration",
+            "adminConsent": "Administrator-Genehmigung",
+            "adminConsentStatus": "{granted, select, false {NICHT GEWÄHRT} other{GEWÄHRT}}"
+        },
+        "msTeamsIntegration": "MS Teams Integration",
+        "moreProgress": "{plural, plural, =0 {Noch kein Fortschritt} other{Es gibt mehr Fortschritte}}",
+        "myMemberProgress": "Mein Fortschritt",
+        "myTeamProgress": "Meine Teams",
+        "name": "Name",
+        "navigation": "Navigation",
+        "noDate": "Kein Datum",
+        "noDuration": "Keine Dauer",
+        "noTeams": "Du bist in keinem Team",
+        "recommendedDuration": "Empfohlene Dauer",
+        "noStartDate": "Kein Startdatum",
+        "optional": "(optional)",
+        "organizer": "Organisator",
+        "othersMemberProgress": "Andere Teilnehmer",
+        "othersTeamProgress": "Andere Teams",
+        "participant": "Teilnehmer",
+        "password": "Passwort",
+        "passwordResetSuccess": "Dein Passwort wurde erfolgreich geändert",
+        "pastPhases": "Vergangen",
+        "personalLibrary": "{userName}s Bibliothek",
+        "personalLibraryGenitive": "{userName}' Bibliothek",
+        "personalWorkspace": "{userName}s Workspace",
+        "personalWorkspaceGenitive": "{userName}' Workspace",
+        "phase": "{plural, plural, =1{Phasen} other{Phase}}",
+        "phaseCount": "Phasen ({count})",
+        "phaseTemplate": "{plural, plural, =1{Phasenvorlagen} other{Phasenvorlage}}",
+        "plannedPhases": "Bevorstehend",
+        "profileSettings": "Profileinstellungen",
+        "progress": "Fortschritt",
+        "progressCount": "Fortschritt ({count})",
+        "rating": "Bewertung",
+        "resetPassword": "Neues Passwort setzen",
+        "role": "Rolle",
+        "search": "Suche",
+        "separator": ",",
+        "skill": "{plural, plural, =1{Skills} other{Skill}}",
+        "settings": "Einstellungen",
+        "startsDate": "Startet { date }",
+        "startsDateTime": "Startet { date } um { time }",
+        "steps": "Schritte",
+        "stepsDescription": "Schritte führen Teilnehmer durch die Methode und können von ihnen abgehakt werden",
+        "stepsTemplateDescription": "Für diese Methode sind keine Schritte definiert. Sie können eine Checkliste hinzufügen, nachdem Sie diese Methode in eine Phase in einem Format kopiert haben",
+        "submissions": "Einreichungen",
+        "submissionsCount": "Einreichungen ({count})",
+        "submitter": "Einreichende",
+        "submitterUser": "Benutzer",
+        "submitterTeam": "Team",
+        "allSubmitter": "Alle Einreichende",
+        "tagline": "Tagline",
+        "team": "{plural, plural, =1{Teams} other{Team}}",
+        "teamInfoOrganizer": "Alle Teams des Formates",
+        "teamInfoParticipant": "Teams in denen du Mitglied bist",
+        "teamProgress": "Teams",
+        "technical": "Technisch",
+        "title": "Titel",
+        "unplannedPhases": "Ohne Datum",
+        "untitledActivity": "Unbenannte Methode",
+        "untitledCanvas": "Unbenannte Leinwand",
+        "untitledFormat": "Unbenanntes Format",
+        "untitledLibrary": "Unbenannte Bibliothek",
+        "untitledPhase": "Unbenannte Phase",
+        "untitledSlot": "Unbenannter Slot",
+        "untitledTeam": "Unbenanntes Team",
+        "untitledWorkspace": "Unbenannter Workspace",
+        "updateProfileSuccess": "Dein Profil wurde erfolgreich geändert.",
+        "uploadAvatar": "Profilbild hochladen",
+        "uploadProgress": "wird hochgeladen... { upload } von { size }",
+        "uploadProcessing": "wird verarbeitet...",
+        "usedLicenses": "Verbrauchte Lizenzen: { memberCount } von { licensesCount }",
+        "userActivityOverview": "Aktivitätsübersicht",
+        "video": "YouTube Video Url",
+        "workspace": "{plural, plural, =1{Workspaces} other{Workspace}}",
+        "yourTeams": "Deine Teams"
+    },
+    "paginator": {
+        "firstPage": "Erste Seite",
+        "itemsPerPage": "Einträge pro Seite:",
+        "lastPage": "Letzte Seite",
+        "nextPage": "Nächste Seite",
+        "of": "von",
+        "previousPage": "Vorherige Seite"
+    },
+    "sidenav": {
+        "all": "Alle",
+        "format": {
+            "header": "Formate",
+            "information": "Allgemeines",
+            "members": "Mitglieder",
+            "schedule": "Ablauf",
+            "submissions": "Einreichungen",
+            "teams": "Teams"
+        },
+        "library": {
+            "header": "Bibliotheken",
+            "members": "Mitglieder",
+            "templates": "Vorlagen"
+        },
+        "recentlyUsed": "Zuletzt verwendet",
+        "workspace": {
+            "allFormats": "Formate",
+            "administration": "Administration",
+            "header": "Workspaces",
+            "members": "Mitglieder",
+            "information": "Allgemeines"
+        },
+        "form": {
+            "title": "Kontext",
+            "back": "Zur Aktivität"
+        }
+    },
+    "signIn": {
+        "forgotPassword": "Passwort vergessen?",
+        "header": "Anmelden",
+        "keepMeSignedIn": "Angemeldet bleiben",
+        "loginButton": "Anmelden",
+        "jumpToSignUp": "Noch nicht registriert? ",
+        "altText": "Login Bild"
+    },
+    "signUp": {
+        "contact": "Joolia darf mich per E-Mail kontaktieren",
+        "header": "Registrierung",
+        "signUpButton": "Registrieren",
+        "termsAndConditions": "Durch die Registrierung stimmst du unseren <a href=\"legal\\terms-and-conditions\">Geschäftsbedingungen</a> zu",
+        "jumpToSignIn": "Bereits registriert? ",
+        "altText": "Registrierung Bild"
+    },
+    "signUpConfirmation": {
+        "header": "Registrierung abgeschlossen",
+        "loginButton": "login",
+        "login": "Logge dich jetzt ein, um Joolia zu nutzen"
+    },
+    "snackbar": {
+        "activityDeleted": "Die Methode \"{objectName}\" wurde gelöscht",
+        "activityDeletionError": "Die Methode konnte nicht gelöscht werden",
+        "activityNotFound": "Die Methode konnte nicht gefunden werden",
+        "activityTemplateDeleted": "Die Methodevorlage \"{objectName}\" wurde gelöscht",
+        "activityTemplateDeletionError": "Die Methodevorlage konnte nicht gelöscht werden",
+        "activityTemplateNotFound": "Die Methodenvorlage konnte nicht gefunden werden",
+        "blockStatusChangeWithSubmissionsCustomCanvas": "Einreichungen vorhanden - Statuswechsel nicht möglich.",
+        "canvasNotFound": "Die Leinwand konnte nicht gefunden werden",
+        "commentDeleted": "Der Kommentar wurde gelöscht",
+        "commentCreationError": "Der Kommentar konnte nicht angelegt werden, da eine Bewertung und/oder Kommentar angegeben werden muss",
+        "commentDeletionError": "Der Kommentar konnte nicht gelöscht werden",
+        "connectionError": "Die Anfrage konnte nicht gesendet werden. Versuchen Sie es später erneut.",
+        "deleteLastAdminError": "Letzer Administrator darf nicht gelöscht werden",
+        "deleteLastSlotCustomCanvas": "Der letzter Slot eines Canvas kann nicht gelöscht werden",
+        "demoteLastAdminError": "Letzer Administrator darf nicht zum Teilnehmer gemacht werden",
+        "demoteLastOrganizerError": "Letzter Organisator darf nicht zum Teilnehmer gemacht werden",
+        "duplicateTeamName": "Dieser Team-Name wird bereits im aktuellen Format verwendet.",
+        "emailsAreProcessed": "{plural, plural, =1{E-Mail wird verschickt. Dies kann ein paar Minuten dauern.} other{E-Mails werden verschickt. Dies kann ein paar Minuten dauern.}}",
+        "fileDeleted": "Die Datei \"{objectName}\" wurde gelöscht",
+        "fileDeletionError": "Die Datei konnte nicht gelöscht werden",
+        "fileUpdateError": "Die Datei konnte nicht geändert werden",
+        "filesCurrentlyUploading": "Bitte warten, bis die Dateien hochgeladen wurden",
+        "formatTemplateCreated": "Das Format wurde als Vorlage in der Bibliothek {libraryName} abgelegt",
+        "formatDeleted": "Das Format \"{objectName}\" wurde gelöscht",
+        "formatDeletionError": "Das Format konnte nicht gelöscht werden",
+        "formatMemberAdded": "Der Teilnehmer wurde hinzugefügt",
+        "formatMemberAddError": "Der Teilnehmer konnte nicht hinzugefügt werden",
+        "formatMemberDeleted": "Der Benutzer \"{objectName}\" wurde aus dem Format \"{parentName}\" entfernt",
+        "formatMemberDeletionError": "Der Benutzer konnte nicht aus dem Format entfernt werden",
+        "formatNotFound": "Das Format konnte nicht gefunden werden",
+        "formatTemplateDeleted": "Die Formatvorlage \"{objectName}\" wurde gelöscht",
+        "formatTemplateDeletionError": "Die Formatvorlage konnte nicht gelöscht werden",
+        "formatTemplateNotFound": "Die Formatvorlage konnte nicht gefunden werden",
+        "methodTemplateCreated": "Die Methode wurde als Vorlage in der Bibliothek {libraryName} abgelegt",
+        "mailsAreProcessedMessage": "Einladungen werden gesendet. Dies kann einige Minuten dauern.",
+        "meetingCancelled": "Meetingraum wird abgesagt. Dies kann einige Minuten dauern.",
+        "libraryDeleted": "Die Bibliothek \"{objectName}\" wurde gelöscht",
+        "libraryDeletionError": "Die Bibliothek konnte nicht gelöscht werden",
+        "libraryMemberDeleted": "Der Benutzer \"{objectName}\" wurde aus der Bibliothek \"{parentName}\" entfernt",
+        "libraryMemberDeletionError": "Der Benutzer konnte nicht aus der Bibliothek entfernt werden",
+        "libraryNotFound": "Die Bibliothek konnte nicht gefunden werden",
+        "phaseCreated": "Neue Phase wurde erstellt",
+        "phaseDeleted": "Die Phase \"{objectName}\"  wurde gelöscht",
+        "phaseDeletionError": "Die Phase konnte nicht gelöscht werden",
+        "phaseNotFound": "Die Phase konnte nicht gefunden werden",
+        "phaseTemplateCreated": "Die Phase wurde als Vorlage in der Bibliothek {libraryName} abgelegt",
+        "phaseTemplateDeleted": "Die Phasenvorlage \"{objectName}\" wurde gelöscht",
+        "phaseTemplateDeletionError": "Die Phasenvorlage konnte nicht gelöscht werden",
+        "phaseTemplateNotFound": "Die Phasenvorlage konnte nicht gefunden werden",
+        "publishEmptyCustomCanvas": "Canvas ohne Slots kann nicht veröffentlicht werden",
+        "removeLastFormatMemberError": "Letztes Format-Mitglied darf nicht gelöscht werden",
+        "removeLastLibraryMemberError": "Du bist das letzte Mitglied der Bibliothek und kannst sie deshalb nicht verlassen",
+        "removeLastWorkspaceMemberError": "Letztes Workspace-Mitglied darf nicht gelöscht werden",
+        "skillCreationError": "Der Skill konnte nicht angelegt werden",
+        "skillDeleted": "Der Skill \"{objectName}\" wurde gelöscht",
+        "skillDeletionError": "Der Skill konnte nicht gelöscht werden",
+        "submissionDeleted": "Die Einreichung \"{objectName}\" wurde gelöscht",
+        "submissionDeletionError": "Die Einreichung konnte nicht gelöscht werden",
+        "submissionNotFound": "Die Einreichung konnte nicht gefunden werden",
+        "teamCreated": "Neues Team wurde erstellt",
+        "teamDeleted": "Das Team \"{objectName}\" wurde gelöscht",
+        "teamDeletionError": "Das Team konnte nicht gelöscht werden",
+        "teamMemberDeleted": "Der Benutzer \"{objectName}\" wurde aus dem Team \"{parentName}\" entfernt",
+        "teamMemberDeletionError": "Der Benutzer konnte nicht aus dem Team entfernt werden",
+        "teamNotFound": "Das Team konnte nicht gefunden werden",
+        "technicalUserAdded": "Der technische Benutzer wurde dem Format hinzugefügt",
+        "technicalUserAddedError": "Der technische Benutzer konnte dem Format nicht hinzugefügt werden",
+        "technicalUserRemoved": "Der technische Benutzer wurde aus dem Format entfernt",
+        "technicalUserRemovedError": "Der technische Benutzer konnte nicht aus dem Format entfernt werden",
+        "workspaceDeleted": "Der Workspace \"{objectName}\" wurde gelöscht",
+        "workspaceDeletionError": "Der Workspace konnte nicht gelöscht werden",
+        "workspaceConsentUpdate": "Die Genehmigung des Administrators wurde gespeichert.",
+        "workspaceConsentUpdateError": "Die Genehmigung des Administrators konnte nicht gespeichert werden.",
+        "workspaceCreationError": "Der Workspace konnte nicht erstellt werden",
+        "workspaceMemberDeleted": "Der Benutzer \"{objectName}\" wurde aus dem Workspace \"{parentName}\" entfernt",
+        "workspaceMemberDeletionError": "Der Benutzer konnte nicht aus dem Workspace entfernt werden",
+        "workspaceNotFound": "Der Workspace konnte nicht gefunden werden",
+        "domainError": "Die E-Mail konnte nicht gesendet werden, da die Domain \"{domain}\" ungültig ist"
+    },
+    "upload": {
+        "cancelled": "Hochladen abgebrochen ({fileName})",
+        "failed": "Hochladen fehlgeschlagen ({fileName})",
+        "successful": "Hochladen erfolgreich ({fileName}). Die Datei wird nun verarbeitet. Dies kann einige Minuten dauern."
+    },
+    "cookieBanner": {
+        "acceptButton": "Einverstanden",
+        "header": "Wir verwenden Cookies",
+        "moreButton": "Weitere Informationen",
+        "section1": "Wir verwenden Cookies, um Grundfunktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Website zu ermöglichen.",
+        "section2": "Durch die weitere Nutzung unserer Seite willigen Sie in die Nutzung dieser Cookies ein."
+    },
+    "copyrightNotice": "Indem ich den Inhalt teile, gewährleiste ich, dass ich das Urheberrecht besitze oder vom Inhaber des Urheberrechts die ausdrückliche Erlaubnis dazu erhalten habe.",
+    "messenger": {
+        "title": "Joolia Connect",
+        "messages": {
+            "new": "{amount, plural, =0{Keine neuen Nachrichten} =1{# neue Nachricht} other{# neue Nachrichten}}"
+        }
+    },
+    "skill": {
+        "BUDGETING": "Budgetierung",
+        "BUSINESS_PLANNING": "Geschäftsplanung",
+        "BUSINESS_REENGINEERING": "Business Re-Engineering",
+        "CHANGE_MANAGEMENT": "Change-Management",
+        "CONSOLIDATION": "Konsolidierung",
+        "COST_CONTROL": "Kostenkontrolle",
+        "DECISION_MAKING": "Strategieentwicklung",
+        "DEVELOPING_POLICIES": "Politikentwicklung",
+        "DIVERSIFICATION": "Diversifizierung",
+        "EMPLOYEE_EVALUATION": "Mitarbeiterbeurteilung",
+        "FINANCING": "Finanzierung",
+        "GOVERNMENT_RELATIONS": "Politische Beziehungen",
+        "HIRING": "Rekrutierung",
+        "INTERNATIONAL_MANAGEMENT": "Internationale Leitung",
+        "INVESTOR_RELATIONS": "Investorenbeziehungen",
+        "IPO": "Börsengang",
+        "JOINT_VENTURES": "Joint Ventures",
+        "LABOUR_RELATIONS": "Arbeitsbeziehungen",
+        "MERGER_AND_ACQUISITIONS": "Merger & Akquisition",
+        "MULTISITES_MANAGEMENT": "Verwaltung mehrerer Standorte",
+        "NEGOTIATION": "Verhandlung",
+        "PROFIT_AND_LOSS": "Gewinn & Verlust",
+        "ORGANIZATIONAL_DEVELOPMENT": "Organisatorische Entwicklung",
+        "PROJECT_MANAGEMENT": "Projektleitung",
+        "STAFF_DEVELOPMENT": "Entwicklung des Personals",
+        "STRATEGIC_PARTNERSHIP": "Strategische Partnerschaft",
+        "STRATEGIC_PLANNING": "Strategische Planung",
+        "SUPERVISION": "Supervision",
+        "BIDDING": "Versteigerungen",
+        "CALL_CENTRE_OPERATIONS": "Call-Center-Betrieb",
+        "CONTINUOUS_IMPROVEMENT": "Kontinuierliche Verbesserung",
+        "CONTRACT_MANAGEMENT": "Vertragsmanagement",
+        "ENVIRONMENTAL_PROTECTION": "Umweltschutz",
+        "FACILITY_MANAGEMENT": "Bestandskontrolle",
+        "INVENTORY_CONTROL": "Facility Management",
+        "MANPOWER_PLANNING": "Planung von Arbeitskräften",
+        "OPERATIONS_RESEARCH": "Operations Research",
+        "OUTSOURCING": "Outsourcing",
+        "POLICIES_AND_PROCEDURES": "Richtlinien und Verfahren",
+        "PROJECT_COORDINATION": "Projekt-Koordination",
+        "EQUIPMENT_DESIGN": "Entwurf der Ausrüstung",
+        "EQUIPMENT_MAINTENANCE_AND_REPAIR": "Wartung und Reparatur von Ausrüstung",
+        "EQUIPMENT_MANAGEMENT": "Verwaltung der Ausrüstung",
+        "ISO_KNOWHOW": "ISO-Know-how",
+        "TQM": "TQM",
+        "ORDER_PROCESSING": "Auftragsabwicklung",
+        "PLANT_DESIGN_AND_LAYOUT": "Anlagenplanung & Layout",
+        "PROCESS_ENGINEERING": "Verfahrenstechnik",
+        "PRODUCTION_PLANNING": "Produktionsplanung",
+        "QUALITY_ASSURANCE": "Qualitätssicherung",
+        "SAFETY_ENGINEERING": "Sicherheitstechnik",
+        "DISTRIBUTION": "Verteilung",
+        "TRANSPORTATION": "Verkehrsmittel",
+        "JIT": "JIT",
+        "PURCHASING_AND_PROCUREMENT": "Einkauf & Beschaffung",
+        "SHIPPING": "Versand",
+        "TRAFFIC_MANAGEMENT": "Verkehrsmanagement",
+        "WAREHOUSING": "Lagerhaltung",
+        "DESIGN_AND_SPECIFICATION": "Konstruktion & Spezifikation",
+        "DIAGNOSTICS": "Diagnostik",
+        "FEASIBILITY_STUDIES": "Machbarkeitsstudien",
+        "FIELD_STUDIES": "Feldstudien",
+        "LAB_MANAGEMENT": "Laborleitung",
+        "LAB_DESIGN": "Laborgestaltung",
+        "NEW_EQUIPMENT_DESIGN": "Entwurf neuer Ausrüstung",
+        "PATENT_APPLICATION": "Patentanmeldung",
+        "PRODUCT_DEVELOPMENT": "Produktentwicklung",
+        "PRODUCT_TESTING": "Produktprüfung",
+        "PROTOTYPE_DEVELOPMENT": "Entwicklung von Prototypen",
+        "RANDD_MANAGEMENT": "F&E-Management",
+        "SIMULATION_DEV.": "Simulation Development",
+        "STATISTICAL_ANALYSIS": "Statistische Auswertung",
+        "TECHNICAL_WRITING": "Technisches Schreiben",
+        "ACCOUNT_MANAGEMENT": "Kundenbetreuung",
+        "B2B": "B2B",
+        "CONTRACT_NEGOTIATION": "Vertragsverhandlung",
+        "CUSTOMER_RELATIONS": "Kundenbeziehungen",
+        "CUSTOMER_SERVICE": "Kundendienst",
+        "DIRECT_SALES": "Direktvertrieb",
+        "DISTRIBUTOR_RELATIONS": "Vertriebspartner-Beziehungen",
+        "ECOMMERCE": "E-Commerce",
+        "FORECASTING": "Forecasting",
+        "INCENTIVE_PROGRAMS": "Incentive-Programme",
+        "INTERNATIONAL_BUSINESS_DEVELOPMENT": "Internationale Wirtschaftsförderung",
+        "INTERNATIONAL_EXPANSION": "Internationale Erweiterung",
+        "NEW_ACCOUNT_DEVELOPMENT": "Entwicklung neuer Konten",
+        "PROPOSAL_WRITING": "Proposal Writing",
+        "PRODUCT_DEMONSTRATIONS": "Produkt-Demonstrationen",
+        "TELEMARKETING": "Telefonmarketing",
+        "TRADE_SHOWS": "Messen",
+        "SALES_ADMINISTRATION": "Verkaufsverwaltung",
+        "SALES_ANALYSIS": "Verkaufsanalyse",
+        "SALES_KITS": "Sales-Kits",
+        "SALES_MANAGEMENT": "Vertriebsmanagement",
+        "SALESPERSONS_RECRUITMENT": "Rekrutierung von Verkäufern",
+        "SHOW_ROOM_MANAGEMENT": "Raumverwaltung",
+        "SALES_SUPPORT": "Vertriebsunterstützung",
+        "SALES_TRAINING": "Verkaufsschulung",
+        "ADVERTISING": "Werbung",
+        "BRAND_MANAGEMENT": "Markenführung",
+        "CHANNEL_MARKETING": "Kanal-Marketing",
+        "COMPETITIVE_ANALYSIS": "Wettbewerbsanalyse",
+        "COPYWRITING": "Texterstellung",
+        "CORPORATE_IDENTITY": "Unternehmensidentität",
+        "IMAGE_DEVELOPMENT": "Image-Entwicklung",
+        "LOGO_DEVELOPMENT": "Logo-Entwicklung",
+        "MARKET_RESEARCH_AND_ANALYSIS": "Marktforschung & Analyse",
+        "MARKETING_COMMUNICATION": "Marketing-Kommunikation",
+        "MARKETING_PLAN": "Marketing-Plan",
+        "MARKETING_PROMOTIONS": "Marketing promotions",
+        "MEDIA_BUYING_EVALUATION_MEDIA_RELATIONS": "Medienkauf/Evaluierung Medienbeziehungen",
+        "MERCHANDISING": "Merchandising",
+        "NEW_PRODUCT_DEVELOPMENT": "Entwicklung neuer Produkte",
+        "ONLINE_MARKETING": "Online-Marketing",
+        "PACKAGING": "Packaging",
+        "PRICING": "Pricing",
+        "PRODUCT_LAUNCH": "Produkteinführung",
+        "EQUIPMENT_PURCHASING": "Einkauf",
+        "FORMS_AND_METHODS": "Formulare & Methoden",
+        "LEASES": "Mietverträge",
+        "MAILROOM_MANAGEMENT": "Verwaltung der Poststelle",
+        "OFFICE_MANAGEMENT": "Büro-Management",
+        "RECEPTION": "Empfang",
+        "RECORDS_MANAGEMENT": "Archiv",
+        "SECURITY": "Sicherheit",
+        "SPACE_PLANNING": "Raumplanung",
+        "WORD_PROCESSING": "Textverarbeitung",
+        "CONTRACT_PREPARATION": "Vertragsvorbereitung",
+        "COPYRIGHTS_AND_TRADEMARKS": "Urheberrechte & Marken",
+        "CORPORATE_LAW": "Gesellschaftsrecht",
+        "COMPANY_SECRETARY": "Company Secretary",
+        "EMPLOYMENT_ORDINANCE": "Beschäftigungsverordnung",
+        "INTELLECTUAL_PROPERTY": "IPO",
+        "INTERNATIONAL_AGREEMENTS": "Internationale Vereinbarungen",
+        "LICENSING_MERGERS_AND_ACQUISITIONS": "Lizenzierung Merger & Akquisition",
+        "PATENTS": "Patente",
+        "SHAREHOLDER_PROXIES": "Shareholder proxies",
+        "STOCK_ADMINISTRATION": "Lagerverwaltung",
+        "ACCOUNTING_MANAGEMENT": "Buchhaltung",
+        "ACCOUNTS_PAYABLE": "Kreditorenbuchhaltung",
+        "VENTURE_CAPITAL_RELATIONS": "Risikokapital",
+        "ACCOUNTS_RECEIVABLE": "Debitorenkonten",
+        "ACQUISITIONS_AND_MERGERS": "Merger & Akquisition",
+        "ACTUARIAL_RATING_ANALYSIS": "Versicherungsmathematische/Rating-Analyse",
+        "AUDITING": "Rechnungsprüfung",
+        "BANKING_RELATIONS": "Bankbeziehungen",
+        "BUDGET_CONTROL": "Haushaltskontrolle",
+        "CAPITAL_BUDGETING": "Kapital-Budgetierung",
+        "CAPITAL_INVESTMENT": "Kapitalinvestitionen",
+        "CASH_MANAGEMENT": "Bargeld-Management",
+        "COST_ACCOUNTING": "Kostenrechnung",
+        "CREDIT_COLLECTIONS": "Kredit/Kollektionen",
+        "DEBT_NEGOTIATIONS": "Verhandlungen über Schulden",
+        "EQUITY_DEBT_MANAGEMENT": "Eigenkapital/Schuldenmanagement",
+        "FINANCIAL_ANALYSIS": "Finanzanalyse",
+        "FINANCIAL_REPORTING": "Finanzielle Berichterstattung",
+        "FINANCING_FORECASTING": "Finanzierung",
+        "FOREIGN_EXCHANGE": "Devisen",
+        "GENERAL_LEDGER_INSURANCE": "Hauptbuch-Versicherung",
+        "INTERNAL_CONTROLS": "Interne Kontrollen",
+        "LENDING": "Ausleihe",
+        "LINES_OF_CREDIT_MANAGEMENT": "Linien des Kreditmanagements",
+        "REPORTING": "Berichterstattung",
+        "PAYROLL": "Gehaltsabrechnung",
+        "FUND_MANAGEMENT": "Fondsverwaltung",
+        "PROFIT_PLANNING": "Gewinn-Planung",
+        "RISK_MANAGEMENT": "Risiko-Management",
+        "STOCKHOLDER_RELATIONS": "Aktionärsbeziehungen",
+        "TAX": "Steuer",
+        "TREASURY": "Schatzamt",
+        "INVESTOR_PRESENTATIONS": "Investoren-Präsentationen",
+        "ARBITRATION_MEDIATION": "Schiedsgerichtsbarkeit/Mediation",
+        "CAREER_COUNSELING": "Karriereberatung",
+        "CAREER_COACHING": "Karriere-Coaching",
+        "CLASSIFIED_ADVERTISEMENTS": "Stellenanzeigen",
+        "COMPANY_ORIENTATION": "HR Business Partner",
+        "WORKFORCE": "Workforce",
+        "FORECAST_PLANNING": "Prognose/Planung",
+        "COMPENSATION_AND_BENEFITS": "Vergütung & Leistungen",
+        "CORPORATE_CULTURE": "Unternehmenskultur",
+        "TRAINING_ADMINISTRATION": "Ausbildungsverwaltung",
+        "EMPLOYEE_DISCIPLINE": "Mitarbeiterdisziplin",
+        "EMPLOYEE_SELECTION": "Recruiting",
+        "EXECUTIVE_RECRUITING": "Rekrutierung von Führungskräften",
+        "GRIEVANCE_RESOLUTION": "Beschwerde-Resolution",
+        "HUMAN_RESOURCES_MANAGEMENT": "Mitarbeiterverwaltung",
+        "INDUSTRIAL_RELATIONS": "Arbeitsbeziehungen",
+        "JOB_ANALYSIS": "Arbeitsplatz-Analyse",
+        "LABOUR_NEGOTIATIONS": "Verhandlungen über Arbeitsverträge",
+        "OUTPLACEMENT": "Outplacement",
+        "PERFORMANCE_APPRAISAL": "Leistungsbeurteilung",
+        "SALARY_ADMINISTRATION": "Gehaltsmanagement",
+        "SUCCESSION_PLANNING": "Nachfolgeplanung",
+        "TEAM_BUILDING": "Teambildung",
+        "TRAINING": "Ausbildung",
+        "ALGORITHM_DEVELOPMENT": "Algorithmus-Entwicklung",
+        "APPLICATION_DATABASE": "Datenbanken",
+        "ADMINISTRATION": "Administration",
+        "APPLICATIONS_DEVELOPMENT": "Anwendungsentwicklung",
+        "BUSINESS_SYSTEMS_PLANNING": "Planung von Geschäftssystemen",
+        "WEB_SITE": "Website",
+        "EDITOR": "Editor",
+        "CAPACITY_PLANNING": "Kapazitätsplanung",
+        "CRM": "CRM",
+        "CAD": "CAD",
+        "EDI": "EDI",
+        "ENTERPRISE_ASSET_MANAGEMENT": "Enterprise Asset Management",
+        "EAP": "EAP",
+        "ENTERPRISE_RESOURCE_PLANNING": "Enterprise Resource Planning",
+        "ERP": "ERP",
+        "HARDWARE_MANAGEMENT": "Hardware-Verwaltung",
+        "INFORMATION_MANAGEMENT": "Informationsverwaltung",
+        "INTEGRATION_SOFTWARE": "Integrations-Software",
+        "INTRANET_DEVELOPMENT": "Intranet-Entwicklung",
+        "PROGRAMMING_LANGUAGES": "Programmiersprachen",
+        "PORTAL_DESIGN_DEVELOPMENT_SOFTWARE": "Softwareentwicklung",
+        "CUSTOMIZATION": "Portal-Design und -Entwicklung",
+        "SOFTWARE_DEVELOPMENT": "Customization",
+        "SYSTEM_ANALYSIS": "Systemanalyse",
+        "SYSTEM_DESIGN": "Systementwurf",
+        "SYSTEM_DEVELOPMENT": "System-Entwicklung",
+        "TECHNICAL_EVANGELISM": "Technical Evangelism",
+        "TECHNICAL_SUPPORT": "Technische Unterstützung",
+        "TELECOMMUNICATIONS": "Telekommunikation",
+        "TRACKING_SYSTEM": "Verfolgungssystem",
+        "UNIX": "UNIX",
+        "USABILITY_ENGINEERING": "Usability Engineering",
+        "USER_EDUCATION": "User-Trainings",
+        "USER_DOCUMENTATION": "Benutzer-Dokumentation",
+        "USER_INTERFACE": "Benutzerschnittstelle",
+        "VENDOR_SOURCING": "Lieferanten-Sourcing",
+        "VOICE_AND_DATA_COMMUNICATIONS": "Sprach- und Datenkommunikation",
+        "WEB_DEVELOPMENT_DESIGN": "Webentwicklung/Design",
+        "WEB_SITE_CONTENT_WRITER": "Verfasser von Website-Inhalten",
+        "CHARACTER_DEVELOPMENT": "Charakter-Entwicklung",
+        "CREATIVE_WRITING": "Kreatives Schreiben",
+        "DRAWING": "Zeichnung",
+        "MUSICAL_COMPOSITION": "Musikalische Komposition",
+        "STORY_LINE_DEVELOPMENT": "Entwicklung der Storyline",
+        "VISUAL_COMPOSITION": "Visuelle Komposition",
+        "COLOUR_THEORY": "Farbentheorie",
+        "DREAMWEAVER": "Dreamweaver",
+        "FLASH_FREEHAND": "Flash Freehand",
+        "ILLUSTRATOR": "Illustrator",
+        "PHOTOSHOP_PICASA": "Photoshop",
+        "COREL_DRAW": "Corel Draw",
+        "TYPOGRAPHY": "Typographie",
+        "PRINT_DESIGN_AND_LAYOUT": "Druckdesign & Layout",
+        "PHOTOGRAPHY": "Fotografie",
+        "B2B_COMMUNICATION": "B2B-Kommunikation",
+        "COMMUNITY_RELATIONS": "Community Relations",
+        "SPEECH_WRITING": "Reden",
+        "CORPORATE_IMAGE": "Firmenimage",
+        "CORPORATE_PHILANTHROPY": "Unternehmensphilanthropie",
+        "CORPORATE_PUBLICATIONS": "Unternehmenspublikationen",
+        "CORPORATE_RELATIONS": "Corporate Relations",
+        "EMPLOYEE_COMMUNICATION": "Mitarbeiterkommunikation",
+        "EVENT_PLANNING": "Veranstaltungen",
+        "FUND_RAISING": "Mittelbeschaffung",
+        "INVESTOR_COLLATERAL": "Investor Collateral",
+        "MEDIA_PRESENTATIONS": "Medien-Präsentationen",
+        "PRESS_RELEASE": "Pressemitteilung",
+        "RISK_MANAGEMENT_COMMUNICATION": "Risikomanagement-Kommunikation"
+    }
+}

@@ -1,0 +1,28 @@
+<!-- Heading line -->
+<h1 class="workspace-creation-title" mat-dialog-title>{{ 'dialog.createWorkspace.header' | translate }}</h1>
+
+<!-- TODO: Export the defined maxLengths of the fields into the shared config when it's there -->
+<form [formGroup]="workspaceCreationForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+
+    <mat-dialog-content>
+
+        <!-- Name -->
+        <base-form-input [parentForm]="workspaceCreationForm" inputType="text" entityName="name" inputControlName="name"
+            [inputRequired]="true" [inputMaxLength]="workspaceNameMaxLength"></base-form-input>
+
+        <!--TODO: insert when description is stored-->
+        <!-- Description -->
+        <!--<base-form-text-field [parentForm]="workspaceCreationForm" entityName="description" inputControlName="description"
+                              [inputMaxLength]="workspaceDescriptionMaxLength"></base-form-text-field>-->
+
+        <!-- Licenses -->
+        <base-form-input [parentForm]="workspaceCreationForm" inputType="number" entityName="licensesCount" inputControlName="licensesCount"
+            [inputRequired]="true" inputMinNumber="1"></base-form-input>
+    </mat-dialog-content>
+
+    <!-- Submit Button -->
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+        <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.create' | translate }}</button>
+    </mat-dialog-actions>
+</form>

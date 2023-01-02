@@ -1,0 +1,64 @@
+<loading-indicator *ngIf="!formatList"></loading-indicator>
+
+<div *ngIf="formatList">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'workspace', 'overview']" backLabelKey="buttons.backToWorkspaces"
+        [actions]="actionBarActions">
+    </action-bar>
+
+    <div class="format-overview" ngClass.lt-md="small" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+        <div class="site-title" fxLayout="row wrap" fxLayoutAlign="space-between start">
+            <span class="text-word-break mat-display-1 text-black wrap-text">{{ workspace.name }}</span>
+            <view-toggle (viewChanged)="onViewChanged($event)" [viewType]="formatViewType" fxFlex="99px"></view-toggle>
+        </div>
+        <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+            gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="508px!" gdGap="32px" gdGap.lt-md="16px">
+            <list-card-item *ngFor="let format of formatList.entities" [itemId]="format.id" [clickable]="true"
+                (itemClick)="onFormatClick(format.id)" showKeyVisual="true" [menuActions]="getFormatMenuActions(format)"
+                [keyVisual]="format.keyVisual">
+                <div list-card-content class="format-overview-card-content" fxLayout="column">
+                    <!-- Format name -->
+                    <inline-edit-text fxFlex="none" inputClasses="mat-headline" [inputText]="format.name"
+                        (inputChange)="onFormatUpdate(format.id, $event)" [inputMaxLength]="formatNameMaxLength" [editable]="false"
+                        [allowNewLines]="false">
+                        <div clampy="3" class="text-word-break">{{ format.name }}</div>
+                    </inline-edit-text>
+
+                    <!-- Format time span -->
+                    <div class="format-overview-card-time mat-subheading-1">
+                        <div *ngIf="format.startDate">
+                            {{ format.startDate | moment: setStartDateFormat(format) }} -
+                            {{ format.endDate | moment: setEndDateFormat(format) }}
+                        </div>
+                        <div *ngIf="!format.startDate">{{ 'labels.noDate' | translate }}</div>
+                    </div>
+
+                    <!-- Format information -->
+                    <div>
+                        <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+                        <main-chip [message]="'labels.amountMembers' | translate: { amount: format.memberCount }"></main-chip>
+                    </div>
+
+                    <!-- Format description -->
+                    <div class="format-overview-card-description mat-body-1 white-space-pre-wrap text-word-break">
+                        <!-- clampy needs all these divs -->
+                        <div>
+                            <div clampy [clampyContent]="format.shortDescription | addLinkTarget"></div>
+                        </div>
+                    </div>
+                </div>
+            </list-card-item>
+        </div>
+
+        <format-list *ngIf="isListViewType()" [formatList]="formatList" [formatMenuActions]="formatMenuActions"
+            (formatClicked)="onFormatClick($event)">
+        </format-list>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+
+        <!-- Empty State -->
+        <empty-state *ngIf="formatList.count < 1" titleKey="emptyStates.format.title" contentKey="emptyStates.format.content"
+            altTextKey="emptyStates.format.altText">
+        </empty-state>
+    </div>
+</div>

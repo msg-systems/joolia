@@ -1,0 +1,21 @@
+.activity-details {
+    > *:nth-child(n) {
+        margin-top: 24px;
+    }
+
+    .mat-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .mat-subheading-2 {
+        margin-top: 1rem;
+    }
+
+    .canvas-title {
+        app-beta-tag {
+            margin-left: 8px;
+        }
+    }
+}

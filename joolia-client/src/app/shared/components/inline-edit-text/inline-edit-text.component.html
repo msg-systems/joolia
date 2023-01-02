@@ -1,0 +1,33 @@
+<div *appHasPermission="!editMode || !editable" [ngClass]="{'editable': editable}" (click)="onClick($event)" fxFlex="0 1 100%"
+    class="inline-edit-text-view {{ inputClasses }} no-margin">
+
+    <ng-content *ngIf="inputText"></ng-content>
+    <div class="inline-edit-text-view-placeholder" *appHasPermission="!inputText && editable">
+        {{ inputPlaceholderKey | translate }}
+    </div>
+
+</div>
+
+<div *appHasPermission="editMode && editable" fxFlex="0 1 100%" fxLayout="column" class="inline-edit-text-container">
+
+    <mat-form-field class="inline-edit-text-area-container">
+        <div class="{{inputClasses}} no-margin">
+            <div mwlTextInputHighlightContainer class="inline-edit-text-highlight-container">
+
+                <textarea id="editInput" class="inline-edit-text-area" mwlTextInputElement matInput #textarea [(ngModel)]="inputText"
+                    [maxLength]="inputMaxLengthTechnical" appAutosize rows="1" (focusout)="onTextChange()" (input)="onInput()"
+                    (click)="$event.stopPropagation()">
+                </textarea>
+
+                <mwl-text-input-highlight #textareaHighlight [tags]="tags" [textInputElement]="textarea"></mwl-text-input-highlight>
+
+            </div>
+        </div>
+    </mat-form-field>
+
+    <span *ngIf="inputMaxLength" class="text-length-hint" fxFlexAlign="end"
+        [ngClass]="{'input-overfull': inputText.length > inputMaxLengthValue }">
+        {{ inputText.length }}/{{ inputMaxLengthValue }}
+    </span>
+
+</div>

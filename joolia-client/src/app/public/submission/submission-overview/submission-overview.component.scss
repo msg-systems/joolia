@@ -1,0 +1,44 @@
+@import 'variables';
+
+.infotexts {
+    margin-top: 32px;
+    color: $joolia-grey;
+
+    .mat-icon {
+        margin-right: 8px;
+        color: $joolia-primary-a700;
+    }
+}
+
+.submission-overview {
+    margin-top: 32px;
+
+    .submission-creation-button {
+        margin-bottom: 8px;
+    }
+
+    .submission-table {
+        min-width: 574px; // this results in non scrollbar for a browser-width of 960px or wider
+
+        .mat-cell > span.text-truncate {
+            padding-right: 16px;
+        }
+
+        .mat-cell > mat-icon {
+            padding-right: 8px;
+        }
+    }
+
+    .submission-row {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $joolia-grey-100;
+        }
+    }
+
+    .submission-emptystate {
+        margin: 8px;
+        text-align: center;
+    }
+}

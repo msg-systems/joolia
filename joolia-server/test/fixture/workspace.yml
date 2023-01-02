@@ -1,0 +1,43 @@
+entity: workspace
+items:
+  Workspace1:
+    id: 9243cbfb-9e4d-4b9f-a256-9ce5a38ec537
+    name: Workspace exercitation
+    description: Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.
+    createdBy: '@Leia'
+    licensesCount: 50
+  Workspace2:
+    id: 7375d4a4-1a36-49f9-a1fa-c6faffdb6b19
+    name: Workspace ullamco
+    description: Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.
+    createdBy: '@Luke'
+    licensesCount: 50
+    logo: '@WorkspaceLogoFileOne'
+  Workspace3:
+    id: d399e6fa-1e04-4307-9587-97e8c4642f5b
+    name: Workspace nulammco
+    description: Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.
+    createdBy: '@Anakin'
+    licensesCount: 50
+  Workspace4:
+    id: a9548745-9456-4916-8455-fb07aab470e7
+    name: twinworkspace
+    description: twin description
+    createdBy: '@Shaak'
+    licensesCount: 15
+  Workspace5:
+    id: 8aafab09-27e8-4826-aace-4d120327f317
+    name: Other workspace
+    description: twin description
+    createdBy: '@Shaak'
+    licensesCount: 15
+  Workspace6:
+    id: 34cf0554-8862-4498-b717-477b51ffba88
+    description: This workspace intention is to test the creation without a name
+    createdBy: '@Shaak'
+    licensesCount: 15
+  Workspace7:
+    id: b9938cd1-46b7-41cf-accd-dfcfdf8ac760
+    description: Mickey's Workspace
+    createdBy: '@Mickey'
+    licensesCount: 2

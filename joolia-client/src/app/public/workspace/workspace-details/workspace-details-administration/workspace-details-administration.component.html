@@ -1,0 +1,136 @@
+<div>
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'workspace', 'overview']" backLabelKey="buttons.backToWorkspaces">
+    </action-bar>
+
+    <div class="workspace-administration-page-container">
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ workspace.name }}</span>
+        </div>
+
+        <div class="mat-title">{{ 'labels.licenses' | translate }}</div>
+
+        <div class="license-summary">
+            <workspace-license-summary [licenseAmount]="workspace.licensesCount" [usedLicenseAmount]="workspace.memberCount">
+            </workspace-license-summary>
+        </div>
+
+        <div class="mat-title">{{ 'labels.userActivityOverview' | translate }}</div>
+
+        <div class="users-table-container" fxLayout="column" fxLayoutAlign="center end" fxFlexFill>
+
+            <loading-indicator *ngIf="!userList" fxFlexFill></loading-indicator>
+
+            <pagination-container *ngIf="userList" fxFlexFill [paginatorSizeOptions]="paginatorSizeOptions"
+                [initialPaginatorSize]="initialPaginatorSize" [paginationLength]="userList.count"
+                (paginationChange)="onPaginationChange($event)" [showLoadingSpinner]="isLoadingContent">
+                <!-- Table -->
+                <mat-table *ngIf="userList" class="user-table" [dataSource]="userList.entities">
+                    <!-- Avatar -->
+                    <ng-container matColumnDef="avatar">
+                        <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="64px">
+                            <user-avatar [sizeInPx]="24" [user]="user"></user-avatar>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Name -->
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef fxFlex="40">{{ 'labels.name' | translate }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="40">
+                            <span class="text-truncate" [ngClass]="{ 'user-pending-invitation': user.pending }">
+                                {{ user.pending ? ('labels.invitationPending' | translate) : user.name }}
+                            </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Email -->
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef fxFlex="40">{{ 'labels.email' | translate: { plural: 0 } }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="40">
+                            <span class="text-truncate">{{ user.email }}</span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Company -->
+                    <ng-container matColumnDef="company">
+                        <mat-header-cell *matHeaderCellDef fxFlex="40">{{ 'labels.company' | translate }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="40">
+                            <span class="text-truncate">{{ user.company || '---' }}</span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Role -->
+                    <ng-container matColumnDef="role">
+                        <mat-header-cell *matHeaderCellDef fxFlex="60">{{ 'labels.role' | translate }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="60">
+                            <span class="text-truncate">
+                                {{ ( user.role === adminRole ? 'labels.administrator' : 'labels.participant') | translate: { plural: 0 } }}
+                            </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- LastLogin -->
+                    <ng-container matColumnDef="lastLogin">
+                        <mat-header-cell *matHeaderCellDef fxFlex="20">{{ 'labels.lastLogin' | translate }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="20">
+                            <span class="text-truncate">
+                                {{ user.lastLogin ? (user.lastLogin | moment: 'L') : '---' }}
+                            </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- FormatCount -->
+                    <ng-container matColumnDef="formatCount">
+                        <mat-header-cell *matHeaderCellDef fxFlex="20">{{ 'labels.format' | translate: { plural: 1 } }}</mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="20">
+                            <span class="text-truncate">
+                                {{ user.formatCount }}
+                            </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Actions -->
+                    <ng-container matColumnDef="action">
+                        <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                        <mat-cell *matCellDef="let user" fxFlex="64px" (click)="$event.stopPropagation()">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button *ngIf="!user.pending" mat-menu-item (click)="onUserChangeRole(user.id)">
+                                    {{ ( user.role === adminRole ? 'buttons.changeRoleToParticipant': 'buttons.changeRoleToAdministrator' ) | translate }}
+                                </button>
+                                <button mat-menu-item (click)="onUserDelete(user.id)">
+                                    {{ 'buttons.delete' | translate }}
+                                </button>
+                            </mat-menu>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Header -->
+                    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                    <mat-row class="user-row" *matRowDef="let user; columns: columnsToDisplay">
+                    </mat-row>
+
+
+
+                </mat-table>
+            </pagination-container>
+        </div>
+
+        <!-- Microsoft 365 -->
+        <div class="mat-title">{{ 'labels.microsoft365.title' | translate }}</div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+            <span class="mat-body-1">{{ 'labels.microsoft365.msTeamsIntegration' | translate }}</span>
+            <span class="mat-body-1 workspace-administration-admin-consent-status">
+                {{ 'labels.microsoft365.adminConsent' | translate }}</span>
+            <span class="mat-body-1 workspace-administration-admin-consent-status">
+                {{ 'labels.microsoft365.adminConsentStatus' | translate: { granted: isAdminConsentGranted} }}
+            </span>
+            <button *ngIf="!isAdminConsentGranted" mat-button color="primary-800" (click)="onOpenRequestConsentDialog()">
+                {{ 'buttons.requestConsent' | translate }}
+            </button>
+        </div>
+
+    </div>
+</div>

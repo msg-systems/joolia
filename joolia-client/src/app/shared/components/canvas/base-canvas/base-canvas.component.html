@@ -1,0 +1,7 @@
+<div *ngIf="canvas else Loading" class="mat-body-1">
+    <base-canvas-template [parent]="self"></base-canvas-template>
+</div>
+
+<ng-template #Loading>
+    <loading-indicator fxFlex></loading-indicator>
+</ng-template>

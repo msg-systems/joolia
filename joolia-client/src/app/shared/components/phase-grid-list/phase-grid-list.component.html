@@ -1,0 +1,56 @@
+<div>
+    <span class="phase-title mat-title">{{ headerText }}</span>
+    <div class="phase-title-divider" fxFlex="auto" fxLayout="row" fxLayoutAlign="end center"></div>
+</div>
+
+<div class="phase-grid-list-overview" ngClass.lt-md="small" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+    gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="276px!" gdGap="32px" gdGap.lt-md="16px">
+    <list-card-item *ngFor="let phase of phases" [itemId]="phase.id" [clickable]="true" (itemClick)="onPhaseClick(phase.id)"
+        [menuActions]="phase['menuactions']">
+        <div list-card-content class="phase-content" [ngSwitch]="phase.durationUnit">
+            <!-- Phase name -->
+            <inline-edit-text inputClasses="mat-title" [inputText]="phase.name" (inputChange)="onPhaseUpdate(phase.id, 'name', $event)"
+                [inputMaxLength]="phaseNameMaxLength" [editable]="false" [allowNewLines]="false">
+                <div clampy="3" class="phase-card-title text-word-break">{{ phase.name }}</div>
+            </inline-edit-text>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <!-- Phase start date -->
+                <inline-datepicker inputClasses="mat-body-1" [inputDate]="phase.startDate" inputPlaceholderKey="labels.noStartDate"
+                    [datetimePickerType]="getPhaseDatePickerType(phase.durationUnit)"
+                    (dateChanged)="onPhaseUpdate(phase.id, 'startDate', $event)" [editable]="false">
+                    <div *ngSwitchCase="phaseDurationDaysType">
+                        {{ 'labels.startsDate' | translate: { date: phase.startDate | moment: 'L' } }}
+                    </div>
+                    <div *ngSwitchCase="phaseDurationMinutesType">
+                        {{
+                            'labels.startsDateTime'
+                                | translate
+                                    : {
+                                          date: phase.startDate | moment: 'L',
+                                          time: phase.startDate | moment: 'LT'
+                                      }
+                        }}
+                    </div>
+                </inline-datepicker>
+
+                <!-- Visibility -->
+                <div *ngIf="editable">
+                    <mat-icon class="phase-card-visibility-icon">
+                        {{ phase.visible ? 'visibility' : 'visibility_off' }}
+                    </mat-icon>
+                </div>
+            </div>
+
+            <!-- Phase duration -->
+            <div class="mat-body-2" fxLayoutAlign="start center">
+                <mat-icon class="phase-card-duration-icon">access_time</mat-icon>
+                <span>{{ phase.duration | durationPipe: phase.durationUnit }}</span>
+            </div>
+
+            <!-- Amount of Methods -->
+            <main-chip [message]="'labels.amountMethods' | translate: { amount: phase.activityCount }"
+                [noContent]="phase.activityCount === 0"></main-chip>
+        </div>
+    </list-card-item>
+</div>

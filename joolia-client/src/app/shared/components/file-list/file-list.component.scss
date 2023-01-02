@@ -1,0 +1,81 @@
+@import 'variables';
+
+.files-container {
+    .file-box {
+        height: 40px;
+        background-color: $joolia-grey-50;
+        border: 1px solid $joolia-black-transparent-12;
+        border-radius: 16px;
+        margin: 4px 0;
+        padding-left: 20px;
+        padding-right: 8px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $joolia-primary-a700;
+        }
+
+        &:not(:hover) .file-hover-only {
+            display: none;
+        }
+
+        .file-download-container {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .file-text {
+            min-width: 0;
+
+            .invisible {
+                display: none;
+            }
+
+            .file-size {
+                margin-left: 8px;
+                color: $joolia-black-transparent-60;
+            }
+
+            loading-indicator {
+                padding-left: 8px;
+            }
+        }
+
+        .file-upload-percentage {
+            margin-left: 8px;
+        }
+
+        .file-icons {
+            color: $joolia-black-transparent-50;
+        }
+    }
+
+    .file-box-touch {
+        border-bottom-right-radius: 0;
+    }
+
+    .touch-device-file-buttons {
+        background-color: $joolia-grey-50;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-top: none;
+        border-radius: 0 0 16px 16px;
+        width: 158px;
+        margin: -6px 0 12px 0;
+    }
+
+    .progress-bar-container {
+        margin: 0 20px;
+        width: 100%;
+    }
+    .progress-bar-container.mobile {
+        margin: 0 20px 20px 20px;
+    }
+
+    input[type='file'] {
+        display: none;
+    }
+
+    .copyright-notice {
+        margin-top: 16px;
+    }
+}

@@ -1,0 +1,47 @@
+<pagination-container *ngIf="submissionList" fxFlexFill [paginatorSizeOptions]="paginatorSizeOptions"
+    [initialPaginatorSize]="initialPaginatorSize" [paginationLength]="submissionList.count" (paginationChange)="onPaginationChange($event)"
+    [showLoadingSpinner]="isLoadingContent">
+    <!-- Table -->
+    <mat-table *ngIf="submissionList" class="submission-table" [dataSource]="submissionList.entities">
+        <!-- Activity -->
+        <ng-container matColumnDef="activity">
+            <mat-header-cell *matHeaderCellDef fxFlex="60">{{ 'labels.activity' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let submission" fxFlex="60">
+                <span class="text-truncate">{{ submission.activity ? submission.activity.name : '' }}</span>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef fxFlex="60">{{ 'labels.title' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let submission" fxFlex="60">
+                <span class="text-truncate">{{ submission.name }}</span>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Actions -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+            <mat-cell class="submissions-table-column-action" *matCellDef="let submission" fxFlex="64px" (click)="$event.stopPropagation()">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onSubmissionDelete(submission.id)">
+                        {{ 'buttons.delete' | translate }}
+                    </button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Header -->
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row class="submission-row" *matRowDef="let submission; columns: columnsToDisplay"
+            (click)="navigateToSubmission(submission.id)">
+        </mat-row>
+    </mat-table>
+
+    <div *ngIf="submissionList.count === 0" class="submission-emptystate">
+        <span class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activitySubmission.content' | translate }}</span>
+    </div>
+</pagination-container>

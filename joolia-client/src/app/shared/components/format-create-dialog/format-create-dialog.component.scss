@@ -1,0 +1,31 @@
+@import 'variables';
+
+.format-create-title {
+    text-align: center;
+}
+
+.format-create-dialog {
+    max-width: unset !important;
+}
+
+.format-create-selection-card {
+    padding: 8px;
+    margin-bottom: 16px;
+    background: $joolia-grey-50;
+    border: 1px solid $joolia-black-transparent-12;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.format-create-selection-card-button {
+    white-space: normal;
+    line-height: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: $joolia-primary-800;
+    text-transform: uppercase;
+
+    .add-icon {
+        margin-right: 8px;
+    }
+}

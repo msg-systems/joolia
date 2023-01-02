@@ -1,0 +1,25 @@
+entity: TeamFileEntry
+items:
+  Team1File1:
+    ownerType: TeamEntry
+    id: 86240c6b-b474-11ea-8112-0242ac110002
+    fileId: 817c3745-2a15-4dbd-a34b-ac0dfc3a4314 # Matches loaded file in s3 for development
+    versionId: 0b34bce9-08db-4435-a7d9-f00a17911c0b # Provide to file requirement in DB
+    name: vader.jpg
+    contentType: 'image/jpeg'
+    size: 2111240
+    createdBy: '@Luke'
+    createdAt: '2019-05-09 10:44:32'
+    team: '@Team1'
+
+  Team1File2:
+    ownerType: TeamEntry
+    id: 5e7bb9d7-1a44-4c34-8f24-e24704a5637d
+    fileId: 970a8f24-e7bc-432e-ad3b-f080ca359286 # Does not much any real file
+    versionId: 1d6963d2-ebfe-4f91-8a8b-b7ef16e06a2e # Provide to file requirement in DB
+    name: luke.jpg
+    contentType: 'image/jpeg'
+    size: 2111240
+    createdBy: '@Luke'
+    createdAt: '2019-05-25 10:45:32'
+    team: '@Team1'

@@ -1,0 +1,191 @@
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/submission/{submissionId}/feedback:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+    - $ref: '#/components/parameters/IdParameterSubmission'
+  post:
+    tags:
+      - Feedback
+    description: Create a new feedback to an submission
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PostFeedbackBody'
+    responses:
+      '201':
+        description: Feedback created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format or activity setting is submitter
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Feedback
+    description: Returns all feedback of an submission which the user has access to
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all feedback of submission which the user has access to
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Feedback'
+              example:
+                count: 2
+                entities: [Feedback1, Feedback2]
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}/activity/{activityId}/submission/{submissionId}/feedback/{feedbackId}:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterPhase'
+    - $ref: '#/components/parameters/IdParameterActivity'
+    - $ref: '#/components/parameters/IdParameterSubmission'
+    - $ref: '#/components/parameters/IdParameterFeedback'
+  get:
+    tags:
+      - Feedback
+    description: Get specific feedback of a submission
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: feedback retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not allowed to see feedback
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Feedback
+    description: Update specific fields of a feedback.
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              rating:
+                type: number
+                format: float
+                minimum: 0
+                maximum: 5
+                multipleOf: 0.5
+              comment:
+                type: string
+    responses:
+      '200':
+        description: Feedback updated successfully. Returns only the updated fields of the feedback.
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not allowed to give feedback
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Feedback
+    description: Delete specific feedback
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Feedback deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of submitting team, submitter or organizer
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/submission/{submissionId}/feedback:
+  parameters:
+    - $ref: '#/components/parameters/IdParameterFormat'
+    - $ref: '#/components/parameters/IdParameterSubmission'
+
+  get:
+    tags:
+      - Feedback
+    description: Returns all feedback of a submission
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved all feedback of one submission
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Feedback'
+              example:
+                count: 2
+                entities: [Feedback1, Feedback2]
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+components:
+  parameters:
+    IdParameterFeedback:
+      in: path
+      name: feedbackId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the feedback

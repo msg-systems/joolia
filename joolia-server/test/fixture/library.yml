@@ -1,0 +1,38 @@
+entity: Library
+items:
+  library1:
+    id: 7e02816e-3f3d-11e9-b210-d663bd873d93
+    name: library exercitation
+    createdBy: '@Luke'
+    members:
+      - '@Luke'
+      - '@Leia'
+  library2:
+    id: 152afcb8-730b-4deb-87f2-e15ea48a9786
+    name: library ullamco
+    createdBy: '@George'
+    members:
+      - '@ObiWan'
+      - '@George'
+      - '@Luke'
+      - '@PendingUser'
+  library3:
+    id: 5184a00d-564d-4196-a3a7-72b26a38cb89
+    name: library nulammco
+    createdBy: '@Shaak'
+    members:
+      - '@Shaak'
+      - '@Anakin'
+      - '@Leia'
+  library4:
+    name: twinLibrary
+    createdBy: '@Shaak'
+    members:
+      - '@Shaak'
+      - '@Anakin'
+  library5:
+    name: twinLibrary
+    createdBy: '@Shaak'
+    members:
+      - '@Shaak'
+      - '@Anakin'

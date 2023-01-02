@@ -1,0 +1,29 @@
+<loading-indicator *ngIf="!(library && library.members)"></loading-indicator>
+
+<div *ngIf="library && library.members" fxLayout="column">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'library', 'overview']" backLabelKey="buttons.backToLibraries"
+        [actions]="actionBarActions">
+    </action-bar>
+
+    <div class="library-details-members" ngClass.lt-md="small" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+        <div class="member-filter" fxLayout="row wrap" fxLayoutAlign="space-between start">
+            <filter-toggle-group (filterChanged)="onFilterChange($event)" [filterCriteriaList]="[userStatusFilter]">
+            </filter-toggle-group>
+
+            <view-toggle (viewChanged)="onViewTypeChanged($event)" [viewType]="memberViewType" fxFlex="99px"></view-toggle>
+        </div>
+
+        <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+            gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="308px!" gdGap="32px" gdGap.lt-md="16px">
+            <user-card *ngFor="let member of library.members.entities" [user]="member" [userMenuActions]="memberMenuActions"></user-card>
+        </div>
+
+        <mat-nav-list *ngIf="isListViewType()" disableRipple>
+            <user-list-item *ngFor="let member of library.members.entities" [user]="member" [userMenuActions]="memberMenuActions">
+            </user-list-item>
+        </mat-nav-list>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+    </div>
+</div>

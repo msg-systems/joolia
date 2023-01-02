@@ -1,0 +1,22 @@
+@import 'variables';
+
+.send-mail-dialog {
+    ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0;
+
+        .mat-form-field-subscript-wrapper {
+            position: static;
+        }
+    }
+    .warn-maxEmailAddresses {
+        color: $joolia-warn-800;
+    }
+}
+
+.chip-error {
+    background-color: $joolia-warn-A100 !important;
+}
+
+.chip-remove-error {
+    color: $joolia-warn-800 !important;
+}

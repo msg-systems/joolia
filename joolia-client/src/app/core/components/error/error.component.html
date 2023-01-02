@@ -1,0 +1,11 @@
+<app-sidenav>
+    <div class="error-container" ngClass.lt-md="small" fxLayout="column" fxLayoutAlign="center center">
+        <mat-card class="error-card mat-elevation-z0" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="32px">
+            <img class="error-state-img" [src]="errorStateImgSrc" alt="Error">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+                <h1>{{ 'errors.default.title' | translate }}</h1>
+                <div>{{ 'errors.default.defaultErrorPage' | translate }}</div>
+            </div>
+        </mat-card>
+    </div>
+</app-sidenav>

@@ -1,0 +1,49 @@
+.progress-table {
+    table {
+        table-layout: fixed;
+        width: 100%;
+
+        .table-row {
+            cursor: pointer;
+        }
+
+        .table-row.expanded {
+            border-bottom-color: transparent;
+        }
+
+        .table-detail-row {
+            overflow: hidden;
+        }
+
+        .mat-column-name {
+            flex: 2;
+        }
+
+        .mat-column-progress {
+            flex: 4;
+
+            .mat-progress-bar {
+                margin: 0 32px;
+            }
+        }
+
+        .mat-column-action {
+            .mat-icon {
+                margin: 0 0 0 auto;
+                cursor: pointer;
+            }
+        }
+
+        .mat-column-steps {
+            .step-list {
+                margin: 8px auto 16px 64px;
+                //padding mat-cell: 2* 48px + 64px margin-left
+                width: calc(100% - 112px);
+            }
+        }
+
+        .hidden-cell {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "workspace1": {
+        "id": "7e02816e-3f3d-11e9-b210-d663bd873d93",
+        "name": "Workspace exercitation",
+        "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+        "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+        "licensesCount": 50,
+        "me": {
+            "userRole": "admin"
+        }
+    },
+    "workspace2": {
+        "id": "a43346d0-5436-44b0-9a79-0a278f5a8a3b",
+        "name": "Workspace ullamco",
+        "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+        "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+        "licensesCount": 50,
+        "me": {
+            "userRole": "admin"
+        }
+    },
+    "workspace3": {
+        "id": "ae4ebf95-c809-493d-8a99-77314a57c862",
+        "name": "Workspace nulammco",
+        "description": "Adipisicing eiusmod consequat proident aute velit. Est sunt sit do ullamco aute non veniam pariatur.",
+        "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+        "licensesCount": 50,
+        "me": {
+            "userRole": "admin"
+        }
+    },
+    "workspace4": {
+        "id": "cd426a50-078e-47cf-811d-69f4a5678489",
+        "name": "twinworkspace",
+        "description": "twin description",
+        "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+        "licensesCount": 15,
+        "me": {
+            "userRole": "admin"
+        }
+    },
+    "workspace5": {
+        "id": "d88bb5db-aa6e-4232-840c-d79041421601",
+        "name": "Other workspace",
+        "description": "twin description",
+        "logo": "Voluptate ullamco in occaecat labore magna aliqua adipisicing culpa laborum eiusmod.",
+        "licensesCount": 15,
+        "me": {
+            "userRole": "admin"
+        }
+    }
+}

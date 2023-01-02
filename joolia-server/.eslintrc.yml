@@ -1,0 +1,55 @@
+#
+# Configuration targets Typescript and integrates with Prettier hence ESList Stylish rules are disabled.
+#
+# https://eslint.org/docs/rules/
+# https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/ROADMAP.md
+#
+#
+
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+
+parser: '@typescript-eslint/parser'
+# Parser options make linter lose performance
+parserOptions:
+  project: './tsconfig.base.json'
+
+plugins:
+  - '@typescript-eslint'
+  - 'prettier'
+extends:
+  - 'plugin:@typescript-eslint/recommended'
+  - 'prettier/@typescript-eslint'
+  - 'plugin:prettier/recommended'
+
+rules: {
+  "prefer-const": "error",
+  "no-use-before-define": ["warn", { "functions": false, "classes": false }],
+  "@typescript-eslint/no-use-before-define": ["warn", { "functions": false, "classes": false }],
+  "max-classes-per-file": 0,
+  "no-unused-vars": ["error", { "args": "after-used", "argsIgnorePattern": "^type" } ], # the type in the TypeORM notation has to be ignored
+  "@typescript-eslint/interface-name-prefix": 0,
+  "@typescript-eslint/ban-ts-comment": 1,
+  "@typescript-eslint/no-parameter-properties": 0,
+  "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true, "allowTypedFunctionExpressions": true }],
+  "@typescript-eslint/array-type": ["error", { default: "array-simple" }],
+  "prettier/prettier": "error",
+  "no-await-in-loop": "warn", # todo: make this an error
+  "class-methods-use-this": "off",
+  "no-console": "error"
+}
+
+
+"overrides": [
+  {
+    "files": ["*.spec.ts", "test/mock/*.ts"],
+    "rules": {
+        "@typescript-eslint/ban-ts-comment": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "no-console": 0,
+        "no-await-in-loop": 0,
+        "no-unused-vars": "warn"
+    }
+  }
+]

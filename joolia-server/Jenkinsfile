@@ -1,0 +1,262 @@
+#!groovy
+
+pipeline {
+    agent any
+
+    options {
+        newContainerPerStage()  // Docker container(s) should not be reused!
+
+        office365ConnectorWebhooks([[
+             name: "Joolia",
+             url: "https://outlook.office.com/webhook/f643c4dc-64b0-48af-aaf6-7d4cb3b5682d@763b2760-45c5-46d3-883e-29705bba49b7/JenkinsCI/b1d84647067f488fa194a45eff818973/2ec8787c-c397-4e73-8182-5c2db20691ff",
+             startNotification: false,
+             notifySuccess: true,
+             notifyAborted: false,
+             notifyNotBuilt: false,
+             notifyUnstable: true,
+             notifyFailure: true,
+             notifyBackToNormal: true
+             ]])
+    }
+
+    environment {
+        nodeImage = 'joolia-node:12.18.0-stretch'
+
+        // GBP-CI Nexus
+        dockerPullRegistry = "http://nexus.msg-gbp-ci:8082"
+        dockerRegistryCredentials = "NEXUS"
+
+        // AWS Staging ECR
+        dockerRegistryStaging = "https://254899832227.dkr.ecr.eu-central-1.amazonaws.com"
+        dockerRegistryCredentialsStaging = "ecr:eu-central-1:AWS_TEST"
+
+        // AWS Production ECR
+        dockerRegistryProduction = "https://980765129740.dkr.ecr.eu-central-1.amazonaws.com"
+        dockerRegistryCredentialsProduction = "ecr:eu-central-1:AWS_PROD"
+    }
+
+    stages {
+
+        stage('Build') {
+           steps {
+               script {
+                   docker.withRegistry(dockerPullRegistry, dockerRegistryCredentials) {
+                       docker.image('${nodeImage}').inside() {
+                           sh 'npm ci'
+                           sh 'npm run build'
+                           stash name: "stashed-build"
+                       }
+                   }
+               }
+           }
+        }
+
+        stage('Audit, Lint & Circular dependency checks') {
+           parallel {
+              stage('NPM Audit') {
+                  steps {
+                      script {
+                          docker.withRegistry(dockerPullRegistry, dockerRegistryCredentials) {
+                              docker.image('${nodeImage}').inside() {
+                                  unstash "stashed-build"
+                                  sh 'ls -l .'
+                                  sh 'npm audit --audit-level=high --registry="https://registry.npmjs.org/"'
+                              }
+                          }
+                      }
+                  }
+              }
+              stage('Lint') {
+                   steps {
+                       script {
+                           docker.withRegistry(dockerPullRegistry, dockerRegistryCredentials) {
+                               docker.image('${nodeImage}').inside() {
+                                   unstash "stashed-build"
+                                   sh 'ls -l .'
+                                   sh 'npm run lint'
+                               }
+                           }
+                       }
+                   }
+               }
+               stage('Circular Check') {
+                   steps {
+                       script {
+                           docker.withRegistry(dockerPullRegistry, dockerRegistryCredentials) {
+                               docker.image('${nodeImage}').inside() {
+                                   unstash "stashed-build"
+                                   sh 'ls -l .'
+                                   sh 'npm run circular:check'
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+        }
+
+        stage('Test') {
+           steps {
+               script {
+                   docker.withRegistry(dockerPullRegistry, dockerRegistryCredentials) {
+                       docker.image('mysql:5.7').withRun('-e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=jooliadb', '--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci') { c ->
+                           docker.image('mysql:5.7').inside("--link ${c.id}:db") {
+                               sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
+                           }
+
+                           docker.image('${nodeImage}').inside("--link ${c.id}:db -e JOOLIA_DB_HOST=db") {
+                             unstash "stashed-build"
+                             sh 'npm run test:ci'
+                           }
+                       }
+                   }
+               }
+           }
+        }
+
+        stage('Build & Push Image') {
+            when {
+                expression {
+                    return (env.BRANCH_NAME == 'master' ||
+                            env.BRANCH_NAME == 'develop' ||
+                            env.BRANCH_NAME ==~ /release\/.+/ ||
+                            env.BRANCH_NAME ==~ /feature\/.+/ ||
+                            env.BRANCH_NAME ==~ /hotfix\/.+/ ||
+                            env.BRANCH_NAME ==~ /bugfix\/.+/);
+                }
+            }
+            parallel {
+
+                stage('Staging') {
+                    when {
+                        expression {
+                            return (env.BRANCH_NAME ==~ /release\/.+/ ||
+                                    env.BRANCH_NAME ==~ /hotfix\/.+/ ||
+                                    env.BRANCH_NAME ==~ /feature\/.+/ ||
+                                    env.BRANCH_NAME ==~ /bugfix\/.+/);
+                        }
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                script {
+                                    sh 'chmod +x build.sh'
+                                    // Ensuring trimmed string. https://issues.jenkins-ci.org/browse/JENKINS-41395
+                                    buildSignatureStaging = sh(script: "./build.sh -i -u 254899832227.dkr.ecr.eu-central-1.amazonaws.com | cut -d' ' -f1", returnStdout: true).trim()
+                                    dockerImageNameStaging = sh(script: "./build.sh -i -u 254899832227.dkr.ecr.eu-central-1.amazonaws.com | cut -d' ' -f2", returnStdout: true).trim()
+
+                                    echo "Building ${buildSignatureStaging}"
+
+                                    docker.withRegistry(dockerRegistryStaging, dockerRegistryCredentialsStaging) {
+                                        dockerImageStaging = docker.build("${dockerImageNameStaging}", "--no-cache --force-rm --build-arg BUILD_SIGNATURE=\"${buildSignatureStaging}\" .")
+                                    }
+                                }
+                            }
+                        }
+
+                        stage('Push') {
+                            steps {
+                                script {
+                                    // push to AWS Staging ECR
+                                    docker.withRegistry(dockerRegistryStaging, dockerRegistryCredentialsStaging) {
+                                        dockerImageStaging.push()
+                                    }
+                                }
+                            }
+                            post {
+                                always {
+                                    sh "docker rmi $dockerImageNameStaging"
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage('joolia-next') {
+                    when {
+                        expression {
+                            return (env.BRANCH_NAME == 'develop');
+                        }
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                script {
+                                    sh 'chmod +x build.sh'
+                                    // Ensuring trimmed string. https://issues.jenkins-ci.org/browse/JENKINS-41395
+                                    buildSignatureStaging = sh(script: "./build.sh -i -u 254899832227.dkr.ecr.eu-central-1.amazonaws.com -n | cut -d' ' -f1", returnStdout: true).trim()
+                                    dockerImageNameStaging = sh(script: "./build.sh -i -u 254899832227.dkr.ecr.eu-central-1.amazonaws.com -n | cut -d' ' -f2", returnStdout: true).trim()
+
+                                    echo "Building ${buildSignatureStaging}"
+
+                                    docker.withRegistry(dockerRegistryStaging, dockerRegistryCredentialsStaging) {
+                                        dockerImageStaging = docker.build("${dockerImageNameStaging}", "--no-cache --force-rm --build-arg BUILD_SIGNATURE=\"${buildSignatureStaging}\" .")
+                                    }
+                                }
+                            }
+                        }
+
+                        stage('Push') {
+                            steps {
+                                script {
+                                    // push to AWS Staging ECR
+                                    docker.withRegistry(dockerRegistryStaging, dockerRegistryCredentialsStaging) {
+                                        dockerImageStaging.push()
+                                    }
+                                }
+                            }
+                            post {
+                                always {
+                                    sh "docker rmi $dockerImageNameStaging"
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                stage('Production') {
+                    when {
+                        expression {
+                            return (env.BRANCH_NAME == 'master');
+                        }
+                    }
+                    stages {
+                        stage('Build') {
+                            steps {
+                                script {
+                                    sh 'chmod +x build.sh'
+                                    // Ensuring trimmed string. https://issues.jenkins-ci.org/browse/JENKINS-41395
+                                    buildSignatureProduction = sh(script: "./build.sh -i -u 980765129740.dkr.ecr.eu-central-1.amazonaws.com | cut -d' ' -f1", returnStdout: true).trim()
+                                    dockerImageNameProduction = sh(script: "./build.sh -i -u 980765129740.dkr.ecr.eu-central-1.amazonaws.com | cut -d' ' -f2", returnStdout: true).trim()
+
+                                    echo "Building ${buildSignatureProduction}"
+
+                                    docker.withRegistry(dockerRegistryProduction, dockerRegistryCredentialsProduction) {
+                                        dockerImageProduction = docker.build("${dockerImageNameProduction}", "--no-cache --force-rm --build-arg BUILD_SIGNATURE=\"${buildSignatureProduction}\" .")
+                                    }
+                                }
+                            }
+                        }
+                        stage('Push') {
+                            steps {
+                                script {
+                                    // push to AWS Production ECR
+                                    docker.withRegistry(dockerRegistryProduction, dockerRegistryCredentialsProduction) {
+                                        dockerImageProduction.push()
+                                    }
+                                }
+                            }
+                            post {
+                                always {
+                                    sh "docker rmi $dockerImageNameProduction"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

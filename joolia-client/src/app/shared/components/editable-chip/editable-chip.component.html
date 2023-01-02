@@ -1,0 +1,15 @@
+<div class="main-chip joolia-chip-text" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon *ngIf="icon" class="chip-icon">{{ icon }}</mat-icon>
+    <span>{{ message }}</span>
+    <span *ngIf="!disableEdit" class="edit-icon">
+        <mat-icon class="chip-icon">edit</mat-icon>
+        <mat-select [formControl]="formCtrl" class="editable-chip-input" (selectionChange)="onSelectionChanged($event)">
+            <mat-option *ngFor="let option of options" [value]="option.value">{{ option.display }}</mat-option>
+        </mat-select>
+
+    </span>
+
+    <button *ngIf="deletable" class="edit-icon" mat-icon-button>
+        <mat-icon (click)="onDelete()" class="delete-icon">delete</mat-icon>
+    </button>
+</div>

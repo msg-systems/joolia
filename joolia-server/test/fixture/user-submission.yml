@@ -1,0 +1,112 @@
+entity: UserSubmission
+items:
+  UserSubmissionOne:
+    id: bdeae8da-d434-409a-b28c-01e54e7d1889
+    name: 'UserSubmission Uno'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwo'
+    createdBy: '@ObiWan'
+    user: '@ObiWan'
+    ownerType: User
+    commentCount: 2
+    averageRating: 1.75
+    fileCount: 0
+  UserSubmissionTwo:
+    id: 78936e5d-eaee-4901-be59-b5204bc6265b
+    name: 'UserSubmission DUE'
+    description: 'This is an submission normal description'
+    activity: '@ActivityEighteen'
+    createdBy: '@Luke'
+    user: '@Luke'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionThree:
+    id: f6a18651-b90e-4786-bf51-6863695e9cc7
+    name: 'UserSubmission TRE'
+    description: 'This is an submission normal description'
+    activity: '@ActivityEighteen'
+    createdBy: '@ObiWan'
+    user: '@ObiWan'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionFour:
+    id: 5bd56311-d218-40bf-9707-3433fa417999
+    name: 'UserSubmission Quattro'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwo'
+    createdBy: '@Mickey'
+    user: '@Mickey'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionFive:
+    id: 5bd56311-d218-40bf-9707-8733fa417887
+    name: 'UserSubmission Cinque'
+    description: 'This is an submission normal description'
+    activity: '@ActivityNineteen'
+    createdBy: '@Mickey'
+    user: '@Mickey'
+    ownerType: User
+    commentCount: 3
+    averageRating: 3.75
+    fileCount: 0
+  UserSubmissionSix:
+    id: 5bd56311-d218-40bf-9707-8733fa400000
+    name: 'UserSubmission Seis'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwenty'
+    createdBy: '@Mickey'
+    user: '@Mickey'
+    ownerType: User
+    commentCount: 1
+    averageRating: 4.5
+    fileCount: 0
+  UserSubmissionSeven:
+    id: 3572a3a5-f1ff-4f70-98d9-6c3067c2b474
+    name: 'UserSubmission Seite'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwentySix'
+    createdBy: '@ObiWan'
+    user: '@ObiWan'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionEight:
+    id: bda1e612-025f-4b5c-a0a8-67953411a8b4
+    name: 'UserSubmission Oito'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwentyThree'
+    createdBy: '@ObiWan'
+    user: '@ObiWan'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionNine:
+    id: d6538da2-5004-436d-9cfa-96f6272ef879
+    name: 'UserSubmission Nove'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwentyFour'
+    createdBy: '@Mickey'
+    user: '@Mickey'
+    ownerType: User
+    commentCount: 0
+    averageRating: 0
+    fileCount: 0
+  UserSubmissionTen:
+    id: cf926502-2db4-42b1-a4b8-a30f95d30c01
+    name: 'UserSubmission Dez'
+    description: 'This is an submission normal description'
+    activity: '@ActivityTwentySix'
+    createdBy: '@Mickey'
+    user: '@Mickey'
+    ownerType: User
+    commentCount: 1
+    averageRating: 0
+    fileCount: 0

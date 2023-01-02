@@ -1,0 +1,49 @@
+@import 'variables';
+
+.canvas-submission-toolbar {
+    padding: 4px;
+
+    &-voteCount {
+        color: $joolia-grey-500;
+        line-height: 20px;
+        padding-right: 6px;
+        &-clicked {
+            color: $joolia-primary-700;
+            line-height: 20px;
+            padding-right: 5px;
+        }
+    }
+
+    &-thumb-up {
+        color: $joolia-grey-500;
+        &-clicked {
+            color: $joolia-primary-700;
+            line-height: 20px;
+        }
+        &-icon {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+    &-delete,
+    &-color-picker {
+        color: $joolia-grey-500;
+    }
+
+    &-delete-icon {
+        line-height: 20px;
+        font-size: 16px;
+    }
+
+    &-color-picker-icon {
+        line-height: 18px;
+        font-size: 14px;
+    }
+
+    .mat-icon-button {
+        max-width: 24px;
+        max-height: 24px;
+        line-height: 24px;
+    }
+}

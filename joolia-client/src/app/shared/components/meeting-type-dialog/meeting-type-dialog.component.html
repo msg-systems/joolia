@@ -1,0 +1,51 @@
+<div class="meeting-type-dialog-container">
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="30px">
+        <!-- Camera icon -->
+        <div class="dialog-header">
+            <div class="video-call-icon-background" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon class="video-call-icon">videocam</mat-icon>
+            </div>
+        </div>
+
+        <!-- Dialog title -->
+        <h1 class="dialog-header" mat-dialog-title>{{title}}</h1>
+
+        <!-- Dialog content -->
+        <mat-dialog-content fxFill fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-form-field appearance="outline" class="dialog-dropdown">
+
+                <!-- Input label -->
+                <mat-label>{{ 'dialog.startMeeting.meetingRoom' | translate }}</mat-label>
+
+                <!-- Select -->
+                <mat-select #selectedOption="ngModel" [(ngModel)]="selected" [disableOptionCentering]="true" [required]="true">
+                    <mat-select-trigger>
+                        <div fxLayoutAlign="start center"><img [src]="selected?.logoSrc"
+                                class="dialog-logo">{{selected?.viewValue | translate}}
+                        </div>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let opt of meetingOptions" [value]="opt" [disabled]="opt.disabled">
+                        <span fxLayoutAlign="start center">
+                            <img [src]="opt.logoSrc" class="dialog-logo"
+                                [ngClass]="{ 'dialog-logo-disabled': opt.disabled }">{{opt.viewValue | translate}}
+                        </span>
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="selectedOption.hasError('required')">
+                    {{ 'dialog.startMeeting.noProviderError' | translate }}
+                </mat-error>
+
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+
+
+    <!-- Create meeting room button -->
+
+    <mat-dialog-actions>
+        <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+            <button color="primary-800" mat-button mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+            <button (click)='onStartMeeting()' color="primary-800" mat-raised-button>{{ 'buttons.create' | translate }}</button>
+        </div>
+    </mat-dialog-actions>
+</div>

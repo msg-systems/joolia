@@ -1,0 +1,15 @@
+@import 'variables';
+
+.empty-state-headline {
+    margin: 0 0 12px 0;
+}
+
+.empty-state-content {
+    color: $joolia-grey;
+    margin: 0 0 68px 0;
+}
+
+.empty-state-phase-img {
+    max-height: 280px;
+    max-width: 280px;
+}

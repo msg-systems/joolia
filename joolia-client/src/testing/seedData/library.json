@@ -1,0 +1,12 @@
+{
+    "library1": {
+        "id": "fbcdcc8d-9917-4587-8434-5d254da41471",
+        "name": "Test library",
+        "category": "test"
+    },
+    "library2": {
+        "id": "fbcdcc8d-9917-4587-8434-5d254da41471",
+        "name": "Joolia library",
+        "category": "test"
+    }
+}

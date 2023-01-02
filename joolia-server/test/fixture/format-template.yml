@@ -1,0 +1,35 @@
+entity: FormatTemplate
+items:
+  FormatTemplate1:
+    id: '28d0cecf-061a-4f06-b7d6-d4fab33e86b2'
+    name: 'Format template sit'
+    shortDescription: 'Short Desc 1'
+    createdBy: '@ObiWan'
+    description: 'Veniam aute aliquip sit Lorem do tempor aliqua enim dolore elit aute magna ut.'
+    keyVisual: '@KeyVisualEntryTemplateOne'
+    library: '@library1'
+    category: 'test'
+  FormatTemplate2:
+    id: 'd00bffd2-55bf-4303-a909-f36bfdedb787'
+    name: 'Format template reprehenderit'
+    shortDescription: 'Short Desc 2'
+    createdBy: '@Leia'
+    description: 'Fugiat culpa nostrud nisi in officia excepteur.'
+    library: '@library3'
+    category: 'explore'
+  FormatTemplate3:
+    id: 'ffbc56ad-eaf6-4ed8-b40b-96885b8a6c0e'
+    name: 'Format template consequat'
+    shortDescription: 'Short Desc 3'
+    createdBy: '@Shaak'
+    description: 'Dolor in fugiat eu et aliquip.'
+    library: '@library1'
+    category: 'ideate'
+  FormatTemplate4:
+    id: '123456ac-eaf6-4ed8-b40b-96885b8a6c0e'
+    name: 'Format template consequat'
+    shortDescription: 'Short Desc 4'
+    createdBy: '@Shaak'
+    description: 'Dolor in fugiat eu et aliquip.'
+    library: '@library2'
+    category: 'test'

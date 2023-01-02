@@ -1,0 +1,36 @@
+components:
+  schemas:
+    Step:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type: string
+          example: 'Do exercise one'
+        checkedBy:
+          description: List of ids of the team or the users (members) depending on activity configuration
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+        position:
+          type: number
+      example:
+        id: 'c077b8fb-3301-4b10-80d1-67e4418d60e2'
+        description: 'Do exercise one'
+        checkedBy: [teamBlueId, teamRedId]
+        position: 1
+  examples:
+    Steps:
+      type: array
+      items:
+        $ref: '#/components/schemas/Step'
+    StepPostBody:
+      properties:
+        description:
+          type: string
+      required:
+        - description

@@ -1,0 +1,83 @@
+@import 'variables';
+
+.joolia-toolbar {
+    height: 48px;
+
+    > .joolia-logo-container {
+        height: 100%;
+
+        .home-link {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .joolia-logo {
+            height: 24px;
+        }
+
+        .joolia-preview {
+            font-size: 14px;
+            line-height: 16px;
+            padding-left: 10px;
+        }
+
+        &.small {
+            .home-link {
+                padding: 6px 8px;
+            }
+
+            .joolia-logo {
+                height: 16px;
+            }
+
+            .joolia-preview {
+                font-size: 12px;
+                line-height: 14px;
+                padding-left: 0;
+                padding-top: 6px;
+            }
+        }
+    }
+
+    > .toolbar-additional {
+        justify-content: flex-end;
+        align-items: center;
+
+        > .user-container {
+            cursor: pointer;
+            max-width: 100%;
+
+            > .user-name {
+                margin: 0 8px;
+            }
+
+            > .user-avatar {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+.user-info {
+    padding: 8px 16px 16px 16px;
+    align-items: center;
+
+    .mat-body-1 {
+        justify-content: center;
+        max-width: calc(100% - 59px); // 60px for avatar, but safari needs one pixel more somehow (rounding?)
+        padding-left: 16px;
+
+        > div {
+            max-height: 40px;
+            overflow: hidden;
+        }
+
+        div:last-child {
+            color: $joolia-black-transparent-54;
+        }
+    }
+}
+
+.user-info + .mat-divider {
+    margin-bottom: 8px;
+}

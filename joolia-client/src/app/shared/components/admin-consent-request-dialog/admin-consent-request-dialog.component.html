@@ -1,0 +1,32 @@
+<div fxLayout="column" fxLayoutGap="20px">
+    <!-- Dialog title -->
+    <h1 class="mat-title" mat-dialog-title>{{ 'dialog.adminConsent.header' | translate }}</h1>
+
+    <form [formGroup]="consentEmailForm" #form="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+        <mat-dialog-content class="invitation-dialog">
+
+            <!-- Invitation text -->
+            <base-form-text-field [parentForm]="consentEmailForm" entityName="mailMessage" inputControlName="message"
+                [inputMaxLength]="maxConsentEmailTextLength"></base-form-text-field>
+
+            <!-- Domain -->
+            <base-form-input [parentForm]="consentEmailForm" inputType="text" entityName="domain" inputControlName="domain"
+                [inputRequired]="true">
+            </base-form-input>
+
+            <!-- Email -->
+            <base-form-input [parentForm]="consentEmailForm" inputType="email" entityName="email" inputControlName="email"
+                [inputRequired]="true">
+            </base-form-input>
+
+        </mat-dialog-content>
+
+        <mat-dialog-actions>
+            <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button color="primary-800" mat-dialog-close>{{ 'buttons.cancel' | translate }}</button>
+                <button mat-raised-button color="primary-800" type="submit">{{ 'buttons.send' | translate }}</button>
+            </div>
+        </mat-dialog-actions>
+
+    </form>
+</div>

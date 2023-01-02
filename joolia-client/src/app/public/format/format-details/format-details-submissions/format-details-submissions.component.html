@@ -1,0 +1,157 @@
+<loading-indicator *ngIf="!submissionList" xmlns="http://www.w3.org/1999/html"></loading-indicator>
+
+<div *ngIf="submissionList">
+    <action-bar [showBackButton]="true"></action-bar>
+
+    <!-- Submissions -->
+    <div class="submission-container" ngClass.lt-md="small">
+        <userrole-chip [userRole]="currentFormat.me.userRole"></userrole-chip>
+
+        <div>
+            <span class="text-word-break mat-subheading-1 text-medium">{{ currentFormat.name }}</span>
+        </div>
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ 'labels.submissions' | translate }}</span>
+        </div>
+
+        <table-filters [filters]="filtersConfig" [mutuallyExclusiveFilters]="mutuallyExclusiveFilters"
+            (filtersChanged)="onFiltersChanged($event)"></table-filters>
+
+        <pagination-container [paginatorSizeOptions]="paginatorSizeOptions" [initialPaginatorSize]="initialPaginatorSize"
+            [paginationLength]="submissionList.count" (paginationChange)="onPaginationChange($event)">
+            <!-- Submission Table -->
+            <mat-table (matSortChange)="onSortChanged($event)" [dataSource]="dataSource" class="submission-table" matSort>
+
+                <!-- Expand Icon -->
+                <ng-container matColumnDef="expandIcon">
+                    <mat-header-cell *matHeaderCellDef fxFlex="38px"></mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="38px">
+                        <mat-icon>
+                            {{ expandedSubmission && expandedSubmission.id === submission.id ? 'expand_more' : 'chevron_right' }}
+                        </mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Avatar -->
+                <ng-container matColumnDef="avatar">
+                    <mat-header-cell *matHeaderCellDef fxFlex="48px"></mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="48px">
+                        <user-avatar [sizeInPx]="24" [user]="submission?.submittedBy?.user" [team]="submission?.submittedBy?.team">
+                        </user-avatar>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Submitter User-->
+                <ng-container matColumnDef="submittedBy">
+                    <mat-header-cell *matHeaderCellDef fxFlex="15" mat-sort-header>
+                        {{ 'labels.submitterUser' | translate }}/{{ 'labels.submitterTeam' | translate }}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="15">
+                        <span class="text-truncate">{{ submission.submittedBy?.team?.name || submission.submittedBy?.user?.name }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Phase -->
+                <ng-container matColumnDef="phase">
+                    <mat-header-cell *matHeaderCellDef fxFlex="20" mat-sort-header>{{ 'labels.phase' | translate: { plural: 0 } }}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="20">
+                        <span class="text-truncate">{{ submission.activity?.phase?.name }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Method -->
+                <ng-container matColumnDef="method">
+                    <mat-header-cell *matHeaderCellDef fxFlex="20" mat-sort-header>{{ 'labels.method' | translate: { plural: 0 } }}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="20">
+                        <span class="text-truncate">{{ submission.activity?.name }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef fxFlex="25" mat-sort-header>{{ 'labels.title' | translate }}</mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="25">
+                        <span class="text-truncate">{{ submission?.name }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- AverageRating -->
+                <ng-container matColumnDef="averageRating">
+                    <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header>{{ 'labels.rating' | translate }}</mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="8">
+                        <mat-icon>star</mat-icon>
+                        <span class="text-truncate">
+                            {{ submission?.averageRating ? (submission?.averageRating | decimal:'1.1-1') : 0 }}
+                        </span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- FileCount -->
+                <ng-container matColumnDef="fileCount">
+                    <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header>{{ 'labels.files' | translate }}</mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="8">
+                        <mat-icon>attach_file</mat-icon>
+                        <span class="text-truncate">{{ submission?.fileCount }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- CommentCount -->
+                <ng-container matColumnDef="commentCount">
+                    <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header>{{ 'labels.comments' | translate }}</mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="8">
+                        <mat-icon>chat</mat-icon>
+                        <span class="text-truncate">{{ submission?.commentCount }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Date -->
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef fxFlex="10" mat-sort-header>{{ 'labels.date' | translate }}</mat-header-cell>
+                    <mat-cell *matCellDef="let submission" fxFlex="10">{{ submission?.createdAt | moment: 'L' }}</mat-cell>
+                </ng-container>
+
+                <!-- Actions -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef fxFlex="64px">{{ 'labels.action' | translate}}</mat-header-cell>
+                    <mat-cell class="submissions-table-column-action" *matCellDef="let submission" fxFlex="64px"
+                        (click)="$event.stopPropagation()">
+                        <button mat-icon-button (click)="onSubmissionDelete(submission)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Expanded Detail -->
+                <ng-container matColumnDef="expandedDetail">
+                    <mat-cell *matCellDef="let submission" fxLayout="row" fxLayoutAlign="start">
+                        <div class="submission-details-description">
+                            <div class="submission-details-title" *ngIf="expandedSubmission?.description">
+                                {{ 'labels.description' | translate }}
+                            </div>
+                            {{ expandedSubmission?.description }}
+                        </div>
+                        <div class="submission-details-files" *ngIf="expandedSubmission?.files?.length > 0">
+                            <div class="submission-details-title">{{ 'labels.files' | translate }}</div>
+                            <file-list (fileDownloadClicked)="onFileDownloadClicked($event)"
+                                *ngIf="submission.element === expandedSubmission" [editable]="isFileEditAllowed"
+                                [files]="expandedSubmission.files">
+                            </file-list>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Table Header -->
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row class="submission-row" *matRowDef="let submission; columns: columnsToDisplay"
+                    [class.expanded]="expandedSubmission === submission" (click)="getSubmissionFiles(submission)">
+                </mat-row>
+                <mat-row *matRowDef="let submission; columns: ['expandedDetail']; when: isExpansionDetailRow"
+                    [@detailExpand]="submission.element === expandedSubmission && (expandedSubmission.files?.length > 0 || expandedSubmission.description) ? 'expanded' : 'collapsed'"
+                    style="overflow: hidden">
+                </mat-row>
+            </mat-table>
+        </pagination-container>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+entity: StepTemplate
+items:
+  StepTemplate1:
+    id: 759ae743-9f5e-4860-8584-e63a207b9cf9
+    position: 0
+    description: ' Reprehenderit commodo ut non incididunt exercitation.'
+    activityTemplate: '@ActivityTemplate1'
+    createdBy: '@Luke'
+  StepTemplate2:
+    id: 759ae743-9f5e-4860-8584-e63a207b9c85
+    position: 1
+    description: ' Second step of activity template 1'
+    activityTemplate: '@ActivityTemplate1'
+    createdBy: '@Luke'
+  StepTemplate3:
+    id: 759ae743-9f5e-4860-8584-e63a207b9f6
+    position: 0
+    description: 'Step on template 2'
+    activityTemplate: '@ActivityTemplate2'
+    createdBy: '@Luke'
+  StepTemplate4:
+    id: abcdefab-9f5e-4860-8584-e63a207b9a1
+    position: 0
+    description: 'Step on template 4'
+    activityTemplate: '@ActivityTemplate4'
+    createdBy: '@Anakin'
+  StepTemplate5:
+    id: badcfeba-9f5e-4860-8584-e63a207b9b2
+    position: 1
+    description: 'Step on template 5'
+    activityTemplate: '@ActivityTemplate4'
+    createdBy: '@Anakin'
+
+  # Steps of phaseTemplate 5
+  StepTemplate6:
+    id: badcfeba-9f5e-4860-8584-e63a207aacc
+    position: 0
+    description: 'Step on template 6'
+    activityTemplate: '@ActivityTemplate7'
+    createdBy: '@Luke'
+
+  StepTemplate7:
+    id: badcfeba-9f5e-4860-8584-e63a207bbdd
+    position: 1
+    description: 'Step on template 7'
+    activityTemplate: '@ActivityTemplate7'
+    createdBy: '@Luke'

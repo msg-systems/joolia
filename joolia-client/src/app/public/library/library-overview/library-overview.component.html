@@ -1,0 +1,50 @@
+<app-sidenav>
+
+    <div *ngIf="libraryList else loading">
+        <!-- Action Bar -->
+        <action-bar [actions]="actionBarActions"></action-bar>
+
+        <div class="library-overview" ngClass.lt-md="small">
+
+            <!-- Title -->
+            <div class="site-title">
+                <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.library.header' | translate }}</span>
+            </div>
+
+            <div infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle"
+                (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable" gdColumns="repeat(auto-fill, 344px)"
+                gdColumns.lt-lg="repeat(auto-fill, 304px)" gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="228px!" gdGap="32px"
+                gdGap.lt-md="16px">
+
+                <list-card-item *ngFor="let library of libraryList.entities" class="library-overview-card-item" [itemId]="library.id"
+                    [clickable]="true" [menuActions]="libraryMenuActions" (itemClick)="onLibraryClick(library.id)">
+
+                    <div list-card-content>
+                        <!-- Name -->
+                        <inline-edit-text (inputChange)="onLibraryUpdate(library.id, $event)" [allowNewLines]="false" [editable]="false"
+                            [inputMaxLength]="libraryNameMaxLength" [inputText]="library.name" class="library-overview-card-title-container"
+                            inputClasses="mat-title">
+                            <div class="library-overview-card-title text-word-break">{{ library.name }}</div>
+                        </inline-edit-text>
+
+                        <!-- Additional information about library -->
+                        <div fxLayout="row" fxLayoutAlign="start center" class="chip-container">
+                            <div class="library-overview-chip joolia-chip-text">
+                                {{ 'labels.amountTemplates' | translate: { amount: library.templateCount } }}
+                            </div>
+                            <div class="library-overview-chip joolia-chip-text">
+                                {{ 'labels.amountMembers' | translate: { amount: library.memberCount } }}
+                            </div>
+                        </div>
+                    </div>
+
+                </list-card-item>
+            </div>
+
+        </div>
+    </div>
+</app-sidenav>
+
+<ng-template #loading>
+    <loading-indicator></loading-indicator>
+</ng-template>

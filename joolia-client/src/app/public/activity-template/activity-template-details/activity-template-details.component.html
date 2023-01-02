@@ -1,0 +1,128 @@
+<loading-indicator *ngIf="!activityTemplate" fxFlex></loading-indicator>
+
+<div *ngIf="activityTemplate" class="activity-template-details-container" fxLayout="column">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'library', currentLibrary.id, 'template', 'overview', 'activity']"
+        backLabelKey="buttons.backToName" [backLabelParams]="{ name: this.currentLibrary?.name }">
+    </action-bar>
+
+    <div class="maincard-container" ngClass.lt-md="small" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start">
+        <mat-card class="mat-elevation-z activity-template-details-card" fxFlex="auto">
+            <div class="activity-template-details-card-content" fxLayout="column">
+                <!--Chip-->
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+
+                    <!-- Method Template Chip -->
+                    <main-chip [message]="'labels.methodTemplate' | translate"></main-chip>
+
+                    <!-- Category Template Chip -->
+                    <editable-chip [message]="'labels.categoryValue.' + activityTemplate.category | translate"
+                        [entityValue]="activityTemplate.category" [icon]="categoryIcon" [options]="categoryOptions"
+                        (valueUpdate)="onCategoryUpdate($event)"></editable-chip>
+
+                </div>
+
+                <!--Creator-->
+                <div class="template-creator text-word-break">{{ currentLibrary.name + ' · ' + activityTemplate.createdBy.name }}</div>
+
+                <!--Title -->
+                <h2 class="mat-display-1 text-word-break">{{ activityTemplate.name }}</h2>
+
+                <span class="text-word-break white-space-pre-wrap" [innerHTML]="activityTemplate.shortDescription
+                            ? (activityTemplate.shortDescription | addLinkTarget)
+                            : ('emptyStates.library.activityTemplate.tagline' | translate)">
+                </span>
+
+                <!--Duration -->
+                <div class="duration" fxLayoutAlign="start center">
+                    <mat-icon>access_time</mat-icon>
+                    <span>{{ activityTemplate.duration | durationPipe }}</span>
+                </div>
+
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab>
+                        <ng-template mat-tab-label><span class="tab-label">{{ 'labels.details' | translate }}</span></ng-template>
+                        <div class="activity-template-tab-content">
+                            <!--Visual -->
+                            <key-visual *ngIf="activityTemplate.keyVisual; else keyVisualEmptyState" class="keyvisual"
+                                [keyVisual]="activityTemplate.keyVisual">
+                            </key-visual>
+                            <ng-template #keyVisualEmptyState>
+                                <div class="mat-title">{{ 'labels.keyVisual' | translate }}</div>
+                                <span class="text-word-break white-space-pre-wrap">
+                                    {{ 'emptyStates.library.activityTemplate.keyvisual' | translate }}
+                                </span>
+                            </ng-template>
+
+                            <!--Long description -->
+                            <div>
+                                <div class="mat-title">{{ 'labels.description' | translate }}</div>
+                                <span class="text-word-break white-space-pre-wrap" [innerHTML]="activityTemplate.description
+                                            ? (activityTemplate.description | addLinkTarget)
+                                            : ('emptyStates.library.activityTemplate.description' | translate)">
+                                </span>
+                            </div>
+
+                            <!-- Settings -->
+                            <div>
+                                <div class="mat-title">{{ 'labels.settings' | translate }}</div>
+
+                                <!-- Modify settings -->
+                                <base-form-radio-selection [initialValue]="activityTemplate.configuration.submissionModifySetting"
+                                    optionDescriptionKey="activity.submissionModifySetting.text"
+                                    [optionValues]="submissionModifySettingOptions">
+                                </base-form-radio-selection>
+
+                                <!-- Submission view settings -->
+                                <base-form-radio-selection [initialValue]="activityTemplate.configuration.submissionViewSetting"
+                                    optionDescriptionKey="activity.submissionViewSetting.text"
+                                    [optionValues]="submissionViewSettingOptions">
+                                </base-form-radio-selection>
+                            </div>
+
+                            <!-- Canvases -->
+                            <div>
+                                <div class="mat-title">{{ 'labels.canvases' | translate }}</div>
+                                <div *ngIf="activityTemplate.canvases?.length > 0; else canvasEmptyState" class="canvas-list-container">
+                                    <canvas-list [canvases]="activityTemplate.canvases" [displayActions]="false"></canvas-list>
+                                </div>
+                                <ng-template #canvasEmptyState>
+                                    <span class="text-work-break white-space-pre-wrap">
+                                        <!--
+                                        -->{{ 'emptyStates.library.activityTemplate.canvases' | translate }}
+                                    </span>
+                                </ng-template>
+                            </div>
+
+                            <!-- Files -->
+                            <div>
+                                <div class="mat-title">{{ 'labels.files' | translate }}</div>
+                                <file-list *ngIf="activityTemplate.files?.length > 0; else fileEmptyState" [files]="activityTemplate.files"
+                                    (fileDownloadClicked)="onFileDownloadClicked($event)">
+                                </file-list>
+                                <ng-template #fileEmptyState>
+                                    <span class="text-word-break white-space-pre-wrap">
+                                        <!--
+                                        -->{{ 'emptyStates.library.activityTemplate.files' | translate }}
+                                    </span>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <span class="tab-label">
+                                {{ 'labels.progressCount' | translate: { count: activityTemplate.stepTemplates.length } }}
+                            </span>
+                        </ng-template>
+                        <!-- Steps -->
+                        <div class="activity-template-tab-content">
+                            <div class="mat-title">{{ 'labels.steps' | translate }}</div>
+                            <div class="mat-body" *ngIf="stepList.length === 0">{{ 'labels.stepsTemplateDescription' | translate }}</div>
+                            <inline-edit-checklist [items]="stepList" [editable]="false" [checkable]="false"></inline-edit-checklist>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </mat-card>
+    </div>
+</div>

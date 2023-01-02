@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>{{ data.headingKey | translate }}</h1>
+
+<mat-dialog-content>
+
+    <div class="body-container" ngFileDrop [options]="uploadOptions" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+        fxLayout="column" fxLayoutAlign="center center">
+
+        <div fxLayout="column" fxLayoutAlign="center center" class="dotted-border" [ngClass]="{ 'is-drop-over': dragOver }">
+            <!-- Selection of File / Dropper / Button -->
+            <p *ngIf="!file" class="mat-body-1">{{ 'dialog.uploadAvatar.content' | translate }}</p>
+
+            <input #fileInput class="hide" type="file" ngFileSelect [options]="uploadOptions" (uploadOutput)="onUploadOutput($event)"
+                [uploadInput]="uploadInput">
+
+            <button [ngClass]="{'transparent': isUploading}" mat-stroked-button color="primary" (click)="fileInput.click()">
+                {{ 'dialog.uploadAvatar.select' | translate | uppercase }}
+            </button>
+
+            <div [ngClass]="{'transparent': !isUploading}" class="progress-bar-container">
+                <div class="mat-body-1">{{ 'dialog.uploadAvatar.uploading' | translate }}</div>
+                <mat-progress-bar mode="determinate" [value]="file?.progress.data.percentage || 0"></mat-progress-bar>
+            </div>
+
+            <!-- Image Cropper -->
+            <image-cropper [imageFileChanged]="imageFileChanged" [maintainAspectRatio]="data.roundAvatar" [roundCropper]="data.roundAvatar"
+                (imageCropped)="imageCropped($event)">
+            </image-cropper>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+<!-- Copyright Info and Buttons-->
+<mat-dialog-actions fxLayout="column" fxLayoutGap="16px">
+    <div class="copyright-notice">{{ 'copyrightNotice' | translate }}</div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlexFill>
+        <button mat-button color="primary" (click)="onCancel()">{{ 'buttons.cancel' | translate | uppercase }}</button>
+        <button mat-raised-button color="primary" cdkFocusInitial (click)="onUploadAvatar()">
+            {{ 'dialog.uploadAvatar.confirm' | translate | uppercase }}
+        </button>
+    </div>
+</mat-dialog-actions>

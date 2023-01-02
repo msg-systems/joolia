@@ -1,0 +1,41 @@
+entity: TeamCanvasSubmission
+items:
+  TeamCanvasSubmissionOne:
+    id: 5173c542-9618-4910-a0b4-28c4adfcbfdb
+    content: 'This is a nice canvas submission'
+    slot: '@Slot19'
+    createdBy: '@Luke'
+    team: '@Team1'
+    ownerType: Team
+
+  TeamCanvasSubmissionTwo:
+    id: 26450966-58fd-47c5-bfbc-7d059d1de57e
+    content: 'This is a nice canvas submission'
+    slot: '@Slot20'
+    createdBy: '@Luke'
+    team: '@Team1'
+    ownerType: Team
+
+  TeamCanvasSubmissionThree:
+    id: 0edc14b7-33a8-4a44-9067-a966b24a0dd4
+    content: 'This is a nice canvas submission'
+    slot: '@Slot21'
+    createdBy: '@Mickey'
+    team: '@Team2'
+    ownerType: Team
+
+  TeamCanvasSubmissionFour:
+    id: 30649942-4b48-49ec-bba2-745e30a2d0e7
+    content: 'This is a nice canvas submission'
+    slot: '@Slot22'
+    createdBy: '@Mickey'
+    team: '@Team2'
+    ownerType: Team
+
+  TeamCanvasSubmissionFive:
+    id: e55eae2d-d61e-4c91-a72e-2b41f9d262bd
+    content: 'This is a nice canvas submission'
+    slot: '@Slot20'
+    createdBy: '@Luke'
+    team: '@Team9'
+    ownerType: Team

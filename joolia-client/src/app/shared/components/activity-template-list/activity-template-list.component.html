@@ -1,0 +1,7 @@
+<mat-list *ngIf="activityTemplates.length > 0; else emptyList">
+    <app-activity-template-list-item *ngFor="let template of activityTemplates" [template]="template"></app-activity-template-list-item>
+</mat-list>
+
+<ng-template #emptyList>
+    {{ 'emptyStates.library.phaseTemplate.methodTemplates' | translate }}
+</ng-template>

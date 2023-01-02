@@ -1,0 +1,103 @@
+<loading-indicator *ngIf="!activity"></loading-indicator>
+
+<div *ngIf="activity" class="activity-details">
+
+    <div>
+        <app-media [keyVisual]="activity.keyVisual" [menuActions]="menuActions" emptyStateKey="emptyStates.keyvisual.content">
+        </app-media>
+    </div>
+
+    <!-- Description -->
+    <div>
+        <!-- Title -->
+        <div class="mat-title">{{ 'labels.description' | translate }}
+            <button *ngIf="isEditAllowed" mat-icon-button color="primary" (click)="onInfoClicked()">
+                <mat-icon>info</mat-icon>
+            </button>
+        </div>
+
+        <!-- Description text -->
+        <inline-edit-text *ngIf="!!activity.description || isEditAllowed; else emptyStateDescription" [inputText]="activity.description"
+            inputPlaceholderKey="labels.clickToAddDescription" [editable]="isEditAllowed"
+            (inputChange)="onActivityUpdate('description', $event)" [inputMaxLength]="activityDescriptionMaxLength" [allowNewLines]="true">
+            <span class="text-word-break white-space-pre-wrap" [innerHTML]="activity.description | addLinkTarget"></span>
+        </inline-edit-text>
+
+        <!-- empty -->
+        <ng-template #emptyStateDescription>
+            <div>
+                <span class="text-word-break white-space-pre-wrap text-grey">
+                    {{ 'emptyStates.activityDescription.content' | translate }}
+                </span>
+            </div>
+        </ng-template>
+    </div>
+
+    <!-- Settings -->
+    <div *appHasPermission="isEditAllowed">
+        <div class="mat-title">{{ 'labels.settings' | translate }}</div>
+
+
+        <!-- Modify settings -->
+        <base-form-radio-selection [initialValue]="activity.configuration.submissionModifySetting"
+            [editable]="isEditAllowed && (!activity.configuration.blocked)" optionDescriptionKey="activity.submissionModifySetting.text"
+            [optionValues]="submissionModifySettingOptions"
+            (valueChange)="onActivityUpdate('configuration.submissionModifySetting', $event)">
+        </base-form-radio-selection>
+
+        <!-- Submission view settings -->
+        <base-form-radio-selection [initialValue]="activity.configuration.submissionViewSetting"
+            [editable]="isEditAllowed && (!activity.configuration.blocked)" optionDescriptionKey="activity.submissionViewSetting.text"
+            [optionValues]="submissionViewSettingOptions" (valueChange)="onActivityUpdate('configuration.submissionViewSetting', $event)">
+        </base-form-radio-selection>
+    </div>
+
+    <!-- Collaboration area -->
+    <div>
+        <div class="mat-title">{{ 'labels.collaboration' | translate }}</div>
+
+        <!-- Canvases -->
+        <div fxLayoutAlign="column" class="mat-subheading-2 canvas-title">
+            <span>{{ 'labels.canvases' | translate }}</span>
+            <app-beta-tag></app-beta-tag>
+        </div>
+
+        <canvas-list *ngIf="canvasList?.entities.length > 0 || isEditAllowed; else emptyStateCanvases" [canvases]="canvasList?.entities"
+            [editable]="isEditAllowed" (add)="onCanvasAdd()" (delete)="onCanvasDelete($event)">
+        </canvas-list>
+
+        <!-- empty -->
+        <ng-template #emptyStateCanvases>
+            <span class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activityCanvases.content' | translate }}</span>
+        </ng-template>
+
+        <!-- Links -->
+        <div class="mat-subheading-2">{{ 'labels.links' | translate }}</div>
+
+        <!-- Linklist -->
+        <link-list *ngIf="activity.collaborationLinks?.length > 0 || isEditAllowed; else emptyStateLinks"
+            [links]="activity.collaborationLinks" [editable]="isEditAllowed" (linkClicked)="onLinkClick($event)"
+            (linkAddClicked)="onLinkAdd()" (linkDeleteClicked)="onLinkDelete($event)">
+        </link-list>
+
+        <!-- empty -->
+        <ng-template #emptyStateLinks>
+            <span class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activityLinks.content' | translate }}</span>
+        </ng-template>
+
+        <!-- Activity files -->
+        <div class="mat-subheading-2">{{ 'labels.files' | translate }}</div>
+
+        <!-- File list -->
+        <file-list *ngIf="activity.files?.length > 0 || isEditAllowed; else emptyStateFiles" [files]="activity.files"
+            [editable]="isEditAllowed" (fileDeleteClicked)="onFileDelete($event)" (fileUploadOutput)="onUploadOutput($event)"
+            (fileDownloadClicked)="onFileDownloadClicked($event)" (fileEditClicked)="onFileUpdate($event)">
+        </file-list>
+
+        <!-- empty -->
+        <ng-template #emptyStateFiles>
+            <span class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activityFiles.content' | translate }}</span>
+        </ng-template>
+    </div>
+
+</div>

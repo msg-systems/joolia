@@ -1,0 +1,107 @@
+<app-sidenav>
+
+    <div *ngIf="formatList else loading">
+
+        <!-- Action Bar-->
+        <action-bar [actions]="actionBarActions"></action-bar>
+
+        <div class="format-overview" ngClass.lt-md="small" infinite-scroll (scrolled)="onLoadMore()"
+            [infiniteScrollDisabled]="isLoading || noMoreLoadable" [infiniteScrollDistance]="infiniteScrollDistance"
+            [infiniteScrollThrottle]="infiniteScrollThrottle">
+
+            <!-- Title with Sort buttons -->
+            <div class="site-title" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <span class="text-word-break mat-display-1 text-black format-header">{{ 'sidenav.format.header' | translate }}
+                    <button [mat-menu-trigger-for]="menu" class="order-menu-button" mat-icon-button>
+                        <mat-icon>sort</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="onOrderFormats('name')"
+                            [ngClass]="(orderBy.queryParam === 'name' || orderBy.queryParam === '-name')?'format-overview-sort-clicked' : ''"
+                            mat-menu-item>
+                            <mat-icon
+                                [ngClass]="(orderBy.queryParam === 'name' || orderBy.queryParam === '-name')?'format-overview-sort-clicked' : ''">
+                                {{orderObjects[0].icon}}
+                            </mat-icon>
+                            <span>{{ 'buttons.sortFormatOrPhase.byName' | translate }}</span>
+                        </button>
+                        <button (click)="onOrderFormats('startDate')"
+                            [ngClass]="(orderBy.queryParam === 'startDate' || orderBy.queryParam === '-startDate')?'format-overview-sort-clicked' : ''"
+                            mat-menu-item>
+                            <mat-icon
+                                [ngClass]="(orderBy.queryParam === 'startDate' || orderBy.queryParam === '-startDate')?'format-overview-sort-clicked' : ''">
+                                {{orderObjects[1].icon}}
+                            </mat-icon>
+                            <span>{{ 'buttons.sortFormatOrPhase.byDate' | translate }}</span>
+                        </button>
+                    </mat-menu>
+                </span>
+                <view-toggle [viewType]="formatViewType" (viewChanged)="onViewChanged($event)"></view-toggle>
+
+            </div>
+
+            <!-- Card View -->
+            <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+                gdColumns.lt-md="repeat(auto-fill, 288px)" gdGap="32px" gdGap.lt-md="16px" gdRows="508px!">
+                <list-card-item *ngFor="let format of formatList.entities" [itemId]="format.id" [clickable]="true"
+                    (itemClick)="onFormatClick(format.id)" [keyVisual]="format.keyVisual" [menuActions]="getFormatMenuActions(format)"
+                    showKeyVisual="true">
+
+                    <div list-card-content class="format-overview-card-content" fxLayout="column">
+
+                        <!-- Workspace name -->
+                        <span class="format-overview-card-workspace text-truncate">{{ format.workspaceName }}</span>
+
+                        <!-- Format name -->
+                        <inline-edit-text inputClasses="mat-title" [inputText]="format.name"
+                            (inputChange)="onFormatUpdate(format.id, $event)" [allowNewLines]="false" [editable]="false"
+                            [inputMaxLength]="formatNameMaxLength" fxFlex="none">
+                            <div clampy="3" class="text-word-break">{{ format.name }}</div>
+                        </inline-edit-text>
+
+                        <!-- Format time span -->
+                        <div class="format-overview-card-time mat-subheading-1" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="calendar-icon">calendar_today</mat-icon>
+                            <div *ngIf="format.startDate">
+                                {{ format.startDate | moment: setStartDateFormat(format) }} -
+                                {{ format.endDate | moment: setEndDateFormat(format) }}
+                            </div>
+                            <div *ngIf="!format.startDate">{{ 'labels.noDate' | translate }}</div>
+                        </div>
+
+                        <!-- Format information -->
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+                            <main-chip [message]="'labels.amountMembers' | translate: { amount: format.memberCount }"></main-chip>
+                        </div>
+
+                        <!-- Format description -->
+                        <div class="format-overview-card-description mat-body-1 white-space-pre-wrap text-word-break">
+                            <!-- clampy needs all these divs -->
+                            <div>
+                                <div clampy [clampyContent]="format.shortDescription | addLinkTarget"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </list-card-item>
+            </div>
+
+            <!-- List view-->
+            <format-list *ngIf="isListViewType()" [formatList]="formatList" [formatMenuActions]="formatMenuActions"
+                (formatClicked)="onFormatClick($event)">
+            </format-list>
+
+            <loading-indicator *ngIf="isLoading"></loading-indicator>
+
+            <!-- Empty State -->
+            <empty-state *ngIf="formatList.count < 1" titleKey="emptyStates.format.title" contentKey="emptyStates.format.content"
+                altTextKey="emptyStates.format.altText">
+            </empty-state>
+        </div>
+    </div>
+</app-sidenav>
+
+<ng-template #loading>
+    <loading-indicator></loading-indicator>
+</ng-template>

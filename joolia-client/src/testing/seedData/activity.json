@@ -1,0 +1,33 @@
+{
+    "activity1": {
+        "id": "4bd56311-d218-40bf-9707-3433fa4173ba",
+        "name": "Activity velit",
+        "position": 0,
+        "duration": 90,
+        "shortDescription": "This is an activity short description",
+        "description": "This is an activity normal description",
+        "collaborationLinks": [
+            {
+                "id": "427c50d0-ce80-4b42-9319-014b657c697b",
+                "linkUrl": "https://www.test.com",
+                "type": "Collaboration"
+            }
+        ]
+    },
+    "activity2": {
+        "id": "1b63aecf-fb3b-45b9-b90a-ce0e2854fd61",
+        "name": "Activity Katalan seven",
+        "position": 1,
+        "duration": 45,
+        "shortDescription": "This is an activity short description",
+        "description": "This is an activity normal description"
+    },
+    "activity3": {
+        "id": "32933885-1667-4490-936d-0f8eb06a4512",
+        "name": "Activity Katalan eight",
+        "position": 2,
+        "duration": 45,
+        "shortDescription": "This is an activity short description",
+        "description": "This is an activity normal description"
+    }
+}

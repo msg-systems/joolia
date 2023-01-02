@@ -1,0 +1,39 @@
+@import 'variables';
+
+.license-summary {
+    margin-bottom: 18px;
+}
+
+.workspace-administration {
+    &-page-container {
+        padding: 16px 32px 32px 32px;
+    }
+
+    &-admin-consent-status {
+        color: $joolia-grey-500;
+    }
+}
+
+.users-table-container {
+    .user-table {
+        min-width: 574px; // this results in non scrollbar for a browser-width of 960px or wider
+
+        .mat-cell > span.text-truncate {
+            padding-right: 16px;
+        }
+
+        .mat-cell > mat-icon {
+            padding-right: 8px;
+        }
+
+        .user-pending-invitation {
+            font-style: italic;
+        }
+    }
+
+    .user-row {
+        &:hover {
+            background-color: $joolia-grey-100;
+        }
+    }
+}

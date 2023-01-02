@@ -1,0 +1,22 @@
+<!-- Chat bubbles -->
+<div fxLayout="column" id="chat-view-container" class="chat-view">
+    <div class="message-entry" *ngFor="let msg of messages">
+        <div class="bubble" [ngClass]="isOwnMessage(msg) ? 'bubble-blue' : 'bubble-grey'">
+            <span class="createdBy text-truncate" *ngIf="!isOwnMessage(msg)">{{ msg.user.name }}</span>
+            <div class="text text-word-break">{{ msg.text }}</div>
+            <div class="createdAt">{{ msg.createdAt | moment: 'lll' }}</div>
+        </div>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<!-- Input field with send button -->
+<div class="chat-input">
+    <mat-form-field color="primary" appearance="legacy">
+        <input #newMessage matInput (keyup.enter)="onSend(newMessage)" [maxLength]="messageMaxLength" autocomplete="off">
+    </mat-form-field>
+    <button mat-button color="primary" (click)="onSend(newMessage)" class="send-message-button">
+        SEND
+    </button>
+</div>

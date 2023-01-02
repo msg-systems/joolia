@@ -1,0 +1,75 @@
+@import 'variables';
+
+.add-button {
+    width: 100%;
+    padding: 0;
+    line-height: 0;
+
+    ::ng-deep .mat-button-wrapper {
+        display: block;
+        height: 8px;
+    }
+
+    ::ng-deep .mat-button-focus-overlay {
+        opacity: 0; // mat-button has a slight overlay-effect that we don't want, because of the shape of our button
+    }
+
+    .add-button-bar {
+        width: 100%;
+        height: 6px;
+        border-radius: 2px;
+        transition-delay: 0.1s;
+
+        position: relative;
+        top: 1px;
+    }
+
+    .add-button-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 24px;
+        line-height: 32px;
+        border-radius: 50%;
+        transition-delay: 0.1s;
+
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        top: -17px;
+    }
+
+    &:hover {
+        .add-button-bar {
+            background-color: $joolia-primary-200;
+        }
+
+        .add-button-icon {
+            background-color: $joolia-primary-200;
+        }
+    }
+}
+
+.add-button:not(.add-button-end):not(:hover) {
+    .add-button-icon {
+        opacity: 0; // don't use visibility: hidden, otherwise the top and bottom of the "+"-circle can't be hovered
+    }
+}
+
+.add-button-end {
+    ::ng-deep .mat-button-wrapper {
+        height: 32px;
+    }
+
+    .add-button-bar {
+        top: 13px;
+    }
+
+    .add-button-icon {
+        top: -6px;
+        color: $joolia-primary-900;
+    }
+
+    &:hover .add-button-icon {
+        color: black;
+    }
+}

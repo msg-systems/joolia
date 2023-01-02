@@ -1,0 +1,44 @@
+<mat-toolbar class="joolia-toolbar" color="primary">
+    <div *ngIf="isAuthenticated()" class="toolbar-apps" fxFlex="35">
+        <button mat-icon-button (click)="sidebarService.toggleOpened()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+
+    <div class="joolia-logo-container" [ngClass.lt-sm]="{'small': showPreview}" fxFlex fxLayout="row" fxLayoutAlign="center center">
+        <div routerLink="/" class="home-link" fxFlex="none" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+            <img class="joolia-logo" [src]="jooliaLogoSrc" alt="Joolia">
+            <span class="joolia-preview" *ngIf="showPreview">Preview</span>
+        </div>
+    </div>
+
+    <div *ngIf="isAuthenticated()" class="toolbar-additional" fxFlex="35" fxLayout="row">
+        <!-- Messaging -->
+        <!-- TODO: Implement messaging -->
+        <!-- TODO: insert when implementing messaging-->
+        <!--<button mat-icon-button [matMenuTriggerFor]="messagingMenu">
+            <mat-icon>chat_bubble</mat-icon>
+        </button>
+        <mat-menu #messagingMenu="matMenu" [hasBackdrop]="true">
+            <span>Messaging should be here!</span>
+        </mat-menu>-->
+
+        <!-- Profile Menu -->
+        <div class="user-container" [matMenuTriggerFor]="profileMenu" fxLayout="row" fxLayoutAlign="center center">
+            <span *ngIf="user?.name" class="user-name mat-body-1 text-truncate">{{ user.name }}</span>
+            <user-avatar class="user-avatar" [user]="user" [sizeInPx]="24" [transparent]="true"></user-avatar>
+        </div>
+        <mat-menu #profileMenu="matMenu">
+            <div *ngIf="user" fxLayout="row" class="user-info">
+                <user-avatar [user]="user" [sizeInPx]="60"></user-avatar>
+                <div fxLayout="column" class="mat-body-1">
+                    <div class="text-medium text-word-break">{{ user.name }}</div>
+                    <div class="text-word-break">{{ user.company }}</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/user">{{ 'labels.profileSettings' | translate }}</button>
+            <button mat-menu-item (click)="onLogout()">{{ 'labels.logout' | translate }}</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

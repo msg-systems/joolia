@@ -1,0 +1,15 @@
+@import 'variables';
+
+.message-container {
+    min-height: 100%;
+    padding: $joolia-content-gap;
+
+    &.small {
+        padding: $joolia-content-gap-small;
+    }
+
+    .message-card {
+        max-width: 100%;
+        padding: 24px;
+    }
+}

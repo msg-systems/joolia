@@ -1,0 +1,28 @@
+<div class="activity" [ngClass]="{'focused': focused, 'no-hover': !showButtons}">
+    <hr class="divider">
+    <div *ngIf="activity" class="inner" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex>
+                <p *ngIf="timeslot?.isValid()" class="description-time">
+                    {{ timeslot | timeDescriptionPipe: this.isHourSchedule }}
+                    ({{ activity.duration | durationPipe: this.durationFormat:true }})
+                </p>
+                <p *ngIf="!timeslot?.isValid()" class="description-time">
+                    {{ activity.duration | durationPipe: this.durationFormat:true }}
+                </p>
+            </div>
+            <mat-icon class="drag-handle" [ngClass]="{'invisible': !showButtons || !addAllowed}">drag_handle</mat-icon>
+            <div fxFlex>
+                <button mat-icon-button class="delete-button" [ngClass]="{'invisible': !showButtons || !deleteAllowed}" disableRipple
+                    (click)="delete()">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="title-container">
+            <div class="title text-word-break">
+                <div clampy>{{ activity.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>

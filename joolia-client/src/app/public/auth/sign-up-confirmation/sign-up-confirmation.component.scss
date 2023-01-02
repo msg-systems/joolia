@@ -1,0 +1,21 @@
+@import 'variables';
+
+.mat-card {
+    padding: 24px;
+}
+
+.title {
+    margin-bottom: 24px;
+}
+
+.signup-confirm-img {
+    max-width: 72px;
+    margin-bottom: 16px;
+}
+
+.sign-up-confirm-button {
+    width: 80px;
+    align-self: center;
+    margin-top: 16px;
+    background-color: $joolia-primary-800;
+}

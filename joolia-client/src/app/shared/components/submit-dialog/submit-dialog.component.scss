@@ -1,0 +1,21 @@
+.submit-dialog {
+    .mat-dialog-title {
+        text-align: center;
+
+        .subtitle {
+            margin-top: 8px;
+        }
+    }
+
+    .mat-dialog-content > div:first-child {
+        margin-bottom: 8px;
+    }
+
+    error-box {
+        margin: 16px 0;
+    }
+
+    base-form-select {
+        margin-bottom: 16px;
+    }
+}

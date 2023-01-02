@@ -1,0 +1,35 @@
+doctype html
+head
+    style
+        include ../style.css
+
+table(class='mail-wrapper')
+
+    include ../header
+
+    tr(class='mail-content')
+        td
+            p= t('greetings.hello')
+
+            if entityName === 'format'
+                p= tmf('formatInvitation.generalInvitation', { userName: userName })
+            else if entityName === 'library'
+                p= tmf('libraryInvitation.generalInvitation', { userName: userName })
+            else if entityName === 'workspace'
+                p= tmf('workspaceInvitation.generalInvitation', { userName: userName })
+
+            if message
+                p #{message}
+
+            p= t('entityInvitation.createAccount')
+
+            table(class='button-wrapper', align='center')
+                tr
+                    td
+                        a(class='button redirect-link', href=url) #{t('buttons.invitationSignupLink')}
+
+            p= t('endings.welcomeAboard')
+
+            p(class='team-joolia')= t('endings.teamJoolia')
+
+    include ../footer

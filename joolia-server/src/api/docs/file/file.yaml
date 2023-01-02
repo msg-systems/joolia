@@ -1,0 +1,68 @@
+components:
+  schemas:
+    File:
+      allOf:
+        - $ref: '#/components/responses/FileMetadata'
+        - type: object
+          properties:
+            fileUrl:
+              type: string
+              example: 'https://example.com/secure/abc0fe'
+              readOnly: true
+
+  parameters:
+    FileDownloadParam:
+      in: query
+      name: download
+      schema:
+        type: boolean
+      required: false
+      default: false
+      description: Gets the file via URL redirect.
+    FileIdParam:
+      in: path
+      name: fileId
+      schema:
+        type: string
+      required: true
+      description: The unique identifier of a file.
+    EntityIdParam:
+      in: path
+      name: entityId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the related Entity (Format, Activity ..)
+  responses:
+    FileMetadata:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          example: 'cool.png'
+        contentType:
+          type: string
+          example: 'image/png'
+          readOnly: true
+        size:
+          type: integer
+          format: int32
+          example: 1048576
+        createdBy:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/examples/UserCreatedBy'
+        createdAt:
+          type: string
+          format: date-time
+          example: 2019-07-21T17:32:28Z
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2019-07-21T17:32:28Z
+          readOnly: true

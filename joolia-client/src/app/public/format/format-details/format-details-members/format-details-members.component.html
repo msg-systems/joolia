@@ -1,0 +1,49 @@
+<loading-indicator *ngIf="!(format && format.members)"></loading-indicator>
+
+<div *ngIf="format && format.members" fxLayout="column" class="mat-body-1">
+    <action-bar [showBackButton]="true" [actions]="actionBarActions" [changeAction]="contactSelectedChanged.asObservable()">
+    </action-bar>
+
+    <div class="format-details-members" ngClass.lt-md="small" infinite-scroll [infiniteScrollDistance]="infiniteScrollDistance"
+        [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()" [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div>
+                <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+
+                <div>
+                    <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+                </div>
+            </div>
+            <view-toggle [viewType]="memberViewType" (viewChanged)="onViewTypeChanged($event)"></view-toggle>
+        </div>
+
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.format.members' | translate }}</span>
+        </div>
+
+        <div class="member-filter">
+            <filter-toggle-group (filterChanged)="onFilterChange($event)" [filterCriteriaList]="[userStatusFilter, userRoleFilter]">
+            </filter-toggle-group>
+        </div>
+
+        <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 344px)"
+            gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="308px!" gdGap="32px" gdGap.lt-md="16px">
+            <user-card *ngFor="let member of format.members.entities; trackBy: trackingFunction"
+                [subContent]="'labels.amountTeams' | translate: { amount: member.teamCount }" [userMenuActions]="memberMenuActions"
+                [user]="member" (menuOpenClick)="onMenuOpenClick($event)" [clickable]="true" (itemClick)="onMemberClick(member.id)">
+            </user-card>
+        </div>
+
+        <mat-nav-list *ngIf="isListViewType()" disableRipple>
+            <user-list-item *ngFor="let member of format.members.entities; trackBy: trackingFunction" [user]="member"
+                [userMenuActions]="memberMenuActions" [isFormatMember]="true" (menuOpenClick)="onMenuOpenClick($event)" [clickable]="true"
+                (itemClick)="onMemberClick(member.id)" [addCheckbox]="format.me.userRole === 'organizer'"
+                [showCheckbox]="member.id !== this.userService.getCurrentLoggedInUser().id && !member.pending"
+                (checkboxClick)="onCheckboxClick($event)">
+            </user-list-item>
+        </mat-nav-list>
+
+        <loading-indicator *ngIf="isLoading"></loading-indicator>
+    </div>
+</div>

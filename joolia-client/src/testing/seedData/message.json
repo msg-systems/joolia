@@ -1,0 +1,12 @@
+{
+    "message1": {
+        "text": "This is a chat message",
+        "createdAt": "2020-09-13T00:00:00.000Z",
+        "createdBy": "0004a350-29f8-11e9-b210-d663bd873d93"
+    },
+    "message2": {
+        "text": "This is a second chat message",
+        "createdAt": "2020-09-20T00:00:00.000Z",
+        "createdBy": "0004a350-29f8-11e9-b210-d663bd873d93"
+    }
+}

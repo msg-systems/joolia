@@ -1,0 +1,23 @@
+@import 'variables';
+
+.format-details-schedule-overview {
+    &-sort-clicked {
+        font-weight: bold;
+        color: $joolia-black;
+    }
+
+    padding: $joolia-main-content-gap;
+
+    .order-menu-button {
+        position: absolute;
+        padding-left: 8px;
+    }
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+}

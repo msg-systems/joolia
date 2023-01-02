@@ -1,0 +1,14 @@
+<div fxLayoutAlign="center center" fxFlex>
+
+    <!-- Information card -->
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <img class="signup-confirm-img" [src]="signUpConfirmImage">
+        <h1 class="mat-display-1 title">{{ 'signUpConfirmation.header' | translate }}</h1>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <p>{{ 'signUpConfirmation.login' | translate }}</p>
+            <button class="sign-up-confirm-button" mat-raised-button color="primary-800"
+                routerLink="/signin">{{ 'signUpConfirmation.loginButton' | translate | uppercase}}</button>
+        </div>
+    </mat-card>
+
+</div>

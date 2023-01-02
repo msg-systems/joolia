@@ -1,0 +1,42 @@
+<loading-indicator *ngIf="!activity" fxFlex></loading-indicator>
+
+<mat-card *ngIf="activity" class="mat-elevation-z activity-details-card" ngClass.lt-md="small" fxFlex="auto" fxFlexFill>
+    <div class="card-content" fxLayout="column">
+
+        <!--Name -->
+        <inline-edit-text inputClasses="mat-display-1" [inputText]="activity.name" (inputChange)="onActivityUpdate('name', $event)"
+            [inputMaxLength]="activityNameMaxLength" [editable]="isEditAllowed" [allowNewLines]="false">
+            <h1 class="mat-display-1 text-word-break">{{ activity.name }}</h1>
+        </inline-edit-text>
+
+        <!-- Subtitle -->
+        <inline-edit-text [inputText]="activity.shortDescription" [editable]="isEditAllowed" inputPlaceholderKey="labels.clickToAddSubtitle"
+            (inputChange)="onActivityUpdate('shortDescription', $event)" [inputMaxLength]="activityShortDescriptionMaxLength"
+            [allowNewLines]="false">
+            <span class="text-word-break white-space-pre-wrap" [innerHTML]="activity.shortDescription | addLinkTarget"></span>
+        </inline-edit-text>
+
+        <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+            <!-- Duration -->
+            <div class="duration mat-body-2" fxLayoutAlign="start center">
+                <mat-icon class="activity-details-duration-icon">access_time</mat-icon>
+
+                <inline-dropdown-input class="activity-details-duration-text" [selectedEntry]="activity.duration"
+                    [dropdownValues]="durationDropdownValues" [editable]="isEditAllowed"
+                    (inputChange)="onActivityUpdate('duration', $event)">
+                    <span>{{ activity.duration | durationPipe: phase.durationUnit }}</span>
+                </inline-dropdown-input>
+            </div>
+
+            <button class="save-template-button" *appHasPermission="isTemplateSaveAllowed" mat-stroked-button color="primary-800"
+                (click)="onTemplateSave()">
+                {{ 'buttons.storeAsMethodTemplate' | translate }}
+            </button>
+        </div>
+
+        <tab-navbar [tabLinks]="tabNavbarItems"></tab-navbar>
+
+        <router-outlet></router-outlet>
+    </div>
+</mat-card>

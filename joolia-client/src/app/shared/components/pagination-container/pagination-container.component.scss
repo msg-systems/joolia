@@ -1,0 +1,17 @@
+@import 'variables';
+
+.content-container {
+    overflow-x: auto;
+}
+
+.loading-shade {
+    background: $joolia-black-transparent-20;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginator.small ::ng-deep .mat-paginator-range-label {
+    margin: 0 12px 0 8px;
+}

@@ -1,0 +1,33 @@
+@import 'variables';
+
+.page {
+    &-content {
+        background-color: $joolia-background;
+    }
+
+    &-footer-container {
+        min-height: 100%;
+    }
+}
+
+footer {
+    padding: 8px 4px;
+    background-color: $joolia-grey-50;
+    border-top: 1px solid $joolia-black-transparent-12;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+
+    span {
+        margin: 0 16px;
+    }
+
+    .version-container {
+        min-width: fit-content;
+    }
+
+    span:not(:last-child) {
+        cursor: pointer;
+    }
+}

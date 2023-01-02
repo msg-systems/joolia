@@ -1,0 +1,32 @@
+<list-card-item (menuOpenClick)="onMenuOpenClick($event)" [itemId]="user.id" [menuActions]="userMenuActions" [subContent]="subContent">
+    <div class="user-card-header" list-card-header fxLayout="row">
+        <!-- User avatar -->
+        <user-avatar [user]="user" [sizeInPx]="80"></user-avatar>
+
+        <div class="user-card-name-container" fxLayout="column" fxLayoutAlign="center start">
+            <div *ngIf="!user.pending">
+                <mat-card-title clampy="3" class="text-word-break user-card-name" [ngClass]="{'user-card-name-clickable': clickable}"
+                    (click)="onItemClick($event)">{{ user.name }}</mat-card-title>
+                <div *ngIf="user.role" class="mat-body-1 text-light">{{ 'labels.' + user.role | translate }}</div>
+            </div>
+            <div *ngIf="user.pending" class="mat-body-1">{{ 'labels.invitationPending' | translate }}</div>
+        </div>
+    </div>
+
+    <div list-card-content class="user-card-content">
+        <mat-divider></mat-divider>
+
+        <div class="user-card-sub-content">
+            <div class="mat-body-1 text-light text-word-break">{{ user.email }}</div>
+            <div *ngIf="!user.pending" class="mat-body-1">
+                <div>
+                    <div clampy class="text-word-break">{{ user.company }}</div>
+                </div>
+            </div>
+            <div *ngIf="user.skills?.length > 0" class="user-card-skills text-light" fxLayout="row wrap">
+                <span fxFlex>{{getSkills()}}</span>
+            </div>
+        </div>
+    </div>
+
+</list-card-item>

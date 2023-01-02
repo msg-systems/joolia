@@ -1,0 +1,21 @@
+tags:
+  - name: Admin
+    description: Operations that require admin permissions
+  - name: Activity
+    description: Operations related to activities
+  - name: Authentication
+    description: Operations for registering and logging
+  - name: Format
+    description: Operations related to the formats
+  - name: Format Template
+    description: Operations related to the format templates
+  - name: Library
+    description: Operations related to the libraries
+  - name: User
+    description: Operations related to the users(Require ownership)
+  - name: Workspace
+    description: Operations related to the workspaces(Require ownership)
+  - name: File
+    description: Operations related to Files in an Entity like Format, Activity ..
+  - name: Link
+    description: Operations related to Links in an Entity like Format, Activity ..

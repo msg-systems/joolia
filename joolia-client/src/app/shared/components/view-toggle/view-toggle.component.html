@@ -1,0 +1,9 @@
+<mat-button-toggle-group class="format-view-toggle-group" fxFlexAlign="end" fxLayout="row wrap" fxLayoutAlign="end center"
+    [value]="viewType" (change)="onViewChanged($event)">
+    <mat-button-toggle class="view-toggle-button-list" [value]="1" matTooltip="{{ 'buttons.viewList' | translate }}">
+        <mat-icon>view_list</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle [value]="0" matTooltip="{{ 'buttons.viewCard' | translate }}">
+        <mat-icon>view_module</mat-icon>
+    </mat-button-toggle>
+</mat-button-toggle-group>

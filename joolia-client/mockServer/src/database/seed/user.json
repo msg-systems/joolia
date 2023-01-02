@@ -1,0 +1,63 @@
+[
+  {
+    "Luke": {
+      "name": "Luke",
+      "company": "{{company.companyName}}",
+      "email": "luke@alliance.com",
+      "password": "12345678",
+      "id": "0004a350-29f8-11e9-b210-d663bd873d93"
+    },
+    "Anakin": {
+      "name": "Anakin",
+      "company": "{{company.companyName}}",
+      "email": "vader@sith-lords.com",
+      "password": "12345678",
+      "id": "0871efb6-29f8-11e9-b210-d663bd873d93"
+    },
+    "Leia": {
+      "name": "Leia",
+      "company": "{{company.companyName}}",
+      "email": "princess@alliance.com",
+      "password": "12345678",
+      "id": "166178c6-29f8-11e9-b210-d663bd873d93"
+    },
+    "Mickey": {
+      "name": "Mickey",
+      "company": "{{company.companyName}}",
+      "addressable": "@addressable1",
+      "email": "mickey@disney.com",
+      "password": "12345678",
+      "id": "202d5a50-29f8-11e9-b210-d663bd873d93"
+    },
+    "Obi-Wan": {
+      "name": "Obi-Wan",
+      "company": "{{company.companyName}}",
+      "addressable": "@addressable2",
+      "email": "obi.wan@jedi-order.com",
+      "password": "12345678",
+      "id": "2910391c-29f8-11e9-b210-d663bd873d93"
+    },
+    "George": {
+      "name": "George",
+      "company": "{{company.companyName}}",
+      "email": "thebossman@lucasfilm.com",
+      "password": "12345678",
+      "id": "329e405a-29f8-11e9-b210-d663bd873d93"
+    },
+    "Shaak": {
+      "name": "Shaak",
+      "company": "{{company.companyName}}",
+      "addressable": "@addressable3",
+      "email": "shaak.ti@jedi-order.com",
+      "password": "12345678",
+      "id": "329e405a-29f8-11e9-b210-123asdasas"
+    },
+    "Dummy": {
+      "name": "Dummy",
+      "company": "{{company.companyName}}",
+      "email": "dummy@email.com",
+      "password": "12345678",
+      "id": "329e405a-29f8-11e9-b210-123asdasan"
+    }
+  }
+]

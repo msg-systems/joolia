@@ -1,0 +1,25 @@
+<div *ngIf="keyVisual && (keyVisual.linkUrl || keyVisual.fileUrl); else dummyFile" class="keyvisual" [ngClass]="{ zoom: zoom }">
+
+    <!-- Video -->
+    <iframe *ngIf="keyVisual.linkUrl && !showVideoThumbnail; else thumbnail" [src]="keyVisual.linkUrl | safeUrl"></iframe>
+
+    <!-- Thumbnail -->
+    <ng-template #thumbnail>
+        <img *ngIf="keyVisual.linkUrl && showVideoThumbnail; else image" [src]="keyVisual.linkUrl | safeUrl">
+    </ng-template>
+
+    <!-- Image -->
+    <ng-template #image>
+        <img [src]="keyVisual.fileUrl">
+    </ng-template>
+
+</div>
+
+<!--Empty State-->
+<ng-template #dummyFile>
+    <div class="empty-state" [ngClass]="{ zoom: zoom, 'smaller-border-radius': smallerBorderRadius }" fxLayout="column"
+        fxLayoutAlign="center center">
+        <mat-icon>wallpaper</mat-icon>
+        <p *ngIf="!zoom && emptyStateKey" class="empty-state-text" [innerHTML]="emptyStateKey | translate"></p>
+    </div>
+</ng-template>

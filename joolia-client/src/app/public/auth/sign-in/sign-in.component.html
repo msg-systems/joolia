@@ -1,0 +1,48 @@
+<div class="sign-in" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex [gdColumns.gt-sm]="'1fr minmax(auto, 408px) 0.5fr'" [gdColumns]="'1fr minmax(auto, 408px) 1fr'" gdRows="1fr auto 1fr">
+
+        <div class="sign-in-form" [gdColumn]="2" [gdRow]="2" fxLayout="column">
+
+            <!--Title -->
+            <h1 class="sign-in-title mat-display-1" fxFlexAlign="start">{{ 'signIn.header' | translate }}</h1>
+
+            <!-- Errors -->
+            <info-box *ngIf="passwordResetSuccess || signInServerError" class="sign-in-info-box"
+                [boxDisplay]="passwordResetSuccess ? 'success' : 'error'"
+                [infoKey]="passwordResetSuccess ? 'labels.passwordResetSuccess' : signInServerError"></info-box>
+
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" fxLayout="column">
+
+                <!-- Email -->
+                <base-form-input [parentForm]="signInForm" inputType="email" entityName="email" inputControlName="email"
+                    [inputRequired]="true">
+                </base-form-input>
+
+                <!-- Password -->
+                <base-password-input [parentForm]="signInForm" passwordControlName="password" [passwordRequired]="true">
+                </base-password-input>
+
+                <!--TODO insert when keep signed in is implemented-->
+                <!-- keep Signed In -->
+                <!--<mat-checkbox class="sign-in-checkbox mat-body-1">{{ 'signIn.keepMeSignedIn' | translate }}</mat-checkbox>-->
+
+                <!-- submit -->
+                <button class="sign-in-button" mat-raised-button color="primary-800"
+                    type="submit">{{ 'signIn.loginButton' | translate | uppercase }}</button>
+            </form>
+
+            <div class="mat-caption forgot-password" fxFlexAlign="start">
+                {{ 'signIn.forgotPassword' | translate }}
+                <a routerLink="/forgot-password">{{ 'labels.clickHere' | translate }}</a>
+            </div>
+            <div class="mat-caption" fxFlexAlign="start">
+                {{ 'signIn.jumpToSignUp' | translate }}
+                <a class="sign-up-link" routerLink="/signup">{{ 'signUp.signUpButton' | translate }}</a>
+            </div>
+        </div>
+
+    </div>
+    <div [fxHide]="true" [fxHide.gt-sm]="false" fxFlex="50%">
+        <img class="sign-in-picture" [gdColumn]="2" [gdRow]="2" [src]="pictureSrc" [alt]="'signIn.altText' | translate">
+    </div>
+</div>

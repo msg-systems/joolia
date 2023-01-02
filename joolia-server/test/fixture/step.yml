@@ -1,0 +1,58 @@
+entity: Step
+items:
+  StepOne:
+    id: 6d708a7d-fb98-4059-a2ea-d2627edaeb9a
+    description: 'Forming'
+    position: 0
+    activity: '@ActivitySeven'
+    createdBy: '@Mickey'
+  StepTwo:
+    id: 092262e6-a11f-48b8-8fd1-5f0a7c329d15
+    description: 'Storming'
+    position: 1
+    activity: '@ActivitySeven'
+    createdBy: '@Mickey'
+  StepThree:
+    id: 253cf909-57d8-4a44-bbc1-5e7c1f2796c9
+    description: 'Norming'
+    position: 2
+    activity: '@ActivitySeven'
+    createdBy: '@Mickey'
+  StepFour:
+    id: 92c32ebb-eb4e-4744-99d9-b52859eb82ad
+    description: 'Performing'
+    position: 3
+    activity: '@ActivitySeven'
+    createdBy: '@Mickey'
+  StepFive:
+    id: 777546de-fcbb-4d97-8bbb-a8f401371d4b
+    description: 'Repeat'
+    position: 4
+    activity: '@ActivitySeven'
+    createdBy: '@Luke'
+  StepSix:
+    id: cedbdbec-fcbb-4d97-8bbb-a8f401371d4b
+    description: 'Repeat'
+    position: 0
+    activity: '@ActivityTwentyOne'
+    createdBy: '@Luke'
+  StepSeven:
+    id: cedbdbec-fcbb-4d97-8bbb-a8f40137157a
+    description: 'Another for one'
+    done: false
+    position: 1
+    activity: '@ActivityOne'
+    createdBy: '@Mickey'
+  StepEight:
+    id: cedbdbec-fcbb-4d97-8bbb-a8f40137159a
+    description: 'Another of for one'
+    done: true
+    position: 1
+    activity: '@ActivityOne'
+    createdBy: '@Mickey'
+  StepNine:
+    id: cedbdbec-fcbb-4d97-8bbb-a8f40137892c
+    description: 'Do that'
+    position: 0
+    activity: '@ActivitySeventeen'
+    createdBy: '@Luke'

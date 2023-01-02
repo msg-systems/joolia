@@ -1,0 +1,8 @@
+.chat-overview {
+    height: 400px;
+    width: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* prevents scroll chaining */
+    overscroll-behavior: contain;
+}

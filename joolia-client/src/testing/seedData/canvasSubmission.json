@@ -1,0 +1,17 @@
+{
+    "canvasSubmission1": {
+        "id": "e8a9f41d-77d2-4e58-9334-740da2c34a71",
+        "content": "This is a nice canvas submission",
+        "slotId": "1"
+    },
+    "canvasSubmission2": {
+        "id": "f15840fd-dc86-4499-972c-42ac1aa02358",
+        "content": "This is a not so nice canvas submission",
+        "slotId": "1"
+    },
+    "canvasSubmission3": {
+        "id": "4c8c6323-e758-4507-9eea-ad6f49c05e2a",
+        "content": "This is another canvas submission",
+        "slotId": "10"
+    }
+}

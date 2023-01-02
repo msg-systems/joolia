@@ -1,0 +1,55 @@
+entity: LinkEntry
+items:
+  # Links for KeyVisuals - one to one.
+
+  LinkEntryOne:
+    id: 2cba3c43-8747-4c3d-9dd8-02b702905044
+    linkUrl: https://www.youtube.com/embed/U1MnMA0TzGI
+    type: KeyVisual
+
+  # Links for Meetings - one to one.
+
+  LinkEntryTwo: # FormatOne
+    id: 0968fa68-1371-40d5-bc75-0e8069ae7f6b
+    linkUrl: https://zoom.us/j/7768223330?WEJRJ9F9eoRUFJ0eCEUHJ8U9FJGhHJKRI99
+    type: Zoom
+  LinkEntryThree: # FormatTwo
+    id: 16181d18-ef6a-4468-973e-4867396ca2e5
+    linkUrl: https://zoom.us/j/7768223330?WEJRJ9F9eoRUFJ0eCEUHJ8U9FJGhHJKRI99
+    type: Zoom
+  LinkEntryFour: # FormatThree
+    id: d6b49260-f41e-4163-9e36-015a1cefb1ca
+    linkUrl: https://zoom.us/j/7768223330?WEJRJ9F9eoRUFJ0eCEUHJ8U9FJGhHJKRI99
+    type: Zoom
+  LinkEntryFive: # FormatFour
+    id: e3b91c8a-8a20-4cec-8a3e-14d0fa9e5489
+    linkUrl: https://zoom.us/j/7768223330?WEJRJ9F9eoRUFJ0eCEUHJ8U9FJGhHJKRI99
+    type: Zoom
+  LinkEntrySix: # FormatFive
+    id: 9ea309fd-46e1-4203-8fb3-e27ea30d3a9e
+    linkUrl: https://zoom.us/j/7768223330?WEJRJ9F9eoRUFJ0eCEUHJ8U9FJGhHJKRI99
+    type: Zoom
+
+  # Links for Activities/Collaboration - one to many.
+
+  LinkEntrySeven:
+    id: eb4b6aae-30db-4d21-b16a-6f9e9861958b
+    description: 'Please help us.'
+    linkUrl: https://docs.3rdparty.com/2
+    type: Collaboration
+    activity: '@ActivitySix'
+    createdBy: '@Luke'
+  LinkEntryEight:
+    id: fc9cf038-533d-4f46-b15c-8f86b2e38fcc
+    description: 'High priority!'
+    linkUrl: https://docs.google.com/1
+    type: Collaboration
+    activity: '@ActivitySix'
+    createdBy: '@Luke'
+  LinkEntryNine:
+    id: 74243d98-b779-11ea-a300-0242ac110003
+    description: 'Help needed.'
+    linkUrl: http://www.facebook.de
+    type: Collaboration
+    activity: '@ActivityThirteen'
+    createdBy: '@Luke'

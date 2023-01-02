@@ -1,0 +1,31 @@
+{
+    "permission1": {
+        "entity": "Format",
+        "role": "participant",
+        "permissions": []
+    },
+    "permission2": {
+        "entity": "Format",
+        "role": "organizer",
+        "permissions": [
+            "delete_Format",
+            "update_Format",
+            "add_Member",
+            "delete_Member",
+            "update_Member",
+            "add_Team",
+            "delete_Team",
+            "update_Team",
+            "add_TeamMember",
+            "delete_TeamMember",
+            "add_Phase",
+            "delete_Phase",
+            "update_Phase",
+            "add_Activity",
+            "delete_Activity",
+            "update_Activity",
+            "add_Step",
+            "delete_Step"
+        ]
+    }
+}

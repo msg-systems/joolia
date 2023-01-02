@@ -1,0 +1,54 @@
+<div class="messenger" [ngStyle.xs]="setMessengerButtonStyle('xs')" [ngStyle.gt-xs]="setMessengerButtonStyle()">
+    <!-- Closed Messenger (FAB) -->
+    <div *ngIf="!show" class="messenger-fab messenger-header" (click)="toggleVisibility()" [ngStyle]="setMessengerButtonStyle()">
+
+        <button mat-fab color="primary">
+            <mat-icon class="material-icons-outlined title-icon icon-white">question_answer</mat-icon>
+        </button>
+        <div *ngIf="totalMessageCount > 0" class="total-message-count">{{ totalMessageCount | numberMax: 99 }}</div>
+        <div class="clear"></div>
+
+    </div>
+
+    <!-- Opened Messenger -->
+    <div *ngIf="show" ngClass.xs="messenger-xs" ngClass.gt-xs="messenger-default" [ngStyle]="setMessengerButtonStyle()">
+
+        <!-- Messenger Header -->
+        <div class="messenger-header">
+            <div fxLayout="row">
+                <!-- Back to Overview -->
+
+                <mat-icon class="material-icons-outlined title-icon" (click)="navigateBack()" *ngIf="!isOverviewActive()">
+                    keyboard_arrow_left
+                </mat-icon>
+
+                <!-- Title -->
+
+                <span fxFlex="2 0 calc(100% - 58px)" class="title text-truncate">{{ messengerTitle }}</span>
+
+                <!-- Close -->
+
+                <mat-icon class="material-icons-outlined title-close" (click)="toggleVisibility()">keyboard_arrow_down</mat-icon>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Messenger Body -->
+        <div class="messenger-body">
+
+            <!-- Overview -->
+            <app-messenger-overview *ngIf="isOverviewActive()" [chatRooms]="availableChatRooms" [messageBoxes]="messageBoxes"
+                (openChatRoom)="onOpenChatRoom($event)" (startMeeting)="onStartMeeting($event)">
+            </app-messenger-overview>
+
+            <!-- Conversation -->
+            <app-messenger-chat *ngIf="isChatActive()" (sendMessage)="onSendMessage($event)" [messageBox]="getChatMessagesForCurrentRoom()">
+            </app-messenger-chat>
+
+        </div>
+
+    </div>
+</div>

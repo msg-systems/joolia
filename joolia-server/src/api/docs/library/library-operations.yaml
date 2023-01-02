@@ -1,0 +1,238 @@
+/library:
+  post:
+    tags:
+      - Admin
+    description: Create a new workspace
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+                example: 'Cool library'
+            required:
+              - name
+    responses:
+      '201':
+        description: Library created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Library'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not administrator
+  get:
+    tags:
+      - Library
+    description: Retrieves all the libraries the user is member of
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Retrieved the libraries
+        content:
+          application/json:
+            schema:
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Libraries'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+/library/{libraryId}:
+  get:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+    description: Get specific Library
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Library retrieved correctly
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Library'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of Library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Library
+    description: Update specific fields of a library
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+                example: 'Cool library patched'
+            required:
+              - name
+    responses:
+      '200':
+        description: Library Updated correctly. Returns only the updated fields of the library.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/LibraryPatched'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of Library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  delete:
+    tags:
+      - Admin
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+    description: Delete specific Library
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Library deleted successfuly
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User  not administrator
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/library/{libraryId}/member:
+  get:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    description: Get the members of the library
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: members retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/UsersMembers'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of Library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  patch:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+    description: Add members to the library
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+            example: "{\"emails\": [\"test@example.com\"]\n}"
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Members Added correctly. Only newly added members are returned.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/examples/UserMember'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of Library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/library/{libraryId}/member/_delete:
+  post:
+    tags:
+      - Library
+    parameters:
+      - $ref: '#/components/parameters/IdParameterLibrary'
+    description: Delete members from library
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              emails:
+                type: array
+                items:
+                  type: string
+                  format: email
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Members deleted successfuly
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of Library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    IdParameterLibrary:
+      in: path
+      name: libraryId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the library

@@ -1,0 +1,39 @@
+@import 'variables';
+
+.workspace-details-container {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    .site-title inline-edit-text {
+        width: 100%;
+    }
+
+    .content-container {
+        margin-top: 16px;
+    }
+
+    .mat-subheading-1 {
+        margin-bottom: 4px;
+    }
+
+    .workspace-logo-container {
+        width: 65%;
+        min-width: 286px;
+        margin: 0 auto;
+
+        &.big {
+            width: 30%;
+        }
+    }
+
+    .format-list {
+        margin-top: 32px;
+    }
+}

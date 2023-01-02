@@ -1,0 +1,5 @@
+<app-router-tab>
+    <app-router-tab-item *ngFor="let link of tabLinks" [routerLink]="link.path"
+        label="{{ link.tabKey | translate: (link.tabArgument ? link.tabArgument() : undefined) }}">
+    </app-router-tab-item>
+</app-router-tab>

@@ -1,0 +1,37 @@
+@import 'variables';
+
+.sign-in {
+    background-color: $joolia-white;
+}
+
+.sign-in-form {
+    max-width: 528px;
+    padding: 24px 40px;
+
+    .sign-in-title {
+        margin: 0;
+        padding-bottom: 24px;
+        color: $joolia-primary-500;
+    }
+
+    .sign-in-info-box {
+        margin-bottom: 16px;
+    }
+
+    .sign-in-checkbox {
+        padding-bottom: 16px;
+    }
+
+    .sign-in-button {
+        margin: 24px auto 24px 0;
+    }
+
+    .forgot-password > a,
+    .sign-up-link > a {
+        text-decoration: none;
+    }
+}
+
+.sign-in-picture {
+    max-width: 544px;
+}

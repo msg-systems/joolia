@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <!--Sidebar Area-->
+    <mat-sidenav class="sidenav-bar" [mode]="sidebarService.mode" [opened]="isAuthenticated() && sidebarService.opened"
+        (closedStart)="sidebarService.setOpened(false)" (openedStart)="sidebarService.setOpened(true)">
+
+        <mat-nav-list>
+
+            <p class="sidenav-header mat-title text-word-break">{{ 'labels.navigation' | translate }}</p>
+
+            <div *ngFor="let nav of generalNavigationEntries">
+
+                <!-- Nav Entry -->
+                <a mat-list-item [href]="nav.sidenavRouterLink" [ngClass]="{'sidenav-active': router.url.startsWith(nav.urlPrefix)}"
+                    [routerLink]="nav.sidenavRouterLink" [queryParams]="nav.queryParams" (click)="sidebarService.entryClicked()">
+
+                    <mat-icon mat-list-icon class="material-icons-outlined">{{nav.icon}}</mat-icon>
+                    <p mat-line>{{ nav.sidenavKey | translate}}</p>
+
+                </a>
+
+                <div *ngIf="router.url.startsWith(nav.urlPrefix)" class="sidenav-submenu" fxLayout="column" fxLayoutAlign="center center">
+
+                    <p *ngIf="headerTitle" class="sidenav-submenu-header mat-title text-word-break">{{ headerTitle }}</p>
+
+                    <!-- SubNav Entry -->
+                    <a mat-list-item *ngFor="let subNav of navigationOptions" [href]="subNav.sidenavRouterLink"
+                        [ngClass]="{'sidenav-submenu-active': subNav.sidenavKey === activeItem}" class="sidenav-submenu-items"
+                        [routerLink]="[subNav.sidenavRouterLink]" [queryParams]="subNav.queryParams"
+                        (click)="sidebarService.entryClicked()">
+
+                        <div fxLayout="row" fxLayoutAlign="baseline center">
+                            <mat-icon mat-list-icon class="material-icons-outlined">{{subNav.icon}}</mat-icon>
+                            <div mat-line class="sidenav-submenu-key">{{ subNav.sidenavKey | translate}}</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <!-- Content Area -->
+    <mat-sidenav-content class="sidenav-content">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

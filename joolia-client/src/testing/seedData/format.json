@@ -1,0 +1,33 @@
+{
+    "format1": {
+        "id": "f8f73c8f-1e09-4cf6-b075-e88ad0b9c04b",
+        "name": "Basic format",
+        "description": "Basic Format for Beginners",
+        "shortDescription": "This is a format",
+        "me": {
+            "userRole": "participant"
+        },
+        "startDate": null,
+        "endDate": null,
+        "workspace": {
+            "id": "87654321",
+            "name": "workspace1"
+        },
+        "files": []
+    },
+    "format2": {
+        "id": "2dc20477-3c5a-491b-8695-09be92d36112",
+        "name": "Advanced format",
+        "description": "Advanced Format for already experienced",
+        "shortDescription": "This is a format",
+        "me": {
+            "userRole": "organizer"
+        },
+        "startDate": null,
+        "endDate": null,
+        "workspace": {
+            "id": "87654321",
+            "name": "workspace1"
+        }
+    }
+}

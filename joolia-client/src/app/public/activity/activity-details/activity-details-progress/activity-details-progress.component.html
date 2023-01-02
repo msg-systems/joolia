@@ -1,0 +1,72 @@
+<loading-indicator *ngIf="!activity"></loading-indicator>
+
+<div *ngIf="activity">
+
+    <div class="infotexts" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="left center">
+            <mat-icon class="material-icons-outlined">{{ teamProgress ? 'people' : 'person' }}</mat-icon>
+            {{ (teamProgress ? 'labels.activityForTeams' : 'labels.activityForParticipants') | translate }}
+        </div>
+
+        <div *appHasPermission="viewOthers" fxLayout="row" fxLayoutAlign="left center">
+            <mat-icon class="material-icons-outlined">visibility</mat-icon>
+            {{ (teamProgress ? 'labels.activityProgressVisibilityTeams' : 'labels.activityProgressVisibilityParticipants') | translate }}
+        </div>
+
+        <div *appHasPermission="!viewOthers" fxLayout="row" fxLayoutAlign="left center">
+            <mat-icon class="material-icons-outlined">visibility_off</mat-icon>
+            {{ 'labels.activityProgressVisibilityOrganizers' | translate }}
+        </div>
+    </div>
+
+    <div *ngIf="isAddAllowed || activity.steps?.count === 0" class="mat-title activity-details-steps-header">
+        {{ 'labels.steps' | translate }}
+    </div>
+
+    <div *ngIf="activity.steps?.count > 0 || isAddAllowed; else emptyStateProgress">
+
+        <div *appHasPermission="isAddAllowed">
+            <div class="mat-body-1 activity-details-steps-description">{{ 'labels.stepsDescription' | translate }}</div>
+            <inline-edit-checklist [items]="stepList" [editable]="true" [itemMaxLength]="stepDescriptionMaxLength" [checkable]="false"
+                (addEntry)="onAddEntry($event)" (editEntry)="onEditEntry($event)" (deleteEntry)="onDeleteEntry($event)">
+            </inline-edit-checklist>
+        </div>
+
+        <div *ngIf="(teamList?.entities || memberList?.entities)">
+
+            <div *appHasPermission="isAddAllowed">
+                <div class="mat-title activity-details-steps-header">
+                    {{ (teamProgress ? 'labels.teamProgress' : 'labels.memberProgress') | translate }}
+                </div>
+                <progress-table [teamsOrMembers]="allEntities" [steps]="activity.steps?.entities" [checkable]="true"
+                    [noTeamsOrMembersLabel]="noTeamsOrMembersLabel" (stepChecked)="onStepChecked($event)">
+                </progress-table>
+            </div>
+
+            <div *appHasPermission="!isAddAllowed">
+                <div class="mat-title activity-details-steps-header">
+                    {{ (teamProgress ? 'labels.myTeamProgress' : 'labels.myMemberProgress') | translate }}
+                </div>
+                <progress-table [teamsOrMembers]="myEntities" [steps]="activity.steps?.entities" [checkable]="true"
+                    [noTeamsOrMembersLabel]="noTeamsOrMembersLabel" (stepChecked)="onStepChecked($event)">
+                </progress-table>
+
+                <div *appHasPermission="viewOthers">
+                    <div class="mat-title activity-details-steps-header">
+                        {{ (teamProgress ? 'labels.othersTeamProgress' : 'labels.othersMemberProgress') | translate }}
+                    </div>
+                    <progress-table [teamsOrMembers]="otherEntities" [steps]="activity.steps?.entities" [checkable]="false"
+                        [noTeamsOrMembersLabel]="'emptyStates.activityProgressTeam.organizer'" (stepChecked)="onStepChecked($event)">
+                    </progress-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <ng-template #emptyStateProgress>
+        <span class="text-word-break white-space-pre-wrap text-grey">
+            {{ 'emptyStates.activityProgress.content' | translate }}
+        </span>
+    </ng-template>
+
+</div>

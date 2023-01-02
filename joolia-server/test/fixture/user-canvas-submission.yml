@@ -1,0 +1,49 @@
+entity: UserCanvasSubmission
+items:
+  UserCanvasSubmissionOne:
+    id: 764e5347-551a-4430-be02-3c4c1c9ec12b
+    content: 'This is a nice canvas submission'
+    slot: '@Slot1'
+    createdBy: '@Luke'
+    user: '@Luke'
+    ownerType: User
+
+  UserCanvasSubmissionTwo:
+    id: 5d85d5b7-b159-433e-b066-59266fb36696
+    content: 'This is a nice canvas submission'
+    slot: '@Slot2'
+    createdBy: '@Leia'
+    user: '@Leia'
+    ownerType: User
+
+  UserCanvasSubmissionThree:
+    id: 9b42f00f-639c-4928-a095-07fbb597c24f
+    content: 'This is a nice canvas submission'
+    slot: '@Slot12'
+    createdBy: '@Luke'
+    user: '@Luke'
+    ownerType: User
+
+  UserCanvasSubmissionFour:
+    id: e8a9f41d-77d2-4e58-9334-740da2c34a71
+    content: 'This is a nice canvas submission'
+    slot: '@Slot14'
+    createdBy: '@Luke'
+    user: '@Luke'
+    ownerType: User
+
+  UserCanvasSubmissionFive:
+    id: f15840fd-dc86-4499-972c-42ac1aa02358 # Created by organizer as submitted by user Mickey
+    content: 'This is a nice canvas submission'
+    slot: '@Slot13'
+    createdBy: '@Luke'
+    user: '@Mickey'
+    ownerType: User
+
+  UserCanvasSubmissionSix:
+    id: d4c8ad71-a31f-4e77-be77-8b21abc83a16 # Created & submitted by Organizer
+    content: 'This is the Boss Canvas'
+    slot: '@Slot28'
+    createdBy: '@Luke'
+    user: '@Luke'
+    ownerType: User

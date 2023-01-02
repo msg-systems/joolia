@@ -1,0 +1,87 @@
+<loading-indicator *ngIf="!phaseTemplates"></loading-indicator>
+
+<div *ngIf="phaseTemplates?.count > 0" class="library-details-phase-templates" infinite-scroll
+    [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()"
+    [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+    <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+        gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="508px!" gdGap="32px" gdGap.lt-md="16px">
+        <list-card-item *ngFor="let phaseTemplate of phaseTemplates.entities" [itemId]="phaseTemplate.id" [clickable]="true"
+            (itemClick)="onPhaseTemplateClick(phaseTemplate.id)" [menuActions]="phaseTemplateMenuActions" showKeyVisual="true">
+            <div list-card-content class="phase-template-card-content" fxLayout="column">
+                <!-- Phase template name -->
+                <div clampy="3" class="mat-title text-word-break">{{ phaseTemplate.name }}</div>
+
+                <!-- Phase template duration -->
+                <div class="mat-body-2" fxLayoutAlign="start center">
+                    <mat-icon class="duration-icon">access_time</mat-icon>
+                    <span>{{ phaseTemplate.duration | durationPipe }}</span>
+                </div>
+
+                <!-- Phase template method count -->
+                <div class="mat-body-1" fxLayout="row" fxLayoutAlign="start center">
+
+                    <!--Chip: Category -->
+                    <main-chip class="category-icon-chip" [icon]="getCategoryIcon(phaseTemplate.category)" [outline]="true"
+                        [message]="'labels.categoryValue.' + phaseTemplate.category | translate">
+                    </main-chip>
+
+                    <!--Chip: Method Count -->
+                    <main-chip [message]="'labels.amountMethods' | translate: { amount: phaseTemplate.activityTemplateCount || 0 }">
+                    </main-chip>
+
+                </div>
+            </div>
+        </list-card-item>
+    </div>
+    <div *ngIf="isListViewType()">
+        <mat-nav-list disableRipple>
+            <list-row-item *ngFor="let phaseTemplate of phaseTemplates.entities" ngClass.lt-md="small" [itemId]="phaseTemplate.id"
+                [clickable]="true" (itemClick)="onPhaseTemplateClick(phaseTemplate.id)" [menuActions]="phaseTemplateMenuActions"
+                showKeyVisual="true">
+                <div list-row-header fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- Phase template name -->
+                    <div class="mat-title text-truncate">{{ phaseTemplate.name }}</div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+
+                        <!--Chip: Category -->
+                        <main-chip class="category-icon-chip" [icon]="getCategoryIcon(phaseTemplate.category)" [outline]="true"
+                            [message]="'labels.categoryValue.' + phaseTemplate.category | translate">
+                        </main-chip>
+
+                        <!--Chip: Method Count -->
+                        <main-chip [message]="'labels.amountMethods' | translate: { amount: phaseTemplate.activityTemplateCount || 0 }">
+                        </main-chip>
+
+                        <!-- Phase template duration -->
+                        <div class="mat-body-2 duration" fxLayoutAlign="start center">
+                            <mat-icon class="duration-icon">access_time</mat-icon>
+                            <span class="text-truncate">{{ phaseTemplate.duration | durationPipe }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div list-row-header fxHide fxShow.lt-md fxLayout="column" fxLayoutAlign="space-between start">
+                    <!-- Phase template name -->
+                    <div class="mat-title text-truncate no-margin">{{ phaseTemplate.name }}</div>
+                </div>
+                <div list-row-content fxHide fxShow.lt-md fxLayout="column" fxLayoutAlign="space-between start">
+                    <!-- Phase template method count -->
+                    <div class="chip joolia-chip-text">
+                        {{ 'labels.amountMethods' | translate: {amount: phaseTemplate.activityTemplateCount || 0} }}
+                    </div>
+                    <!-- Phase template duration -->
+                    <div class="mat-body-2 duration" fxLayoutAlign="start center">
+                        <mat-icon class="duration-icon">access_time</mat-icon>
+                        <span class="text-truncate">{{ phaseTemplate.duration | durationPipe }}</span>
+                    </div>
+                </div>
+            </list-row-item>
+
+        </mat-nav-list>
+    </div>
+    <loading-indicator *ngIf="isLoading"></loading-indicator>
+</div>
+
+<!-- Empty State -->
+<empty-state *ngIf="phaseTemplates && phaseTemplates.count < 1" titleKey="emptyStates.phaseTemplate.title"
+    contentKey="emptyStates.phaseTemplate.content" altTextKey="emptyStates.phaseTemplate.altText">
+</empty-state>

@@ -1,0 +1,29 @@
+<mat-nav-list disableRipple>
+    <list-row-item *ngFor="let format of formatList.entities" ngClass.lt-md="small" [itemId]="format.id" [clickable]="true"
+        (itemClick)="onFormatClick(format.id)" [menuActions]="getFormatMenuActions(format)" [keyVisual]="format.keyVisual"
+        showKeyVisual="true">
+        <div list-row-header fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="space-between center"
+            [ngClass]="{'format-item-right-space': hasNoMenuActions(format)}">
+            <!-- Format name -->
+            <div class="mat-title text-truncate">{{ format.name }}</div>
+            <!-- Format information -->
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+                <main-chip [message]="'labels.amountMembers' | translate: { amount: format.memberCount }"></main-chip>
+            </div>
+        </div>
+        <div list-row-header fxHide fxShow.lt-md fxLayout="column" fxLayoutAlign="space-between start">
+            <!-- Format name -->
+            <div class="mat-title text-truncate no-margin">{{ format.name }}</div>
+        </div>
+
+        <!-- Format time span -->
+        <div list-row-content class="format-list-card-time" fxLayout="row" fxLayoutAlign="start center">
+            <div *ngIf="format.startDate">
+                {{ format.startDate | moment: 'L' }}
+                <span *ngIf="!hasEqualStartAndEnd(format)">- {{ format.endDate | moment: 'L' }}</span>
+            </div>
+            <div *ngIf="!format.startDate">{{ 'labels.noDate' | translate }}</div>
+        </div>
+    </list-row-item>
+</mat-nav-list>

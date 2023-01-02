@@ -1,0 +1,16 @@
+<div *ngIf="!editMode || !editable" [ngClass]="{'inline-date-show-input': editable}" (mouseenter)="onMouseEntered()"
+    (mouseleave)="onMouseLeft()" class="inputClasses" (click)="onClick($event)" fxLayout="row" fxFlex="0 1 100%"
+    fxLayoutAlign="space-between center">
+    <ng-content *ngIf="inputDate"></ng-content>
+    <div class="inline-date-placeholder" *ngIf="!inputDate">{{ inputPlaceholderKey | translate }}</div>
+    <button mat-icon-button *ngIf="hover && inputDate && editable" class="inline-date-delete"
+        (click)="$event.stopPropagation();onDateChanged(null)">
+        <mat-icon class="inline-date-delete-icon">close</mat-icon>
+    </button>
+</div>
+<div *appHasPermission="editMode && editable" fxFlex>
+    <mat-datetimepicker #datetimePicker [type]="datetimePickerType" openOnFocus="true" (closed)="toggleEdit()" timeInterval="15">
+    </mat-datetimepicker>
+    <input id="dateInput" class="inline-date-input {{ inputClasses }}" placeholder="{{ inputPlaceholderKey | translate }}"
+        [matDatetimepicker]="datetimePicker" [value]="inputDate" (dateChange)="onDateChanged($event.value)" fxFlex="0 1 100%">
+</div>

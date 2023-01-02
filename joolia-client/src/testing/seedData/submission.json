@@ -1,0 +1,12 @@
+{
+    "submission1": {
+        "id": "952ef810-2696-44b6-809d-b921e40b0aa9",
+        "name": "The First Submission",
+        "description": "some content for the submission description",
+        "averageRating": 3.5,
+        "submittedBy": {
+            "team": "undefined",
+            "user": "undefined"
+        }
+    }
+}

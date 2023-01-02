@@ -1,0 +1,39 @@
+<mat-list-item>
+    <!--Icon-->
+    <mat-icon matListIcon>assignment</mat-icon>
+
+    <!--Headerline-->
+    <div matLine fxLayout="row" fxLayoutAlign="space-between">
+        <h3 class="activity-template-list-item-title text-truncate">{{ template.name }}</h3>
+        <!-- Files -->
+        <div fxHide.lt-md class="activity-template-list-item-amount-files">
+            {{ 'labels.amountFiles' | translate: { amount: template.files?.length } }}
+        </div>
+    </div>
+
+    <div matLine fxLayout="row" fxLayoutAlign="space-between">
+        <!--Description-->
+        <span class="text-italic text-truncate" [innerHTML]="template.shortDescription ?
+                (template.shortDescription | addLinkTarget) : ('emptyStates.activityTemplate.shortDescription' | translate)">
+        </span>
+        <!--Duration-->
+        <div fxHide.lt-md fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-icon class="phase-card-duration-icon">access_time</mat-icon>
+            <span>{{ template.duration | durationPipe }}</span>
+        </div>
+    </div>
+
+    <div fxHide.gt-sm matLine fxLayout="row" fxLayoutAlign="space-between">
+        <!-- Files -->
+        <div class="activity-template-list-item-amount-files">
+            {{ 'labels.amountFiles' | translate: { amount: template.files?.length } }}
+        </div>
+    </div>
+    <div fxHide.gt-sm matLine fxLayout="row" fxLayoutAlign="space-between">
+        <!--Duration-->
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-icon class="phase-card-duration-icon">access_time</mat-icon>
+            <span>{{ template.duration | durationPipe }}</span>
+        </div>
+    </div>
+</mat-list-item>

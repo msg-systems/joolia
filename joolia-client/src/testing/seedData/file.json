@@ -1,0 +1,19 @@
+{
+    "file1": {
+        "id": "5d6cb42d-5f0e-4b4c-985b-bf2b14084ced",
+        "name": "bob.jpg",
+        "contentType": null,
+        "size": 0,
+        "createdAt": "2019-10-24T12:26:54.460Z",
+        "updatedAt": "2019-10-24T12:26:54.460Z",
+        "fileUrl": "testFileUrl"
+    },
+    "file2": {
+        "id": "817c3745-2a15-4dbd-a34b-ac0dfc3a43a2",
+        "name": "vader.jpg",
+        "contentType": "image/jpeg",
+        "size": 2111240,
+        "createdAt": "2019-10-24T12:26:54.503Z",
+        "updatedAt": "2019-10-24T12:26:54.503Z"
+    }
+}

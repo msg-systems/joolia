@@ -1,0 +1,26 @@
+# IDEs
+
+.idea
+.vscode
+
+# Local dev environment
+
+.env
+
+# Tools
+
+.vagrant
+
+# Artifacts
+
+node_modules/
+dist/
+out
+
+*.log
+*.patch
+
+db/ormconfig-tmp*.yml
+db/*.tmp.sql
+
+.nyc_output

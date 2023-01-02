@@ -1,0 +1,89 @@
+@import 'variables';
+
+.activity {
+    width: 100%;
+    height: 100%;
+}
+
+.divider {
+    border-top: 2px solid $joolia-grey-500;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    margin: 0;
+}
+
+.activity.focused .divider {
+    border-top-color: $joolia-primary-a700;
+}
+
+.activity .inner {
+    height: calc(100% - 2px); // 2px are used by divider
+    overflow: hidden;
+    background-color: $joolia-grey-100;
+}
+
+.activity:not(.no-hover) .inner:hover,
+::ng-deep .cdk-drag-placeholder .inner {
+    background-color: $joolia-grey-200 !important;
+}
+
+.activity.focused .inner {
+    background-color: $joolia-primary-50;
+}
+
+.activity.focused:not(.no-hover) .inner:hover,
+::ng-deep .cdk-drag-placeholder .activity.focused .inner {
+    background-color: $joolia-primary-100 !important;
+}
+
+.description-time {
+    margin: 6px 8px 2px 8px;
+}
+
+.drag-handle {
+    margin-top: 4px;
+    cursor: move;
+}
+
+// When updating showButtons in the list, the placeholder-elements somehow still use the old value, therefore not hiding the buttons.
+// With this ng-deep "hack", I can just hide the buttons for placeholders.
+.inner:not(:hover) .drag-handle,
+.drag-handle.invisible,
+::ng-deep .cdk-drag-placeholder .drag-handle,
+.inner:not(:hover) .delete-button,
+.delete-button.invisible,
+::ng-deep .cdk-drag-placeholder .delete-button {
+    visibility: hidden;
+}
+
+.delete-button {
+    float: right;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    margin: 8px;
+
+    mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        line-height: unset;
+    }
+}
+
+.title-container {
+    padding: 0 8px 4px 8px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+
+    .title {
+        height: calc(100% - 4px);
+        width: 100%;
+
+        > div {
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+}

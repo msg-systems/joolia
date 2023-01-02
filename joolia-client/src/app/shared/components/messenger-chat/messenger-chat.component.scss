@@ -1,0 +1,72 @@
+@import 'variables';
+
+.chat-view {
+    height: 340px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: auto;
+    padding: 20px;
+    /* prevents scroll chaining */
+    overscroll-behavior: contain;
+}
+
+.message-entry {
+    .bubble {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+
+        max-width: 220px;
+        width: 100%;
+        min-width: 50px;
+        padding: 10px;
+        margin-bottom: 6px;
+
+        .createdBy {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .text {
+            font-size: 14px;
+        }
+
+        .createdAt {
+            font-size: 10px;
+            color: $joolia-black;
+            text-align: right;
+        }
+    }
+
+    .bubble-grey {
+        -webkit-border-bottom-left-radius: 0;
+        -moz-border-radius-bottomleft: 0;
+        border-bottom-left-radius: 0;
+
+        background-color: $joolia-grey-200;
+        float: left;
+    }
+
+    .bubble-blue {
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-bottomright: 0;
+        border-bottom-right-radius: 0;
+
+        background-color: $joolia-primary-50;
+        color: $joolia-primary-900;
+        float: right;
+    }
+}
+
+.chat-input {
+    .send-message-button {
+        padding: 0 0 0 10px;
+        min-width: 40px;
+    }
+
+    .mat-form-field {
+        width: 80%;
+        margin-left: 10px;
+    }
+}

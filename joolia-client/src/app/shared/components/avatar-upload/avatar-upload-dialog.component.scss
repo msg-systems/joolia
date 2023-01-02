@@ -1,0 +1,54 @@
+@import 'variables';
+
+.mat-dialog-title {
+    text-align: center;
+}
+
+.mat-dialog-content {
+    padding: 0;
+    max-height: 65vh;
+    overflow: hidden;
+
+    .body-container {
+        padding: 16px;
+
+        > div.dotted-border {
+            border: 5px $joolia-black-transparent-12 dashed;
+        }
+
+        > div.dotted-border.is-drop-over {
+            background-color: $joolia-primary-50;
+        }
+
+        > div {
+            padding: 20px;
+            width: 100%;
+            max-height: calc(65vh - 32px); // 65vh of .mat-dialog-content minus 2*16px padding of .body-container
+            display: flex;
+            flex-grow: 1;
+
+            p {
+                color: $joolia-grey;
+            }
+
+            image-cropper {
+                margin-top: 16px;
+            }
+
+            .hide {
+                display: none;
+            }
+        }
+    }
+}
+
+.mat-dialog-actions {
+    border-top: 1px solid $joolia-black-transparent-12;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 24px;
+}
+
+.transparent {
+    visibility: hidden;
+}

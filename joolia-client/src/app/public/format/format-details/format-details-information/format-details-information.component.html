@@ -1,0 +1,105 @@
+<loading-indicator *ngIf="!format"></loading-indicator>
+
+<div *ngIf="format">
+    <action-bar [showBackButton]="true" [actions]="actionBarActions"></action-bar>
+
+    <div class="format-details-information-container" ngClass.lt-md="small">
+        <userrole-chip [userRole]="format.me.userRole"></userrole-chip>
+        <div>
+            <span class="text-word-break mat-subheading-1 text-medium">{{ format.name }}</span>
+        </div>
+        <div class="site-title">
+            <span class="text-word-break mat-display-1 text-black">{{ 'sidenav.format.information' | translate }}</span>
+        </div>
+
+        <!-- Summary -->
+        <entity-summary [entitySummary]="formatSummary"></entity-summary>
+
+        <!-- Current phase, activity etc -->
+        <div class="format-current-state-container">
+            <format-current-state [format]="format" [organizerView]="isOrganizer" [phases]="currentPhases" [activities]="currentActivites"
+                [teamsOrMembers]="progressEntities" [teams]="teams">
+            </format-current-state>
+        </div>
+
+        <!-- Main card -->
+        <div class="maincard-container" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start">
+            <mat-card class="mat-elevation-z maincard" fxFlex="auto">
+                <div class="maincard-content" fxLayout="column">
+                    <div class="workspace-and-creator text-word-break">{{ format?.workspaceName + ' · ' + format?.createdBy?.name }}</div>
+
+                    <!-- Format Name -->
+                    <div class="format-name-input-container">
+                        <inline-edit-text inputClasses="mat-headline" [inputText]="format?.name"
+                            (inputChange)="onFormatUpdate('name', $event)" [inputMaxLength]="formatNameMaxLength" [editable]="isEditAllowed"
+                            [allowNewLines]="false">
+                            <span class="text-word-break">{{ format.name }}</span>
+                        </inline-edit-text>
+                    </div>
+
+                    <!-- Tagline -->
+                    <div>
+                        <div class="mat-title">{{ 'labels.tagline' | translate }}</div>
+                        <inline-edit-text *ngIf="!!format.shortDescription || isEditAllowed; else emptyStateTagline"
+                            [inputText]="format.shortDescription" inputPlaceholderKey="labels.clickToAddTagline"
+                            (inputChange)="onFormatUpdate('shortDescription', $event)" [editable]="isEditAllowed"
+                            [inputMaxLength]="formatShortDescriptionMaxLength" [allowNewLines]="false">
+                            <span class="text-word-break white-space-pre-wrap" [innerHTML]="format.shortDescription | addLinkTarget"></span>
+                        </inline-edit-text>
+                        <ng-template #emptyStateTagline>
+                            <div>
+                                <span class="text-word-break white-space-pre-wrap text-grey">
+                                    {{ 'emptyStates.formatTagline.content' | translate }}
+                                </span>
+                            </div>
+                        </ng-template>
+                    </div>
+
+                    <!-- Key Visual -->
+                    <div>
+                        <app-media [menuActions]="keyVisualMenuActions" [keyVisual]="format.keyVisual"
+                            emptyStateKey="emptyStates.keyvisual.content">
+                        </app-media>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <div class="mat-title">
+                            {{ 'labels.description' | translate }}
+                            <button *ngIf="isEditAllowed" mat-icon-button color="primary" (click)="onInfoClicked()">
+                                <mat-icon>info</mat-icon>
+                            </button>
+                        </div>
+                        <inline-edit-text *ngIf="!!format.description || isEditAllowed; else emptyStateDescription"
+                            [inputText]="format.description" inputPlaceholderKey="labels.clickToAddDescription"
+                            (inputChange)="onFormatUpdate('description', $event)" [editable]="isEditAllowed"
+                            [inputMaxLength]="formatDescriptionMaxLength" [allowNewLines]="true">
+                            <span class="text-word-break white-space-pre-wrap" [innerHTML]="format.description | addLinkTarget"></span>
+                        </inline-edit-text>
+                        <ng-template #emptyStateDescription>
+                            <div>
+                                <span class="text-word-break white-space-pre-wrap text-grey">
+                                    {{ 'emptyStates.formatDescription.content' | translate }}
+                                </span>
+                            </div>
+                        </ng-template>
+                    </div>
+
+                    <!-- Format files -->
+                    <div>
+                        <div class="mat-title">{{ 'labels.files' | translate }}</div>
+                        <file-list *ngIf="format.files?.length > 0 || isEditAllowed; else emptyStateFiles" [files]="format.files"
+                            (fileDeleteClicked)="onFileDelete($event)" (fileEditClicked)="onFileUpdate($event)" [editable]="isEditAllowed"
+                            (fileUploadOutput)="onUploadOutput($event)" (fileDownloadClicked)="onFileDownloadClicked($event)">
+                        </file-list>
+                        <ng-template #emptyStateFiles>
+                            <span class="text-word-break white-space-pre-wrap text-grey">
+                                {{ 'emptyStates.formatFiles.content' | translate }}
+                            </span>
+                        </ng-template>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

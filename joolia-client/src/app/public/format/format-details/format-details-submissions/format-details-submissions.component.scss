@@ -1,0 +1,54 @@
+@import 'variables';
+
+.submission-container {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    .submission-table {
+        width: 100%;
+        min-width: 704px; // this results in non scrollbar for a browser-width of 1024px or wider
+
+        .mat-cell > span.text-truncate {
+            padding-right: 16px;
+        }
+
+        .mat-cell > mat-icon {
+            padding-right: 8px;
+        }
+
+        .submission-details {
+            &-description {
+                padding: 1% 8%;
+                width: 45%;
+            }
+
+            &-files {
+                padding: 1% 8% 1% 4%;
+                width: 20%;  
+            }
+
+            &-title {
+                margin-bottom: 10px;
+                color: $joolia-grey-600;
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+
+        .mat-cell {
+            padding: 0;
+        }
+    }
+
+    .submission-row {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $joolia-grey-100;
+        }
+    }
+}

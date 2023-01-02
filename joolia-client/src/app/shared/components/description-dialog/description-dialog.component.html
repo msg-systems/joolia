@@ -1,0 +1,12 @@
+<mat-dialog-content class="description-dialog mat-typography">
+    <p> {{ 'dialog.description.header' | translate }}</p>
+    <div *ngFor="let key of keys" fxLayout="column" fxLayout.gt-xs="row" class="description-dialog-content" fxLayoutGap.xs="10px">
+        <div class="code-block white-space-pre-wrap" fxLayout="row" fxLayoutAlign="space-between center" fxFlexOrder.xs="1">
+            <p class="code-text">{{ key + '.leftSide' | translate}}</p>
+            <button class="copy-button" mat-icon-button disableRipple (click)="onCopyClicked(key)">
+                <mat-icon class="material-icons-outlined">file_copy</mat-icon>
+            </button>
+        </div>
+        <div class="description-block" [innerHTML]="key + '.rightSide' | translate" fxFlexOrder.xs="0"></div>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,8 @@
+<div [class]="{'hover': !disabled}" class="tail-button">
+    <label (click)="onClick($event)" [class]="{'disabled': disabled}" class="tail-button-text tail-button-box"
+        fxLayoutAlign="center center">
+        <mat-icon *ngIf="icon" class="upload-button">{{ icon }}</mat-icon>
+        <span>{{ label | translate }}</span>
+        <ng-content></ng-content>
+    </label>
+</div>

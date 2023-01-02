@@ -1,0 +1,165 @@
+entity: ActivityConfiguration
+items:
+  ActivityConfigurationOne:
+    submissionModifySetting: team
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwo:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThree:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationFour:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationFive:
+    submissionModifySetting: team
+    submissionViewSetting: submitter
+
+  ActivityConfigurationSix:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationSeven:
+    submissionModifySetting: team
+    submissionViewSetting: submitter
+
+  ActivityConfigurationEight:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationNine:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTen:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationEleven:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwelve:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationThirteen:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationFourteen:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationFifteen:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationSixteen:
+    submissionModifySetting: team
+    submissionViewSetting: submitter
+
+  ActivityConfigurationSeventeen:
+    submissionModifySetting: team
+    submissionViewSetting: member
+
+  ActivityConfigurationEighteen:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationNineteen:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationTwenty:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentyOne:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentyThree:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentyFour:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationTwentyFive:
+    submissionModifySetting: team
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentySix:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationTwentySeven:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentyEight:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationTwentyNine:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirty:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyOne:
+    submissionModifySetting: member
+    submissionViewSetting: submitter
+
+  ActivityConfigurationThirtyTwo:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyThree:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyFour:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyFive:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtySix:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtySeven:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyEight:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationThirtyNine:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationForty:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationFortyOne:
+    submissionModifySetting: member
+    submissionViewSetting: member
+
+  ActivityConfigurationFortyTwo:
+    submissionModifySetting: member
+    submissionViewSetting: member

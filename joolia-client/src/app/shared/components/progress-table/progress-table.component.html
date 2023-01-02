@@ -1,0 +1,51 @@
+<div *ngIf="!teamsOrMembers || teamsOrMembers.length === 0" class="mat-body-1 text-grey">
+    {{ noTeamsOrMembersLabel | translate }}
+</div>
+
+<div *ngIf="teamsOrMembers?.length > 0" class="progress-table">
+    <table #table mat-table [dataSource]="data">
+
+        <!-- Name -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>{{ 'labels.name' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Progress -->
+        <ng-container matColumnDef="progress">
+            <mat-header-cell *matHeaderCellDef>{{ 'labels.progress' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <span>{{row.progressText}}</span>
+                <mat-progress-bar mode="determinate" [value]="row.progressPercentage || 0"></mat-progress-bar>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Actions -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef [ngClass]="{'hidden-cell': notExpandable}"></mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'hidden-cell': notExpandable}">
+                <mat-icon *ngIf="!notExpandable && steps?.length > 0">
+                    {{ expandedRow && expandedRow.id === row.id ? 'chevron_left' : 'expand_more' }}
+                </mat-icon>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Steps -->
+        <ng-container matColumnDef="steps">
+            <mat-cell *matCellDef="let detailRow">
+                <inline-edit-checklist [items]="detailRow.stepList" [editable]="false" [checkable]="checkable" class="step-list"
+                    (checkEntry)="onCheckStep(detailRow.id, $event)">
+                </inline-edit-checklist>
+            </mat-cell>
+        </ng-container>
+
+        <!--Header -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row matRipple *matRowDef="let row; columns: displayedColumns;" class="table-row"
+            [class.expanded]="expandedRow && row.id === expandedRow.id" (click)="!notExpandable && steps.length > 0 && expandRow(row)">
+        </mat-row>
+        <mat-row *matRowDef="let detailRow; columns: ['steps']; when: isDetailRow" class="table-detail-row"
+            [@detailExpand]="expandedRow && detailRow.id === expandedRow.id ? 'expanded' : 'collapsed'">
+        </mat-row>
+    </table>
+</div>

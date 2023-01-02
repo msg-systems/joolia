@@ -1,0 +1,21 @@
+<list-card-item [itemId]="user.id" [menuActions]="userMenuActions" (menuOpenClick)="onMenuOpenClick($event)">
+    <div list-card-content fxLayout="row">
+        <!-- team member avatar -->
+        <user-avatar [user]="user" [sizeInPx]="80"></user-avatar>
+
+        <!-- team member name, role and skills -->
+        <div class="member-card-name-container" fxLayout="column" fxLayoutAlign="center start">
+            <div *ngIf="!user.pending">
+                <mat-card-title clampy="3" class="text-word-break member-card-name">{{ user.name }}</mat-card-title>
+                <div *ngIf="user.role" class="mat-body-1 text-light">{{ 'labels.' + user.role | translate }}</div>
+                <div *ngIf="user.skills?.length > 0" class="member-card-skills" fxLayout="row wrap">
+                    <span fxFlex>{{getSkills()}}</span>
+                </div>
+            </div>
+            <div *ngIf="user.pending">
+                <mat-card-title clampy="3" class="text-word-break member-card-name">{{ user.email }} </mat-card-title>
+                <div class="mat-body-1 text-light">{{ 'labels.invitationPending' | translate }}</div>
+            </div>
+        </div>
+    </div>
+</list-card-item>

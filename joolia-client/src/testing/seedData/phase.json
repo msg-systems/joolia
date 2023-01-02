@@ -1,0 +1,37 @@
+{
+    "phase1": {
+        "id": "2a7a792a-e86b-4a4f-b10e-3badcc315e7a",
+        "durationUnit": "minutes",
+        "startDate": "1973-10-31T05:00:00.000Z",
+        "name": "Phase c",
+        "formatId": "5500f071-de3a-4f2b-befb-2e257fbf8bb8",
+        "duration": 270,
+        "status": "past",
+        "endDate": "1973-10-31T09:30:00.000Z",
+        "activityCount": 5,
+        "visible": true
+    },
+    "phase2": {
+        "id": "822db6a8-e884-49a3-8b91-2306630a366f",
+        "durationUnit": "days",
+        "startDate": "2019-03-13T00:00:00.000Z",
+        "name": "Phase a",
+        "formatId": "5500f071-de3a-4f2b-befb-2e257fbf8bb8",
+        "duration": 0,
+        "status": "past",
+        "endDate": "2019-03-13T00:00:00.000Z",
+        "activityCount": 0,
+        "visible": false
+    },
+    "phase3": {
+        "id": "707e1c58-f962-4cb6-a3b0-c4b6c9a9df6c",
+        "durationUnit": "minutes",
+        "startDate": "2019-03-13T15:45:00.000Z",
+        "name": "Phase b",
+        "formatId": "5500f071-de3a-4f2b-befb-2e257fbf8bb8",
+        "duration": 120,
+        "status": "past",
+        "endDate": "2019-03-13T17:45:00.000Z",
+        "activityCount": 3
+    }
+}

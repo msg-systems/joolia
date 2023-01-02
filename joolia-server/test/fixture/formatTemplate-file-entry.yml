@@ -1,0 +1,19 @@
+entity: FormatTemplateFileEntry
+items:
+  FormatTemplateFileOne:
+    ownerType: FormatTemplateEntry
+    id: 42a16013-c2e4-4d81-a861-75d8a442f386 # Does snot match any loaded file
+    versionId: bceb6c03-0342-4e7a-9360-0e9049ffdfe5
+    name: leia.jpg
+    contentType: 'image/jpeg'
+    size: 2111240
+    createdBy: '@Leia'
+    createdAt: '2019-05-09 10:44:32'
+    formatTemplate: '@FormatTemplate1'
+  FormatTemplateFileWithoutData:
+    ownerType: FormatTemplateEntry
+    id: 3d58a6b4-aee6-42c9-9c96-766ddfa963c2 # Should NOT match any loaded file in s3 for development
+    versionId: 5dca9974-1e9b-44c8-b7ed-f30d4136370c
+    name: patrick.jpg
+    createdBy: '@Mickey'
+    formatTemplate: '@FormatTemplate1'

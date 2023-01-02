@@ -1,0 +1,30 @@
+{
+    "name": "mockserver",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "npm run serve",
+        "serve:dist": "node dist/index.js",
+        "watch-node": "nodemon dist/index.js",
+        "watch-ts": "tsc -w",
+        "serve": "npm run build && concurrently --kill-others \"npm run watch-node\" \"npm run watch-ts\""
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/faker": "^4.1.4",
+        "@types/lodash": "^4.14.119",
+        "concurrently": "^4.1.0",
+        "faker": "^4.1.0",
+        "lodash": "^4.17.11",
+        "nodemon": "^1.18.9",
+        "tslint": "^5.11.0",
+        "typescript": "^3.2.2"
+    },
+    "dependencies": {
+        "@types/express": "^4.16.0",
+        "express": "^4.16.4"
+    }
+}

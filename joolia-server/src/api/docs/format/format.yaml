@@ -1,0 +1,137 @@
+components:
+  schemas:
+    Format:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        updatedBy:
+          $ref: '#/components/examples/UserCreatedBy'
+        updatedAt:
+          type: string
+          format: date
+        createdBy:
+          $ref: '#/components/examples/UserCreatedBy'
+        shortDescription:
+          type: string
+        memberCount:
+          type: integer
+          minimum: 1
+        teamCount:
+          type: integer
+          minimum: 0
+        submissionCount:
+          type: integer
+          minimum: 0
+        phaseCount:
+          type: integer
+          minimum: 0
+        activityCount:
+          type: integer
+          minimum: 0
+        commentCount:
+          type: integer
+          minimum: 0
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        workspace:
+          $ref: '#/components/schemas/Workspace'
+        keyVisual:
+          oneOf:
+            - $ref: '#/components/responses/FileMetadata'
+            - $ref: '#/components/schemas/Link'
+        me:
+          $ref: '#/components/examples/Me'
+      example:
+        id': '1'
+        name: 'Testformat1'
+        description: 'Lange Beschreibung für Testformat 1'
+        shortDescription: 'Kurze Beschreibung für Testformat 1'
+        createdBy:
+          id: '0004a350-29f8-11e9-b210-d663bd873d93'
+          name: 'Anakin'
+          company: 'Skywalker'
+          email: 'vader@sith-lords.com'
+        memberCount: 96
+        teamCount: 96
+        submissionCount: 96
+        phaseCount: 96
+        activityCount: 96
+        commentCount: 96
+        startDate: '2019-02-28T13:39:49.000Z'
+        endDate: '2019-02-29T13:39:49.000Z'
+        workspace:
+          name: 'My Workspace 1'
+        keyVisual:
+          FileMetadata:
+            name: cool.jpg
+            size: 200
+          Link:
+            linkUrl: www.youtube.com
+        me:
+          userRole: 'organizer'
+  examples:
+    Formats:
+      type: array
+      items:
+        $ref: '#/components/schemas/Format'
+      example:
+        id: '1'
+        name: 'Testformat1'
+        description: 'Lange Beschreibung für Testformat 1'
+        shortDescription: 'Kurze Beschreibung für Testformat 1'
+        createdBy:
+          id: '0004a350-29f8-11e9-b210-d663bd873d93'
+          name: 'Anakin'
+          company: 'Skywalker'
+          email: 'vader@sith-lords.com'
+        memberCount: 96
+        teamCount: 96
+        submissionCount: 96
+        phaseCount: 96
+        activityCount: 96
+        commentCount: 96
+        startDate: '2019-02-28T13:39:49.000Z'
+        endDate: '2019-02-29T13:39:49.000Z'
+        workspace:
+          name: 'My Workspace 1'
+        me:
+          userRole: 'organizer'
+    PostFormatBody:
+      properties:
+        name:
+          type: string
+          maxlength: 55
+        description:
+          type: string
+        shortDescription:
+          type: string
+          maxLength: 150
+        workspace:
+          type: string
+          format: uuid
+          description: The id of the workspace the format will belong to
+      required:
+        - workspace
+      example:
+        name: 'Testformat1'
+        description: 'Lange Beschreibung für Testformat 1'
+        shortDescription: 'Kurze Beschreibung für Testformat 1'
+        workspace': '0004a350-29f8-11e9-b210-d663bd873d93'
+    Me:
+      description: Provides user related information to the format
+      properties:
+        userRole:
+          type: string
+          enum: [participant, organizer]
+      example:
+        me:
+          userRole: 'organizer'

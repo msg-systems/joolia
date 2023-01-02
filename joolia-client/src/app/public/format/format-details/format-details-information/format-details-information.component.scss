@@ -1,0 +1,46 @@
+@import 'variables';
+
+.format-details-information-container {
+    min-width: 240px;
+    max-width: 1280px;
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    .format-current-state-container {
+        padding: 12px 0 24px 0;
+    }
+
+    .maincard-container {
+        .maincard {
+            min-width: 0;
+            border: 1px solid $joolia-black-transparent-12;
+            padding: 32px;
+
+            .maincard-content {
+                max-width: 720px;
+                margin: auto;
+
+                .format-name-input-container {
+                    margin-top: 5px;
+                }
+
+                > *:nth-child(n + 3) {
+                    margin-top: 24px;
+                }
+
+                .mat-title {
+                    margin-bottom: 16px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .workspace-and-creator {
+                    color: $joolia-secondary-900;
+                }
+            }
+        }
+    }
+}

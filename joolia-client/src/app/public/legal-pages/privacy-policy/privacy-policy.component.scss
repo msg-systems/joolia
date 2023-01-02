@@ -1,0 +1,67 @@
+@import 'variables';
+
+.static-page {
+    padding: $joolia-content-gap;
+
+    mat-card {
+        padding: 32px 40px;
+        max-width: 1280px;
+
+        ol {
+            margin: 16px 0 16px;
+            list-style-type: upper-roman;
+            counter-reset: item;
+            padding-left: 15px;
+        }
+
+        ul {
+            padding-left: 15px;
+        }
+
+        ul > li {
+            list-style-type: none;
+        }
+
+        ol ol {
+            list-style-type: decimal;
+        }
+
+        ol ol ol > li {
+            counter-increment: item;
+            list-style: none inside;
+        }
+
+        ol ol ol > li:before {
+            content: '(' counter(item) ')';
+        }
+
+        ol p {
+            font-weight: normal;
+        }
+
+        ul > li {
+            font-weight: normal;
+        }
+
+        .section {
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .headline {
+            margin-bottom: 5px;
+        }
+
+        .sub-headline {
+            padding-left: 10px;
+        }
+    }
+
+    &.small {
+        padding: $joolia-content-gap-small;
+
+        mat-card {
+            padding: 16px 20px;
+        }
+    }
+}

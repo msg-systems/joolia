@@ -1,0 +1,44 @@
+@import 'variables';
+
+.list-card {
+    border: 1px solid $joolia-black-transparent-12;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+
+    &-img-container {
+        height: 194px;
+        position: relative;
+    }
+
+    &-lock-icon {
+        color: $joolia-grey-500;
+    }
+
+    &-header > ::ng-deep .mat-card-header-text {
+        margin: 0;
+    }
+
+    &-content {
+        height: 0;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    &-actions {
+        margin-bottom: -8px;
+        margin-right: -14px;
+        padding: 0;
+
+        .mat-icon {
+            &:hover {
+                background-color: $joolia-black-transparent-12;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &-footer {
+        padding: 16px;
+    }
+}

@@ -1,0 +1,71 @@
+<loading-indicator *ngIf="!submission"></loading-indicator>
+
+<div class="submission-container" *ngIf="submission">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <back-button
+            [routerLinkArg]="['/', 'format', currentFormat.id, 'phase', currentPhase.id, 'activity', currentActivity.id, 'submission']"
+            labelKey="buttons.backToOverview">
+        </back-button>
+
+        <div *appHasPermission="isEditAllowed">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onSubmissionDelete()">
+                    {{ 'buttons.delete' | translate }}
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+
+    <!-- Submitter -->
+    <div class="submission-details-submitter mat-body-1">
+        {{ this.submission.submittedBy.team?.name || this.submission.submittedBy.user?.name }}
+    </div>
+
+    <!-- Name -->
+    <inline-edit-text class="submission-details-name" inputClasses="mat-title" [inputText]="submission.name"
+        (inputChange)="onSubmissionUpdate('name', $event)" [allowNewLines]="false" [editable]="isEditAllowed"
+        [inputMaxLength]="submissionNameMaxLength" inputPlaceholderKey="labels.clickToAddName">
+        <div class="submission-details-title mat-title text-word-break">{{ submission.name }}</div>
+    </inline-edit-text>
+
+    <!-- Creation date -->
+    <div class="submission-details-date mat-body-1">{{ submission.createdAt | moment: 'L LT' }}</div>
+
+    <!-- Description -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <inline-edit-text class="submission-details-description" [inputText]="submission.description"
+            (inputChange)="onSubmissionUpdate('description', $event)" [allowNewLines]="true" [editable]="isEditAllowed"
+            [inputMaxLength]="submissionDescriptionMaxLength" inputPlaceholderKey="emptyStates.activitySubmissionDescription.content">
+            <span [innerHTML]="submission.description | addLinkTarget" class="text-word-break white-space-pre-wrap"></span>
+        </inline-edit-text>
+        <button *ngIf="isEditAllowed" mat-icon-button color="primary" (click)="onInfoClicked()">
+            <mat-icon>info</mat-icon>
+        </button>
+    </div>
+
+    <!-- Files -->
+    <file-list (fileDeleteClicked)="onFileDelete($event)" (fileEditClicked)="onFileUpdate($event)"
+        (fileDownloadClicked)="onFileDownloadClicked($event)" (fileUploadOutput)="onUploadOutput($event)"
+        *ngIf="submission.files?.length > 0 || isEditAllowed; else emptyStateFiles" [editable]="isEditAllowed" [files]="submission.files"
+        class="submission-details-files">
+    </file-list>
+    <ng-template #emptyStateFiles>
+        <p class="text-word-break white-space-pre-wrap text-grey">{{ 'emptyStates.activitySubmissionFiles.content' | translate }}</p>
+    </ng-template>
+
+    <div class="submission-details-subtitle">
+        <app-rating [editable]="isRatingEditable" [averageRating]="submission?.averageRating" [rating]="rating?.rating"
+            (ratingUpdated)="onSendRating($event)">
+        </app-rating>
+    </div>
+
+    <div class="submission-details-subtitle">
+        <app-comment class="submission-details-subtitle" [comments]="comments" [userRole]="currentFormat.me.userRole"
+            (deleteComment)="onDeleteComment($event)" (sendComment)="onSendComment($event)">
+        </app-comment>
+    </div>
+
+</div>

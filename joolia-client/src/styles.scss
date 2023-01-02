@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import '~@angular/material/theming';
+@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
+
+@include mat-core();
+@include angular-material-theme($joolia-theme);
+@include mat-toolbar-theme($joolia-toolbar-theme);
+@include mat-datetimepicker-theme($joolia-theme);
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.no-bg-scroll {
+    overflow-y: hidden;
+    /* Disables pull-to-refresh and overscroll glow effect. */
+    overscroll-behavior-y: none;
+}
+
+app-root {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+app-root > div {
+    height: calc(100% - 48px);
+    position: relative;
+    top: 48px;
+    display: flex;
+    flex-flow: column;
+
+    > * {
+        height: calc(100% - 48px);
+    }
+}
+
+app-root > * {
+    height: calc(100% - 48px);
+    min-height: fit-content;
+}
+
+app-root > div app-toolbar,
+div router-outlet {
+    height: auto;
+    min-height: auto;
+}
+
+app-root > div app-toolbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+app-root ~ footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+}
+
+app-root > div app-footer > .page-footer-container > .page-content > *:not(router-outlet) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    > *:first-child {
+        flex: 1;
+        display: flex;
+    }
+}
+
+.white-space-pre-wrap {
+    white-space: pre-wrap;
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-word-break {
+    word-wrap: break-word;
+}
+
+.text-medium {
+    font-weight: 500 !important;
+}
+
+.text-black {
+    font-weight: 900 !important;
+}
+
+.text-grey {
+    color: $joolia-grey;
+}
+
+.text-italic {
+    font-style: italic;
+    padding-right: 4px;
+}
+
+.site-title {
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.joolia-chip-text {
+    font-size: 14px;
+}
+
+.hover-highlight {
+    cursor: pointer;
+
+    &:hover {
+        border-color: $joolia-primary-a700 !important;
+    }
+}
+
+.no-hover {
+    cursor: default !important;
+}
+
+.text-secondary {
+    color: $joolia-secondary-900;
+}
+
+.mat-form-field-ripple {
+    background-color: $joolia-secondary-900 !important;
+}
+
+// by default, buttons always use the 500 shade; with this, other shades can be used as well
+.mat-raised-button.mat-primary-800 {
+    background-color: $joolia-primary-800 !important;
+    color: mat-contrast($joolia-primary-palette, 800) !important;
+}
+
+.mat-stroked-button.mat-primary-800 {
+    color: $joolia-primary-800 !important;
+}
+
+.mat-button.mat-primary-800 {
+    color: $joolia-primary-800 !important;
+}
+
+.mat-datetimepicker-clock-minutes {
+    .mat-datetimepicker-clock-cell:not(:nth-child(3n + 1)) {
+        cursor: default;
+        color: mat-color($mat-grey, 500);
+
+        &:hover {
+            background: none !important;
+        }
+    }
+}
+
+.custom-tab-header {
+    .mat-ink-bar {
+        display: none;
+    }
+
+    .mat-tab-label-active {
+        opacity: 1;
+    }
+}
+
+.padding-left-16 {
+    padding-left: 16px;
+}
+
+.icon-inner-text {
+    top: 7px;
+    position: relative;
+}
+
+.icon-white {
+    color: $joolia-white;
+}
+
+.cookie-banner-panel {
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+
+.copyright-notice {
+    @include mat-typography-level-to-styles($config, caption);
+    font-size: 10px;
+    line-height: 14px;
+}
+
+// Fixes the foreground display of the recaptcha after async load
+.grecaptcha-badge {
+    z-index: 90;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.no-padding-menu {
+    & .mat-menu-content {
+        padding: 0 !important;
+        margin: 0 !important;
+
+        & .mat-menu-item {
+            padding: 0;
+            line-height: 3px;
+            height: auto;
+        }
+    }
+}
+
+.phase-details-time-scale {
+    .mat-form-field-infix {
+        padding: 0 !important;
+    }
+    .mat-select-arrow-wrapper {
+        transform: translateY(0%) !important;
+    }
+    .mat-select.mat-select-disabled .mat-select-arrow {
+        border: none;
+    }
+    width: 43%;
+    position: absolute !important;
+    top: 0;
+    right: 0%;
+    margin-top: 5px;
+}
+
+.phase-details-site-title {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    max-width: 55%;
+}

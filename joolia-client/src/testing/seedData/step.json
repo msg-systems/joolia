@@ -1,0 +1,38 @@
+{
+    "step1": {
+        "id": "092262e6-a11f-48b8-8fd1-5f0a7c329d15",
+        "description": "Storming",
+        "position": 1,
+        "checkedBy": ["5500f071-de3a-4f2b-befb-2e257fbf8000", "65b1d7f3-4a48-418c-88e5-adfeec019122"]
+    },
+    "step2": {
+        "id": "253cf909-57d8-4a44-bbc1-5e7c1f2796c9",
+        "description": "Norming",
+        "position": 2,
+        "checkedBy": []
+    },
+    "step3": {
+        "id": "6d708a7d-fb98-4059-a2ea-d2627edaeb9a",
+        "description": "Forming",
+        "position": 0,
+        "checkedBy": []
+    },
+    "step4": {
+        "id": "777546de-fcbb-4d97-8bbb-a8f401371d4b",
+        "description": "Repeat",
+        "position": 4,
+        "checkedBy": []
+    },
+    "step5": {
+        "id": "92c32ebb-eb4e-4744-99d9-b52859eb82ad",
+        "description": "Performing",
+        "position": 3,
+        "checkedBy": []
+    },
+    "step6": {
+        "id": "c90972a3-94bb-4bce-b2ba-83cb3a834b24",
+        "description": "Do it!",
+        "checkedBy": [],
+        "position": 0
+    }
+}

@@ -1,0 +1,53 @@
+<loading-indicator *ngIf="!phaseTemplate" fxFlex></loading-indicator>
+
+<div *ngIf="phaseTemplate" class="phase-template-details-container" fxLayout="column">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'library', currentLibrary.id, 'template', 'overview', 'phase']"
+        backLabelKey="buttons.backToName" [backLabelParams]="{ name: this.currentLibrary?.name }">
+    </action-bar>
+
+    <div class="maincard-container" ngClass.lt-md="small" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start">
+        <mat-card class="mat-elevation-z phase-template-details-card" fxFlex="auto">
+            <div class="phase-template-details-card-content" fxLayout="column">
+                <!--Chips-->
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+
+                    <!--Chip: Phase Template -->
+                    <main-chip [message]="'labels.phaseTemplate' | translate: { plural: 0 }"></main-chip>
+
+                    <!--Chip: Category -->
+                    <editable-chip [message]="'labels.categoryValue.' + phaseTemplate.category | translate"
+                        [entityValue]="phaseTemplate.category" [icon]="categoryIcon" [options]="categoryOptions"
+                        (valueUpdate)="onCategoryUpdate($event)"></editable-chip>
+
+                    <!--Chip: Activity Count -->
+                    <main-chip [message]="'labels.amountMethods' | translate: { amount: phaseTemplate.activityTemplateCount || 0 }">
+                    </main-chip>
+
+                </div>
+
+                <!--Creator-->
+                <div class="template-creator text-word-break">{{ currentLibrary.name + ' · ' + phaseTemplate.createdBy.name }}</div>
+
+                <!--Title-->
+                <h2 class="mat-display-1 text-word-break">{{ phaseTemplate.name }}</h2>
+
+                <!--Phase Duration-->
+                <div class="mat-body-2" fxLayoutAlign="start center">
+                    <mat-icon class="phase-card-duration-icon">access_time</mat-icon>
+                    <span>{{ phaseTemplate.duration | durationPipe: phaseTemplate.durationUnit }}</span>
+                </div>
+
+                <!--Default Keyvisual-->
+                <key-visual class="keyvisual" [keyVisual]=""></key-visual>
+
+                <!--Activity Templates-->
+                <div>
+                    <div class="mat-title">{{ 'labels.activityTemplateList' | translate }}</div>
+                    <div class="mat-body-2" fxLayoutAlign="start" fxLayout="column">
+                        <app-activity-template-list [activityTemplates]="phaseTemplate.activityTemplates"></app-activity-template-list>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

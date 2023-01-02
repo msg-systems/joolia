@@ -1,0 +1,121 @@
+@import 'variables';
+
+.welcome {
+    min-height: 84vh;
+
+    .welcome-content {
+        padding: 32px;
+
+        &.gt-sm {
+            max-width: 528px;
+        }
+    }
+
+    .welcome-logo {
+        height: 40px;
+        margin-bottom: 56px;
+    }
+
+    .welcome-button {
+        margin-right: 16px;
+        margin-bottom: 16px;
+    }
+
+    .welcome-illustrationContainer {
+        box-sizing: border-box;
+        padding: 32px;
+
+        .welcome-illustration {
+            width: 100%;
+
+            &:not(.gt-sm) {
+                max-width: 480px;
+            }
+
+            &.gt-sm {
+                max-width: 544px;
+            }
+        }
+    }
+}
+
+.instructions {
+    padding: 48px 16px;
+    background: $joolia-grey-100;
+
+    .instructions-heading {
+        text-align: center;
+        padding: 20px 8px 32px 8px;
+    }
+
+    .instructions-steps {
+        max-width: 840px;
+    }
+
+    .instructions-step {
+        margin: 48px 16px;
+
+        .instructions-step-number {
+            width: 48px;
+            height: 48px;
+            color: $joolia-primary-500;
+            border: 2px solid;
+            border-radius: 50%;
+        }
+
+        .instructions-step-numbertext {
+            display: block;
+            font-size: 26px;
+            margin-top: 10px;
+            margin-left: 2px;
+            text-align: center;
+        }
+
+        .instructions-step-content {
+            margin-left: 24px;
+        }
+    }
+}
+
+.thanks {
+    padding: 80px 16px;
+    text-align: center;
+
+    .thanks-signature {
+        margin-top: 32px;
+        font-family: 'Indie Flower', cursive;
+        font-size: 40px;
+    }
+}
+
+.footer {
+    background: $joolia-grey-900;
+    color: $joolia-grey-500;
+    padding: 8px;
+
+    .footer-row {
+        padding: 12px;
+        text-align: center;
+    }
+
+    .footer-linklist {
+        margin: 0;
+        padding: 0;
+
+        .footer-linkitem {
+            display: inline-block;
+            margin: 0 12px;
+        }
+    }
+
+    .footer-link {
+        color: $joolia-grey-500;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $joolia-grey-300;
+            transition: color 0.5s;
+        }
+    }
+}

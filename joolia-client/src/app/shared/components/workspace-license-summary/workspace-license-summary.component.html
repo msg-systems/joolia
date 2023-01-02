@@ -1,0 +1,8 @@
+<div class="summary-info">
+    <border-card>
+        <mat-progress-bar mode="determinate" [value]="percentageUsage" [color]="allLicensesUsed ? 'warn' : 'primary'"></mat-progress-bar>
+        <div class="license-info mat-body-3">
+            {{ 'labels.usedLicenses' | translate: { memberCount: usedLicenseAmount, licensesCount: licenseAmount } }}
+        </div>
+    </border-card>
+</div>

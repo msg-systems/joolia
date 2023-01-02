@@ -1,0 +1,4 @@
+<div [class.no-content]="noContent" class="main-chip joolia-chip-text" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon *ngIf="icon" class="chip-icon" [class.material-icons-outlined]="outline">{{ icon }}</mat-icon>
+    <span>{{ message | titlecase }}</span>
+</div>

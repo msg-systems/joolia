@@ -1,0 +1,4 @@
+entity: KeyVisualLink
+items:
+  KeyVisualLinkEntryOne:
+    keyVisualLink: '@LinkEntryOne'

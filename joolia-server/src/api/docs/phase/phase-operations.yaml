@@ -1,0 +1,185 @@
+/format/{formatId}/phase:
+  post:
+    tags:
+      - Phase
+    description: Create a new phase
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/PhasePostBody'
+    responses:
+      '201':
+        description: Phase created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Phase'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+  get:
+    tags:
+      - Phase
+    description: Retrieves phases of the format
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Many phases and a count of all phases
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 0
+                entities:
+                  $ref: '#/components/examples/Phases'
+              example:
+                count: 2
+                entities: [Phase1, Phase2]
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of the formatl
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/{phaseId}:
+  get:
+    tags:
+      - Phase
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterPhase'
+      - $ref: '#/components/parameters/Selector'
+    description: Get specific phase
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Phase retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Phase'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - Phase
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterPhase'
+    description: Delete specific phase
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: Phase deleted successfully
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  patch:
+    tags:
+      - Phase
+    parameters:
+      - $ref: '#/components/parameters/IdParameterFormat'
+      - $ref: '#/components/parameters/IdParameterPhase'
+    description: Update specific fields of a phase
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              startDate:
+                type: string
+                format: date
+    responses:
+      '200':
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/Phase'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not organizer of the format
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/format/{formatId}/phase/_template:
+  post:
+    tags:
+      - Phase
+    description: Create a phase from a phase template
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              phaseTemplateId:
+                type: string
+                format: 'uuid'
+            required:
+              - phaseTemplateId
+    responses:
+      '201':
+        description: Phase created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Phase'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not member of library
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  parameters:
+    IdParameterPhase:
+      in: path
+      name: phaseId
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The id of the phase

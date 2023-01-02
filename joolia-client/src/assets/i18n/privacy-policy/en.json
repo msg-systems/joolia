@@ -1,0 +1,299 @@
+{
+  "privacyPolicy": {
+    "preamble": "We are pleased to welcome you to our website and with your interest in Joolia GmbH. Not only is offering our customers end-to-end support very important to us, but so is ensuring that your personal information is protected. The following explains the actions we take when you visit our website – naturally in compliance with applicable data security regulations, which information we collect and how we process it. Should our data privacy statement change, it will be updated on this page in order to keep you informed as to which data Joolia GmbH stores and uses. The most important data privacy information can be found below. We have organized the information by topic.",
+    "section1": {
+      "header": "Name and address of the responsible party",
+      "text1": "Responsible for the collection, processing and use of your personal data pursuant to the EU General Data Protection Regulation is:",
+      "address": {
+        "company-name": "Joolia GmbH",
+        "street": "Robert-Buerkle-Strasse 1",
+        "city": "85737 Ismaning/Munich",
+        "country": "Germany",
+        "telephone": "Telephone: +49 89 96101-0",
+        "fax": "Fax: +49 89 96101-1113",
+        "e-mail": "e-mail: info@joolia.cloud"
+      },
+      "text2": "Should you wish to object to the collection, processing or use of your data by Joolia GmbH as set forth in these data privacy policies as a whole or in regard to specific measures, please e-mail, fax or mail your objection to the aforementioned address."
+    },
+    "section2": {
+      "header": "General information on data processing",
+      "subsection1": {
+        "header": "Why we use data",
+        "text": "We wish to constantly improve our offers and make them more attractive. The only way for us to optimize the contents of the Joolia Internet sites to better meet your demands is to identify which sections of our Internet sites are most commonly visited and on which the most time is spent. Should you entrust us with your personal information, msg industry advisors ag shall use such for the technical administration of the websites, customer management, product surveys and marketing; however, we shall only do so to the extent that is necessary. The more we understand what you want, the faster you will be able to find the information you are looking for on our Internet sites."
+      },
+      "subsection2": {
+        "header": "Information on the collection of personal information",
+        "text": "The following provides information on the collection of personal information when using our website. Personal information includes all information that relates to you personally, e.g., name, address, e-mail address, user behavior, etc. Any personal information you are prompted to enter on our website, such as your name, address or telephone number, shall be subject to these specific policies and you shall be notified of such by a text that reads as follows: “I hereby consent to my personal information (including my telephone number and/or e-mail address) being collected, processed and used for the purpose of contract processing and/or potential customer opportunities, surveys and information. Any forwarding to third-parties, with the exception of the companies of the msg group, is excluded. I have the right to revoke this consent from Joolia GmbH, 85737 Ismaning/Munich, at any time.” Our use of the data shall be limited to the aforementioned purposes. Information shall not be forwarded to third parties outside Joolia GmbH. The only exception hereto are the companies of the msg group. In addition to the information you share with us, we also analyze how you use our services and offers in order to lead you to the information that might interest you more quickly and in order to constantly optimize our service."
+      },
+      "subsection3": {
+        "header": "Legal basis for processing personal information",
+        "text1": "Numeral 6, Para. 1, Item a of the General Data Protection Regulation (GDPR) forms the legal basis for any consent we obtain from relevant persons for the operations involved in processing personal information. Numeral 6, Para. 1, Item b of the General Data Protection Regulation (GDPR) forms the legal basis for the processing of personal information in order to fulfill a contract when the relevant person is one of the contract parties. This includes processing operations necessary to complete measures that precede the contract. Numeral 6, Para. 1, Item c of the General Data Protection Regulation (GDPR) forms the legal basis for the processing of personal information to the extent such is necessary in order to comply with legal obligations to which our company is subject. Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR) forms the legal basis for any processing necessary to ensure a legitimate interest of our company or a third party, as long as such do not outweigh the interests, fundamental rights and fundamental freedoms of the person in question.",
+        "text2": "The services for hosting and displaying the website are partially offered by service providers on our behalf. Unless otherwise stated in this data protection declaration, all access data and all data collected in the forms filled on this website will be processed on their servers. If you have any questions about our service providers and the basis of our cooperation with them, please contact us on the details provided in this data protection declaration. Our service providers are based in the USA. There is no adequacy decision adopted by the European Commission for the USA. Our cooperation with them is based on the standard data protection clauses of the European Commission."
+      },
+      "subsection4": {
+        "header": "Data deletion and retention period",
+        "text": "The personal information of the relevant person shall be deleted or locked as soon as the purpose for which such was stored is no longer applicable. Storage beyond such is possible if provided by European or national lawmakers in laws or other regulations to which the responsible party is subject under Union law. Data shall also be locked or deleted once the retention period prescribed in the given norms expires, unless storage of the data is still required in order to conclude or fulfill a contract."
+      }
+    },
+    "section3": {
+      "header": "Provision of the website",
+      "subsection1": {
+        "header": "Collection of personal information when visiting our website",
+        "text1": "The only personal information we collect when you visit our websites is the information your browser communicates to our servers. When you browse our website, we collect the information required on the technical side to display our website and to ensure stability and security. The following information is collected in such cases:",
+        "personal-information": {
+          "item1": "User’s IP address",
+          "item2": "Date and time of your inquiry",
+          "item3": "Content of the request (specific site)",
+          "item4": "Respective data volume transmitted",
+          "item5": "Website from which the inquiry is received",
+          "item6": "Information on the browser type",
+          "item7": "User’s operating system",
+          "item8": "Language and version of the browser software",
+          "item9": "Websites from which the user’s system accesses our Internet site",
+          "item10": "Websites the user's system accesses from our website"
+        },
+        "text2": "This information is also stored in our system’s log files. This information is not stored together with other personal information."
+      },
+      "subsection2": {
+        "header": "Legal basis for the data processing",
+        "text": "Legal basis for the temporary storage of data and log files is Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection3": {
+        "header": "Purpose of the processing",
+        "text": "The IP address must be temporarily stored by the system in order to enable the delivery of the website to the user’s computer. To that end, the user’s IP address must be stored for the duration of the session. IP addresses are required for problem diagnosis, website administration and demographic information. The information recorded is solely used for data security reasons, specifically to prevent attack attempts on our web server, and for statistical analysis."
+      },
+      "subsection4": {
+        "header": "Retention period",
+        "text": "Data is deleted as soon as it is no longer required for the purpose it was collected. Any information collected in order to provide the website is deleted as soon as the respective session is terminated. Information stored in log files is deleted no later than after seven (7) days. Storage beyond that period is also possible. In that case, the user’s IP addresses are deleted or rendered anonymous so that it can no longer be collated to the client that used it to access the site."
+      },
+      "subsection5": {
+        "header": "Objection and removal options",
+        "text": "Information must be collected in order to provide the website and information must be stored in log files in order to operate the Internet site. As a result, the user does not have the option to object in this case."
+      }
+    },
+    "section4": {
+      "header": "Use of cookies",
+      "subsection1": {
+        "header": "Description and scope of the data collection",
+        "text": "Our website uses cookies. Cookies are text files that are stored in or by an Internet browser on the user’s computer system. A cookie can be stored to the user’s operating system anytime they access a website. Cookies contain a distinctive character string that enables the unique identification of the browser when the same website is accessed again. Cookies cannot execute programs or transfer viruses to your computer. We use cookies to make our website more user-friendly. A few elements on our Internet site also require that our system be able to identify the browser that accessed our site to be identifiable again even after a user has switched to a different site."
+      },
+      "subsection2": {
+        "header": "Legal basis for the data processing",
+        "text": "Legal basis for the processing of personal information when using cookies is Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection3": {
+        "header": "Purpose of the data processing",
+        "text": "Cookies that are necessary for technical reasons are used to make the website easier for users to use. A few functions on our Internet site cannot be offered without using cookies. In those cases, our system must be able to recognize the browser again even after a user has switched to a different site. The user data collected by cookies required for technical reasons is not used to create user profiles. These purposes form our legitimate interest in processing personal information as set forth in Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection4": {
+        "header": "Retention period",
+        "text": "Cookies are stored on the user’s computer and communicated from said computer to our site. Thus, the user has full control over the use of cookies. You can disable or limit the transmission of cookies by changing the settings in your Internet browser."
+      },
+      "subsection5": {
+        "header": "Objection and removal options",
+        "text": "Cookies that have already been stored can be deleted at any time. This can be done automatically as well. However, disabling the cookies used by our website may mean you will not have full access to all of the functions of our website."
+      }
+    },
+    "section5": {
+      "header": "E-mail/contact form",
+      "subsection1": {
+        "header": "Description and scope of the data collection",
+        "text1": "Our Internet site offers a contact form that can be used to contact us electronically. When a user takes advantage of this option, the information they enter on the input screen is transferred to us and stored. That data is:",
+        "data1": {
+          "item1": "First name (required field)",
+          "item2": "Last name (required field)",
+          "item3": "Function",
+          "item4": "Company",
+          "item5": "Your e-mail address (required field)",
+          "item6": "Telephone",
+          "item7": "Your message (required field)"
+        },
+        "text2": "The following information is also stored when you submit your message:",
+        "data2": {
+          "item1": "The user’s IP address",
+          "item2": "Date and time of registration"
+        },
+        "text3": "In order to process the information, we obtain your consent when you submit the information and reference this data privacy statement. Alternatively, we can also be contacted using the e-mail address provided. In that case, the personal information the user includes in the e-mail is stored. The information obtained in this context is not transferred to third parties outside the msg group. The information is only used to process the conversation."
+      },
+      "subsection2": {
+        "header": "Legal basis for the data processing",
+        "text": "Legal basis for processing information once the user’s consent has been obtained is Numeral 6, Para. 1, Item a of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection3": {
+        "header": "Purpose of the data processing",
+        "text": "The personal information provided on the input screen is used for the sole purpose of handling the contact request. In case of contact by e-mail, the information is processed as a necessary legitimate interest. Any other personal information processed during the transmission is processed to prevent misuse of the contact form and to ensure the safety of our IT systems."
+      },
+      "subsection4": {
+        "header": "Retention period",
+        "text": "Data is deleted as soon as it is no longer required for the purpose it was collected. In regard to personal information from the input screen of the contact form and personal information sent by e-mail, such information is deleted when the respective conversation with the user is terminated. A conversation is considered terminated when the circumstances indicate that the subject under discussion has been fully clarified. Any further personal information collected during the transmission is deleted no later than within a period of seven days."
+      },
+      "subsection5": {
+        "header": "Objection and removal options",
+        "text": "The user can revoke their consent to having their personal information processed at any time. Should a user contact us by e-mail, they can revoke their consent to having their personal information stored at any time. It will not be possible to continue a conversation in such cases. Please contact msg’s marketing team by e-mail if you would like to revoke your consent/the storage of your information at msg.marketing@msg.group. Any personal information stored as part of the contact request will be deleted."
+      }
+    },
+    "section6": {
+      "header": "Online applications",
+      "text": "Any information you provide when applying for a position using our online application form will be stored in our applicant management system. msg industry advisors ag does not share said data with third parties outside the group of companies. More information on online applications can be found in the data privacy statement of our applicant management system at https://karriere.msg.group/en/privacy-applicants"
+    },
+    "section7": {
+      "header": "User registration",
+      "subsection1": {
+        "header": "Description and scope of the data collection",
+        "text1": "Our Internet site offers users the option to register by providing personal information (e.g., in order to register for events or career events). During that process, information is entered on an input screen and transmitted to us in encrypted form and stored. The information is not shared with third parties outside the group of companies. The following information is collected during the registration process:",
+        "data": {
+          "item1": "Form of address (required field)",
+          "item2": "First name (required field)",
+          "item3": "Last name (required field)",
+          "item4": "E-mail (required field)"
+        },
+        "text2": "Further personal information may be requested depending on the event. The user’s consent to having this information processed is obtained during the registration process."
+      },
+      "subsection2": {
+        "header": "Legal basis for the data processing",
+        "text": "Legal basis for processing information once the user’s consent has been obtained is Numeral 6, Para. 1, Item a of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection3": {
+        "header": "Purpose of the data processing",
+        "text": "User registration is required for the provision of certain content and services on our website, such as:",
+        "data": {
+          "item1": "Registering for events or career events (e.g., university fairs)",
+          "item2": "Publication requests (e.g., customer magazines, studies or whitepapers)",
+          "item3": "Feedback on the “Public Sector” customer magazine"
+        }
+      },
+      "subsection4": {
+        "header": "Retention period",
+        "text": "Data is deleted as soon as it is no longer required for the purpose it was collected. In the case of information collected during the registration process, this would be when the registration is removed from or modified on our Internet site."
+      },
+      "subsection5": {
+        "header": "Objection and removal options",
+        "text": "User can cancel their registration at any time. You can have the information we have stored for you modified at any time. Please contact msg systems ag’s marketing team by e-mail at marketing@msg.group. We will forward your request to the appropriate party."
+      }
+    },
+    "section8": {
+      "header": "WebKiosk/kiosk app",
+      "text": "Different trackers are used by the vendors on our digital.msg-systems.com WebKiosk. Details on the employed tool can be found in Yumpu’s or i-Magazine AG’s General Terms and Conditions and Privacy Policy. In addition to the trackers named therein, we ourselves use Google Analytics for analysis purposes (please refer to the “Use of Google Analytics” chapter for details). AGB Yumpu (i-Magazine AG): https://www.yumpu.com/de/info/agb"
+    },
+    "section9": {
+      "header": "Use of Google Analytics",
+      "subsection1": {
+        "header": "Description and scope of the data collection",
+        "text": "Use of Google Analytics, Google remarketing, AdWords conversion tracking and Google Tag Manager, as well as functions used by partner networks (DoubleClick) This website uses the functions of the following web services: Google Analytics, Google remarketing, AdWords conversion tracking and Google Tag Manager. Provider of such is Google Inc., 1600 Amphitheater Parkway Mountain View, CA 94043 USA. Google Analytics uses so-called “Cookies”. Cookies are text files that are stored on your computer, enabling the analysis of your website usage. The information generated by the cookie on your use of this website (including your IP address) is sent to a Google server located in the USA and stored there. Should the IP anonymization function be activated on this website, Google will shorten your IP address prior to storing it; this shall be done for all member states of the European Union or in other states where the agreement pertaining to the European Economic Area applies. Only in cases of exception will the full IP address be sent to a Google server in the USA and shortened there. The IP address determined by Google Analytics based on your browser will not be added to any other data collected by Google."
+      },
+      "subsection2": {
+        "header": "Legal basis for the data processing",
+        "text": "We use Google Analytics to analyze the website and to make regular improvements. The statistics we obtain allows us to improve our offer and make it more interest to you as the user. Google has agreed to comply with the EU-U.S. Privacy Shield for exceptional cases where personal information is sent to the USA, see https://www.privacyshield.gov/welcome. Legal basis for the use of Google Analytics is Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR)."
+      },
+      "subsection3": {
+        "header": "Purpose of the data processing",
+        "text": "On behalf of the operator of this website, Google will use said information to analyze your use of this website, to create reports on website activities and to provide other services affiliated with the website usage and Internet usage for the operator of the website."
+      },
+      "subsection4": {
+        "header": "Retention period",
+        "text": "Sessions and campaigns are terminated after a specified amount of time. By default, sessions are terminated after 30 minutes of activities and campaigns after six months. The time limit for campaigns is limited to a maximum of two years. More information on the terms and conditions of use and data privacy can be found at https://www.google.com/analytics/terms/de.html and at https://policies.google.com/?hl=de You can prevent the storage of cookies by activating the corresponding setting in your browser software. However, we would like to remind you that you may not be able to use all of the functions available on this website should you choose to do so."
+      },
+      "subsection5": {
+        "header": "Objection and removal options",
+        "text": "You can prevent Google Analytics from collecting your information by clicking the following link. This sets an opt-out cookie that prevents your data from being collected during any future visits to the website: Disable Google Analytics You may also prevent Google from collecting the data generated by the cookie and data related to your use of the website (including your IP address), as well as the processing of said data by Google, by downloading and installing the Browser Add-On."
+      }
+    },
+    "section9a" :{
+      "header": "Use of Intercom Services",
+      "text": "We use third-party analytics services to help understand your usage of our services. In particular, we provide a limited amount of your information (such as sign-up date and some personal information like your email address) to Intercom, Inc. (“Intercom”) and utilize Intercom to collect data for analytics purposes when you visit our website or use our product. As a data processor acting on our behalf, Intercom analyzes your use of our website and/or product and tracks our relationship by way of cookies and similar technologies so that we can improve our service to you. For more information on Intercom's use of cookies, please visit https://www.intercom.com/terms-and-policies#cookie-policy. We may also use Intercom as a medium for communications, either through email, or through messages within our product(s). As part of our service agreements, Intercom collects publicly available contact and social information related to you, such as your email address, gender, company, job title, photos, website URLs, social network handles and physical addresses, to enhance your user experience. For more information on the privacy practices of Intercom, please visit https://www.intercom.com/terms-and-policies#privacy. Intercom’s services are governed by Intercom’s terms of use which can be found at https://www.intercom.com/terms-and-policies#terms. If you would like to opt out of having this information collected by or submitted to Intercom, please contact us."
+    },
+    "section10": {
+      "header": "Use of Matomo (formerly Piwik)",
+      "text": "This website uses Matomo, a software program for analyzing user traffic statistics. Matomo uses so-called “cookies”, which are text files that are stored on your computer, enabling the analysis of your website usage. The information generated by the cookie is stored on the provider’s server in Germany. Although the full IP address is not used for statistical analyses, an anonymized portion thereof that identifies the country of access is stored. You can prevent the installation of cookies by activating the corresponding setting in your browser software. However, we would like to remind you that you may not be able to use all of the functions available on this website should you choose to do so. Said information will be used on behalf of the operator of this website to analyze your use of this website, to create reports on website activities and to provide other services affiliated with the website usage and Internet usage for the operator of the website.",
+      "subsection1": {
+        "header": "Purpose of the processing",
+        "text": "The IP address must be temporarily stored by the system in order to enable the delivery of the website to the user’s computer. To that end, the user’s IP address must be stored for the duration of the session. IP addresses are required for problem diagnosis, website administration and to optimize our offers. The information recorded is solely used for data security reasons, specifically to prevent attack attempts on our web server, and for statistical analysis."
+      },
+      "subsection2": {
+        "header": "Objection and removal options",
+        "text": "The user can revoke their consent to having their personal information processed at any time. Should a user contact us by e-mail, they can revoke their consent to having their personal information stored at any time. It will not be possible to continue a conversation in such cases. Please contact msg systems’ marketing team by e-mail if you would like to revoke your consent/the storage of your information at msg.marketing@msg.group."
+      }
+    },
+    "section11": {
+      "header": "Social plugins (Facebook, Twitter, LinkedIn, XING, YouTube)",
+      "text": "So-called “social plugins” are used on our website. These currently include plugins for Facebook, Twitter, LinkedIn, XING and YouTube services. Information, including personal information, may be sent to service providers when using these plugins, including providers in the USA, and may be used by them.",
+      "subsection1": {
+        "header": "Shariff protection tools",
+        "text": "The website itself does not collect any personal information using social plugins or any information about their use. msg uses the so-called “Shariff” – German for sheriff – solution to prevent data from being sent to service providers without the user’s knowledge, including to providers in the USA. This solution ensures that personal information is not automatically sent to providers of the individual social plugins when you visit our website. Data cannot be sent to the service provider or stored by them until a user actually clicks on one of the social plugins. More information on the Shariff solution can be found on the provider’s website, Heise Medien Gmbh & Co. KG: http://m.heise.de/ct/artikel/Shariff-Social-Media-Buttons-mit-Datenschutz-2467514.html"
+      },
+      "subsection2": {
+        "header": "Data privacy statement for use of Facebook plugins",
+        "text": "Plugins for the social media network Facebook (provider: Facebook Inc., 1 Hacker Way, Menlo Park, California 94025, USA) are integrated into our sites. The Facebook plugins on our site can be identified by their Facebook logo or the “Like” button. An overview of the various Facebook plugins can be found at: http://developers.facebook.com/docs/plugins/. When you visit our sites, the plugin is used to establish a direct connection between your browser and the Facebook server. That informs Facebook that you visited our site from your IP address. Clicking the Facebook “Like” button on our sites while still logged onto your Facebook account allows you to link content from our sites to your Facebook profile. This permits Facebook to assign your visit to our sites to your user account. We would like to point out that as a provider of the sites, we do not receive any information on the content of the transmitted data or how it is used by Facebook. More information can be found in Facebook’s data privacy statement at: http://de-de.facebook.com/policy.php. You will need to log out of your Facebook account if you do not want Facebook to assign your visit to our sites to you Facebook account."
+      },
+      "subsection3": {
+        "header": "Data privacy statement for use of Twitter",
+        "text": "The functions of the Twitter service are integrated into our sites. These functions are provided by Twitter Inc., 1355 Market Street, Suite 900, San Francisco, CA 94103, USA. Using Twitter and the “re-tweet” function links the websites you visit to your Twitter account and shares them with other users. Information is also sent to Twitter when you do so. We would like to point out that as a provider of the sites, we do not receive any information on the content of the transmitted data or how it is used by Twitter. More information can be found in Twitter’s data privacy statement at: http://twitter.com/privacy. You can modify the data protection settings of your Twitter account at: http://twitter.com/account/settings."
+      },
+      "subsection4": {
+        "header": "Data privacy statement for use of LinkedIn",
+        "text": "Our website uses the functions of the LinkedIn network. Provider is the LinkedIn Corporation, 2029 Stierlin Court, Mountain View, CA 94043, USA. A connection to the LinkedIn servers is established anytime our sites that contain LinkedIn functions are accessed. LinkedIn is informed that you visited our Internet sites from your IP address. Clicking the “Recommend” button by LinkedIn while you are stilled logged onto your LinkedIn account allows LinkedIn to assign your visit to our Internet site to you and your user account. We would like to point out that as a provider of the sites, we do not receive any information on the content of the transmitted data or how it is used by LinkedIn. More information can be found in LinkedIn’s data privacy statement at: https://www.linkedin.com/legal/privacy-policy"
+      },
+      "subsection5": {
+        "header": "Data privacy statement for use of XING",
+        "text": "Our website uses the functions of the XING network. Provider is XING AG, Dammtorstrasse 29-32, 20354 Hamburg, Germany. A connection to the XING servers is established anytime our sites that contain XING functions are accessed. To the best of our knowledge, personal information is not saved during that process. Nor are any IP addresses saved or use behavior analyzed. YouTube is used in the interest of making the presentation of our online offers more appealing. This is considered a legitimate interest as defined in Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR). More information on data protection and the XING “Share” button can be found in XING’s data privacy statement at: https://www.xing.com/app/share?op=data_protection"
+      },
+      "subsection6": {
+        "header": "Data privacy statement for use of Google Maps",
+        "text": "This site uses an API for the Google Maps map service. Provider is Google Inc., 1600 Amphitheater Parkway Mountain View, CA 94043, USA. Your IP address must be stored in order to use the Google Maps functions. That information is generally sent to a Google server in the USA, where it is stored. The provider of this site has no influence over the transmission of that data. Google Maps is used in the interest of making the presentation of our online offers more appealing and to make the locations mentioned on our website easier to find. This is considered a legitimate interest as defined in Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR). More information on the use of user data can be found in Google’s data privacy statement at: https://www.google.de/intl/de/policies/privacy/"
+      },
+      "subsection7": {
+        "header": "Data privacy statement for use of YouTube",
+        "text": "YouTube videos are embedded into a few of our websites. Operator of the relevant plugins is YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. A connection to the YouTube servers is established anytime our sites that are equipped with a YouTube plugin are visited. In this case, the YouTube servers are informed as to which of our sites you visited. If you are logged onto your YouTube account, you are allowing YouTube to assign your surfing behavior directory to your personal profile. You can prevent this by logging out of your YouTube account. When a video is started, the provider uses cookies to collect information on the user’s behavior. If you have disabled cookies from being saved by the Google ad program, cookies will not be used when you watch the YouTube videos either. However, YouTube does store non-personal information in other cookies as well. If you would like to prevent such, you must block cookies from being stored; you can do so in your browser settings. YouTube is used in the interest of making the presentation of our online offers more appealing. This is considered a legitimate interest as defined in Numeral 6, Para. 1, Item f of the General Data Protection Regulation (GDPR). More information on the use of user data can be found in YouTube’s data privacy statement at: https://www.google.de/intl/de/policies/privacy"
+      }
+    },
+    "section12": {
+      "header": "Where is my information processed?",
+      "text": "Your information is processed in Germany. Data is also processed in European and non-European foreign countries within the legally permissible limits. There are no plans for transmission to third countries."
+    },
+    "section13": {
+      "header": "How safe is my information?",
+      "text": "msg has taken extensive technical and operational safety precautions in accordance with applicable European law to protect your information from unauthorized access and misuse."
+    },
+    "section14": {
+      "header": "Will my information be shared with third parties?",
+      "text": "No information with be shared with third-parties, with the exception of the companies of the msg group."
+    },
+    "section15": {
+      "header": "Rights held by the affected person",
+      "text": "Anytime your personal information is processed you are considered an affected person pursuant to the GDPR and you have the following rights in connection with the responsible party:",
+      "subsection1": {
+        "header": "Right to disclosure",
+        "text": "You have the right to request information on the scope, origin and recipient of stored information, as well as the purpose of the storage, at no charge to you."
+      },
+      "subsection2": {
+        "header": "Right to correction",
+        "text": "You have the right to demand a correction and/or completion from the responsible party should the processed personal information related to you be incorrect or incomplete. The responsible party must make the corrections without delay."
+      },
+      "subsection3": {
+        "header": "Right to deletion",
+        "text": "You have the right to request that the responsible party immediately delete any personal information related to you and the responsible party is required to delete said data without delay should any of the following reasons apply:",
+        "subsubsection": {
+          "text1": "The personal information related to you is no longer required for the purpose it was collected or processed in any other manner.",
+          "text2": "You revoke the consent on which the processing was based pursuant to Numeral 6, Para. 1, Item a or Numeral 9, Para. 2, Item a of the General Data Protection Regulation (GDPR) and there is no other legal basis for the processing.",
+          "text3": "You submit an objection to the processing pursuant to Numeral 21, Para. 1 of the General Data Protection Regulation (GDPR) and no legitimate reasons for the processing that have precedence over your objection exist, or you submit an objection to the processing pursuant to Numeral 21, Para. 2 of the General Data Protection Regulation (GDPR).",
+          "text4": "The personal information related to you was processed unlawfully.",
+          "text5": "The deletion of the personal information related to you is necessary in order to meet a legal obligation under Union law or the law of the member states to which the responsible party is subject.",
+          "text6": "The personal information related to you was collected in relation to services offered by the information company pursuant to Numeral 8, Para. 1 of the General Data Protection Regulation (GDPR)."
+        }
+      },
+      "subsection4": {
+        "header": "Right to data portability",
+        "text": "You have the right to obtain the personal information related to you and which you shared with the responsible party in a structured, commonly used and machine-readable format."
+      },
+      "subsection5": {
+        "header": "Right of objection",
+        "text": "You have the right, for reasons arising from your particular situation, to object to the processing of personal information related to you, which was being processed pursuant to Numeral 6, Para. 1, Item e or f of the General Data Protection Regulation (GDPR), at any time; this includes any profiling based on these policies. The responsible party will cease processing any personal information related to you unless they can provide proof urgent, protection-worthy reasons for the processing that outweigh your interests, rights and freedoms or unless the processing serves the enforcement, exercising or defense of legitimate claims. You have the right to revoke your privacy consent statement at any time. Revoking your consent shall not affect the legitimacy of the processing that was performed with your consent up to the time your consent was revoked."
+      },
+      "subsection6": {
+        "header": "Right to submit complaint to supervisory body",
+        "text": "Notwithstanding other administrative or legal remedy, you will generally have the right to submit a complaint to a supervisory body, specifically in the member state of your place of residence, your place of employment or the location of the alleged breach, if you are of the opinion that the processing of the personal information related to you violates the GDPR. The supervisory body to which the complaint is submitted shall inform the complainant of the status and results of the complaint, including the option of legal remedy pursuant to Numeral 78 of the GDPR."
+      }
+    },
+    "version": "Version: 04/27/2018"
+  }
+}

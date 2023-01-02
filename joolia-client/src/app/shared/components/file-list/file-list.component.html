@@ -1,0 +1,135 @@
+<div class="files-container" fxLayout="column">
+    <div *ngIf="files">
+        <div *ngFor="let file of files" fxLayout="row wrap" fxLayoutAlign="start center">
+            <div (mouseenter)="onHover(file.id)" [ngClass]="{'file-box-touch':isTouchDevice}" class="file-box" fxLayout="row" fxFlex="100%"
+                fxLayoutAlign="space-between center">
+                <div class="file-download-container" appDownloadLink (appDownloadLinkgetURL)="getDownloadLink(file, false)"
+                    [appDownloadLinkURL]="file.tabUrl">
+                    <!-- File Informations -->
+                    <div class="file-text" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start center">
+
+                        <span *ngIf="!(file.upload && file.upload.progress?.status === statusUploading);" class="text-truncate"
+                            fxFlex="auto">
+                            {{ file.name }}
+                        </span>
+
+                        <span *ngIf="!(file.upload && file.upload.progress?.status === statusUploading); else fileUpload"
+                            [class.file-hover-only]="!uploadedFiles.has(file.id)" class="file-size" fxFlex="none">
+                            <span *ngIf="(file.size || file.upload?.size)">
+                                {{ (file.size || file.upload?.size) | filesize: {
+                                standard: 'iec',
+                                separator: 'labels.separator' | translate
+                            } }}
+                            </span>
+                            <span *ngIf="isProcessing(file)">{{ 'labels.uploadProcessing' | translate }}</span>
+                        </span>
+
+                        <ng-template #fileUpload>
+                            <span class="text-truncate" fxFlex="auto">{{ file.name }}</span>
+                            <span class="text-grey file-upload-percentage" ngClass.lt-md="invisible">
+                                {{ 'labels.uploadProgress'
+                                    | translate
+                                    : {
+                                        upload:
+                                                file.upload.progress.data.percentage * 0.01 * file.upload?.size
+                                                        | filesize
+                                                        : {
+                                                            standard: 'iec',
+                                                            separator: 'labels.separator' | translate
+                                                        },
+                                        size: file.upload?.size | filesize: {
+                                            standard: 'iec',
+                                            separator: 'labels.separator' | translate
+                                        }
+                                    }
+                                }}
+                            </span>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div *ngIf="!isTouchDevice" class="file-icons" fxFlex="none" fxLayout="row" fxLayoutAlign="start center">
+                    <!-- Success Button -->
+                    <button *ngIf="uploadedFiles.has(file.id)" mat-icon-button>
+                        <mat-icon color="primary">done</mat-icon>
+                    </button>
+
+                    <div *ngIf="!file.upload">
+                        <!-- Download Button -->
+                        <a>
+                            <button appDownloadLink class="file-hover-only" mat-icon-button
+                                (appDownloadLinkgetURL)="getDownloadLink(file, true)" [appDownloadLinkURL]="file.downloadUrl">
+                                <mat-icon color="primary">
+                                    arrow_downward
+                                </mat-icon>
+                            </button>
+                        </a>
+                    </div>
+
+                    <!-- Edit Button -->
+                    <div *ngIf="!isProcessing(file) && !file.upload?.progress?.data">
+                        <button (click)="onFileEditClicked(file)" *appHasPermission="editable" mat-icon-button class="file-hover-only">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
+
+                    <!-- Delete Button -->
+                    <button *appHasPermission="editable" class="file-hover-only" mat-icon-button (click)="onFileDeleteClicked(file.id)">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+
+            <div *ngIf="!isTouchDevice && file.upload?.progress?.data" class="progress-bar-container">
+                <mat-progress-bar mode="determinate" [value]="file.upload.progress.data.percentage || 0"></mat-progress-bar>
+            </div>
+
+            <!-- Buttons for touch-device -->
+            <div *ngIf="isTouchDevice" class="file-icons" fxFlex="100" fxLayoutAlign="flex-end center">
+                <div class="touch-device-file-buttons" fxLayout="row" fxLayoutAlign="space-around center">
+                    <!-- Success Button -->
+                    <button *ngIf="uploadedFiles.has(file.id)" mat-icon-button>
+                        <mat-icon color="primary">done</mat-icon>
+                    </button>
+
+                    <div *ngIf="!file.upload">
+                        <!-- Download Button -->
+                        <a>
+                            <button (appDownloadLinkgetURL)="getDownloadLink(file, true)" [appDownloadLinkURL]="file.downloadUrl"
+                                appDownloadLink mat-icon-button>
+                                <mat-icon color="primary">
+                                    arrow_downward
+                                </mat-icon>
+                            </button>
+                        </a>
+                    </div>
+
+                    <!-- Edit Button -->
+                    <div *ngIf="!isProcessing(file) && !file.upload?.progress?.data">
+                        <button (click)="onFileEditClicked(file)" *appHasPermission="editable" mat-icon-button>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
+
+                    <!-- Delete Button -->
+                    <button (click)="onFileDeleteClicked(file.id)" *appHasPermission="editable" mat-icon-button>
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="isTouchDevice && file.upload?.progress?.data" class="progress-bar-container mobile">
+                <mat-progress-bar mode="determinate" [value]="file.upload.progress.data.percentage || 0"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Button -->
+    <div *appHasPermission="editable">
+        <tail-button label="buttons.addFile" icon="add">
+            <input #uploader type="file" ngFileSelect [options]="getUploaderOptions()"
+                (uploadOutput)="onUploadOutput($event); uploader.value = ''" [uploadInput]="onUploadInput()" multiple>
+        </tail-button>
+        <div class="copyright-notice">{{ 'copyrightNotice' | translate }}</div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@import 'variables';
+
+.phase-template-details-container {
+    min-width: 240px;
+
+    .maincard-container {
+        padding: $joolia-main-content-gap;
+
+        &.small {
+            padding: $joolia-main-content-gap-small;
+        }
+
+        .phase-template-details-card {
+            min-width: 0;
+            padding: 32px;
+            border: 1px solid $joolia-black-transparent-12;
+
+            .phase-card-duration-icon {
+                margin-right: 8px;
+            }
+
+            .phase-template-details-card-content > *:nth-child(n + 2) {
+                margin-top: 24px;
+            }
+
+            .phase-template-details-card-content > *:nth-child(n) {
+                margin-bottom: 0;
+            }
+
+            .phase-template-details-card-content {
+                max-width: 720px;
+                margin: auto;
+
+                mat-list mat-list-item:hover {
+                    background: $joolia-grey-200;
+                }
+
+                mat-list mat-list-item .phase-card-duration-icon {
+                    vertical-align: middle;
+                }
+
+                .template-creator {
+                    color: $joolia-secondary-900;
+                }
+            }
+        }
+    }
+}

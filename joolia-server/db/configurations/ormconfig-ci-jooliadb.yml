@@ -1,0 +1,15 @@
+- name: default
+  type: mysql
+  host: db
+  database: jooliadb
+  port: 3306
+  username: root
+  password: admin
+  synchronize: false
+  logging: ['all']
+  entities:
+    - ../src/api/models/index.js
+    - ../src/api/models/views/index.js
+    - ../src/api/models/AbstractModel.js
+  migrations:
+    - ../db/migrations/*.js

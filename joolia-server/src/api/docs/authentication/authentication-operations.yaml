@@ -1,0 +1,140 @@
+/signin:
+  post:
+    tags:
+      - Authentication
+    description: Get authentication token for Joolia
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              password:
+                type: string
+              email:
+                type: string
+                format: email
+            required:
+              - email
+              - password
+            example: "{\n\t\"email\": \"tes123349810@example.com\",\n\t\"password\": \"12345678\"\n}"
+
+    responses:
+      '200':
+        $ref: '#/components/responses/SignInResponse'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '412':
+        $ref: '#/components/responses/PreconditionFailedError'
+/signup:
+  post:
+    tags:
+      - Authentication
+    description: Create a new user. If no name for a private library or workspace is stated, it will not be created.
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+                maxLength: 200
+              email:
+                type: string
+                format: email
+                pattern: '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
+              password:
+                type: string
+                minLength: 8
+                pattern: '^(?=.*[^a-zA-Z]).{8,}$'
+              company:
+                type: string
+                maxLength: 100
+              privateWorkspaceName:
+                type: string
+                maxLength: 55
+              privateLibraryName:
+                type: string
+                maxLength: 55
+            required:
+              - name
+              - email
+              - password
+
+          example: "{\n\t\"name\":\"testName\",\n\t\"email\": \"tes123349810@example.com\",\n\t\"company\":\"testcompany\",\n\t\"password\": \"12345678\"\n}"
+/request-password-reset:
+  put:
+    tags:
+      - Authentication
+    description: Requests an email with a link to reset the current password of a user.
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              email:
+                type: string
+                format: email
+                pattern: '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
+            required:
+              - email
+            example:
+              email: tes123349810@example.com
+    responses:
+      '204':
+        description: Email was sent.
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+
+/reset-password:
+  patch:
+    tags:
+      - Authentication
+    description: Resets password of a user.
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              password:
+                type: string
+                minLength: 8
+                pattern: '^(?=.*[^a-zA-Z]).{8,}$'
+              token:
+                type: string
+            required:
+              - password
+              - token
+            example:
+              password: tes?12334981!
+              token: 123456789HJHJDHEIWSHKDJDEHKWHJ
+    responses:
+      '204':
+        description: Password changed successfully.
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+components:
+  responses:
+    SignInResponse:
+      description: Login succesfull
+      content:
+        application/json:
+          schema:
+            properties:
+              token:
+                type: string
+              expires:
+                type: string
+                format: date
+              userId:
+                type: string
+                format: uuid
+            example:
+              "{'token':'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTExNzgzMDYsImVtYWlsIjoidGVzdDJAZXhhbXBsZS5jb20ifQ.FTpzJc6mt0EZXILwY0d7z_AWtsLKDY9KEyUNWy7TVGc',\n
+              'expires':'2019-02-26T11:51:46+01:00',\n
+              'userId':'b07e58a1-44cc-45c8-8071-181b2a0537af'}"

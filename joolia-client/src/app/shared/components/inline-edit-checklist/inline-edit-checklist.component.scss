@@ -1,0 +1,53 @@
+@import 'variables';
+
+// Has to be done since the mat-checkbox removed the margin when its content dynamically changes. Bug in Angular component.
+::ng-deep .mat-checkbox-inner-container {
+    margin-right: 8px !important;
+}
+
+.checklist-item {
+    .inline-checkbox + div:last-child {
+        // checkbox-width: 24px
+        width: calc(100% - 24px);
+
+        inline-edit-input {
+            // delete-icon width: 24px
+            width: calc(100% - 24px);
+        }
+
+        .checklist-item-content {
+            overflow: hidden;
+            width: 100%;
+            word-break: break-word;
+        }
+    }
+}
+
+.checklist-add-entry-input:hover {
+    .checklist-item-delete {
+        visibility: visible;
+        display: block;
+    }
+}
+
+.checklist-item-delete {
+    color: $joolia-grey;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.checklist-add-entry-input {
+    border: none;
+    padding: 0;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: $joolia-secondary-200;
+    }
+
+    &:focus {
+        outline: 0;
+        border-radius: 4px;
+        background-color: $joolia-secondary-200;
+    }
+}

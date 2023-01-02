@@ -1,0 +1,35 @@
+<div class="links-container" fxLayout="column">
+
+    <div *ngIf="links">
+        <div *ngFor="let link of links; let index = index">
+            <div class="link-box" fxLayout="row" fxLayoutAlign="space-between center" (click)="onLinkClick(link.linkUrl)">
+                <div class="link-container">
+
+                    <div class="link-text" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start center">
+                        <span class="text-truncate" fxFlex="auto">{{ ">> " + link.linkUrl }}</span>
+                    </div>
+                </div>
+
+                <div class="link-icons" fxFlex="none" fxLayout="row" fxLayoutAlign="start center">
+
+                    <!-- Launch Button -->
+                    <button mat-icon-button>
+                        <mat-icon color="primary">launch</mat-icon>
+                    </button>
+
+                    <!-- Delete Button -->
+                    <button *appHasPermission="editable" mat-icon-button (click)="onLinkDeleteClicked(index); $event.stopPropagation()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <p>{{link.description}}</p>
+        </div>
+    </div>
+
+    <!-- Add Button -->
+    <div *appHasPermission="editable">
+        <tail-button label="buttons.addLink" (clicked)="onLinkAddClicked()"></tail-button>
+    </div>
+</div>

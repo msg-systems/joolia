@@ -1,0 +1,14 @@
+@import 'variables';
+
+.userrole-chip {
+    background-color: $joolia-primary-200;
+    border-radius: 16px;
+    margin: 0 4px 0 0;
+    padding: 4px 12px;
+    display: inline-block;
+    width: max-content;
+}
+
+.highlighted-chip {
+    background-color: $joolia-secondary-200;
+}

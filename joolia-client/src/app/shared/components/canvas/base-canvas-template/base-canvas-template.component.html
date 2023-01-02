@@ -1,0 +1,90 @@
+<!--  Title  -->
+<div class="canvas-title">
+    <inline-edit-text [inputText]="parent.canvas.name" [inputMaxLength]="parent.canvasNameMaxLengthValue"
+        inputClasses="mat-display-1 text-black" [editable]="parent.canvasInput.isCanvasEditable"
+        (inputChange)="parent.onEditCanvasName($event)">
+        <span class="text-word-break">{{ parent.canvas.name }}</span>
+    </inline-edit-text>
+</div>
+
+<div class="canvas-grid" ngClass.gt-md="canvas-grid-big">
+
+    <!--  Slot  -->
+    <div *ngFor="let slot of parent.canvas.slots" class="canvas-cell" [ngClass]="parent.getSlotStyle(slot)"
+        [ngClass.gt-md]="parent.getSlotHeight(slot) + ' ' + parent.getSlotStyle(slot)" [ngStyle.gt-md]="parent.getSlotGridPosition(slot)">
+
+        <!--  Slot Title  -->
+        <div *ngIf="parent.hasSlotTitle(slot)" class="canvas-cell-title" fxLayout="row" fxLayoutAlign="space-between center">
+            <inline-edit-text [inputText]="slot.title" [inputMaxLength]="parent.slotTitleMaxLengthValue"
+                inputClasses="mat-body-1 text-medium" [editable]="parent.canvasInput.isCanvasEditable"
+                (inputChange)="parent.onEditSlotTitle(slot, $event)" fxFlex='90%'>
+                <span class="text-word-break">{{ slot.title }}</span>
+            </inline-edit-text>
+            <button *ngIf="displaySorting" [mat-menu-trigger-for]="menu" mat-icon-button disableRipple fxLayout="row"
+                fxLayoutAlign="center end">
+                <mat-icon>sort</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button (click)="parent.onOrderSlotSubmissions(slot, 'time')"
+                    [ngClass]="(slot.submissionsOrderBy.queryParam === 'time' || slot.submissionsOrderBy.queryParam === '-time')?'canvas-sort-clicked' : ''"
+                    mat-menu-item>
+                    <mat-icon
+                        [ngClass]="(slot.submissionsOrderBy.queryParam === 'time' || slot.submissionsOrderBy.queryParam === '-time')?'canvas-sort-clicked' : ''">
+                        {{slot.submissionsOrderOptions[0].icon}}
+                    </mat-icon>
+                    <span>{{ 'buttons.sortCanvasSubmissions.byCreationTime' | translate }}</span>
+                </button>
+                <button (click)="parent.onOrderSlotSubmissions(slot, 'votes')"
+                    [ngClass]="(slot.submissionsOrderBy.queryParam === 'votes' || slot.submissionsOrderBy.queryParam === '-votes')?'canvas-sort-clicked' : ''"
+                    mat-menu-item>
+                    <mat-icon
+                        [ngClass]="(slot.submissionsOrderBy.queryParam === 'votes' || slot.submissionsOrderBy.queryParam === '-votes')?'canvas-sort-clicked' : ''">
+                        {{slot.submissionsOrderOptions[1].icon}}
+                    </mat-icon>
+                    <span>{{ 'buttons.sortCanvasSubmissions.byNumberOfVotes' | translate }}</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <!--  Submissions  -->
+        <div *ngIf="parent.submissions && parent.hasSlotSubmissions(slot)" class="canvas-cell-content">
+
+            <!--  Submission List  -->
+            <div *ngFor="let submission of parent.getSubmissionsForSlot(slot)" class="canvas-cell-content-item">
+                <div class="canvas-submission" [ngStyle]="{'border-color': submission.color}">
+                    <inline-edit-text [inputText]="submission.content" [inputMaxLength]="parent.submissionMaxLengthValue"
+                        [editable]="parent.canvasInput.isSubmissionEditable"
+                        (inputChange)="parent.onEditSubmissionContent(submission, $event)">
+                        <span class="text-word-break">{{ submission.content }}</span>
+                        <span *ngIf="parent.canvasInput.displaySubmitterName"
+                            class="submission-creator">{{ parent.getSubmitter(submission) }}</span>
+                    </inline-edit-text>
+                    <!--  Submission Toolbar  -->
+                    <app-canvas-submission-toolbar [editAllowed]="parent.canvasInput.isSubmissionEditable"
+                        [voteCount]="submission.voteCount" [isVotedByMe]="submission.me.isVotedByMe"
+                        (colorPicked)="parent.onEditSubmissionColor(submission, $event)"
+                        (deleted)="parent.onDeleteSubmission(slot.id, submission.id)"
+                        (toggleVote)="parent.onVoteSubmissionClicked(submission)">
+                    </app-canvas-submission-toolbar>
+                </div>
+            </div>
+
+            <!--  New Submission  -->
+            <div *ngIf="parent.showNewSubmission[slot.id] && parent.hasSlotSubmissions(slot)" class="canvas-cell-content-item">
+                <inline-edit-text class="canvas-cell-content-item-text" [inputText]="parent.newSubmissionText[slot.id]"
+                    [inputMaxLength]="parent.submissionMaxLengthValue" [inputPlaceholderKey]="'labels.clickToAddSubmission'"
+                    [editable]="true" (inputChange)="parent.onAddSubmission(slot, $event)">
+                    <span class="text-word-break">{{ parent.newSubmissionText[slot.id] }}</span>
+                </inline-edit-text>
+            </div>
+        </div>
+
+        <!--  Add Submission Fab  -->
+        <div *ngIf="parent.canvasInput.isSubmissionEditable && parent.hasSlotSubmissions(slot)" class="canvas-cell-buttons">
+            <button class="canvas-cell-button" mat-mini-fab (click)="parent.onClickAddSubmission(slot)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+
+</div>

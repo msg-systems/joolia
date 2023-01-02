@@ -1,0 +1,86 @@
+<loading-indicator *ngIf="!activityTemplates"></loading-indicator>
+
+<div *ngIf="activityTemplates?.count > 0" class="library-details-activity-templates" infinite-scroll
+    [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onLoadMore()"
+    [infiniteScrollDisabled]="isLoading || noMoreLoadable">
+    <div *ngIf="isCardViewType()" gdColumns="repeat(auto-fill, 344px)" gdColumns.lt-lg="repeat(auto-fill, 304px)"
+        gdColumns.lt-md="repeat(auto-fill, 288px)" gdRows="508px!" gdGap="32px" gdGap.lt-md="16px">
+        <list-card-item *ngFor="let activityTemplate of activityTemplates.entities" [itemId]="activityTemplate.id" [clickable]="true"
+            (itemClick)="onActivityTemplateClick(activityTemplate.id)" [menuActions]="activityTemplateMenuActions"
+            [keyVisual]="activityTemplate.keyVisual" [showKeyVisual]="true">
+            <div list-card-content class="activity-template-card-content" fxLayout="column">
+                <!-- Activity template name -->
+                <div clampy="3" class="mat-title text-word-break">{{ activityTemplate.name }}</div>
+
+                <!-- Activity template duration -->
+                <div class="mat-body-2" fxLayoutAlign="start center">
+                    <mat-icon class="duration-icon">access_time</mat-icon>
+                    <span>{{ activityTemplate.duration | durationPipe }}</span>
+                </div>
+
+                <!-- Template Category -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <main-chip class="category-icon-chip" [icon]="getCategoryIcon(activityTemplate.category)" [outline]="true"
+                        [message]="'labels.categoryValue.' + activityTemplate.category | translate">
+                    </main-chip>
+                </div>
+
+                <!-- Activity template description -->
+                <div class="template-description mat-body-1 white-space-pre-wrap text-word-break">
+                    <!-- clampy needs all these divs -->
+                    <div>
+                        <div clampy [clampyContent]="activityTemplate.shortDescription | addLinkTarget"></div>
+                    </div>
+                </div>
+            </div>
+        </list-card-item>
+    </div>
+    <div *ngIf="isListViewType()">
+        <mat-nav-list disableRipple>
+            <list-row-item *ngFor="let activityTemplate of activityTemplates.entities" ngClass.lt-md="small" [itemId]="activityTemplate.id"
+                [clickable]="true" (itemClick)="onActivityTemplateClick(activityTemplate.id)" [menuActions]="activityTemplateMenuActions"
+                [keyVisual]="activityTemplate.keyVisual" showKeyVisual="true">
+                <div list-row-header fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- Activity template name -->
+                    <div class="mat-title text-truncate limit-width">{{ activityTemplate.name }}</div>
+                    <!-- Activity template duration -->
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                        <!-- Template Category -->
+                        <main-chip class="category-icon-chip" [icon]="getCategoryIcon(activityTemplate.category)" [outline]="true"
+                            [message]="'labels.categoryValue.' + activityTemplate.category | translate">
+                        </main-chip>
+
+                        <div class="mat-body-2" fxLayoutAlign="start center">
+                            <mat-icon class="duration-icon">access_time</mat-icon>
+                            <span class="text-truncate">{{ activityTemplate.duration | durationPipe }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div list-row-header fxHide fxShow.lt-md fxLayout="column" fxLayoutAlign="space-between start">
+                    <!-- Activity template name -->
+                    <div class="mat-title text-truncate no-margin limit-width">{{ activityTemplate.name }}</div>
+                    <!-- Activity template duration -->
+                    <div class="limit-width" fxLayout="row" fxLayoutAlign="end center">
+                        <div class="mat-body-2 limit-width" fxLayoutAlign="start center">
+                            <mat-icon class="duration-icon">access_time</mat-icon>
+                            <span class="text-truncate">{{ activityTemplate.duration | durationPipe }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <span list-row-content fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- Activity template description -->
+                    <div class="template-description mat-body-1 text-truncate">
+                        {{ activityTemplate.shortDescription | addLinkTarget }}
+                    </div>
+                </span>
+            </list-row-item>
+        </mat-nav-list>
+    </div>
+    <loading-indicator *ngIf="isLoading"></loading-indicator>
+</div>
+
+<!-- Empty State -->
+<empty-state *ngIf="activityTemplates && activityTemplates.count < 1" titleKey="emptyStates.activityTemplate.title"
+    contentKey="emptyStates.activityTemplate.content" altTextKey="emptyStates.activityTemplate.altText">
+</empty-state>

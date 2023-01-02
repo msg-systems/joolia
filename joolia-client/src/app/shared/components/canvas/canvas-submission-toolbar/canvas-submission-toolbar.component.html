@@ -1,0 +1,29 @@
+<div class="canvas-submission-toolbar" fxLayout="row" fxLayoutGap="0px" fxLayoutGap.lt-lg="15px">
+    <div>
+        <span
+            [ngClass]="(isVotedByMe)?'mat-body-strong canvas-submission-toolbar-voteCount-clicked':'mat-body-strong canvas-submission-toolbar-voteCount'">{{ 'labels.vote' | translate: { voteCount: voteCount, plural: voteCount } }}</span>
+        <button (click)="onVoteClicked()" *ngIf="editAllowed"
+            [ngClass]="(isVotedByMe)?'canvas-submission-toolbar-thumb-up-clicked':'canvas-submission-toolbar-thumb-up'" disableRipple
+            mat-icon-button>
+            <mat-icon
+                [ngClass]="(isVotedByMe)?'material-icons canvas-submission-toolbar-thumb-up-icon':'material-icons-outlined canvas-submission-toolbar-thumb-up-icon'">
+                thumb_up
+            </mat-icon>
+        </button>
+    </div>
+
+    <button (click)="onDelete()" *ngIf="editAllowed" class="canvas-submission-toolbar-delete" disableRipple mat-icon-button>
+        <mat-icon class="canvas-submission-toolbar-delete-icon">delete</mat-icon>
+    </button>
+
+    <button *ngIf="editAllowed" [mat-menu-trigger-for]="menu" class="canvas-submission-toolbar-color-picker" disableRipple mat-icon-button>
+        <mat-icon class="canvas-submission-toolbar-color-picker-icon">format_color_fill</mat-icon>
+    </button>
+
+
+    <mat-menu #menu="matMenu" class="no-padding-menu">
+        <div mat-menu-item>
+            <github-picker [control]="colorPickerController"></github-picker>
+        </div>
+    </mat-menu>
+</div>

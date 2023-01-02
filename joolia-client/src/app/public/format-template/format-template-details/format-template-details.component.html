@@ -1,0 +1,80 @@
+<loading-indicator *ngIf="!formatTemplate" fxFlex></loading-indicator>
+
+<div *ngIf="formatTemplate" class="format-template-details-container" fxLayout="column">
+    <action-bar [showBackButton]="true" [backRouterLink]="['/', 'library', currentLibrary.id, 'template', 'overview', 'format']"
+        backLabelKey="buttons.backToName" [backLabelParams]="{ name: this.currentLibrary?.name }">
+    </action-bar>
+
+    <div class="maincard-container" ngClass.lt-md="small" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="center start">
+        <mat-card class="mat-elevation-z format-template-details-card" fxFlex="auto">
+            <div class="format-template-details-card-content" fxLayout="column">
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+
+                    <!--Chip: Format Template -->
+                    <main-chip [message]="'labels.formatTemplate' | translate: { plural: 0 }"></main-chip>
+
+                    <!--Chip: Category -->
+                    <editable-chip [message]="'labels.categoryValue.' + formatTemplate.category | translate"
+                        [entityValue]="formatTemplate.category" [icon]="categoryIcon" [options]="categoryOptions"
+                        (valueUpdate)="onCategoryUpdate($event)"></editable-chip>
+
+                    <!--Chip: Phase Count -->
+                    <main-chip [message]="'labels.amountPhases' | translate: { amount: formatTemplate.phaseTemplateCount || 0 }">
+                    </main-chip>
+
+                    <!--Chip: Method Count -->
+                    <main-chip [message]="'labels.amountMethods' | translate: { amount: formatTemplate.activityTemplateCount || 0 }">
+                    </main-chip>
+
+                </div>
+
+                <!--Creator-->
+                <div class="template-creator text-word-break">{{ currentLibrary.name + ' · ' + formatTemplate.createdBy.name }}</div>
+
+                <!--Title -->
+                <h2 class="mat-display-1 text-word-break">{{ formatTemplate.name }}</h2>
+
+                <!--Tagline -->
+                <div>
+                    <div class="mat-title">{{ 'labels.tagline' | translate }}</div>
+                    <span class="text-word-break white-space-pre-wrap" [innerHTML]="formatTemplate.shortDescription
+                                ? (formatTemplate.shortDescription | addLinkTarget)
+                                : ('emptyStates.library.formatTemplate.tagline' | translate)">
+                    </span>
+                </div>
+
+                <!--Visual -->
+                <key-visual *ngIf="formatTemplate.keyVisual; else keyVisualEmptyState" class="keyvisual"
+                    [keyVisual]="formatTemplate.keyVisual">
+                </key-visual>
+                <ng-template #keyVisualEmptyState>
+                    <div class="mat-title">{{ 'labels.keyVisual' | translate }}</div>
+                    <span class="text-word-break white-space-pre-wrap">{{ 'emptyStates.library.formatTemplate.keyvisual' | translate }}
+                    </span>
+                </ng-template>
+
+                <!--Description -->
+                <div>
+                    <div class="mat-title">{{ 'labels.description' | translate }}</div>
+                    <span class="text-word-break white-space-pre-wrap" [innerHTML]="formatTemplate.description
+                                ? (formatTemplate.description | addLinkTarget)
+                                : ('emptyStates.library.formatTemplate.description' | translate)">
+                    </span>
+                </div>
+
+                <!-- Files -->
+                <div>
+                    <div class="mat-title">{{ 'labels.files' | translate }}</div>
+                    <file-list *ngIf="formatTemplate.files?.length > 0; else fileEmptyState" [files]="formatTemplate.files"
+                        (fileDownloadClicked)="onFileDownloadClicked($event)">
+                    </file-list>
+                    <ng-template #fileEmptyState>
+                        <span class="text-word-break white-space-pre-wrap">
+                            {{ 'emptyStates.library.formatTemplate.files' | translate }}
+                        </span>
+                    </ng-template>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

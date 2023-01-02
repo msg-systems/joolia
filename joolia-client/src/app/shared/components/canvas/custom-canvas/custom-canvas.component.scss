@@ -1,0 +1,40 @@
+@import 'variables';
+
+.custom-canvas {
+    &-sort-clicked {
+        font-weight: bold;
+        color: $joolia-black !important;
+    }
+
+    & gridster {
+        min-height: 70vh;
+        background: $joolia-white;
+
+        &-item {
+            padding: 2px;
+
+            &.gridster-item-moving {
+                box-shadow: none;
+            }
+
+            &.gridster-item-resizing {
+                box-shadow: none;
+            }
+        }
+
+        &-preview {
+            background: $joolia-white;
+        }
+
+        & .canvas-cell {
+            &-blocked-content {
+                background-color: $joolia-primary-50;
+                border-radius: 0 0 0.5rem 0.5rem;
+            }
+
+            &-content-item:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}

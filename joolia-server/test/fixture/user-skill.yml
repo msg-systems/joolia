@@ -1,0 +1,17 @@
+entity: UserSkill
+items:
+  UserSkillOne:
+    skill: '@SkillOne'
+    user: '@Luke'
+
+  UserSkillTwo:
+    skill: '@SkillTwo'
+    user: '@Luke'
+
+  UserSkillThree:
+    skill: '@SkillThree'
+    user: '@Leia'
+
+  UserSkillFour:
+    skill: '@SkillFour'
+    user: '@Leia'

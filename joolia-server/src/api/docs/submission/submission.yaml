@@ -1,0 +1,66 @@
+components:
+  schemas:
+    Submission:
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+        submittedBy:
+          oneOf:
+            team:
+              $ref: '#/components/schemas/Team'
+            user:
+              $ref: '#/components/schemas/User'
+        createdBy:
+          $ref: '#/components/examples/UserCreatedBy'
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+      example:
+        id: '114a350-29f8-11e9-b210-d663bd873d94'
+        name: 'My submission'
+        description: 'Description of my submission'
+        submittedBy:
+          team:
+            id: '114a350-29f8-11e9-b210-d663bd873aab'
+            name: 'Team Green'
+        createdBy:
+          id: '114a350-29f8-11e9-b210-d663bd873a04'
+          name: 'Mei Näim'
+          email: 'me@msg.de'
+          company: 'msg'
+        createdAt: 2019-07-21T17:32:28Z
+  examples:
+    Submissions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Submission'
+      example:
+        id: '114a350-29f8-11e9-b210-d663bd873d93'
+        name: 'My Submission'
+        description: 'This is my submission'
+    PostSubmissionBody:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        submittedById:
+          type: string
+          format: uuid
+          description: this can be either a teamId or a userId
+      required:
+        - name
+        - description
+        - submittedById
+      example:
+        name: 'My Contribution'
+        description: 'This is a description.'
+        submittedBy: '114a350-29f8-11e9-b210-d663bd873d94'

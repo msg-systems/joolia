@@ -1,0 +1,40 @@
+@import 'variables';
+
+.format-details-member-profile {
+    padding: $joolia-main-content-gap;
+
+    &.small {
+        padding: $joolia-main-content-gap-small;
+    }
+
+    > loading-indicator {
+        padding-top: 16px;
+    }
+
+    &-team-overview-content {
+        padding: 16px 32px 48px 32px;
+
+        &.small {
+            padding: $joolia-main-content-gap-small;
+        }
+    }
+
+    &-team-title {
+        padding: 16px;
+        max-height: 100%;
+
+        &.small {
+            padding: 12px;
+        }
+    }
+
+    &-team-name {
+        overflow: hidden;
+        line-height: 26px;
+        margin: 0;
+    }
+
+    &-team-content {
+        height: 120px;
+    }
+}

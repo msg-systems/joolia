@@ -1,0 +1,25 @@
+.member-profile {
+    padding: 16px 64px 16px 64px;
+
+    &.small {
+        padding: 8px 16px 16px 16px;
+    }
+
+    &-avatar {
+        width: 65px !important;
+        height: 65px !important;
+    }
+
+    &-name {
+        margin: 0;
+    }
+
+    &-subcontent {
+        font-size: 16px;
+        margin-right: 8px;
+
+        & > span {
+            max-width: 100%;
+        }
+    }
+}

@@ -1,0 +1,213 @@
+/user:
+  get:
+    tags:
+      - Admin
+    description: Get all the users
+    parameters:
+      - $ref: '#/components/parameters/Selector'
+      - $ref: '#/components/parameters/Order'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/Take'
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: All the users retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/examples/Users'
+            example: "[  {'id': 'b07e58a1-44cc-45c8-8071-181b2a0537af', \n
+              'name': 'testName', \n
+              'company': 'testcompany', \n
+              'email': 'test2@example.com', \n
+              'password': '$2a$10$zFs3jYlDlyzV1VxvNbWz8.TkOXMifccIgCIQ9TD7/lAi6Wnm3PXl.', \n
+              'failedLoginAttempts': 0, \n
+              'failedLoginTimeout': null, \n
+              'managedActivities': [], \n
+              'participatedActivities': [], \n
+              'createdActivities': [], \n
+              'sentMessages': [], \n
+              'receivedMessages': [], \n
+              'assignedWorkspaces': []}]"
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not an adminstrator
+/checkmail:
+  get:
+    tags:
+      - User
+    description: Check if specific email exists
+    security:
+      - authentication: []
+    parameters:
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: The email to check
+        required: true
+    responses:
+      '200':
+        description: The email exists.
+        content:
+          application/json; charset=utf-8:
+            schema:
+              type: string
+              example: "{'emailAvailable': true}"
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+/user/{userId}:
+  get:
+    tags:
+      - Admin
+    parameters:
+      - $ref: '#/components/parameters/IdParameterUser'
+    description: Get specific user
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: User retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User not an administrator
+  patch:
+    tags:
+      - Admin
+    parameters:
+      - $ref: '#/components/parameters/IdParameterUser'
+    description: Update specific fields of a user
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              company:
+                type: string
+            example: "{\n\t\"name\": \"Test user patched\",\n\t\"company\": \"company for user patched\"\n\t\n}"
+    responses:
+      '200':
+        content:
+          application-json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not an administrator
+  delete:
+    tags:
+      - Admin
+    parameters:
+      - $ref: '#/components/parameters/IdParameterUser'
+    description: Delete sepecific user
+    security:
+      - authentication: []
+    responses:
+      '204':
+        description: User deleted successfuly
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        description: User is not an administrator
+/user/{userId}/_admin:
+  get:
+    tags:
+      - User
+    parameters:
+      - $ref: '#/components/parameters/IdParameterUser'
+    description: Get admin rights of specific user
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: Admin status of the user
+        content:
+          application/json:
+            schema:
+              properties:
+                admin:
+                  type: boolean
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+/user/{userId}/profile:
+  get:
+    tags:
+      - User
+    description: Get the information of the requesting user
+    security:
+      - authentication: []
+    responses:
+      '200':
+        description: User retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+  patch:
+    tags:
+      - User
+    description: Update specific fields of the requesting user and returns only updated fields
+    security:
+      - authentication: []
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              company:
+                type: string
+            example:
+              name: TestUser
+              company: Test Company
+
+    responses:
+      '200':
+        content:
+          application-json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                company:
+                  type: string
+              example:
+                name: TestUser
+                company: Test Company
+
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+
+components:
+  parameters:
+    IdParameterUser:
+      in: path
+      name: userId
+      schema:
+        type: integer
+        minimum: 1
+      required: true
+      description: The id of the user

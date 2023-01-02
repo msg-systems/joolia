@@ -1,0 +1,18 @@
+entity: SubmissionFileEntry
+items:
+  SubmissionFileOne:
+    ownerType: SubmissionEntry
+    id: 09245a20-0373-4ed9-979b-9fb364800001
+    versionId: 1617d939-2bb6-4fb8-96bf-4fd8b30289f7
+    name: lea.jpg
+    contentType: 'image/jpeg'
+    createdBy: '@Luke'
+    createdAt: '2019-05-23 00:00:00'
+    submission: '@TeamSubmissionOne'
+  SubmissionFileWithoutData:
+    ownerType: SubmissionEntry
+    id: 35e65db2-c087-4043-9021-8ab7bc800002
+    versionId: d8f579b9-7487-4d40-8d04-417be433ffc0
+    name: bob.jpg
+    createdBy: '@Luke'
+    submission: '@TeamSubmissionTwo'

@@ -1,0 +1,57 @@
+entity: UserRating
+items:
+  RatingOne:
+    id: b73ed2f8-c25f-11ea-818b-0242ac110002
+    rating: 1.5
+    submission: '@UserSubmissionOne'
+    createdBy: '@Luke'
+  RatingTwo:
+    id: e9bb2c74-c25f-11ea-818b-0242ac110002
+    rating: 1.0
+    submission: '@TeamSubmissionThree'
+    createdBy: '@ObiWan'
+  RatingThree:
+    id: fc665f55-c25f-11ea-818b-0242ac110002
+    rating: 4.0
+    submission: '@TeamSubmissionThree'
+    createdBy: '@Mickey'
+  RatingFour:
+    id: 092a4c86-c260-11ea-818b-0242ac110002
+    rating: 5.0
+    submission: '@UserSubmissionFive'
+    createdBy: '@ObiWan'
+  RatingFive:
+    id: 05874821-f7d4-4633-9a11-883e53efcb0c
+    rating: 4.5
+    submission: '@UserSubmissionSix'
+    createdBy: '@Luke'
+  RatingSix:
+    id: 58eeae81-c260-11ea-818b-0242ac110002
+    rating: 1
+    submission: '@TeamSubmissionSix'
+    createdBy: '@Luke'
+  RatingSeven:
+    id: 644690fc-c260-11ea-818b-0242ac110002
+    rating: 0.5
+    submission: '@TeamSubmissionFour'
+    createdBy: '@Luke'
+  RatingEight:
+    id: 6db7b627-c260-11ea-818b-0242ac110002
+    rating: 2.0
+    submission: '@UserSubmissionOne'
+    createdBy: '@ObiWan'
+  RatingNine:
+    id: 97b7c4e2-c260-11ea-818b-0242ac110002
+    rating: 2.5
+    submission: '@UserSubmissionFive'
+    createdBy: '@Luke'
+  RatingTen:
+    id: 9f980e42-c260-11ea-818b-0242ac110002
+    rating: 3.5
+    submission: '@TeamSubmissionSeven'
+    createdBy: '@Luke'
+  RatingEleven:
+    id: 9f980e42-c260-11ea-818b-0242ac110002
+    rating: 1.5
+    submission: '@TeamSubmissionSix'
+    createdBy: '@Mickey'

@@ -1,0 +1,11 @@
+entity: TeamAvatarFileEntry
+items:
+  Team2Avatar:
+    id: bc50bd4f-361d-4caa-a0cf-93f9f486babc
+    fileId: 31d11fa7-3deb-4360-8d77-9a525233c3d9
+    versionId: 71c5198b-c29f-4311-bbf5-1d3cfb91a086
+    ownerType: TeamAvatarEntry
+    name: corona.png
+    contentType: 'image/png'
+    size: 148000
+    createdBy: '@Luke'

@@ -1,0 +1,15 @@
+<div class="user-avatar" [ngStyle]="{ height: containerSize, width: containerSize }">
+    <div *ngIf="user?.pending; else avatar" class="icon-container pending" [ngClass]="{'small': sizeInPx <= 24 }">
+        <mat-icon>mail_outline</mat-icon>
+    </div>
+    <ng-template #avatar>
+        <img *ngIf="user?.avatar?.fileUrl || team?.avatar?.fileUrl; else icon" [src]="user?.avatar?.fileUrl || team?.avatar?.fileUrl">
+        <ng-template #icon>
+            <div class="icon-container" [ngClass]="{transparent: transparent}">
+                <mat-icon class="material-icons-outlined" [ngStyle]="{'font-size': iconSize, 'line-height': iconSize, margin: iconMargin}">
+                    {{ defaultIcon }}
+                </mat-icon>
+            </div>
+        </ng-template>
+    </ng-template>
+</div>

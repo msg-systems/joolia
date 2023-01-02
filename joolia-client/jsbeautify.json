@@ -1,0 +1,8 @@
+{
+    "indent_size": 4,
+    "indent_char": " ",
+    "end-with-newline": true,
+    "wrap-line-length": 140,
+    "wrap-attributes": "preserve",
+    "wrap-attributes-indent-size": 8
+}

@@ -1,0 +1,40 @@
+@import 'variables';
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .icon-container {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+
+        .mat-icon {
+            height: unset;
+            width: unset;
+        }
+    }
+
+    .icon-container:not(.transparent) {
+        background-color: $joolia-secondary-100;
+    }
+
+    .icon-container.pending {
+        background-color: $joolia-secondary-300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.small mat-icon {
+            font-size: 18px;
+        }
+    }
+}

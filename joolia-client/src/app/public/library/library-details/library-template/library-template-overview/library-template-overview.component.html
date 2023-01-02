@@ -1,0 +1,44 @@
+<loading-indicator *ngIf="!library"></loading-indicator>
+
+<div *ngIf="library">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <!-- Back Button -->
+        <action-bar fxFlex="100" [showBackButton]="true" [backRouterLink]="['/', 'library', 'overview']"
+            backLabelKey="buttons.backToLibraries">
+        </action-bar>
+        <!-- Filters -->
+        <div class="library-category-filter" fxFlex="100" ngClass.lt-md="small">
+            <div class="mat-title">{{ 'labels.filterGroup' | translate }}</div>
+            <filter-toggle-group (filterChanged)="onCategoryFilterChanged($event)" [filterCriteriaList]="[libraryCategories]">
+            </filter-toggle-group>
+            <div *ngIf="!loading" class="library-toggle" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between start">
+                <mat-button-toggle-group class="library-toggle-type" fxFlexAlign="start" fxLayout="row wrap" fxLayoutAlign="start center">
+                    <mat-button-toggle (click)="toggleEntity('format')" routerLink="format" routerLinkActive="mat-button-toggle-checked">
+                        {{ 'labels.format' | translate: { plural: 1 } | uppercase }}
+                        ({{ library.formatTemplateCount || 0 }}
+                        )
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="toggleEntity('phase')" routerLink="phase" routerLinkActive="mat-button-toggle-checked">
+                        {{ 'labels.phase' | translate: { plural: 1 } | uppercase }}
+                        ({{ library.phaseTemplateCount || 0}})
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="toggleEntity('activity')" routerLink="activity"
+                        routerLinkActive="mat-button-toggle-checked">
+                        {{ 'labels.method' | translate: { plural: 1 } | uppercase }}
+                        ({{ library.activityTemplateCount || 0}})
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+
+                <view-toggle (viewChanged)="onViewChanged($event)" [viewType]="libraryViewType" class="library-toggle-view"></view-toggle>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="library-details-templates-container" ngClass.lt-md="small">
+        <div class="mat-title">{{ libraryCurrentCategory | translate: { plural: 1 } }}</div>
+        <div class="library-details-templates">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

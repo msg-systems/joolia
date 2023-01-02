@@ -1,0 +1,91 @@
+/{entityId}/file:
+  parameters:
+    - $ref: '#/components/parameters/EntityIdParam'
+
+  get:
+    tags:
+      - File
+    description: Retrieves metadata of all stored files related to the entity.
+    security:
+      - authentication: []
+
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/responses/FileMetadata'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  post:
+    tags:
+      - File
+    description: Creates metadata and reserves a new entry for storing a file related to the entity.
+    security:
+      - authentication: []
+
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/File'
+
+    responses:
+      '201':
+        description: File metadata created and storage link reserved for uploading.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+      '400':
+        $ref: '#/components/responses/BadRequestError'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+/{entityId}/file/{fileId}:
+  parameters:
+    - $ref: '#/components/parameters/EntityIdParam'
+    - $ref: '#/components/parameters/FileIdParam'
+    - $ref: '#/components/parameters/FileDownloadParam'
+
+  get:
+    tags:
+      - File
+    description: Retrieves metadata of a single file related to the entity.
+    security:
+      - authentication: []
+
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+      '302':
+        description: Redirects to the secured file URL.
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'
+
+  delete:
+    tags:
+      - File
+    description: Removes the file.
+    security:
+      - authentication: []
+
+    responses:
+      '204':
+        description: 'File deleted.'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '404':
+        $ref: '#/components/responses/NotFoundError'

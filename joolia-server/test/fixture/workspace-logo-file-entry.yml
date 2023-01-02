@@ -1,0 +1,11 @@
+entity: WorkspaceLogoFileEntry
+items:
+  WorkspaceLogoFileOne:
+    ownerType: WorkspaceLogo
+    fileId: f0901932-1ca8-49a8-abfa-31be710ea02a # Matches loaded file in s3 for development
+    versionId: eT3Uxi_VGStgQkHDOdYCfAIpApm5ZWQ8
+    name: deathstar.jpg
+    contentType: 'image/png'
+    size: 610750
+    createdBy: '@Luke'
+    createdAt: '2020-09-22 10:44:32'

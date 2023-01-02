@@ -1,0 +1,5 @@
+<loading-indicator *ngIf="!workspace" fxFlex></loading-indicator>
+
+<app-sidenav *ngIf="workspace" [headerTitle]="workspace.name" [navigationOptions]="sidenavItems">
+    <router-outlet></router-outlet>
+</app-sidenav>

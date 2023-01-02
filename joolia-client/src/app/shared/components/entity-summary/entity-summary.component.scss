@@ -1,0 +1,11 @@
+@import 'variables';
+
+.format-summary {
+    & > div {
+        align-items: center;
+    }
+
+    mat-icon {
+        padding-right: 16px;
+    }
+}

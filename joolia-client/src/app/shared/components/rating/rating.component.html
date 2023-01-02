@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+    <h2>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            {{ 'labels.rating' | translate }} (
+            <mat-icon>star</mat-icon>
+            {{ averageRating ? (averageRating | decimal:'1.1-1') : 0 }} )
+        </div>
+    </h2>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center">
+    <div *ngFor="let star of stars">
+        <div *ngIf="editable; else icon" class="icon-container">
+            <mat-icon>{{ star.icon }} </mat-icon>
+            <div class="first-half" (click)="onClick(star.index + 0.5)" (mouseover)="onMouseover(star.index + 0.5)"
+                (mouseleave)="onMouseleave()">
+            </div>
+            <div class="second-half" (click)="onClick(star.index + 1)" (mouseover)="onMouseover(star.index + 1)"
+                (mouseleave)="onMouseleave()">
+            </div>
+        </div>
+        <ng-template #icon>
+            <mat-icon>{{ star.icon }}</mat-icon>
+        </ng-template>
+    </div>
+</div>

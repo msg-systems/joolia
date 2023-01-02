@@ -1,0 +1,30 @@
+@import 'variables';
+
+list-card-item {
+    height: 154px;
+    display: inline-block;
+    width: 100%;
+}
+
+.member-card-name-container {
+    padding-left: 16px;
+    max-width: calc(100% - 80px);
+
+    > div {
+        max-width: 100%;
+    }
+
+    .member-card-name {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .mat-body-1 {
+        margin-top: 8px;
+    }
+
+    .member-card-skills {
+        color: $joolia-black-transparent-54;
+        margin-top: 8px;
+    }
+}

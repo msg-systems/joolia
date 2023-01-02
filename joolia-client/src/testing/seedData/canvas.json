@@ -1,0 +1,22 @@
+{
+    "canvas1": {
+        "id": "764e5347-551a-4430-be02-3c4c1c9ec12b",
+        "name": "My Business Canvas",
+        "canvasType": "business_canvas"
+    },
+    "canvas2": {
+        "id": "5d85d5b7-b159-433e-b066-59266fb36696",
+        "name": "My Questionnaire",
+        "canvasType": "questionnaire"
+    },
+    "canvas3": {
+        "id": "9b42f00f-639c-4928-a095-07fbb597c24f",
+        "name": "My Journey",
+        "canvasType": "process"
+    },
+    "canvas4": {
+        "id": "f12f7558-0dfd-11eb-adc1-0242ac120002",
+        "name": "My Custom Canvas",
+        "canvasType": "custom"
+    }
+}

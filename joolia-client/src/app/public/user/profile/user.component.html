@@ -1,0 +1,56 @@
+<app-sidenav>
+    <div fxLayout="column" fxLayoutAlign="center center" class="profile-container" ngClass.lt-md="small">
+        <mat-card *ngIf="user" class="mat-elevation-z profile-card" fxLayout="column" fxLayoutAlign="space-between center">
+
+            <div class="text-black mat-display-1 site-title" mat-card-title>{{ 'labels.profileSettings' | translate }}</div>
+
+            <div class="avatar-container">
+                <user-avatar [user]="user" [sizeInPx]="120"></user-avatar>
+                <div [matMenuTriggerFor]="avatarMenu" #avatarMenuTrigger="matMenuTrigger"
+                    [ngClass]="{'visible': avatarMenuTrigger.menuOpen === true}" class="edit">
+                    <mat-icon>edit</mat-icon>
+                </div>
+            </div>
+
+            <mat-menu #avatarMenu="matMenu">
+                <button mat-menu-item (click)="onUploadAvatar()">{{ 'labels.uploadAvatar' | translate }}</button>
+            </mat-menu>
+
+            <div class="email-container">
+                <p class="mat-body-1 text-word-break">{{ user.email }}</p>
+            </div>
+            <!-- Name -->
+            <base-form-input [parentForm]="userForm" inputType="text" entityName="completeName" inputControlName="name"
+                [inputMaxLength]="userNameMaxLength" [inputRequired]="true" (focusout)="onSubmit()"></base-form-input>
+
+            <!-- Company -->
+            <base-form-input [parentForm]="userForm" inputType="text" entityName="company" inputControlName="company"
+                [inputMaxLength]="companyMaxLength" (focusout)="onSubmit()"></base-form-input>
+
+            <!-- Skills -->
+            <div class="skills-container" fxFlex fxLayout="column">
+                <mat-form-field [floatLabel]="'always'" appearance="outline" class="base-form-input">
+                    <mat-label>{{ 'labels.skill' | translate: { plural: 1 } }}</mat-label>
+
+                    <!-- Chips -->
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let skill of user.skills">
+                            {{ 'skill.' + skill.name | translate }}
+                            <mat-icon (click)="onSkillDelete(skill)" class="delete-icon">delete</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+
+                    <!-- Add Button -->
+                    <div class="skills-add-button">
+                        <tail-button (clicked)="onAddSkill()" [disabled]="!(user.skills?.length < userSkillsMaxLength)" icon="add"
+                            label="buttons.addSkill" fxFlex="100"></tail-button>
+                    </div>
+                </mat-form-field>
+
+            </div>
+
+
+        </mat-card>
+
+    </div>
+</app-sidenav>

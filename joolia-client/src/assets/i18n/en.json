@@ -1,0 +1,1226 @@
+{
+    "activity": {
+        "submissionModifySetting": {
+            "member": "Participants individually",
+            "team": "Teams jointly",
+            "text": "Who should work on this method?"
+        },
+        "submissionViewSetting": {
+            "member": "All participants",
+            "submitter": "Only respective submitters and organizers",
+            "text": "Who can see submissions and progress?"
+        }
+    },
+    "redirect": {
+        "waitingMessage": "Redirecting to Online Meeting..."
+    },
+    "buttons": {
+        "addBlankMethod": "Add blank method",
+        "addFile": "Add file",
+        "addLink": "Add link",
+        "addLogo": "Add logo",
+        "addMember": "Add member",
+        "addMembers": "Add members",
+        "addMethodFromLibrary": "Add method from library",
+        "addFormatMemberToTeam": "Add to team",
+        "addPhase": "Add phase",
+        "addSkill": "Add skill",
+        "addTeam": "Add team",
+        "addTeamAvatar": "Add team image",
+        "addTeamMembers": "Add team members",
+        "addTeamMember": "Add team member",
+        "addVisual": "Add key visual",
+        "back": "Back",
+        "backToActivity": "Back to method",
+        "backToFormats": "Back to formats",
+        "backToLibraries": "Back to libraries",
+        "backToMembers": "Back to members",
+        "backToName": "Back to {name}",
+        "backToOverview": "Back to overview",
+        "backToSchedule": "Back to schedule",
+        "backToTeams": "Back to teams",
+        "backToWorkspaces": "Back to workspaces",
+        "blankFormat": "Blank format",
+        "cancel": "Cancel",
+        "changeRoleToAdministrator": "Appoint as administrator",
+        "changeRoleToOrganizer": "Appoint as organizer",
+        "changeRoleToParticipant": "Appoint as participant",
+        "clearFilters": "Clear filters",
+        "confirm": "Confirm",
+        "connectToTeams": "Connect to Teams",
+        "create": "Create",
+        "createDailyPhase": "Add phase with daily scale",
+        "createFormat": "Create format",
+        "createHourlyPhase": "Add phase with hourly scale",
+        "createLibrary": "Create library",
+        "createWorkspace": "Create workspace",
+        "createTemplatePhase": "Add phase from library",
+        "delete": "Delete",
+        "deleteMember": "Delete member",
+        "deleteTeam": "Delete team",
+        "deleteMeeting": "Cancel meeting room",
+        "disconnectTeams": "Disconnect Teams",
+        "edit": "Edit",
+        "filter": "Filter",
+        "filterAll": "All",
+        "filterOrganizers": "Organizers",
+        "filterParticipants": "Participants",
+        "hidePhase": "Hide Phase",
+        "join": "Join",
+        "joinMeeting": "Join Meeting",
+        "meeting": "Meeting",
+        "navigateToFormats": "All Formats",
+        "navigateToAdmins": "All Administrators",
+        "noActions": "No possible Actions",
+        "remove": "Remove",
+        "removeFormatMember": "Remove from format",
+        "removeLibraryMember": "Remove from library",
+        "removeTeamMember": "Remove from team",
+        "removeWorkspaceMember": "Remove from workspace",
+        "requestConsent": "Request consent",
+        "save": "Save",
+        "send": "Send",
+        "sendComment": "Comment",
+        "sendMail": "Send e-mail",
+        "sendMailToAll": "Contact all",
+        "sendMailToSelected": "Contact selected",
+        "show": "Show",
+        "showPhase": "Publish Phase",
+        "storeAsFormatTemplate": "Store format as template",
+        "storeAsMethodTemplate": "Store method as template",
+        "storeAsPhaseTemplate": "Store phase as template",
+        "submit": "Submit",
+        "useTemplate": "Use template",
+        "viewCard": "Card View",
+        "viewList": "List View",
+        "addCanvas": "Add Canvas",
+        "addCanvasSlot": "Add Slot",
+        "canvasStatus": {
+            "publish": "Publish",
+            "draft": "Edit"
+        },
+        "canvasTypes": {
+            "titleOnly": "Title only",
+            "titleAndSubmissions": "Title and Submissions",
+            "submissionsOnly": "Submissions only",
+            "custom": "Custom Canvas"
+        },
+        "sortCanvasSubmissions": {
+            "byCreationTime": "Time",
+            "byNumberOfVotes": "Likes"
+        },
+        "sortFormatOrPhase": {
+            "byDate": "Date",
+            "byName": "Name"
+        },
+        "changePhaseDurationUnit": {
+            "minutes": "Hourly scale",
+            "days": "Daily scale",
+            "tooltip": "In order to change the time scale you need to delete all methods"
+        }
+    },
+    "dialog": {
+        "startMeeting": {
+            "meetingRoom": "Meeting Room",
+            "MSTeams": "Microsoft Teams",
+            "BBB": "Big Blue Button",
+            "noProviderError": "Please choose a meeting room!"
+        },
+        "joinMeeting": {
+            "copyLink": "Copy link",
+            "linkCopied": "Link copied",
+            "expirationDate": "Expiration date"
+        },
+        "adminConsent": {
+            "header": "Admin Consent",
+            "content": ""
+        },
+        "addCanvas": {
+            "slotNameMandatory": "Please enter a field name"
+        },
+        "addTeamMembers": {
+            "confirm": "Add",
+            "header": "Add team members"
+        },
+        "addMethodFromTemplate": {
+            "confirm": "Add to Agenda",
+            "header": "Add a method template to the agenda"
+        },
+        "addMemberToTeam": {
+            "content": "Select a team to add the participant to",
+            "header": "Add member to team"
+        },
+        "changeMeetingLink": {
+            "header": "Link to meeting",
+            "description": "Microsoft Teams, Skype or Zoom"
+        },
+        "changeRole": {
+            "content": "If you change your role to participant, you can no longer manage the format",
+            "header": "Warning"
+        },
+        "createBlankFormat": {
+            "content": "Select a workspace in which the format will be created",
+            "header": "Create blank format"
+        },
+        "createCanvas": {
+            "header": "Add Canvas"
+        },
+        "createFormatFromTemplate": {
+            "confirm": "Create format from this template",
+            "content": "Select a workspace in which the format will be created",
+            "header": "Create a format by using a template"
+        },
+        "createLink": {
+            "header": "Add link"
+        },
+        "createPhaseFromTemplate": {
+            "confirm": "Create phase from this template",
+            "header": "Create a phase by using a template"
+        },
+        "createLibrary": {
+            "header": "Create Library"
+        },
+        "createPhase": {
+            "dailyDescription": "Add a phase on a daily basis for long-form planning",
+            "header": "Choose a timescale for this phase",
+            "headerTemplate": "Choose a phase from your library",
+            "hourlyDescription": "Add a hourly phase for detailed planning",
+            "templateDescription": "Add phase from one of your libraries",
+            "dividerText": "or"
+        },
+        "createTeam": {
+            "header": "Create team"
+        },
+        "createWorkspace": {
+            "header": "Create workspace"
+        },
+        "delete": {
+            "activityDeletion": "Are you sure you want to delete the method \"{objectName}\"?",
+            "activityTemplateDeletion": "Are you sure you want to delete the method template \"{objectName}\"?",
+            "canvasDeletion": "Are you sure you want to delete the canvas \"{objectName}\"?",
+            "fileDeletion": "Are you sure you want to delete the file \"{objectName}\"?",
+            "commentDeletion": "Are you sure you want to delete the comment?",
+            "formatDeletion": "Are you sure you want to delete the format \"{objectName}\"?",
+            "formatMemberDeletion": "Are you sure you want to remove the user \"{objectName}\" from the format?",
+            "formatTemplateDeletion": "Are you sure you want to delete the format template \"{objectName}\"?",
+            "header": "Confirm deletion",
+            "libraryDeletion": "Are you sure you want to delete the library \"{objectName}\"?",
+            "libraryMemberDeletion": "Are you sure you want to remove the user \"{objectName}\" from the library?",
+            "linkDeletion": "Are you sure you want to delete the link?",
+            "phaseDeletion": "Are you sure you want to delete the phase \"{objectName}\"?",
+            "phaseTemplateDeletion": "Are you sure you want to delete the phase template \"{objectName}\"?",
+            "skill": "Are you sure you want to delete the skill \"{objectName}\"?",
+            "submissionDeletion": "Are you sure you want to delete the submission \"{objectName}\"?",
+            "teamDeletion": "Are you sure you want to delete the team \"{objectName}\"?",
+            "workspaceDeletion": "Are you sure you want to delete the workspace \"{objectName}\"?",
+            "workspaceMemberDeletion": "Are you sure you want to remove the user \"{objectName}\" from the workspace?",
+            "meetingCancellation": "Are you sure you want to cancel the meeting room \"{objectName}\"?",
+            "cancellationHeader": "Confirm cancellation"
+        },
+        "description": {
+            "header": "You can format the text of descriptions by using the following HTML tags.",
+            "snackbarHint": "Code has been saved to clipboard",
+            "bold": {
+                "leftSide": "<b> Bold Text </b>",
+                "rightSide": "<b> Bold Text </b>"
+            },
+            "italics": {
+                "leftSide": "<i> italics </i>",
+                "rightSide": "<i> italics </i>"
+            },
+            "ul": {
+                "leftSide": "<ul> \n    <li> First item  </li>\n    <li> Second item </li>\n    <li> Third item </li>\n</ul>",
+                "rightSide": "<ul class='padding-left-16'><li>First item</li><li>Second item</li><li>Third item </li></ul>"
+            },
+            "ol": {
+                "leftSide": "<ol> \n    <li> First item  </li>\n    <li> Second item </li>\n    <li> Third item </li>\n</ol>",
+                "rightSide": "<ol class='padding-left-16'><li>First item</li><li>Second item</li><li>Third item </li></ol>"
+            },
+            "emphasis": {
+                "leftSide": "<em> Stress emphasis </em>",
+                "rightSide": "<em> Stress emphasis </em>"
+            },
+            "strong_emphasis": {
+                "leftSide": "<strong> Strong emphasis </strong>",
+                "rightSide": "<strong> Strong emphasis </strong>"
+            },
+            "link": {
+                "leftSide": "<a href= \"https://www.joolia.net/\">\n Link \n</a>",
+                "rightSide": "<a> Link (http(s) necessary)</a>"
+            }
+        },
+        "addSkill": {
+            "header": "Add a skill to your profile",
+            "content": "Choose a skill"
+        },
+        "editFile": {
+            "header": "Edit"
+        },
+        "errors": {
+            "browserSupportTitle": "Browser not supported",
+            "confirm": "OK",
+            "content": {
+                "connectionError": "A connection error has occured",
+                "libraryCreationError": "The creation of a library is currently limited to Joolia administrators. To get a new one, please contact us at info@joolia.cloud",
+                "libraryDeletionError": "The deletion of a library is currently limited to Joolia administrators. Please contact us at info@joolia.cloud",
+                "libraryNotFound": "Library not found",
+                "phaseNotFound": "Phase not found",
+                "unsupportedBrowser": "The browser you are currently using is not supported by our platform. To use all platform features make sure to use Google Chrome, Mozilla Firefox or Apple Safari as browser.",
+                "workspaceCreationError": "The creation of a workspace is currently limited to Joolia administrators. To get a new one, please contact us at info@joolia.cloud",
+                "workspaceDeletionError": "The deletion of a workspace is currently limited to Joolia administrators. Please contact us at info@joolia.cloud",
+                "workspaceNotFound": "Workspace not found"
+            },
+            "title": "Error"
+        },
+        "invitation": {
+            "content": "You can invite new or already existing users here",
+            "header": "Add members"
+        },
+        "removeTeamMember": {
+            "content": "Are you sure you want to remove the member from this team?",
+            "header": "Confirm remove"
+        },
+        "sendMailTo": {
+            "content": "You can send an e-mail to registered members of this format here",
+            "header": "Send e-mail",
+            "sendToAll": "Send an e-mail to all registered format member.",
+            "sendTo": "Send an e-mail to {receiver}.",
+            "others": "and {number} others",
+            "conjunction": "and",
+            "technical": "The technical user has access to the format with id {id}"
+        },
+        "storeAsFormatTemplate": {
+            "content": "Select a library to store the template in",
+            "header": "Store format as template"
+        },
+        "storeAsMethodTemplate": {
+            "content": "Select a library to store the template in",
+            "header": "Store method as template"
+        },
+        "storeAsPhaseTemplate": {
+            "content": "Select a library to store the template in",
+            "header": "Store phase as template"
+        },
+        "uploadAvatar": {
+            "confirm": "Okay",
+            "header": "Upload image",
+            "content": "Drag & drop picture here or",
+            "select": "Select a picture to upload",
+            "uploading": "Picture is uploading..."
+        },
+        "uploadKeyVisual": {
+            "confirm": "Okay",
+            "header": "Add a key visual",
+            "image": {
+                "content": "Drag & drop picture here or",
+                "select": "Select a picture to upload",
+                "tab": "Upload",
+                "uploading": "Picture is uploading..."
+            },
+            "link": {
+                "content": "Please enter a YouTube video URL",
+                "tab": "URL (Video)"
+            }
+        },
+        "submit": {
+            "content": {
+                "member": "You are submitting as <span class=\"text-secondary\">{userName}</span>",
+                "organizer": "You are submitting as:",
+                "team": "You are submitting as <span class=\"text-secondary\">{userName}</span> for Team:"
+            },
+            "errors": {
+                "noTeams": "No teams added yet"
+            },
+            "header": "Submit"
+        }
+    },
+    "emptyStates": {
+        "activity": {
+            "altText": "Empty agenda image",
+            "organizer": {
+                "content": "Click the + in the agenda to add a first method",
+                "title": "Create a first method"
+            },
+            "participant": {
+                "content": "No methods to display",
+                "title": "Check back later"
+            }
+        },
+        "activityDescription": {
+            "content": "No description"
+        },
+        "activityFiles": {
+            "content": "No files to display"
+        },
+        "activityCanvases": {
+            "content": "No canvases to display"
+        },
+        "activityLinks": {
+            "content": "No links to display"
+        },
+        "activityProgress": {
+            "content": "No checklist in this method"
+        },
+        "activityProgressTeam": {
+            "participant": "You are not in a team",
+            "organizer": "No steps have been added yet"
+        },
+        "activitySubmission": {
+            "content": "No submissions yet"
+        },
+        "activitySubmissionDescription": {
+            "content": "No description"
+        },
+        "activitySubmissionFiles": {
+            "content": "No files to display"
+        },
+        "activityTemplate": {
+            "altText": "Empty library image",
+            "content": "Templates can help you plan methods faster. Select the STORE AS TEMPLATE option in a method to display it here",
+            "title": "No templates yet",
+            "shortContent": "Select the STORE AS TEMPLATE option in a method to display it here",
+            "shortDescription": "Without subtitle"
+        },
+        "format": {
+            "altText": "Empty format image",
+            "content": "Click CREATE FORMAT above to start planning your first format",
+            "contentWorkspaceOverview": "Click ALL FORMATS to start planning your first format",
+            "title": "Create your first format"
+        },
+        "formatDescription": {
+            "content": "No description"
+        },
+        "formatFiles": {
+            "content": "No files to display"
+        },
+        "formatTagline": {
+            "content": "No tagline has been added"
+        },
+        "formatTemplate": {
+            "altText": "Empty library image",
+            "content": "Templates can help you plan formats faster. Select the STORE AS TEMPLATE option in a format to display it here",
+            "title": "No templates yet",
+            "shortContent": "Select the STORE AS TEMPLATE option in a format to display it here"
+        },
+        "keyvisual": {
+            "altText": "No key visual available",
+            "content": "Add a descriptive image or video via the  <i class=\"material-icons icon-inner-text\">more_horiz</i>  menu to the right",
+            "title": ""
+        },
+        "library": {
+            "activityTemplate": {
+                "canvases": "No canvases have been added to this method template.",
+                "description": "This method template has no description.",
+                "files": "No files have been added to this method template.",
+                "keyvisual": "No key visual has been added to this method template.",
+                "tagline": "This method template has no tagline."
+            },
+            "formatTemplate": {
+                "description": "This format template has no description.",
+                "files": "No files have been added to this format template.",
+                "keyvisual": "No key visual has been added to this format template.",
+                "tagline": "This format template has no tagline."
+            },
+            "phaseTemplate": {
+                "description": "This phase template has no description.",
+                "files": "No files have been added to this phase template.",
+                "keyvisual": "No key visual has been added to this phase template.",
+                "tagline": "This phase template has no tagline.",
+                "methodTemplates": "No activities have been added to this phase template."
+            }
+        },
+        "logo": {
+            "altText": "No logo available",
+            "content": "Add a workspace logo via the  <i class=\"material-icons icon-inner-text\">more_horiz</i>  menu to the right",
+            "title": ""
+        },
+        "member": {
+            "content": "No members have been added yet"
+        },
+        "phase": {
+            "organizer": {
+                "altText": "Empty phase image",
+                "content": "Click ADD PHASE above to plan the first phase of the format and the methods in it.",
+                "title": "Create a first phase in this format"
+            },
+            "participant": {
+                "altText": "Empty phase image",
+                "content": "Check back later!",
+                "title": "There are no phases in this format yet"
+            }
+        },
+        "phaseTemplate": {
+            "altText": "Empty library image",
+            "content": "Templates can help you plan formats faster. Select the STORE AS TEMPLATE option in a phase to display it here",
+            "title": "No templates yet",
+            "shortContent": "Select the STORE AS TEMPLATE option in a phase to display it here"
+        },
+        "team": {
+            "content": "No teams have been added yet"
+        },
+        "teamMember": {
+            "addDialog": "No more members left to add, everyone already is in this team.",
+            "content": "This team does not have any members yet"
+        },
+        "teams": {
+            "organizer": {
+                "altText": "Empty teams image",
+                "content": "Click ADD TEAM above to assign a participant of the format to this team.",
+                "title": "Create a first team"
+            },
+            "participant": {
+                "altText": "Empty teams image",
+                "content": "Check back later!",
+                "title": "There are no teams in this format for now"
+            }
+        },
+        "teamavatar": {
+            "altText": "No team image available",
+            "content": "Add a descriptive image via the  <i class=\"material-icons icon-inner-text\">more_horiz</i>  menu to the right"
+        },
+        "teamFiles": {
+            "content": "No files have been added yet"
+        }
+    },
+    "errors": {
+        "canvasSelect": {
+            "required": "Please select a canvas"
+        },
+        "contact": {
+            "required": "Please check this box so that Joolia may send you a confirmation link via e-mail"
+        },
+        "default": {
+            "defaultErrorPage": "Sorry, it looks like an error occured on the requested page.",
+            "title": "Unexpected Error"
+        },
+        "domain": {
+            "required": "Domain is required"
+        },
+        "email": {
+            "invalidChips": "The highlighted e-mail addresses are invalid",
+            "pattern": "The e-mail address is invalid",
+            "required": "E-mail is required",
+            "taken": "The e-mail address is already taken",
+            "maxExceeded": "Only up to max. {maxAmount} e-mail addresses can be sent simultaneously."
+        },
+        "extension": {
+            "length": "Combination of file name and extension too long"
+        },
+        "fileName": {
+            "length": "Combination of file name and extension too long",
+            "required": "File name is required"
+        },
+        "licensesCount": {
+            "required": "Amount of licenses is required"
+        },
+        "linkUrl": {
+            "required": "URL is required",
+            "pattern": "URL is invalid"
+        },
+        "name": {
+            "required": "Name is required",
+            "unique": "Name is already taken"
+        },
+        "mailMessage": {
+            "required": "The message text must not be empty",
+            "minlength": "The message text is too short",
+            "maxlength": "The message text is too long"
+        },
+        "password": {
+            "pattern": "The password is invalid. 8 characters or longer. At least one number or special character",
+            "required": "Password is required"
+        },
+        "selection": {
+            "required": "Selection is required"
+        },
+        "signIn": {
+            "401": "Your e-mail and password are incorrect - Please try again",
+            "412": "Login failed too many times - Please wait 5 minutes and try again"
+        },
+        "submit": {
+            "outdatedActivity": "The organizer updated the method. Please reload the page",
+            "invalidLink": "This link is no valid link to Microsoft Teams, Skype or Zoom"
+        },
+        "video": {
+            "pattern": "The URL is not a valid YouTube URL",
+            "required": "URL is required"
+        },
+        "meeting": {
+            "unableToStart": "Meeting could not be started",
+            "unableToDelete": "Meeting could not be deleted"
+        },
+        "device": {
+            "tooSmallResolution": {
+                "title": "Display resolution not supported",
+                "description": {
+                    "createCustomCanvas": "The resolution of the display is not supported for creating custom canvas. Please use a higher display resolution."
+                }
+            }
+        }
+    },
+    "forgotPassword": {
+        "header": "Forgot password",
+        "content": "Did you forget your password? No problem! Just enter your registered e-mail address and we will send you a message with which you can change your password"
+    },
+    "forgotPasswordConfirmation": {
+        "header": "Request sent",
+        "content": "We sent you a link to {email} which allows you to reset your password"
+    },
+    "global": {
+        "missingLogin": "Please Login!"
+    },
+    "hints": {
+        "emails": "Enter one or more e-mail addresses",
+        "password": "8 characters or longer. At least one number or special character",
+        "submissionSearch": "Search for a submitter, a method, a title...",
+        "meeting": {
+            "notStarted": "Meeting not yet started. Please try again in a few minutes."
+        },
+        "canvas": {
+            "teamNotSelected": "To create a submission please select a specific team as submitter"
+        }
+    },
+    "home": {
+        "footer": {
+            "contact": "Contact",
+            "copyright": "Copyright © 2020 by Joolia GmbH",
+            "copyrightShort": "© 2020 by Joolia GmbH",
+            "imprint": "Imprint",
+            "privacy": "Privacy Policy",
+            "terminology": "Information and Terminology",
+            "terms": "Terms and Conditions"
+        },
+        "instructions": {
+            "heading": "How it works",
+            "report": {
+                "button": "Contact us",
+                "text": "Report bugs and feature ideas via email to info@joolia.cloud. We are looking forward to your feedback!"
+            },
+            "signup": {
+                "button": "Register to Joolia",
+                "text": "Register to Joolia and start using it"
+            }
+        },
+        "pageTitle": "Joolia | Innovation Software for Innovation Labs and Design Thinking",
+        "thanks": {
+            "text": "Thank you for taking part!"
+        },
+        "welcome": {
+            "buttons": {
+                "instructions": "How To",
+                "login": "Log In",
+                "signup": "Register"
+            },
+            "text": "Welcome to Joolia"
+        },
+        "newVersionUpdate": "New version of Joolia available - Reload page?"
+    },
+    "labels": {
+        "action": "Action",
+        "activity": "Method",
+        "activePhases": "Now active",
+        "activityForParticipants": "This is a method for individual participants. Each one can check tasks off this to-do-list.",
+        "activityForTeams": "This is a method for teams. Each team member can check tasks off this to-do-list.",
+        "activityProgressVisibilityOrganizers": "Only Organizers can see progress for this method.",
+        "activityProgressVisibilityParticipants": "All participants can see the progress for this method.",
+        "activityProgressVisibilityTeams": "All teams can see the progress for this method.",
+        "activitySubmissionVisibilityOrganizers": "Only Organizers can see submissions for this method.",
+        "activitySubmissionVisibilityParticipants": "All participants can see the submissions for this method.",
+        "activitySubmissionVisibilityTeams": "All teams can see the submissions for this method.",
+        "activityTemplate": "{plural, plural, =1{Method templates} other{Method template}}",
+        "activityTemplateList": "Method templates",
+        "addComment": "Add a comment ...",
+        "addFirstMethod": "Click the PLUS to add a first method to your agenda!",
+        "admin": "Administrator",
+        "administrator": "{plural, plural, =1{Administrators} other{Administrator}}",
+        "amountActivities": "{amount, plural, =0{No method} one{1 method} other{# methods}}",
+        "amountComments": "{amount, plural,  =0{No comments} =1{# Comment} other {# Comments}}",
+        "amountDays": "{amount, plural, =1{1 day} other{# days}}",
+        "amountFiles": "{amount, plural, =0{No files} =1{1 File} other{# Files}}",
+        "amountFormats": "{amount, plural, =0{No formats} =1{1 Format} other{# Formats}}",
+        "amountHours": "{amount, plural, =1{1 hour} other{# hours}}",
+        "amountHoursAndMinutesLong": "{amountHours, plural, =0{{amountMinutes, plural, =0{0 hours} =1{1 minute} other{# minutes}}} =1{1 hour{amountMinutes, plural, =0{} =1{ 1 minute} other{ # minutes}}} other{{amountHours} hours{amountMinutes, plural, =0{} =1{ 1 minute}other{ # minutes}}}}",
+        "amountHoursAndMinutesShort": "{amountHours, plural, =0{{amountMinutes, plural, =0{0 h} other{# min}}} other{{amountHours} h{amountMinutes, plural, =0{} other{ # min}}}}",
+        "amountMembers": "{amount, plural, =0{No members} =1{1 Member} other{# Members}}",
+        "amountMethods": "{amount, plural, =0{No methods} =1{1 Method} other{# Methods}}",
+        "amountPhases": "{amount, plural, =0{No phases} =1{1 Phase} other{# Phases}}",
+        "amountSubmissions": "{amount, plural, =0{No submissions} =1{1 Submission} other{# Submissions}}",
+        "amountTeams": "{amount, plural, =0{No teams} one{1 Team} other{# Teams}}",
+        "amountTemplates": "{amount, plural, =0{No templates} =1{1 Template} other{# Templates}}",
+        "averageRating": "Rating ( Ø {average} )",
+        "averageRatingDescription": "Rating (Ø)",
+        "blankMethod": "Blank method",
+        "beta": "beta",
+        "canvasSelect": "Canvas",
+        "category": "{plural, plural, =1{Categories} other{Category}}",
+        "categoryValue": {
+            "explore": "Explore",
+            "ideate": "Ideate",
+            "test": "Test",
+            "prototype": "Prototype",
+            "implement": "Implement"
+        },
+        "chatHeaderTitle": "Chat in",
+        "clickHere": "Click here",
+        "clickToAddDescription": "Add description here...",
+        "clickToAddName": "Add name here...",
+        "clickToAddStep": "Add new step...",
+        "clickToAddSubmission": "Add submission here...",
+        "clickToAddSubtitle": "Add subtitle here...",
+        "clickToAddTagline": "Add tagline here...",
+        "commentCount": "Comments ({count})",
+        "collaboration": "Collaboration",
+        "comments": "Comments",
+        "company": "Company",
+        "completeName": "First and last name",
+        "currentActivity": "Current method",
+        "currentActivityContent": "{plural, plural, =0 {No methods are currently running} other {Several methods are currently running}}",
+        "currentPhase": "Current phase",
+        "currentPhaseContent": "{plural, plural, =0 {No phases are currently running} other {Several phases are currently running}}",
+        "dailyScale": "Daily scale",
+        "date": "Date",
+        "description": "Description",
+        "details": "Details",
+        "email": "{plural, plural, =1{E-mail addresses} other{E-Mail}}",
+        "emptyAgenda": "This agenda is still empty",
+        "ends": "Ends { date }",
+        "fileExtension": "File extension",
+        "fileName": "File name",
+        "files": "Files",
+        "filter": {
+            "pending": "Pending",
+            "registered": "Registered",
+            "admin": "Administrator",
+            "organizer": "Organizer",
+            "participant": "Participant"
+        },
+        "filterGroup": "Filter",
+        "format": "{plural, plural, =1{Formats} other{Format}}",
+        "formatCount": "Formats ({count})",
+        "formatTemplate": "{plural, plural, =1{Format templates} other{Format template}}",
+        "hourlyScale": "Hourly scale",
+        "invitationPending": "Invitation pending",
+        "invitationText": "Invitation text",
+        "joolia": "Joolia",
+        "keyVisual": "Key Visual",
+        "lastLogin": "Last Login",
+        "library": "{plural, plural, =1{Libraries} other{Library}}",
+        "licenses": "Licenses",
+        "licensesCount": "Amount of licenses",
+        "vote": "{plural, plural, =1{{ voteCount } like} other{{ voteCount } likes}}",
+        "link": "Link",
+        "linkUrl": "Link URL",
+        "links": "Links",
+        "canvas": "Canvas",
+        "canvases": "Canvases",
+        "canvasType": {
+            "canvas": "Canvas",
+            "questionnaire": "Questionnaire",
+            "journey": "Journey",
+            "custom": "Custom Canvas"
+        },
+        "logout": "Logout",
+        "domain": "Domain",
+        "mailMessage": "Enter your message here",
+        "memberProgress": "Participants",
+        "method": "{plural, plural, =1{Methods} other{Method}}",
+        "methodTemplate": "Method template",
+        "microsoft365": {
+            "title": "Microsoft 365",
+            "msTeamsIntegration": "MS Teams Integration",
+            "adminConsent": "Admin Consent",
+            "adminConsentStatus": "{granted, select, false {NOT GRANTED} other{GRANTED}}"
+        },
+        "moreProgress": "{plural, plural, =0 {No progress yet} other{There is more progress}}",
+        "myMemberProgress": "My Progress",
+        "myTeamProgress": "My Teams",
+        "name": "Name",
+        "navigation": "Navigation",
+        "noDate": "No date",
+        "noDuration": "No duration",
+        "noTeams": "You are not a member of any team",
+        "recommendedDuration": "Recommended duration",
+        "noStartDate": "No start date",
+        "optional": "(optional)",
+        "organizer": "Organizer",
+        "othersMemberProgress": "Other Members",
+        "othersTeamProgress": "Other Teams",
+        "participant": "Participant",
+        "password": "Password",
+        "passwordResetSuccess": "Your password was changed successfully",
+        "pastPhases": "Past",
+        "personalLibrary": "{userName}'s Library",
+        "personalWorkspace": "{userName}'s Workspace",
+        "phase": "{plural, plural, =1{Phases} other{Phase}}",
+        "phaseCount": "Phases ({count})",
+        "phaseTemplate": "{plural, plural, =1{Phase templates} other{Phase template}}",
+        "plannedPhases": "Upcoming",
+        "profileSettings": "Profile settings",
+        "progress": "Progress",
+        "progressCount": "Progress ({count})",
+        "rating": "Rating",
+        "resetPassword": "Set new password",
+        "role": "Role",
+        "search": "Search",
+        "separator": ".",
+        "settings": "Settings",
+        "skill": "{plural, plural, =1{Skills} other{Skill}}",
+        "startsDate": "Starts { date }",
+        "startsDateTime": "Starts { date } at { time }",
+        "steps": "Steps",
+        "stepsDescription": "Steps guide participants through the method.",
+        "stepsTemplateDescription": "No tasks have been defined for this method. You can add a checklist after copying this method to a phase in a format",
+        "submissions": "Submissions",
+        "submissionsCount": "Submissions ({count})",
+        "submitter": "Submitter",
+        "submitterUser": "User",
+        "submitterTeam": "Team",
+        "allSubmitter": "All submitters",
+        "tagline": "Tagline",
+        "team": "{plural, plural, =1{Teams} other{Team}}",
+        "teamInfoOrganizer": "All teams of the format",
+        "teamInfoParticipant": "Teams in which you are a member",
+        "teamProgress": "Teams",
+        "technical": "Technical",
+        "title": "Title",
+        "unplannedPhases": "Without date",
+        "untitledActivity": "Untitled Activity",
+        "untitledCanvas": "Untitled Canvas",
+        "untitledFormat": "Untitled Format",
+        "untitledLibrary": "Untitled Library",
+        "untitledPhase": "Untitled Phase",
+        "untitledSlot": "Untitled Slot",
+        "untitledTeam": "Untitled Team",
+        "untitledWorkspace": "Untitled Workspace",
+        "updateProfileSuccess": "Your profile was changed successfully.",
+        "uploadAvatar": "Upload image",
+        "uploadProgress": "uploading... { upload } of { size }",
+        "uploadProcessing": "processing...",
+        "usedLicenses": "Consumed licenses: { memberCount } of { licensesCount }",
+        "userActivityOverview": "User activity overview",
+        "video": "YouTube Video Url",
+        "workspace": "{plural, plural, =1{Workspaces} other{Workspace}}",
+        "yourTeams": "Your Teams"
+    },
+    "paginator": {
+        "firstPage": "First page",
+        "itemsPerPage": "Items per page:",
+        "lastPage": "Last page",
+        "nextPage": "Next page",
+        "of": "of",
+        "previousPage": "Previous page"
+    },
+    "sidenav": {
+        "all": "All",
+        "format": {
+            "header": "Formats",
+            "information": "General",
+            "members": "Members",
+            "schedule": "Schedule",
+            "submissions": "Submissions",
+            "teams": "Teams"
+        },
+        "library": {
+            "header": "Libraries",
+            "members": "Members",
+            "templates": "Templates"
+        },
+        "recentlyUsed": "Recently used",
+        "workspace": {
+            "administration": "Administration",
+            "allFormats": "Formats",
+            "header": "Workspaces",
+            "members": "Members",
+            "information": "General"
+        },
+        "form": {
+            "title": "Context",
+            "back": "To activity"
+        }
+    },
+    "signIn": {
+        "forgotPassword": "Forgot password?",
+        "header": "Login",
+        "keepMeSignedIn": "Keep me signed in",
+        "loginButton": "Login",
+        "jumpToSignUp": "Not registered yet? ",
+        "altText": "Sign in picture"
+    },
+    "signUp": {
+        "contact": "Joolia may contact me via e-mail",
+        "header": "Register",
+        "signUpButton": "Register",
+        "termsAndConditions": "By signing up, you agree to our <a href=\"legal\\terms-and-conditions\">Terms and Conditions</a>",
+        "jumpToSignIn": "Already registered? ",
+        "altText": "Sign up picture"
+    },
+    "signUpConfirmation": {
+        "header": "Registration completed",
+        "loginButton": "login",
+        "login": "Log in now to start using Joolia"
+    },
+    "snackbar": {
+        "activityDeleted": "The method \"{objectName}\" has been deleted",
+        "activityDeletionError": "The method could not be deleted",
+        "activityNotFound": "The method could not be found",
+        "activityTemplateDeleted": "The method template \"{objectName}\" has been deleted",
+        "activityTemplateDeletionError": "The method template could not be deleted",
+        "activityTemplateNotFound": "The method template could not be found",
+        "blockStatusChangeWithSubmissionsCustomCanvas": "Submissions available - Status change not possible.",
+        "canvasNotFound": "The canvas could not be found",
+        "commentDeleted": "The comment has been deleted",
+        "commentCreationError": "The comment could not be created. You have to add a rating and/or comment.",
+        "commentDeletionError": "The comment could not be deleted",
+        "connectionError": "The request could not be sent. Please try again later.",
+        "deleteLastAdminError": "Last administrator cannot be deleted",
+        "deleteLastSlotCustomCanvas": "Delete of last slot in canvas is not allowed",
+        "demoteLastAdminError": "Last administrator cannot be converted to participant",
+        "demoteLastOrganizerError": "Last organizer cannot be converted to participant",
+        "duplicateTeamName": "This team name is already taken in the current format.",
+        "emailsAreProcessed": "{plural, plural, =1{E-mail is sent.} other{E-mails are sent in background. This can take a few minutes.}}",
+        "libraryDeleted": "The library \"{objectName}\" has been deleted",
+        "libraryDeletionError": "The library could not be deleted",
+        "libraryMemberDeleted": "The user \"{objectName}\" has been removed from the library \"{parentName}\"",
+        "libraryMemberDeletionError": "The user could not be removed from the library",
+        "libraryNotFound": "The library could not be found",
+        "fileDeleted": "The file \"{objectName}\" has been deleted",
+        "fileDeletionError": "The file could not be deleted",
+        "fileUpdateError": "The file could not be updated",
+        "filesCurrentlyUploading": "The files have been uploaded",
+        "formatDeleted": "The format \"{objectName}\" has been deleted",
+        "formatDeletionError": "The format could not be deleted",
+        "formatMemberAdded": "The user has been added",
+        "formatMemberAddError": "The user could not be added",
+        "formatMemberDeleted": "The user \"{objectName}\" has been removed from the format \"{parentName}\"",
+        "formatMemberDeletionError": "The user could not be removed from the format",
+        "formatNotFound": "The format could not be found",
+        "formatTemplateCreated": "The template was stored in the library {libraryName}",
+        "formatTemplateDeleted": "The format template \"{objectName}\" has been deleted",
+        "formatTemplateDeletionError": "The format could not be deleted",
+        "formatTemplateNotFound": "The format template could not be found",
+        "mailsAreProcessedMessage": "Invitations are sent. This may take a few minutes.",
+        "methodTemplateCreated": "The template was stored in the library {libraryName}",
+        "meetingCancelled": "The meeting is cancelled. This may take a few minutes.",
+        "phaseCreated": "New phase was created",
+        "phaseDeleted": "The phase \"{objectName}\" has been deleted",
+        "phaseDeletionError": "The phase could not be deleted",
+        "phaseNotFound": "The phase could not be found",
+        "phaseTemplateCreated": "The template was stored in the library {libraryName}",
+        "phaseTemplateDeleted": "The phase template \"{objectName}\" has been deleted",
+        "phaseTemplateDeletionError": "The phase template could not be deleted",
+        "phaseTemplateNotFound": "The phase template could not be found",
+        "publishEmptyCustomCanvas": "Canvas without slots cannot be published",
+        "removeLastFormatMemberError": "Last member in format cannot be deleted",
+        "removeLastLibraryMemberError": "You are the last member of this library, so you cannot leave it",
+        "removeLastWorkspaceMemberError": "Last member in workspace cannot be deleted",
+        "skillCreationError": "The skill could not be created",
+        "skillDeleted": "The skill \"{objectName}\" has been deleted",
+        "skillDeletionError": "The skill could not be deleted",
+        "submissionDeleted": "The submission \"{objectName}\" has been deleted",
+        "submissionDeletionError": "The submission could not be deleted",
+        "submissionNotFound": "The submission could not be found",
+        "teamCreated": "New team was created",
+        "teamDeleted": "The team \"{objectName}\" has been deleted",
+        "teamDeletionError": "The team could not be deleted",
+        "teamMemberDeleted": "The user \"{objectName}\" has been removed from the team \"{parentName}\"",
+        "teamMemberDeletionError": "The user could not be removed from the team",
+        "teamNotFound": "The team could not be found",
+        "technicalUserAdded": "The technical user has been added to the format",
+        "technicalUserAddedError": "The technical user could not be added to the format",
+        "technicalUserRemoved": "The technical user has been removed from the format",
+        "technicalUserRemovedError": "The technical user could not be removed from the format",
+        "workspaceDeleted": "The workspace \"{objectName}\" has been deleted",
+        "workspaceDeletionError": "The workspace could not be deleted",
+        "workspaceConsentUpdate": "Admin consent has been saved.",
+        "workspaceConsentUpdateError": "Admin consent could not be saved.",
+        "workspaceCreationError": "The workspace could not be created",
+        "workspaceMemberDeleted": "The user \"{objectName}\" has been removed from the workspace \"{parentName}\"",
+        "workspaceMemberDeletionError": "The user could not be removed from the workspace",
+        "workspaceNotFound": "The workspace could not be found",
+        "domainError": "E-mail could not be sent because the domain \"{domain}\" is invalid"
+    },
+    "upload": {
+        "cancelled": "Upload cancelled ({fileName})",
+        "failed": "Upload failed ({fileName})",
+        "successful": "Upload successful ({fileName}). The file is now being processed. This may take a few minutes."
+    },
+    "cookieBanner": {
+        "acceptButton": "Agree",
+        "header": "We use cookies",
+        "moreButton": "Read more",
+        "section1": "We use cookies to enable basic functions like page navigation and access to safe areas of the website.",
+        "section2": "With the use of our website, you consent to use of these cookies."
+    },
+    "copyrightNotice": "By sharing content I warrant that I own the copyright or have been given express permission by the copyright owner to do so.",
+    "messenger": {
+        "title": "Joolia Connect",
+        "messages": {
+            "new": "{amount, plural, =0{no new messages} =1{# new message} other{# new messages}}"
+        }
+    },
+    "skill": {
+        "BUDGETING": "Budgeting",
+        "BUSINESS_PLANNING": "Business Planning",
+        "BUSINESS_REENGINEERING": "Business Re-engineering",
+        "CHANGE_MANAGEMENT": "Change Management",
+        "CONSOLIDATION": "Consolidation",
+        "COST_CONTROL": "Cost Control",
+        "DECISION_MAKING": "Decision Making",
+        "DEVELOPING_POLICIES": "Developing Policies",
+        "DIVERSIFICATION": "Diversification",
+        "EMPLOYEE_EVALUATION": "Employee Evaluation",
+        "FINANCING": "Financing",
+        "GOVERNMENT_RELATIONS": "Government Relations",
+        "HIRING": "Hiring",
+        "INTERNATIONAL_MANAGEMENT": "International Management",
+        "INVESTOR_RELATIONS": "Investor Relations",
+        "IPO": "IPO",
+        "JOINT_VENTURES": "Joint Ventures",
+        "LABOUR_RELATIONS": "Labour Relations",
+        "MERGER_AND_ACQUISITIONS": "Merger & Acquisitions",
+        "MULTISITES_MANAGEMENT": "Multi-sites Management",
+        "NEGOTIATION": "Negotiation",
+        "PROFIT_AND_LOSS": "Profit & Loss",
+        "ORGANIZATIONAL_DEVELOPMENT": "Organizational Development",
+        "PROJECT_MANAGEMENT": "Project Management",
+        "STAFF_DEVELOPMENT": "Staff Development",
+        "STRATEGIC_PARTNERSHIP": "Strategic Partnership",
+        "STRATEGIC_PLANNING": "Strategic Planning",
+        "SUPERVISION": "Supervision",
+        "BIDDING": "Bidding",
+        "CALL_CENTRE_OPERATIONS": "Call Centre Operations",
+        "CONTINUOUS_IMPROVEMENT": "Continuous Improvement",
+        "CONTRACT_MANAGEMENT": "Contract Management",
+        "ENVIRONMENTAL_PROTECTION": "Environmental Protection",
+        "FACILITY_MANAGEMENT": "Facility Management",
+        "INVENTORY_CONTROL": "Inventory Control",
+        "MANPOWER_PLANNING": "Manpower Planning",
+        "OPERATIONS_RESEARCH": "Operations Research",
+        "OUTSOURCING": "Outsourcing",
+        "POLICIES_AND_PROCEDURES": "Policies & Procedures",
+        "PROJECT_COORDINATION": "Project Co-ordination",
+        "EQUIPMENT_DESIGN": "Equipment Design",
+        "EQUIPMENT_MAINTENANCE_AND_REPAIR": "Equipment Maintenance & Repair",
+        "EQUIPMENT_MANAGEMENT": "Equipment Management",
+        "ISO_KNOWHOW": "ISO Know-How",
+        "TQM": "TQM",
+        "ORDER_PROCESSING": "Order Processing",
+        "PLANT_DESIGN_AND_LAYOUT": "Plant Design & Layout",
+        "PROCESS_ENGINEERING": "Process Engineering",
+        "PRODUCTION_PLANNING": "Production Planning",
+        "QUALITY_ASSURANCE": "Quality Assurance",
+        "SAFETY_ENGINEERING": "Safety Engineering",
+        "DISTRIBUTION": "Distribution",
+        "TRANSPORTATION": "Transportation",
+        "JIT": "JIT",
+        "PURCHASING_AND_PROCUREMENT": "Purchasing & Procurement",
+        "SHIPPING": "Shipping",
+        "TRAFFIC_MANAGEMENT": "Traffic Management",
+        "WAREHOUSING": "Warehousing",
+        "DESIGN_AND_SPECIFICATION": "Design & Specification",
+        "DIAGNOSTICS": "Diagnostics",
+        "FEASIBILITY_STUDIES": "Feasibility Studies",
+        "FIELD_STUDIES": "Field Studies",
+        "LAB_MANAGEMENT": "Lab Management",
+        "LAB_DESIGN": "Lab Design",
+        "NEW_EQUIPMENT_DESIGN": "New Equipment Design",
+        "PATENT_APPLICATION": "Patent Application",
+        "PRODUCT_DEVELOPMENT": "Product Development",
+        "PRODUCT_TESTING": "Product Testing",
+        "PROTOTYPE_DEVELOPMENT": "Prototype Development",
+        "RANDD_MANAGEMENT": "R&D Management",
+        "SIMULATION_DEV.": "Simulation Dev.",
+        "STATISTICAL_ANALYSIS": "Statistical Analysis",
+        "ACCOUNT_MANAGEMENT": "Account Management",
+        "B2B": "B2B",
+        "CONTRACT_NEGOTIATION": "Contract Negotiation",
+        "CUSTOMER_RELATIONS": "Customer Relations",
+        "CUSTOMER_SERVICE": "Customer Service",
+        "DIRECT_SALES": "Direct Sales",
+        "DISTRIBUTOR_RELATIONS": "Distributor Relations",
+        "ECOMMERCE": "E-Commerce",
+        "FORECASTING": "Forecasting",
+        "INCENTIVE_PROGRAMS": "Incentive Programs",
+        "INTERNATIONAL_BUSINESS_DEVELOPMENT": "International Business Development",
+        "INTERNATIONAL_EXPANSION": "International Expansion",
+        "NEW_ACCOUNT_DEVELOPMENT": "New Account Development",
+        "PROPOSAL_WRITING": "Proposal Writing",
+        "PRODUCT_DEMONSTRATIONS": "Product Demonstrations",
+        "TELEMARKETING": "Telemarketing",
+        "TRADE_SHOWS": "Trade Shows",
+        "SALES_ADMINISTRATION": "Sales Administration",
+        "SALES_ANALYSIS": "Sales Analysis",
+        "SALES_KITS": "Sales Kits",
+        "SALES_MANAGEMENT": "Sales Management",
+        "SALESPERSONS_RECRUITMENT": "Salespersons Recruitment",
+        "SHOW_ROOM_MANAGEMENT": "Show Room Management",
+        "SALES_SUPPORT": "Sales Support",
+        "SALES_TRAINING": "Sales Training",
+        "ADVERTISING": "Advertising",
+        "BRAND_MANAGEMENT": "Brand Management",
+        "CHANNEL_MARKETING": "Channel Marketing",
+        "COMPETITIVE_ANALYSIS": "Competitive Analysis",
+        "COPYWRITING": "Copywriting",
+        "CORPORATE_IDENTITY": "Corporate Identity",
+        "IMAGE_DEVELOPMENT": "Image Development",
+        "LOGO_DEVELOPMENT": "Logo Development",
+        "MARKET_RESEARCH_AND_ANALYSIS": "Market Research & Analysis",
+        "MARKETING_COMMUNICATION": "Marketing Communication",
+        "MARKETING_PLAN": "Marketing Plan",
+        "MARKETING_PROMOTIONS": "Marketing promotions",
+        "MEDIA_BUYING_EVALUATION_MEDIA_RELATIONS": "Media Buying/Evaluation Media Relations",
+        "MERCHANDISING": "Merchandising",
+        "NEW_PRODUCT_DEVELOPMENT": "New Product Development",
+        "ONLINE_MARKETING": "Online Marketing",
+        "PACKAGING": "Packaging",
+        "PRICING": "Pricing",
+        "PRODUCT_LAUNCH": "Product Launch",
+        "EQUIPMENT_PURCHASING": "Equipment Purchasing",
+        "FORMS_AND_METHODS": "Forms and Methods",
+        "LEASES": "Leases",
+        "MAILROOM_MANAGEMENT": "Mailroom Management",
+        "OFFICE_MANAGEMENT": "Office Management",
+        "RECEPTION": "Reception",
+        "RECORDS_MANAGEMENT": "Records Management",
+        "SECURITY": "Security",
+        "SPACE_PLANNING": "Space Planning",
+        "WORD_PROCESSING": "Word Processing",
+        "CONTRACT_PREPARATION": "Contract Preparation",
+        "COPYRIGHTS_AND_TRADEMARKS": "Copyrights & Trademarks",
+        "CORPORATE_LAW": "Corporate Law",
+        "COMPANY_SECRETARY": "Company Secretary",
+        "EMPLOYMENT_ORDINANCE": "Employment Ordinance",
+        "INTELLECTUAL_PROPERTY": "Intellectual Property",
+        "INTERNATIONAL_AGREEMENTS": "International Agreements",
+        "LICENSING_MERGERS_AND_ACQUISITIONS": "Licensing Mergers & Acquisitions",
+        "PATENTS": "Patents",
+        "SHAREHOLDER_PROXIES": "Shareholder proxies",
+        "STOCK_ADMINISTRATION": "Stock Administration",
+        "ACCOUNTING_MANAGEMENT": "Accounting Management",
+        "ACCOUNTS_PAYABLE": "Accounts Payable",
+        "VENTURE_CAPITAL_RELATIONS": "Venture Capital Relations",
+        "ACCOUNTS_RECEIVABLE": "Accounts Receivable",
+        "ACQUISITIONS_AND_MERGERS": "Acquisitions & Mergers",
+        "ACTUARIAL_RATING_ANALYSIS": "Actuarial/Rating Analysis",
+        "AUDITING": "Auditing",
+        "BANKING_RELATIONS": "Banking Relations",
+        "BUDGET_CONTROL": "Budget Control",
+        "CAPITAL_BUDGETING": "Capital Budgeting",
+        "CAPITAL_INVESTMENT": "Capital Investment",
+        "CASH_MANAGEMENT": "Cash Management",
+        "COST_ACCOUNTING": "Cost Accounting",
+        "CREDIT_COLLECTIONS": "Credit/Collections",
+        "DEBT_NEGOTIATIONS": "Debt Negotiations",
+        "EQUITY_DEBT_MANAGEMENT": "Equity/Debt Management",
+        "FINANCIAL_ANALYSIS": "Financial Analysis",
+        "FINANCIAL_REPORTING": "Financial Reporting",
+        "FINANCING_FORECASTING": "Financing Forecasting",
+        "FOREIGN_EXCHANGE": "Foreign Exchange",
+        "GENERAL_LEDGER_INSURANCE": "General Ledger Insurance",
+        "INTERNAL_CONTROLS": "Internal Controls",
+        "LENDING": "Lending",
+        "LINES_OF_CREDIT_MANAGEMENT": "Lines of Credit Management",
+        "REPORTING": "Reporting",
+        "PAYROLL": "Payroll",
+        "FUND_MANAGEMENT": "Fund Management",
+        "PROFIT_PLANNING": "Profit Planning",
+        "RISK_MANAGEMENT": "Risk Management",
+        "STOCKHOLDER_RELATIONS": "Stockholder Relations",
+        "TAX": "Tax",
+        "TREASURY": "Treasury",
+        "INVESTOR_PRESENTATIONS": "Investor Presentations",
+        "ARBITRATION_MEDIATION": "Arbitration/Mediation",
+        "CAREER_COUNSELING": "Career Counseling",
+        "CAREER_COACHING": "Career Coaching",
+        "CLASSIFIED_ADVERTISEMENTS": "Classified Advertisements",
+        "COMPANY_ORIENTATION": "Company Orientation",
+        "WORKFORCE": "Workforce",
+        "FORECAST_PLANNING": "Forecast/Planning",
+        "COMPENSATION_AND_BENEFITS": "Compensation & Benefits",
+        "CORPORATE_CULTURE": "Corporate Culture",
+        "TRAINING_ADMINISTRATION": "Training Administration",
+        "EMPLOYEE_DISCIPLINE": "Employee Discipline",
+        "EMPLOYEE_SELECTION": "Employee Selection",
+        "EXECUTIVE_RECRUITING": "Executive Recruiting",
+        "GRIEVANCE_RESOLUTION": "Grievance Resolution",
+        "HUMAN_RESOURCES_MANAGEMENT": "Human Resources Management",
+        "INDUSTRIAL_RELATIONS": "Industrial Relations",
+        "JOB_ANALYSIS": "Job Analysis",
+        "LABOUR_NEGOTIATIONS": "Labour Negotiations",
+        "OUTPLACEMENT": "Outplacement",
+        "PERFORMANCE_APPRAISAL": "Performance Appraisal",
+        "SALARY_ADMINISTRATION": "Salary Administration",
+        "SUCCESSION_PLANNING": "Succession Planning",
+        "TEAM_BUILDING": "Team Building",
+        "TRAINING": "Training",
+        "ALGORITHM_DEVELOPMENT": "Algorithm Development",
+        "APPLICATION_DATABASE": "Application Database",
+        "ADMINISTRATION": "Administration",
+        "APPLICATIONS_DEVELOPMENT": "Applications Development",
+        "BUSINESS_SYSTEMS_PLANNING": "Business Systems Planning",
+        "WEB_SITE": "Web Site",
+        "EDITOR": "Editor",
+        "CAPACITY_PLANNING": "Capacity Planning",
+        "CRM": "CRM",
+        "CAD": "CAD",
+        "EDI": "EDI",
+        "ENTERPRISE_ASSET_MANAGEMENT": "Enterprise Asset Management",
+        "EAP": "EAP",
+        "ENTERPRISE_RESOURCE_PLANNING": "Enterprise Resource Planning",
+        "ERP": "ERP",
+        "HARDWARE_MANAGEMENT": "Hardware Management",
+        "INFORMATION_MANAGEMENT": "Information Management",
+        "INTEGRATION_SOFTWARE": "Integration Software",
+        "INTRANET_DEVELOPMENT": "Intranet Development",
+        "PROGRAMMING_LANGUAGES": "Programming Languages",
+        "PORTAL_DESIGN_DEVELOPMENT_SOFTWARE": "Portal Design/Development Software",
+        "CUSTOMIZATION": "Customization",
+        "SOFTWARE_DEVELOPMENT": "Software Development",
+        "SYSTEM_ANALYSIS": "System Analysis",
+        "SYSTEM_DESIGN": "System Design",
+        "SYSTEM_DEVELOPMENT": "System Development",
+        "TECHNICAL_EVANGELISM": "Technical Evangelism",
+        "TECHNICAL_SUPPORT": "Technical Support",
+        "TECHNICAL_WRITING": "Technical Writing",
+        "TELECOMMUNICATIONS": "Telecommunications",
+        "TRACKING_SYSTEM": "Tracking System",
+        "UNIX": "UNIX",
+        "USABILITY_ENGINEERING": "Usability Engineering",
+        "USER_EDUCATION": "User Education",
+        "USER_DOCUMENTATION": "User Documentation",
+        "USER_INTERFACE": "User Interface",
+        "VENDOR_SOURCING": "Vendor Sourcing",
+        "VOICE_AND_DATA_COMMUNICATIONS": "Voice & Data Communications",
+        "WEB_DEVELOPMENT_DESIGN": "Web Development/Design",
+        "WEB_SITE_CONTENT_WRITER": "Web Site Content Writer",
+        "CHARACTER_DEVELOPMENT": "Character Development",
+        "CREATIVE_WRITING": "Creative Writing",
+        "DRAWING": "Drawing",
+        "MUSICAL_COMPOSITION": "Musical Composition",
+        "STORY_LINE_DEVELOPMENT": "Story Line Development",
+        "VISUAL_COMPOSITION": "Visual Composition",
+        "COLOUR_THEORY": "Colour Theory",
+        "DREAMWEAVER": "Dreamweaver",
+        "FLASH_FREEHAND": "Flash Freehand",
+        "ILLUSTRATOR": "Illustrator",
+        "PHOTOSHOP_PICASA": "Photoshop Picasa",
+        "COREL_DRAW": "Corel Draw",
+        "TYPOGRAPHY": "Typography",
+        "PRINT_DESIGN_AND_LAYOUT": "Print Design & Layout",
+        "PHOTOGRAPHY": "Photography",
+        "B2B_COMMUNICATION": "B2B Communication",
+        "COMMUNITY_RELATIONS": "Community Relations",
+        "SPEECH_WRITING": "Speech Writing",
+        "CORPORATE_IMAGE": "Corporate Image",
+        "CORPORATE_PHILANTHROPY": "Corporate Philanthropy",
+        "CORPORATE_PUBLICATIONS": "Corporate Publications",
+        "CORPORATE_RELATIONS": "Corporate Relations",
+        "EMPLOYEE_COMMUNICATION": "Employee Communication",
+        "EVENT_PLANNING": "Event Planning",
+        "FUND_RAISING": "Fund Raising",
+        "INVESTOR_COLLATERAL": "Investor Collateral",
+        "MEDIA_PRESENTATIONS": "Media Presentations",
+        "PRESS_RELEASE": "Press Release",
+        "RISK_MANAGEMENT_COMMUNICATION": "Risk Management Communication"
+    }
+}
