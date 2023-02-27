@@ -27,3 +27,7 @@ and helps to stay in touch with all stakeholders.
 ## Make it run
 
 Take a look at [the server readme](joolia-server/README.md) and at [the client readme](joolia-client/README.md).
+
+## Copyright & License
+Copyright © 2023 msg systems AG
+Licensed under GPL v3.0
