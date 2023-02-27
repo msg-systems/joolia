@@ -5,7 +5,7 @@
 
 A plattform to support your innovation!
 
-Joolia enables the management and oranization of agile innovation formats.
+Joolia enables the management and organization of agile innovation formats.
 
 ### Preparation
 ![Preparation picture](./public/preparation.png)  
