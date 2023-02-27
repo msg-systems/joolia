@@ -1,6 +1,5 @@
 # Joolia
 
-## Welcome to Joolia
 ![Joolia Welcome picture](./public/welcome.png)
 
 A plattform to support your innovation!
